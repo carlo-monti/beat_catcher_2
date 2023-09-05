@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-05T14:48:55.195Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0" etag="O0sKQKGREjWUU34hg-RA" version="21.7.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-05T14:49:09.889Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0" etag="Gks3kXS0Z8DXQRo70EmY" version="21.7.2" type="github">
   <diagram name="Page-1" id="QbN46EC0fpTeiO9z-x7w">
     <mxGraphModel dx="864" dy="665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#000000" math="0" shadow="0">
       <root>
@@ -89,7 +89,7 @@
         <mxCell id="HbAZHfGViG6DrG8HbnPA-28" value="CLOCK" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;labelBackgroundColor=none;fillColor=#000033;fontColor=#FFFFFF;" parent="1" vertex="1">
           <mxGeometry x="700" y="250" width="50" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="HbAZHfGViG6DrG8HbnPA-37" value="SLEEP" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=#FFFFFF;labelBackgroundColor=none;fillColor=#182E3E;fontColor=#FFFFFF;" parent="1" vertex="1">
+        <mxCell id="HbAZHfGViG6DrG8HbnPA-37" value="SLEEP" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;labelBackgroundColor=none;fillColor=none;fontColor=#FFFFFF;" parent="1" vertex="1">
           <mxGeometry x="80" y="350" width="70" height="40" as="geometry" />
         </mxCell>
         <mxCell id="HbAZHfGViG6DrG8HbnPA-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FFFFFF;labelBackgroundColor=none;fontColor=default;" parent="1" source="HbAZHfGViG6DrG8HbnPA-40" target="HbAZHfGViG6DrG8HbnPA-8" edge="1">
