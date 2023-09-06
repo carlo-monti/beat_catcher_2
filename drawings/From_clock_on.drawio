@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-06T08:46:10.286Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0" etag="oqxoARdxqG4k3ln8UCYR" version="21.7.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-06T08:47:08.046Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0" etag="waQBvSOQWbPE4c6oAy4i" version="21.7.2" type="github">
   <diagram name="Page-1" id="I2XVdzow9aJ7vw_P53Os">
     <mxGraphModel dx="1948" dy="1765" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#000000" math="0" shadow="0">
       <root>
@@ -9,7 +9,7 @@
         </mxCell>
         <mxCell id="ya2V1XC42E0X-RqYnuuF-19" value="INIZIA REGISTRAZIONE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#FFFFFF;" vertex="1" connectable="0" parent="ya2V1XC42E0X-RqYnuuF-1">
           <mxGeometry x="-0.225" relative="1" as="geometry">
-            <mxPoint x="22" as="offset" />
+            <mxPoint x="48" y="20" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="hhslKCSuNVBVUWtsOX8--3" value="QUEUE SEND" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#000033;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" vertex="1">
@@ -80,7 +80,7 @@
         </mxCell>
         <mxCell id="ya2V1XC42E0X-RqYnuuF-20" value="STOP REGISTRAZIONE" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;fontColor=#FFFFFF;" vertex="1" connectable="0" parent="z1AqTW1uiwaVZhbLh0gZ-28">
           <mxGeometry x="-0.08" y="3" relative="1" as="geometry">
-            <mxPoint x="15" as="offset" />
+            <mxPoint x="43" y="18" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="z1AqTW1uiwaVZhbLh0gZ-20" value="QUEUE SEND" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#000033;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" vertex="1">
@@ -224,7 +224,7 @@
         <mxCell id="ya2V1XC42E0X-RqYnuuF-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="HIqVo-vTFQ0lA4o1PvIp-15" target="HIqVo-vTFQ0lA4o1PvIp-16">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="ya2V1XC42E0X-RqYnuuF-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="HIqVo-vTFQ0lA4o1PvIp-15" target="ya2V1XC42E0X-RqYnuuF-14">
+        <mxCell id="ya2V1XC42E0X-RqYnuuF-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#182E3E;" edge="1" parent="1" source="HIqVo-vTFQ0lA4o1PvIp-15" target="ya2V1XC42E0X-RqYnuuF-14">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HIqVo-vTFQ0lA4o1PvIp-15" value="NOTIFY" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#003300;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" vertex="1">
@@ -238,6 +238,11 @@
         </mxCell>
         <mxCell id="ya2V1XC42E0X-RqYnuuF-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="HIqVo-vTFQ0lA4o1PvIp-18" target="HIqVo-vTFQ0lA4o1PvIp-16">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ya2V1XC42E0X-RqYnuuF-21" value="RIPRENDI REGISTRAZIONE" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#182E3E;labelBackgroundColor=none;fontColor=#FFFFFF;" edge="1" parent="1" source="HIqVo-vTFQ0lA4o1PvIp-18" target="HIqVo-vTFQ0lA4o1PvIp-16">
+          <mxGeometry x="0.6375" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="HIqVo-vTFQ0lA4o1PvIp-18" value="QUEUE SEND" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#000033;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" vertex="1">
           <mxGeometry x="-40" y="200" width="200" height="20" as="geometry" />
