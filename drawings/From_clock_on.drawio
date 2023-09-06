@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-09-06T08:49:21.638Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0" etag="u1nhC9sllm2zTeQkk_eN" version="21.7.2" type="github">
+<mxfile host="app.diagrams.net" modified="2023-09-06T08:50:09.281Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/117.0" etag="yWhmwTYnxxcw6axOaIjR" version="21.7.2" type="github">
   <diagram name="Page-1" id="I2XVdzow9aJ7vw_P53Os">
     <mxGraphModel dx="1948" dy="1765" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#000000" math="0" shadow="0">
       <root>
@@ -288,7 +288,7 @@
           <mxGeometry x="-40" y="410" width="200" height="20" as="geometry" />
         </mxCell>
         <mxCell id="HIqVo-vTFQ0lA4o1PvIp-26" value="si riprogramma al clock successivo" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#000033;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" vertex="1">
-          <mxGeometry x="-40" y="430" width="200" height="20" as="geometry" />
+          <mxGeometry x="-40" y="450" width="200" height="20" as="geometry" />
         </mxCell>
         <mxCell id="yB2ux6KUUU3h3tudsDdv-1" value="mostra BPM" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#333300;strokeColor=#FFFFFF;fontColor=#FFFFFF;" parent="1" vertex="1">
           <mxGeometry x="1010" y="-830" width="200" height="20" as="geometry" />
@@ -310,6 +310,9 @@
         </mxCell>
         <mxCell id="ya2V1XC42E0X-RqYnuuF-14" value="onset detection" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#003300;strokeColor=#FFFFFF;fontColor=#FFFFFF;" vertex="1" parent="1">
           <mxGeometry x="170" y="330" width="200" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ya2V1XC42E0X-RqYnuuF-27" value="azzera index" style="rounded=0;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#000033;strokeColor=#FFFFFF;fontColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="430" width="200" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
