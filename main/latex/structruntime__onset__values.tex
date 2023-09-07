@@ -1,0 +1,53 @@
+\doxysection{runtime\+\_\+onset\+\_\+values Struct Reference}
+\hypertarget{structruntime__onset__values}{}\label{structruntime__onset__values}\index{runtime\_onset\_values@{runtime\_onset\_values}}
+
+
+Config struct for the runtime values of the onset detection.  
+
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structruntime__onset__values_a18364df33c17e2a0ea688d319d839c48}{current\+\_\+sample}}
+\item 
+uint64\+\_\+t \mbox{\hyperlink{structruntime__onset__values_a85581dd84cd0a233bcc5a7aecb1f534e}{last\+\_\+onset\+\_\+time}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structruntime__onset__values_a472312c3974e51ecde92a7ac7c33e388}{past\+\_\+samples\+\_\+current\+\_\+onset\+\_\+index}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structruntime__onset__values_ae484fa8359d37746c2f6f399d7abaa5e}{past\+\_\+samples}} \mbox{[}\mbox{\hyperlink{onset__adc_8c_ad485d497ba204b41d61760bc83465d5c}{MAX\+\_\+\+ONSET\+\_\+\+DELTA\+\_\+\+X\+\_\+\+LENGTH}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Config struct for the runtime values of the onset detection. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structruntime__onset__values_a18364df33c17e2a0ea688d319d839c48}\label{structruntime__onset__values_a18364df33c17e2a0ea688d319d839c48} 
+\index{runtime\_onset\_values@{runtime\_onset\_values}!current\_sample@{current\_sample}}
+\index{current\_sample@{current\_sample}!runtime\_onset\_values@{runtime\_onset\_values}}
+\doxysubsubsection{\texorpdfstring{current\_sample}{current\_sample}}
+{\footnotesize\ttfamily uint16\+\_\+t runtime\+\_\+onset\+\_\+values\+::current\+\_\+sample}
+
+Value of the current sample \Hypertarget{structruntime__onset__values_a85581dd84cd0a233bcc5a7aecb1f534e}\label{structruntime__onset__values_a85581dd84cd0a233bcc5a7aecb1f534e} 
+\index{runtime\_onset\_values@{runtime\_onset\_values}!last\_onset\_time@{last\_onset\_time}}
+\index{last\_onset\_time@{last\_onset\_time}!runtime\_onset\_values@{runtime\_onset\_values}}
+\doxysubsubsection{\texorpdfstring{last\_onset\_time}{last\_onset\_time}}
+{\footnotesize\ttfamily uint64\+\_\+t runtime\+\_\+onset\+\_\+values\+::last\+\_\+onset\+\_\+time}
+
+Last time a onset has been triggered \Hypertarget{structruntime__onset__values_ae484fa8359d37746c2f6f399d7abaa5e}\label{structruntime__onset__values_ae484fa8359d37746c2f6f399d7abaa5e} 
+\index{runtime\_onset\_values@{runtime\_onset\_values}!past\_samples@{past\_samples}}
+\index{past\_samples@{past\_samples}!runtime\_onset\_values@{runtime\_onset\_values}}
+\doxysubsubsection{\texorpdfstring{past\_samples}{past\_samples}}
+{\footnotesize\ttfamily uint16\+\_\+t runtime\+\_\+onset\+\_\+values\+::past\+\_\+samples\mbox{[}\mbox{\hyperlink{onset__adc_8c_ad485d497ba204b41d61760bc83465d5c}{MAX\+\_\+\+ONSET\+\_\+\+DELTA\+\_\+\+X\+\_\+\+LENGTH}}\mbox{]}}
+
+Array of the past samples \Hypertarget{structruntime__onset__values_a472312c3974e51ecde92a7ac7c33e388}\label{structruntime__onset__values_a472312c3974e51ecde92a7ac7c33e388} 
+\index{runtime\_onset\_values@{runtime\_onset\_values}!past\_samples\_current\_onset\_index@{past\_samples\_current\_onset\_index}}
+\index{past\_samples\_current\_onset\_index@{past\_samples\_current\_onset\_index}!runtime\_onset\_values@{runtime\_onset\_values}}
+\doxysubsubsection{\texorpdfstring{past\_samples\_current\_onset\_index}{past\_samples\_current\_onset\_index}}
+{\footnotesize\ttfamily uint16\+\_\+t runtime\+\_\+onset\+\_\+values\+::past\+\_\+samples\+\_\+current\+\_\+onset\+\_\+index}
+
+Index of the current sample in the array of past samples 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{onset__adc_8c}{onset\+\_\+adc.\+c}}\end{DoxyCompactItemize}

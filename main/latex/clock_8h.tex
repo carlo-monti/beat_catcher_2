@@ -1,0 +1,97 @@
+\doxysection{clock.\+h File Reference}
+\hypertarget{clock_8h}{}\label{clock_8h}\index{clock.h@{clock.h}}
+
+
+Clock module keeps up the time and sends MIDI\+\_\+\+CLOCK messages. The clock module keeps up with the time of the song and sends MIDI\+\_\+\+CLOCK messages via UART. It can be controlled by messaging its queue using the data structures below.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structclock__task__queue__entry}{clock\+\_\+task\+\_\+queue\+\_\+entry}}
+\begin{DoxyCompactList}\small\item\em Message for the queue. This is the main structure of the message that has to be sent to the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{clock_8h_a5b6cc32812dc64b9f2b2de40e208951d}{clock\+\_\+task\+\_\+queue\+\_\+entry\+\_\+type}} \{ \mbox{\hyperlink{clock_8h_a5b6cc32812dc64b9f2b2de40e208951dad5eb864f8b547731f2c24914f410a5dc}{CLOCK\+\_\+\+QUEUE\+\_\+\+SET\+\_\+\+DELTA\+\_\+\+TAU\+\_\+\+SYNC}}
+, \mbox{\hyperlink{clock_8h_a5b6cc32812dc64b9f2b2de40e208951dace0cb20e232e56e256454095baaf4de2}{CLOCK\+\_\+\+QUEUE\+\_\+\+SET\+\_\+\+DELTA\+\_\+\+TAU\+\_\+\+TEMPO}}
+, \mbox{\hyperlink{clock_8h_a5b6cc32812dc64b9f2b2de40e208951da7b1de8a4e52b7f3e8228c1252be2e74c}{CLOCK\+\_\+\+QUEUE\+\_\+\+STOP}}
+, \mbox{\hyperlink{clock_8h_a5b6cc32812dc64b9f2b2de40e208951da60acc728b5740b9d839de268aa789b9b}{CLOCK\+\_\+\+QUEUE\+\_\+\+START}}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of message sent to the queue. Every message that the queue receives has to be one of the types specified here. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{clock_8h_ae9cc0a879e88eea28e4e8b57318ef8e5}{clock\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function to be called from the main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{clock_8h_aaddec2e93001176bc08a063e6e82410d}{clock\+\_\+task\+\_\+queue}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{clock_8h_a1d3224e02cec6b02a9c3521cbad7d171}{clock\+\_\+task\+\_\+handle}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Clock module keeps up the time and sends MIDI\+\_\+\+CLOCK messages. The clock module keeps up with the time of the song and sends MIDI\+\_\+\+CLOCK messages via UART. It can be controlled by messaging its queue using the data structures below. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{clock_8h_a5b6cc32812dc64b9f2b2de40e208951d}\label{clock_8h_a5b6cc32812dc64b9f2b2de40e208951d} 
+\index{clock.h@{clock.h}!clock\_task\_queue\_entry\_type@{clock\_task\_queue\_entry\_type}}
+\index{clock\_task\_queue\_entry\_type@{clock\_task\_queue\_entry\_type}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_queue\_entry\_type}{clock\_task\_queue\_entry\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{clock_8h_a5b6cc32812dc64b9f2b2de40e208951d}{clock\+\_\+task\+\_\+queue\+\_\+entry\+\_\+type}}}
+
+
+
+Type of message sent to the queue. Every message that the queue receives has to be one of the types specified here. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOCK\_QUEUE\_SET\_DELTA\_TAU\_SYNC@{CLOCK\_QUEUE\_SET\_DELTA\_TAU\_SYNC}!clock.h@{clock.h}}\index{clock.h@{clock.h}!CLOCK\_QUEUE\_SET\_DELTA\_TAU\_SYNC@{CLOCK\_QUEUE\_SET\_DELTA\_TAU\_SYNC}}}\Hypertarget{clock_8h_a5b6cc32812dc64b9f2b2de40e208951dad5eb864f8b547731f2c24914f410a5dc}\label{clock_8h_a5b6cc32812dc64b9f2b2de40e208951dad5eb864f8b547731f2c24914f410a5dc} 
+CLOCK\+\_\+\+QUEUE\+\_\+\+SET\+\_\+\+DELTA\+\_\+\+TAU\+\_\+\+SYNC&Asks the clock to update the delta tau value for the sync \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOCK\_QUEUE\_SET\_DELTA\_TAU\_TEMPO@{CLOCK\_QUEUE\_SET\_DELTA\_TAU\_TEMPO}!clock.h@{clock.h}}\index{clock.h@{clock.h}!CLOCK\_QUEUE\_SET\_DELTA\_TAU\_TEMPO@{CLOCK\_QUEUE\_SET\_DELTA\_TAU\_TEMPO}}}\Hypertarget{clock_8h_a5b6cc32812dc64b9f2b2de40e208951dace0cb20e232e56e256454095baaf4de2}\label{clock_8h_a5b6cc32812dc64b9f2b2de40e208951dace0cb20e232e56e256454095baaf4de2} 
+CLOCK\+\_\+\+QUEUE\+\_\+\+SET\+\_\+\+DELTA\+\_\+\+TAU\+\_\+\+TEMPO&Asks the clock to update the delta tau value for the tempo \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOCK\_QUEUE\_STOP@{CLOCK\_QUEUE\_STOP}!clock.h@{clock.h}}\index{clock.h@{clock.h}!CLOCK\_QUEUE\_STOP@{CLOCK\_QUEUE\_STOP}}}\Hypertarget{clock_8h_a5b6cc32812dc64b9f2b2de40e208951da7b1de8a4e52b7f3e8228c1252be2e74c}\label{clock_8h_a5b6cc32812dc64b9f2b2de40e208951da7b1de8a4e52b7f3e8228c1252be2e74c} 
+CLOCK\+\_\+\+QUEUE\+\_\+\+STOP&Asks the clock to stop \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLOCK\_QUEUE\_START@{CLOCK\_QUEUE\_START}!clock.h@{clock.h}}\index{clock.h@{clock.h}!CLOCK\_QUEUE\_START@{CLOCK\_QUEUE\_START}}}\Hypertarget{clock_8h_a5b6cc32812dc64b9f2b2de40e208951da60acc728b5740b9d839de268aa789b9b}\label{clock_8h_a5b6cc32812dc64b9f2b2de40e208951da60acc728b5740b9d839de268aa789b9b} 
+CLOCK\+\_\+\+QUEUE\+\_\+\+START&Asks the clock to start \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{clock_8h_ae9cc0a879e88eea28e4e8b57318ef8e5}\label{clock_8h_ae9cc0a879e88eea28e4e8b57318ef8e5} 
+\index{clock.h@{clock.h}!clock\_init@{clock\_init}}
+\index{clock\_init@{clock\_init}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_init()}{clock\_init()}}
+{\footnotesize\ttfamily void clock\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function to be called from the main. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{clock_8h_a1d3224e02cec6b02a9c3521cbad7d171}\label{clock_8h_a1d3224e02cec6b02a9c3521cbad7d171} 
+\index{clock.h@{clock.h}!clock\_task\_handle@{clock\_task\_handle}}
+\index{clock\_task\_handle@{clock\_task\_handle}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_handle}{clock\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t clock\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{clock_8h_aaddec2e93001176bc08a063e6e82410d}\label{clock_8h_aaddec2e93001176bc08a063e6e82410d} 
+\index{clock.h@{clock.h}!clock\_task\_queue@{clock\_task\_queue}}
+\index{clock\_task\_queue@{clock\_task\_queue}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_queue}{clock\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t clock\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+

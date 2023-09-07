@@ -1,0 +1,160 @@
+\doxysection{clock.\+c File Reference}
+\hypertarget{clock_8c}{}\label{clock_8c}\index{clock.c@{clock.c}}
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+{\ttfamily \#include \"{}clock.\+h\"{}}\newline
+{\ttfamily \#include \"{}sync.\+h\"{}}\newline
+{\ttfamily \#include \"{}onset\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/gpio.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/uart.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{clock_8c_a5451bb4ae6d40a03182ba992ccc42719}{MIDI\+\_\+\+CLOCK\+\_\+\+ON\+\_\+\+BEAT}}~0
+\item 
+\#define \mbox{\hyperlink{clock_8c_a694afaf0db6031c9d1dc061675a483d1}{MIDI\+\_\+\+CLOCK\+\_\+\+LED\+\_\+\+OFF}}~1
+\item 
+\#define \mbox{\hyperlink{clock_8c_ad3427c1628491466fe62addb39fa01d7}{MIDI\+\_\+\+CLOCK\+\_\+\+SECOND\+\_\+\+THIRD}}~4
+\item 
+\#define \mbox{\hyperlink{clock_8c_a30a2011f7aae633b7e3a0d10ce3a14ef}{MIDI\+\_\+\+CLOCK\+\_\+\+HALFWAY}}~6
+\item 
+\#define \mbox{\hyperlink{clock_8c_a52625851bd54adc677f5e9a0efdc96fe}{MIDI\+\_\+\+CLOCK\+\_\+\+THIRD\+\_\+\+THIRD}}~8
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{clock_8c_ae9cc0a879e88eea28e4e8b57318ef8e5}{clock\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function to be called from the main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} \mbox{\hyperlink{clock_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}{bc}}
+\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{clock_8c_ae78187cdc5c469675b0397d378e21618}{bc\+\_\+mutex\+\_\+handle}}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{clock_8c_a96d4d597bf96e882dcb9103b8b1e3fe8}{onset\+\_\+adc\+\_\+task\+\_\+queue}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{clock_8c_a1d3224e02cec6b02a9c3521cbad7d171}{clock\+\_\+task\+\_\+handle}}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{clock_8c_aaddec2e93001176bc08a063e6e82410d}{clock\+\_\+task\+\_\+queue}}
+\item 
+const char \mbox{\hyperlink{clock_8c_a863113b7e8db127f9761f62f7affab68}{MIDI\+\_\+\+MSG\+\_\+\+TIMING\+\_\+\+CLOCK}} = 248
+\item 
+const char \mbox{\hyperlink{clock_8c_ab7492d1ff5210fd5bc789f4285ba98c6}{MIDI\+\_\+\+MSG\+\_\+\+START}} = 250
+\item 
+const char \mbox{\hyperlink{clock_8c_a23986c22363fc82ecc1d10b00b1505f5}{MIDI\+\_\+\+MSG\+\_\+\+STOP}} = 252
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{clock_8c_a9d875a5f34a043f3d0d86420fe82f1b1}{layer\+\_\+of}} \mbox{[}\mbox{\hyperlink{main__defs_8h_aec0cf26d4271ab42972e509945aace39}{TWO\+\_\+\+BAR\+\_\+\+LENGTH\+\_\+\+IN\+\_\+8\+TH}}\mbox{]} = \{3, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0\}
+\item 
+const uart\+\_\+port\+\_\+t \mbox{\hyperlink{clock_8c_ae871136e9b721e057141a44db7d8057b}{uart\+\_\+num}} = UART\+\_\+\+NUM\+\_\+2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{clock_8c_a30a2011f7aae633b7e3a0d10ce3a14ef}\label{clock_8c_a30a2011f7aae633b7e3a0d10ce3a14ef} 
+\index{clock.c@{clock.c}!MIDI\_CLOCK\_HALFWAY@{MIDI\_CLOCK\_HALFWAY}}
+\index{MIDI\_CLOCK\_HALFWAY@{MIDI\_CLOCK\_HALFWAY}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_CLOCK\_HALFWAY}{MIDI\_CLOCK\_HALFWAY}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+CLOCK\+\_\+\+HALFWAY~6}
+
+\Hypertarget{clock_8c_a694afaf0db6031c9d1dc061675a483d1}\label{clock_8c_a694afaf0db6031c9d1dc061675a483d1} 
+\index{clock.c@{clock.c}!MIDI\_CLOCK\_LED\_OFF@{MIDI\_CLOCK\_LED\_OFF}}
+\index{MIDI\_CLOCK\_LED\_OFF@{MIDI\_CLOCK\_LED\_OFF}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_CLOCK\_LED\_OFF}{MIDI\_CLOCK\_LED\_OFF}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+CLOCK\+\_\+\+LED\+\_\+\+OFF~1}
+
+\Hypertarget{clock_8c_a5451bb4ae6d40a03182ba992ccc42719}\label{clock_8c_a5451bb4ae6d40a03182ba992ccc42719} 
+\index{clock.c@{clock.c}!MIDI\_CLOCK\_ON\_BEAT@{MIDI\_CLOCK\_ON\_BEAT}}
+\index{MIDI\_CLOCK\_ON\_BEAT@{MIDI\_CLOCK\_ON\_BEAT}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_CLOCK\_ON\_BEAT}{MIDI\_CLOCK\_ON\_BEAT}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+CLOCK\+\_\+\+ON\+\_\+\+BEAT~0}
+
+\Hypertarget{clock_8c_ad3427c1628491466fe62addb39fa01d7}\label{clock_8c_ad3427c1628491466fe62addb39fa01d7} 
+\index{clock.c@{clock.c}!MIDI\_CLOCK\_SECOND\_THIRD@{MIDI\_CLOCK\_SECOND\_THIRD}}
+\index{MIDI\_CLOCK\_SECOND\_THIRD@{MIDI\_CLOCK\_SECOND\_THIRD}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_CLOCK\_SECOND\_THIRD}{MIDI\_CLOCK\_SECOND\_THIRD}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+CLOCK\+\_\+\+SECOND\+\_\+\+THIRD~4}
+
+\Hypertarget{clock_8c_a52625851bd54adc677f5e9a0efdc96fe}\label{clock_8c_a52625851bd54adc677f5e9a0efdc96fe} 
+\index{clock.c@{clock.c}!MIDI\_CLOCK\_THIRD\_THIRD@{MIDI\_CLOCK\_THIRD\_THIRD}}
+\index{MIDI\_CLOCK\_THIRD\_THIRD@{MIDI\_CLOCK\_THIRD\_THIRD}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_CLOCK\_THIRD\_THIRD}{MIDI\_CLOCK\_THIRD\_THIRD}}
+{\footnotesize\ttfamily \#define MIDI\+\_\+\+CLOCK\+\_\+\+THIRD\+\_\+\+THIRD~8}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{clock_8c_ae9cc0a879e88eea28e4e8b57318ef8e5}\label{clock_8c_ae9cc0a879e88eea28e4e8b57318ef8e5} 
+\index{clock.c@{clock.c}!clock\_init@{clock\_init}}
+\index{clock\_init@{clock\_init}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{clock\_init()}{clock\_init()}}
+{\footnotesize\ttfamily void clock\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function to be called from the main. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{clock_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}\label{clock_8c_abaee9dfd77205965d8b1c6f9f8b20f9e} 
+\index{clock.c@{clock.c}!bc@{bc}}
+\index{bc@{bc}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{bc}{bc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} bc\hspace{0.3cm}{\ttfamily [extern]}}
+
+main runtime data \Hypertarget{clock_8c_ae78187cdc5c469675b0397d378e21618}\label{clock_8c_ae78187cdc5c469675b0397d378e21618} 
+\index{clock.c@{clock.c}!bc\_mutex\_handle@{bc\_mutex\_handle}}
+\index{bc\_mutex\_handle@{bc\_mutex\_handle}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{bc\_mutex\_handle}{bc\_mutex\_handle}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t bc\+\_\+mutex\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+mutex for the access to bc struct \Hypertarget{clock_8c_a1d3224e02cec6b02a9c3521cbad7d171}\label{clock_8c_a1d3224e02cec6b02a9c3521cbad7d171} 
+\index{clock.c@{clock.c}!clock\_task\_handle@{clock\_task\_handle}}
+\index{clock\_task\_handle@{clock\_task\_handle}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_handle}{clock\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t clock\+\_\+task\+\_\+handle}
+
+\Hypertarget{clock_8c_aaddec2e93001176bc08a063e6e82410d}\label{clock_8c_aaddec2e93001176bc08a063e6e82410d} 
+\index{clock.c@{clock.c}!clock\_task\_queue@{clock\_task\_queue}}
+\index{clock\_task\_queue@{clock\_task\_queue}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_queue}{clock\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t clock\+\_\+task\+\_\+queue}
+
+Beat catcher 2.\+0 -\/ Mode Switch Module This module handles the switching between the main modes of the system\+: -\/MODE\+\_\+\+PLAY -\/MODE\+\_\+\+TAP -\/MODE\+\_\+\+SETTINGS \Hypertarget{clock_8c_a9d875a5f34a043f3d0d86420fe82f1b1}\label{clock_8c_a9d875a5f34a043f3d0d86420fe82f1b1} 
+\index{clock.c@{clock.c}!layer\_of@{layer\_of}}
+\index{layer\_of@{layer\_of}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{layer\_of}{layer\_of}}
+{\footnotesize\ttfamily const uint8\+\_\+t layer\+\_\+of\mbox{[}\mbox{\hyperlink{main__defs_8h_aec0cf26d4271ab42972e509945aace39}{TWO\+\_\+\+BAR\+\_\+\+LENGTH\+\_\+\+IN\+\_\+8\+TH}}\mbox{]} = \{3, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0\}}
+
+layer value for every step in two bars \Hypertarget{clock_8c_ab7492d1ff5210fd5bc789f4285ba98c6}\label{clock_8c_ab7492d1ff5210fd5bc789f4285ba98c6} 
+\index{clock.c@{clock.c}!MIDI\_MSG\_START@{MIDI\_MSG\_START}}
+\index{MIDI\_MSG\_START@{MIDI\_MSG\_START}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_MSG\_START}{MIDI\_MSG\_START}}
+{\footnotesize\ttfamily const char MIDI\+\_\+\+MSG\+\_\+\+START = 250}
+
+MIDI START MESSAGE BYTE VALUE \Hypertarget{clock_8c_a23986c22363fc82ecc1d10b00b1505f5}\label{clock_8c_a23986c22363fc82ecc1d10b00b1505f5} 
+\index{clock.c@{clock.c}!MIDI\_MSG\_STOP@{MIDI\_MSG\_STOP}}
+\index{MIDI\_MSG\_STOP@{MIDI\_MSG\_STOP}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_MSG\_STOP}{MIDI\_MSG\_STOP}}
+{\footnotesize\ttfamily const char MIDI\+\_\+\+MSG\+\_\+\+STOP = 252}
+
+MIDI STOP MESSAGE BYTE VALUE \Hypertarget{clock_8c_a863113b7e8db127f9761f62f7affab68}\label{clock_8c_a863113b7e8db127f9761f62f7affab68} 
+\index{clock.c@{clock.c}!MIDI\_MSG\_TIMING\_CLOCK@{MIDI\_MSG\_TIMING\_CLOCK}}
+\index{MIDI\_MSG\_TIMING\_CLOCK@{MIDI\_MSG\_TIMING\_CLOCK}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{MIDI\_MSG\_TIMING\_CLOCK}{MIDI\_MSG\_TIMING\_CLOCK}}
+{\footnotesize\ttfamily const char MIDI\+\_\+\+MSG\+\_\+\+TIMING\+\_\+\+CLOCK = 248}
+
+MIDI CLOCK MESSAGE BYTE VALUE \Hypertarget{clock_8c_a96d4d597bf96e882dcb9103b8b1e3fe8}\label{clock_8c_a96d4d597bf96e882dcb9103b8b1e3fe8} 
+\index{clock.c@{clock.c}!onset\_adc\_task\_queue@{onset\_adc\_task\_queue}}
+\index{onset\_adc\_task\_queue@{onset\_adc\_task\_queue}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{onset\_adc\_task\_queue}{onset\_adc\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t onset\+\_\+adc\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+queue of onset\+\_\+adc\+\_\+task \Hypertarget{clock_8c_ae871136e9b721e057141a44db7d8057b}\label{clock_8c_ae871136e9b721e057141a44db7d8057b} 
+\index{clock.c@{clock.c}!uart\_num@{uart\_num}}
+\index{uart\_num@{uart\_num}!clock.c@{clock.c}}
+\doxysubsubsection{\texorpdfstring{uart\_num}{uart\_num}}
+{\footnotesize\ttfamily const uart\+\_\+port\+\_\+t uart\+\_\+num = UART\+\_\+\+NUM\+\_\+2}
+
+ESP32 UART number 2 

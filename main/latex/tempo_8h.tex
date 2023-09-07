@@ -1,0 +1,79 @@
+\doxysection{tempo.\+h File Reference}
+\hypertarget{tempo_8h}{}\label{tempo_8h}\index{tempo.h@{tempo.h}}
+
+
+Tempo module evaluates the need of a change in the bpm of the midi clock. For every onset, the sync module calculates the IOI with the preceding onsets of the two bars and calculates the accuracy. If the highest accuracy found is higher than the threshold the module sends a message to the clock module asking to set delta\+\_\+tau\+\_\+tempo value. The module starts its job when notified by the Sync module.  
+
+
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{tempo_8h_abc364bc71af450fbe95199def797ba59}{tempo\+\_\+task\+\_\+notify\+\_\+code}} \{ \mbox{\hyperlink{tempo_8h_abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290}{TEMPO\+\_\+\+START\+\_\+\+EVALUATION\+\_\+\+NOTIFY}}
+, \mbox{\hyperlink{tempo_8h_abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412}{TEMPO\+\_\+\+RESET\+\_\+\+PARAMETERS}}
+ \}
+\begin{DoxyCompactList}\small\item\em Notify codes for tempo\+\_\+task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tempo_8h_adafb1cbe0338573004581a9f811aa72c}{tempo\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the tempo module The function will set parameters and starts tempo\+\_\+task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tempo_8h_a4b95f9c9646e48a84af88f118ad9f2fa}{tempo\+\_\+task\+\_\+handle}}
+\begin{DoxyCompactList}\small\item\em Handle of the tempo\+\_\+task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tempo module evaluates the need of a change in the bpm of the midi clock. For every onset, the sync module calculates the IOI with the preceding onsets of the two bars and calculates the accuracy. If the highest accuracy found is higher than the threshold the module sends a message to the clock module asking to set delta\+\_\+tau\+\_\+tempo value. The module starts its job when notified by the Sync module. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{tempo_8h_abc364bc71af450fbe95199def797ba59}\label{tempo_8h_abc364bc71af450fbe95199def797ba59} 
+\index{tempo.h@{tempo.h}!tempo\_task\_notify\_code@{tempo\_task\_notify\_code}}
+\index{tempo\_task\_notify\_code@{tempo\_task\_notify\_code}!tempo.h@{tempo.h}}
+\doxysubsubsection{\texorpdfstring{tempo\_task\_notify\_code}{tempo\_task\_notify\_code}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{tempo_8h_abc364bc71af450fbe95199def797ba59}{tempo\+\_\+task\+\_\+notify\+\_\+code}}}
+
+
+
+Notify codes for tempo\+\_\+task. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEMPO\_START\_EVALUATION\_NOTIFY@{TEMPO\_START\_EVALUATION\_NOTIFY}!tempo.h@{tempo.h}}\index{tempo.h@{tempo.h}!TEMPO\_START\_EVALUATION\_NOTIFY@{TEMPO\_START\_EVALUATION\_NOTIFY}}}\Hypertarget{tempo_8h_abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290}\label{tempo_8h_abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290} 
+TEMPO\+\_\+\+START\+\_\+\+EVALUATION\+\_\+\+NOTIFY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TEMPO\_RESET\_PARAMETERS@{TEMPO\_RESET\_PARAMETERS}!tempo.h@{tempo.h}}\index{tempo.h@{tempo.h}!TEMPO\_RESET\_PARAMETERS@{TEMPO\_RESET\_PARAMETERS}}}\Hypertarget{tempo_8h_abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412}\label{tempo_8h_abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412} 
+TEMPO\+\_\+\+RESET\+\_\+\+PARAMETERS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tempo_8h_adafb1cbe0338573004581a9f811aa72c}\label{tempo_8h_adafb1cbe0338573004581a9f811aa72c} 
+\index{tempo.h@{tempo.h}!tempo\_init@{tempo\_init}}
+\index{tempo\_init@{tempo\_init}!tempo.h@{tempo.h}}
+\doxysubsubsection{\texorpdfstring{tempo\_init()}{tempo\_init()}}
+{\footnotesize\ttfamily void tempo\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the tempo module The function will set parameters and starts tempo\+\_\+task. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{tempo_8h_a4b95f9c9646e48a84af88f118ad9f2fa}\label{tempo_8h_a4b95f9c9646e48a84af88f118ad9f2fa} 
+\index{tempo.h@{tempo.h}!tempo\_task\_handle@{tempo\_task\_handle}}
+\index{tempo\_task\_handle@{tempo\_task\_handle}!tempo.h@{tempo.h}}
+\doxysubsubsection{\texorpdfstring{tempo\_task\_handle}{tempo\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tempo\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle of the tempo\+\_\+task. 
+
+Handle for the tempo task 

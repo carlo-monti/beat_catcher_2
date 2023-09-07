@@ -1,0 +1,75 @@
+\doxysection{tap.\+h File Reference}
+\hypertarget{tap_8h}{}\label{tap_8h}\index{tap.h@{tap.h}}
+
+
+Tap module let the user insert the initial bpm by pressing on the tap button on time. Every time the user presses the button, an interrupt routine send a message to the queue of the main task with information about the timing and the task keeps track of how many hits has been received. If there are 4 hits, the task calculates the bpm average and starts the clock module. If there are no hits before the timeout, the tap ask to switch to sleep mode.  
+
+
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tap_8h_a2a19d1848bbf62d34b26c052f4f8e152}{TAP\+\_\+\+TASK\+\_\+\+QUEUE\+\_\+\+RESET\+\_\+\+COUNTER}}~0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tap_8h_ac90100d31ec60a91ae52a23f7e4cb57d}{tap\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function to be called from the main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{tap_8h_a43cf8accd30762854b5635cb9fefabae}{tap\+\_\+task\+\_\+queue}}
+\begin{DoxyCompactList}\small\item\em Queue to send msgs to the tap module. \end{DoxyCompactList}\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tap_8h_a9bceedf934a6c465d6657b4c7f0b257c}{tap\+\_\+task\+\_\+handle}}
+\begin{DoxyCompactList}\small\item\em Handle of tap\+\_\+task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tap module let the user insert the initial bpm by pressing on the tap button on time. Every time the user presses the button, an interrupt routine send a message to the queue of the main task with information about the timing and the task keeps track of how many hits has been received. If there are 4 hits, the task calculates the bpm average and starts the clock module. If there are no hits before the timeout, the tap ask to switch to sleep mode. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tap_8h_a2a19d1848bbf62d34b26c052f4f8e152}\label{tap_8h_a2a19d1848bbf62d34b26c052f4f8e152} 
+\index{tap.h@{tap.h}!TAP\_TASK\_QUEUE\_RESET\_COUNTER@{TAP\_TASK\_QUEUE\_RESET\_COUNTER}}
+\index{TAP\_TASK\_QUEUE\_RESET\_COUNTER@{TAP\_TASK\_QUEUE\_RESET\_COUNTER}!tap.h@{tap.h}}
+\doxysubsubsection{\texorpdfstring{TAP\_TASK\_QUEUE\_RESET\_COUNTER}{TAP\_TASK\_QUEUE\_RESET\_COUNTER}}
+{\footnotesize\ttfamily \#define TAP\+\_\+\+TASK\+\_\+\+QUEUE\+\_\+\+RESET\+\_\+\+COUNTER~0}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tap_8h_ac90100d31ec60a91ae52a23f7e4cb57d}\label{tap_8h_ac90100d31ec60a91ae52a23f7e4cb57d} 
+\index{tap.h@{tap.h}!tap\_init@{tap\_init}}
+\index{tap\_init@{tap\_init}!tap.h@{tap.h}}
+\doxysubsubsection{\texorpdfstring{tap\_init()}{tap\_init()}}
+{\footnotesize\ttfamily void tap\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function to be called from the main. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{tap_8h_a9bceedf934a6c465d6657b4c7f0b257c}\label{tap_8h_a9bceedf934a6c465d6657b4c7f0b257c} 
+\index{tap.h@{tap.h}!tap\_task\_handle@{tap\_task\_handle}}
+\index{tap\_task\_handle@{tap\_task\_handle}!tap.h@{tap.h}}
+\doxysubsubsection{\texorpdfstring{tap\_task\_handle}{tap\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tap\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle of tap\+\_\+task. 
+
+Handle of tap\+\_\+task used to resume the task when needed \Hypertarget{tap_8h_a43cf8accd30762854b5635cb9fefabae}\label{tap_8h_a43cf8accd30762854b5635cb9fefabae} 
+\index{tap.h@{tap.h}!tap\_task\_queue@{tap\_task\_queue}}
+\index{tap\_task\_queue@{tap\_task\_queue}!tap.h@{tap.h}}
+\doxysubsubsection{\texorpdfstring{tap\_task\_queue}{tap\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t tap\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Queue to send msgs to the tap module. 
+
+Queue to send msgs to the tap module. If the message is TAP\+\_\+\+TASK\+\_\+\+QUEUE\+\_\+\+RESET\+\_\+\+COUNTER, the task resets its internal counter. Otherwise it will interpret it as an absolute value of time for an hit. 

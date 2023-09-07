@@ -1,2 +1,8 @@
-idf_component_register(SRCS "hid.c" "tempo.c" "mode_switch.c" "tap.c" "clock.c" "sync.c" "onset_adc.c" "main.c"
-                    INCLUDE_DIRS ".")
+# For more information about build system see
+# https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html
+# The following five lines of boilerplate have to be in your project's
+# CMakeLists in this exact order for cmake to work correctly
+cmake_minimum_required(VERSION 3.16)
+
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(MAIN_APP_2)

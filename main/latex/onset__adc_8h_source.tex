@@ -1,0 +1,28 @@
+\doxysection{onset\+\_\+adc.\+h}
+\hypertarget{onset__adc_8h_source}{}\label{onset__adc_8h_source}\mbox{\hyperlink{onset__adc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ BC\_ONSET\_ADC\_H}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ BC\_ONSET\_ADC\_H}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main__defs_8h}{main\_defs.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{extern}\ QueueHandle\_t\ \mbox{\hyperlink{onset__adc_8h_a96d4d597bf96e882dcb9103b8b1e3fe8}{onset\_adc\_task\_queue}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{onset__adc_8h_ac8810a7a7425a6faee68a116b9587985a79b6eb96d45bda239b5e0e746ca976c6}{ONSET\_ADC\_ALLOW\_ONSET}},\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{onset__adc_8h_ac8810a7a7425a6faee68a116b9587985a052282c13631a88927c0e11fab528ed6}{ONSET\_ADC\_DISALLOW\_ONSET}},\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{onset__adc_8h_ac8810a7a7425a6faee68a116b9587985a55cf4f076513ee32e77b6e76d24e2ece}{ONSET\_ADC\_DISALLOW\_ONSET\_AND\_START\_SYNC}},\ }
+\DoxyCodeLine{00034\ \}\ \mbox{\hyperlink{onset__adc_8h_ac8810a7a7425a6faee68a116b9587985}{onset\_adc\_queue\_msg}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00042\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structonset__entry_aff57064c3f2e751daf1bb38131393e83}{time}};\ }
+\DoxyCodeLine{00044\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structonset__entry_a121a7f96ea41c9ca479519c6d9db3bd9}{type}};\ }
+\DoxyCodeLine{00045\ \}\ \mbox{\hyperlink{structonset__entry}{onset\_entry}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{onset__adc_8h_a1cec65e2bd7258f1226270d37c755f05}{onset\_adc\_init}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,189 @@
+\doxysection{hid.\+h}
+\hypertarget{hid_8h_source}{}\label{hid_8h_source}\mbox{\hyperlink{hid_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ BC\_HID\_H}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ BC\_HID\_H}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{main__defs_8h}{main\_defs.h}}"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ ALPHA\_PARAMETER\_NAME\ "{}TEMPO:\ alpha\ \ \ "{}}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ ALPHA\_MIN\_VALUE\ 0.1}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ ALPHA\_MAX\_VALUE\ 2}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ ALPHA\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ ALPHA\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ LATENCY\_AMOUNT\_PARAMETER\_NAME\ "{}TEMPO:\ amount\ \ "{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ LATENCY\_AMOUNT\_MIN\_VALUE\ 0}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ LATENCY\_AMOUNT\_MAX\_VALUE\ 10}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ LATENCY\_AMOUNT\_PERCENTAGE\_STEP\ 10}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ LATENCY\_SMOOTH\_PARAMETER\_NAME\ "{}TEMPO:\ smooth\ \ "{}}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ LATENCY\_SMOOTH\_MIN\_VALUE\ 0}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ LATENCY\_SMOOTH\_MAX\_VALUE\ 10}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ LATENCY\_SMOOTH\_PERCENTAGE\_STEP\ 10}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ NARROW\_RATIO\_PARAMETER\_NAME\ "{}SYNC:\ narrow\ r\ "{}}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ NARROW\_RATIO\_MIN\_VALUE\ 0.1}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ NARROW\_RATIO\_MAX\_VALUE\ 2}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ NARROW\_RATIO\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ NARROW\_RATIO\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ EXPAND\_RATIO\_PARAMETER\_NAME\ "{}SYNC:\ expand\ r\ "{}}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ EXPAND\_RATIO\_MIN\_VALUE\ 0.1}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ EXPAND\_RATIO\_MAX\_VALUE\ 2}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ EXPAND\_RATIO\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ EXPAND\_RATIO\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ BETA\_PARAMETER\_NAME\ "{}SYNC:\ beta\ \ \ \ \ "{}}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ BETA\_MIN\_VALUE\ 0.1}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ BETA\_MAX\_VALUE\ 1}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ BETA\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ BETA\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ KICK\_LOW\_PASS\_PARAMETER\_NAME\ "{}KICK:\ filter\ \ \ "{}}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ KICK\_LOW\_PASS\_MIN\_VALUE\ 1}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ KICK\_LOW\_PASS\_MAX\_VALUE\ 100}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ KICK\_LOW\_PASS\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ KICK\_THRESHOLD\_PARAMETER\_NAME\ "{}KICK:\ thresh\ \ \ "{}}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ KICK\_THRESHOLD\_MIN\_VALUE\ 0}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ KICK\_THRESHOLD\_MAX\_VALUE\ 4096}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ KICK\_THRESHOLD\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ KICK\_GATE\_TIMER\_PARAMETER\_NAME\ "{}KICK:\ gate\ \ \ \ \ "{}}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ KICK\_GATE\_TIMER\_MIN\_VALUE\ 1000}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ KICK\_GATE\_TIMER\_MAX\_VALUE\ 500000}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ KICK\_GATE\_TIMER\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ KICK\_DELTA\_X\_PARAMETER\_NAME\ "{}KICK:\ delta\ x\ \ "{}}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ KICK\_DELTA\_X\_MIN\_VALUE\ 3}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ KICK\_DELTA\_X\_MAX\_VALUE\ 200}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ KICK\_DELTA\_X\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ SNARE\_LOW\_PASS\_PARAMETER\_NAME\ "{}SNARE:\ filter\ \ "{}}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ SNARE\_LOW\_PASS\_MIN\_VALUE\ 1}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ SNARE\_LOW\_PASS\_MAX\_VALUE\ 100}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ SNARE\_LOW\_PASS\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ SNARE\_THRESHOLD\_PARAMETER\_NAME\ "{}SNARE:\ thresh\ \ "{}}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ SNARE\_THRESHOLD\_MIN\_VALUE\ 0}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ SNARE\_THRESHOLD\_MAX\_VALUE\ 4096}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ SNARE\_THRESHOLD\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ SNARE\_GATE\_TIMER\_PARAMETER\_NAME\ "{}SNARE:\ gate\ \ \ \ "{}}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ SNARE\_GATE\_TIMER\_MIN\_VALUE\ 1000}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ SNARE\_GATE\_TIMER\_MAX\_VALUE\ 500000}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ SNARE\_DELTA\_X\_PARAMETER\_NAME\ "{}SNARE:\ delta\ x\ "{}}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ SNARE\_DELTA\_X\_MIN\_VALUE\ 3}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ SNARE\_DELTA\_X\_MAX\_VALUE\ 200}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE\ 50}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ SNARE\_DELTA\_X\_PERCENTAGE\_STEP\ 1}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ SAVE\_VALUES\_PARAMETER\_NAME\ "{}SAVE\ VALUES\ \ \ \ "{}}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \textcolor{comment}{/*\ HID\ */}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#if\ CONFIG\_IDF\_TARGET\_ESP32}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ OLED\_SDA\_GPIO\_PIN\ GPIO\_NUM\_21}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ OLED\_SCL\_GPIO\_PIN\ GPIO\_NUM\_22}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ OLED\_RESET\_GPIO\_PIN\ GPIO\_NUM\_23}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ ENCODER\_CLICK\_PIN\ GPIO\_NUM\_19}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ ENCODER\_PIN\_0\ GPIO\_NUM\_5}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ ENCODER\_PIN\_1\ GPIO\_NUM\_18}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ OLED\_SDA\_GPIO\_PIN\ GPIO\_NUM\_42}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ OLED\_SCL\_GPIO\_PIN\ GPIO\_NUM\_44}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ OLED\_RESET\_GPIO\_PIN\ GPIO\_NUM\_43}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ ENCODER\_CLICK\_PIN\ GPIO\_NUM\_40}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ ENCODER\_PIN\_0\ GPIO\_NUM\_38}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ ENCODER\_PIN\_1\ GPIO\_NUM\_39}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ ENCODER\_CLICK\_DEBOUNCE\_TIME\_US\ 300000}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ ENCODER\_GPIO\_INPUT\_PIN\_SEL\ (1ULL\ <<\ ENCODER\_CLICK\_PIN)}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00143\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00144\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a9b3df53da1b020dd99c4a5d368cd2343}{ENCODER\_INCREASE}}\ =\ 4,\ }
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a1b0a52da9f477f50de7adfde1a399446}{ENCODER\_DECREASE}}\ =\ -\/4,\ }
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a8a86bebad0cbf8a7cd677cf1b3ab2bb6}{ENCODER\_CLICK}}\ =\ 1,\ }
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a256f19438f828124028915fd97328079}{HID\_PLAY\_MODE\_SELECT}}\ =\ 12,\ }
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0ac8910ab30673eae60bc5e388f422445f}{HID\_SETTINGS\_MODE\_SELECT}}\ =\ 13,\ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a35f696e348fc6a94edcf6d773e995bc0}{HID\_TAP\_MODE\_SELECT}}\ =\ 14,\ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a679dcf5923a99c1420e6b9d991307189}{HID\_ENTER\_SLEEP\_MODE}}\ =\ 15,\ }
+\DoxyCodeLine{00152\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a7e688b49372ac998cc2481e3e03229ed}{HID\_TAP\_0}},\ }
+\DoxyCodeLine{00153\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a2a29c4b901190f498166405444202a34}{HID\_TAP\_1}},\ }
+\DoxyCodeLine{00154\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0aa0a33104355626de0c859e44658fb111}{HID\_TAP\_2}},\ }
+\DoxyCodeLine{00155\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0ab6219cda2c75c1c0ae44414891b6cd9e}{HID\_TAP\_3}},\ }
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a82794fa9a8487cf7d580596c4cf3e776}{HID\_TAP\_4}},\ }
+\DoxyCodeLine{00157\ \}\ \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0}{hid\_queue\_msg}};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00164\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00165\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cab0db0748126cb06286c29549ab366e3c}{BC\_FLOAT}},\ }
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca54d5654857c5f982a840d8496c4685a1}{BC\_UINT16}},\ }
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca08e40327567d607758c9cd9631e172f0}{BC\_UINT64}},\ }
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cadd45358485bbc2d7ba4c5e70853da8ac}{BC\_YESNO}},\ }
+\DoxyCodeLine{00170\ \}\ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0c}{bc\_variable\_type}};}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00177\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union}}
+\DoxyCodeLine{00178\ \{}
+\DoxyCodeLine{00179\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{unionrange__values_ab469f88cfa33157bac5684a19d266f19}{u16}};}
+\DoxyCodeLine{00180\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{unionrange__values_a8cff5fd0b4e01d7b8491dff411e3779f}{u64}};}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{unionrange__values_adba180063e5a6ad149d7dcd2e14630c3}{f}};}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{unionrange__values_ad3664208fb2e590b508f1346dd44f20e}{b}};}
+\DoxyCodeLine{00183\ \}\ \mbox{\hyperlink{unionrange__values}{range\_values}};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00190\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00191\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keywordtype}{char}\ name\_displayed[16];\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structhid__parameter__entry_ae3bf4716d522e67a0a0fc51feeedf54a}{pointer\_to\_vrb}};\ }
+\DoxyCodeLine{00194\ \ \ \ \ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0c}{bc\_variable\_type}}\ \mbox{\hyperlink{structhid__parameter__entry_a754baf6a8b4939fb90f73b3eb9d5317d}{vrb\_type}};\ }
+\DoxyCodeLine{00195\ \ \ \ \ \mbox{\hyperlink{unionrange__values}{range\_values}}\ \mbox{\hyperlink{structhid__parameter__entry_ab1a1a17a4e8bcd1c53b505e2b1c586e2}{min}};\ }
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{unionrange__values}{range\_values}}\ \mbox{\hyperlink{structhid__parameter__entry_a11d96ba29c783ad48bfd0bcd283e939f}{max}};\ }
+\DoxyCodeLine{00197\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structhid__parameter__entry_a439801c74ea2767eb584580608a99ce9}{percentage}};\ }
+\DoxyCodeLine{00198\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structhid__parameter__entry_ad621c785a9bf127563a9e52a002ebeab}{percentage\_step}};\ }
+\DoxyCodeLine{00199\ \}\ \mbox{\hyperlink{structhid__parameter__entry}{hid\_parameter\_entry}};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00205\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00206\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34}{MENU\_INDEX\_SYNC\_NARROW}},}
+\DoxyCodeLine{00208\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0}{MENU\_INDEX\_SYNC\_EXPAND}},}
+\DoxyCodeLine{00209\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab}{MENU\_INDEX\_SYNC\_BETA}},}
+\DoxyCodeLine{00210\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7}{MENU\_INDEX\_TEMPO\_ALPHA}},}
+\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5}{MENU\_INDEX\_TEMPO\_LATENCY\_AMOUNT}},}
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c}{MENU\_INDEX\_TEMPO\_LATENCY\_SMOOTH}},}
+\DoxyCodeLine{00213\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406}{MENU\_INDEX\_KICK\_THRESHOLD}},}
+\DoxyCodeLine{00214\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233}{MENU\_INDEX\_KICK\_GATE}},}
+\DoxyCodeLine{00215\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda3c3079ca5f913b19eae7d51b6fefda8c}{MENU\_INDEX\_KICK\_FILTER}},}
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda7660211fd91b8b11bc05e2be6d43b938}{MENU\_INDEX\_KICK\_DELTA\_X}},}
+\DoxyCodeLine{00217\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda92dfa531073c93c7eaea795a6ea03fae}{MENU\_INDEX\_SNARE\_THRESHOLD}},}
+\DoxyCodeLine{00218\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda0f27665389f2001520ab244364c97373}{MENU\_INDEX\_SNARE\_GATE}},}
+\DoxyCodeLine{00219\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddac7dd02032af8c9a627afae1cf54fa575}{MENU\_INDEX\_SNARE\_FILTER}},}
+\DoxyCodeLine{00220\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda4a519904cbeb3d7afbedb12034a95e02}{MENU\_INDEX\_SNARE\_DELTA\_X}},}
+\DoxyCodeLine{00221\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddaf2c31c616e65420ae94b7f9e6840d287}{MENU\_INDEX\_SAVE\_VALUES}},}
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda3a6b9a18aa2e0325b6c46c20752f70e1}{MENU\_ITEM\_INDEX\_LENGTH}},}
+\DoxyCodeLine{00223\ \}\ \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\_item\_index}};}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{extern}\ QueueHandle\_t\ \mbox{\hyperlink{hid_8h_a2a0ee22ddffa06ec2d9ac55e5cf036bf}{hid\_task\_queue}};}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00241\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hid_8h_ae076c353e64c04ffebad6545e116e108}{hid\_init}}();}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hid_8h_abb341b054d276b06eaaa80831a7abc99}{hid\_set\_up\_values}}();}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00255\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{hid_8h_a779fb22524c0770405c75ae48a68171c}{set\_menu\_item\_pointer\_to\_vrb}}(\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\_item\_index}}\ index,\ \textcolor{keywordtype}{void}\ *ptr);}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

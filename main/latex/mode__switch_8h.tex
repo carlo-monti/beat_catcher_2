@@ -1,0 +1,90 @@
+\doxysection{mode\+\_\+switch.\+h File Reference}
+\hypertarget{mode__switch_8h}{}\label{mode__switch_8h}\index{mode\_switch.h@{mode\_switch.h}}
+
+
+MODE\+\_\+\+SWITCH module handles the changing of the main mode of Beat Catcher. There are four main modes of operation\+: MODE\+\_\+\+TAP MODE\+\_\+\+PLAY MODE\+\_\+\+SETTINGS MODE\+\_\+\+SLEEP The mode module has a main task that is exposed and can be notified using a value from mode\+\_\+switch\+\_\+task\+\_\+notify\+\_\+value. In this way you can ask the task to change the mode.  
+
+
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4f}{mode\+\_\+switch\+\_\+task\+\_\+notify\+\_\+value}} \{ \mbox{\hyperlink{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa77c74ba7423344b6df4cb93de55edd5b}{MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+PLAY}}
+, \mbox{\hyperlink{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa4922965c681461d211dc92f8b9b30d6c}{MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+SETTINGS}}
+, \mbox{\hyperlink{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa97140edfbbccf5b930787c4de2b5bf11}{MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+TAP}}
+, \mbox{\hyperlink{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa75d5f68c2979b97790eb5922b73a5a44}{MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+SLEEP}}
+ \}
+\begin{DoxyCompactList}\small\item\em Notify values to ask mode change. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mode__switch_8h_ab2f6656b7d85659c1d6531b359a3e1a0}{mode\+\_\+switch\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the mode switch module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{mode__switch_8h_a034c82e30f0010d82166a479a170facc}{mode\+\_\+switch\+\_\+task\+\_\+handle}}
+\begin{DoxyCompactList}\small\item\em Handle of mode\+\_\+switch\+\_\+task to receive notifications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+MODE\+\_\+\+SWITCH module handles the changing of the main mode of Beat Catcher. There are four main modes of operation\+: MODE\+\_\+\+TAP MODE\+\_\+\+PLAY MODE\+\_\+\+SETTINGS MODE\+\_\+\+SLEEP The mode module has a main task that is exposed and can be notified using a value from mode\+\_\+switch\+\_\+task\+\_\+notify\+\_\+value. In this way you can ask the task to change the mode. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4f}\label{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4f} 
+\index{mode\_switch.h@{mode\_switch.h}!mode\_switch\_task\_notify\_value@{mode\_switch\_task\_notify\_value}}
+\index{mode\_switch\_task\_notify\_value@{mode\_switch\_task\_notify\_value}!mode\_switch.h@{mode\_switch.h}}
+\doxysubsubsection{\texorpdfstring{mode\_switch\_task\_notify\_value}{mode\_switch\_task\_notify\_value}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4f}{mode\+\_\+switch\+\_\+task\+\_\+notify\+\_\+value}}}
+
+
+
+Notify values to ask mode change. 
+
+When notify task, use one of this enum entry to ask the task to switch to that particular mode. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SWITCH\_TO\_PLAY@{MODE\_SWITCH\_TO\_PLAY}!mode\_switch.h@{mode\_switch.h}}\index{mode\_switch.h@{mode\_switch.h}!MODE\_SWITCH\_TO\_PLAY@{MODE\_SWITCH\_TO\_PLAY}}}\Hypertarget{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa77c74ba7423344b6df4cb93de55edd5b}\label{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa77c74ba7423344b6df4cb93de55edd5b} 
+MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+PLAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SWITCH\_TO\_SETTINGS@{MODE\_SWITCH\_TO\_SETTINGS}!mode\_switch.h@{mode\_switch.h}}\index{mode\_switch.h@{mode\_switch.h}!MODE\_SWITCH\_TO\_SETTINGS@{MODE\_SWITCH\_TO\_SETTINGS}}}\Hypertarget{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa4922965c681461d211dc92f8b9b30d6c}\label{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa4922965c681461d211dc92f8b9b30d6c} 
+MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+SETTINGS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SWITCH\_TO\_TAP@{MODE\_SWITCH\_TO\_TAP}!mode\_switch.h@{mode\_switch.h}}\index{mode\_switch.h@{mode\_switch.h}!MODE\_SWITCH\_TO\_TAP@{MODE\_SWITCH\_TO\_TAP}}}\Hypertarget{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa97140edfbbccf5b930787c4de2b5bf11}\label{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa97140edfbbccf5b930787c4de2b5bf11} 
+MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+TAP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SWITCH\_TO\_SLEEP@{MODE\_SWITCH\_TO\_SLEEP}!mode\_switch.h@{mode\_switch.h}}\index{mode\_switch.h@{mode\_switch.h}!MODE\_SWITCH\_TO\_SLEEP@{MODE\_SWITCH\_TO\_SLEEP}}}\Hypertarget{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa75d5f68c2979b97790eb5922b73a5a44}\label{mode__switch_8h_a674b09113065583a8ea4c5d997b66c4fa75d5f68c2979b97790eb5922b73a5a44} 
+MODE\+\_\+\+SWITCH\+\_\+\+TO\+\_\+\+SLEEP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mode__switch_8h_ab2f6656b7d85659c1d6531b359a3e1a0}\label{mode__switch_8h_ab2f6656b7d85659c1d6531b359a3e1a0} 
+\index{mode\_switch.h@{mode\_switch.h}!mode\_switch\_init@{mode\_switch\_init}}
+\index{mode\_switch\_init@{mode\_switch\_init}!mode\_switch.h@{mode\_switch.h}}
+\doxysubsubsection{\texorpdfstring{mode\_switch\_init()}{mode\_switch\_init()}}
+{\footnotesize\ttfamily void mode\+\_\+switch\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the mode switch module. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{mode__switch_8h_a034c82e30f0010d82166a479a170facc}\label{mode__switch_8h_a034c82e30f0010d82166a479a170facc} 
+\index{mode\_switch.h@{mode\_switch.h}!mode\_switch\_task\_handle@{mode\_switch\_task\_handle}}
+\index{mode\_switch\_task\_handle@{mode\_switch\_task\_handle}!mode\_switch.h@{mode\_switch.h}}
+\doxysubsubsection{\texorpdfstring{mode\_switch\_task\_handle}{mode\_switch\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t mode\+\_\+switch\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle of mode\+\_\+switch\+\_\+task to receive notifications. 
+
+Handle of mode\+\_\+switch\+\_\+task to receive notifications 

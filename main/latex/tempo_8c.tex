@@ -1,0 +1,84 @@
+\doxysection{tempo.\+c File Reference}
+\hypertarget{tempo_8c}{}\label{tempo_8c}\index{tempo.c@{tempo.c}}
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+{\ttfamily \#include \"{}tempo.\+h\"{}}\newline
+{\ttfamily \#include \"{}onset\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+{\ttfamily \#include \"{}clock.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tempo_8c_adafb1cbe0338573004581a9f811aa72c}{tempo\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the tempo module The function will set parameters and starts tempo\+\_\+task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{tempo_8c_ae78187cdc5c469675b0397d378e21618}{bc\+\_\+mutex\+\_\+handle}}
+\item 
+\mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} \mbox{\hyperlink{tempo_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}{bc}}
+\item 
+\mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} \mbox{\hyperlink{tempo_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1}{onsets}} \mbox{[}$\,$\mbox{]}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tempo_8c_a4b95f9c9646e48a84af88f118ad9f2fa}{tempo\+\_\+task\+\_\+handle}} = NULL
+\begin{DoxyCompactList}\small\item\em Handle of the tempo\+\_\+task. \end{DoxyCompactList}\item 
+const float \mbox{\hyperlink{tempo_8c_aae659ca0223bf09cdea30c8ab328c014}{TEMPO\+\_\+\+WEIGHT}} \mbox{[}17\mbox{]} = \{0, 0, 1, 0, 1, 0, 0, 0, 0.\+92, 0, 0, 0, 0.\+8, 0, 0, 0, 0.\+8\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{tempo_8c_ac417e12194ff1c71e9ab4b3186056d08}{SIGMA\+\_\+\+TEMPO\+\_\+\+WIDTH\+\_\+\+FACTOR}} = 20
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tempo_8c_adafb1cbe0338573004581a9f811aa72c}\label{tempo_8c_adafb1cbe0338573004581a9f811aa72c} 
+\index{tempo.c@{tempo.c}!tempo\_init@{tempo\_init}}
+\index{tempo\_init@{tempo\_init}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{tempo\_init()}{tempo\_init()}}
+{\footnotesize\ttfamily void tempo\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the tempo module The function will set parameters and starts tempo\+\_\+task. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{tempo_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}\label{tempo_8c_abaee9dfd77205965d8b1c6f9f8b20f9e} 
+\index{tempo.c@{tempo.c}!bc@{bc}}
+\index{bc@{bc}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{bc}{bc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} bc\hspace{0.3cm}{\ttfamily [extern]}}
+
+main runtime data \Hypertarget{tempo_8c_ae78187cdc5c469675b0397d378e21618}\label{tempo_8c_ae78187cdc5c469675b0397d378e21618} 
+\index{tempo.c@{tempo.c}!bc\_mutex\_handle@{bc\_mutex\_handle}}
+\index{bc\_mutex\_handle@{bc\_mutex\_handle}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{bc\_mutex\_handle}{bc\_mutex\_handle}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t bc\+\_\+mutex\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+mutex for the access to bc struct \Hypertarget{tempo_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1}\label{tempo_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1} 
+\index{tempo.c@{tempo.c}!onsets@{onsets}}
+\index{onsets@{onsets}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{onsets}{onsets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} onsets\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+array of onsets \Hypertarget{tempo_8c_ac417e12194ff1c71e9ab4b3186056d08}\label{tempo_8c_ac417e12194ff1c71e9ab4b3186056d08} 
+\index{tempo.c@{tempo.c}!SIGMA\_TEMPO\_WIDTH\_FACTOR@{SIGMA\_TEMPO\_WIDTH\_FACTOR}}
+\index{SIGMA\_TEMPO\_WIDTH\_FACTOR@{SIGMA\_TEMPO\_WIDTH\_FACTOR}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{SIGMA\_TEMPO\_WIDTH\_FACTOR}{SIGMA\_TEMPO\_WIDTH\_FACTOR}}
+{\footnotesize\ttfamily const uint16\+\_\+t SIGMA\+\_\+\+TEMPO\+\_\+\+WIDTH\+\_\+\+FACTOR = 20}
+
+Factor for calculating the max width of the window \Hypertarget{tempo_8c_a4b95f9c9646e48a84af88f118ad9f2fa}\label{tempo_8c_a4b95f9c9646e48a84af88f118ad9f2fa} 
+\index{tempo.c@{tempo.c}!tempo\_task\_handle@{tempo\_task\_handle}}
+\index{tempo\_task\_handle@{tempo\_task\_handle}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{tempo\_task\_handle}{tempo\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tempo\+\_\+task\+\_\+handle = NULL}
+
+
+
+Handle of the tempo\+\_\+task. 
+
+Handle for the tempo task \Hypertarget{tempo_8c_aae659ca0223bf09cdea30c8ab328c014}\label{tempo_8c_aae659ca0223bf09cdea30c8ab328c014} 
+\index{tempo.c@{tempo.c}!TEMPO\_WEIGHT@{TEMPO\_WEIGHT}}
+\index{TEMPO\_WEIGHT@{TEMPO\_WEIGHT}!tempo.c@{tempo.c}}
+\doxysubsubsection{\texorpdfstring{TEMPO\_WEIGHT}{TEMPO\_WEIGHT}}
+{\footnotesize\ttfamily const float TEMPO\+\_\+\+WEIGHT\mbox{[}17\mbox{]} = \{0, 0, 1, 0, 1, 0, 0, 0, 0.\+92, 0, 0, 0, 0.\+8, 0, 0, 0, 0.\+8\}}
+
+Weight values for each IOI 

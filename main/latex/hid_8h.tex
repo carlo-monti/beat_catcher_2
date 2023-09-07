@@ -1,0 +1,960 @@
+\doxysection{hid.\+h File Reference}
+\hypertarget{hid_8h}{}\label{hid_8h}\index{hid.h@{hid.h}}
+
+
+HID Module handles the encoder, the display and the permanent storage of the variables values. The HID Module allow the user to edit the parameters of the system modifying the value of a variable, it permanently stores the modified value and displays some information.  
+
+
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionrange__values}{range\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em Container for the min/max values of the variable in the menu entry. This union is used to contain values from differen variables type by using a single pointer (the casting of the pointer is then made using the vrb type specified in the bc\+\_\+variable\+\_\+type enum) \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhid__parameter__entry}{hid\+\_\+parameter\+\_\+entry}}
+\begin{DoxyCompactList}\small\item\em Entry of the settings menu. Every variable whose value can be modified by the user has an entry modeled by this struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a6756b6c753cf87d6e2f9f30507c67589}{ALPHA\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}TEMPO\+: alpha   \"{}
+\begin{DoxyCompactList}\small\item\em Here are the macros for all the menu entries. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{hid_8h_a050161ccef86cd91153e19a7aa9512be}{ALPHA\+\_\+\+MIN\+\_\+\+VALUE}}~0.\+1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a9460b9127235177d434ceffb5ca2b762}{ALPHA\+\_\+\+MAX\+\_\+\+VALUE}}~2
+\item 
+\#define \mbox{\hyperlink{hid_8h_a3fc90c210df0a580302755ef32917141}{ALPHA\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a24102444c17f27f2257c5be510c43e99}{ALPHA\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a6b1233dece0d02bce4476a10fbcb4cf2}{LATENCY\+\_\+\+AMOUNT\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}TEMPO\+: amount  \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_ad23f1f04ccc7b1331876064e67016aa2}{LATENCY\+\_\+\+AMOUNT\+\_\+\+MIN\+\_\+\+VALUE}}~0
+\item 
+\#define \mbox{\hyperlink{hid_8h_adf0b3ae444c09987e010db85ccad66f9}{LATENCY\+\_\+\+AMOUNT\+\_\+\+MAX\+\_\+\+VALUE}}~10
+\item 
+\#define \mbox{\hyperlink{hid_8h_a8dd3cdfab6fc624765d3f44ba131d986}{LATENCY\+\_\+\+AMOUNT\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a352b91f6d6d2c2ca76f922da2ea1582d}{LATENCY\+\_\+\+AMOUNT\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~10
+\item 
+\#define \mbox{\hyperlink{hid_8h_a7ffc2bfbe49126fd136f8e5830058ee7}{LATENCY\+\_\+\+SMOOTH\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}TEMPO\+: smooth  \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_ad7034f3fd76125a454cbf0971706ea6d}{LATENCY\+\_\+\+SMOOTH\+\_\+\+MIN\+\_\+\+VALUE}}~0
+\item 
+\#define \mbox{\hyperlink{hid_8h_a640e082cf48d9358539d511c6aac3ef4}{LATENCY\+\_\+\+SMOOTH\+\_\+\+MAX\+\_\+\+VALUE}}~10
+\item 
+\#define \mbox{\hyperlink{hid_8h_a5577afc4771e5dff419489896c5b1726}{LATENCY\+\_\+\+SMOOTH\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a6e78b075cf6a49ac8db06dc3b41f7836}{LATENCY\+\_\+\+SMOOTH\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~10
+\item 
+\#define \mbox{\hyperlink{hid_8h_af99c7db3237484f2291006f78ac178b1}{NARROW\+\_\+\+RATIO\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SYNC\+: narrow r \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a9656a6701f6a19006d84aad8fc64045c}{NARROW\+\_\+\+RATIO\+\_\+\+MIN\+\_\+\+VALUE}}~0.\+1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a38d33dc7a103c14d17b4e4e24cede913}{NARROW\+\_\+\+RATIO\+\_\+\+MAX\+\_\+\+VALUE}}~2
+\item 
+\#define \mbox{\hyperlink{hid_8h_ab38b5a92b00944487b2c456cea2c2f40}{NARROW\+\_\+\+RATIO\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_ab3fe23da093024026140c4bf5defc8f2}{NARROW\+\_\+\+RATIO\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a531a87e44fb434361996749595c06668}{EXPAND\+\_\+\+RATIO\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SYNC\+: expand r \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_ab7b97441308206f7ab01f026f50e4e7a}{EXPAND\+\_\+\+RATIO\+\_\+\+MIN\+\_\+\+VALUE}}~0.\+1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a239b8213783cbaa71bb3344c618aa5a0}{EXPAND\+\_\+\+RATIO\+\_\+\+MAX\+\_\+\+VALUE}}~2
+\item 
+\#define \mbox{\hyperlink{hid_8h_afaecf22a57e27e5f94c16089cf2edf53}{EXPAND\+\_\+\+RATIO\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_aef5af4ab9a70d49f72402d0dcdbd40cb}{EXPAND\+\_\+\+RATIO\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_aba448e5a8cfc95040428911aba81f7ee}{BETA\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SYNC\+: beta     \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a79534d42f63a0658219f9d0c5ba78235}{BETA\+\_\+\+MIN\+\_\+\+VALUE}}~0.\+1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a1a5c2550b41057193d492effea99c5e0}{BETA\+\_\+\+MAX\+\_\+\+VALUE}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a34ed46df616e65374e12fc94b2f7700a}{BETA\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a15e72bdaf7cc8278b32fc23a2410477e}{BETA\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a020c0c1528f638f7f0f524a6b23c44f9}{KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}KICK\+: filter   \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a720ed3398c81b52659fdb01e49c263dd}{KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MIN\+\_\+\+VALUE}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a7cbdafc2b714b2b93a0f60b6a5742a80}{KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MAX\+\_\+\+VALUE}}~100
+\item 
+\#define \mbox{\hyperlink{hid_8h_ab067c0372c010777e1fd10f6b09690dc}{KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a0f6648453c8db4c961cb2e6f9998fda1}{KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a0df19812c009048249c3d12f27b202ce}{KICK\+\_\+\+THRESHOLD\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}KICK\+: thresh   \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a54b1ddf7a64ddf527efaa4b23c5de4be}{KICK\+\_\+\+THRESHOLD\+\_\+\+MIN\+\_\+\+VALUE}}~0
+\item 
+\#define \mbox{\hyperlink{hid_8h_a0a25c1904726edc5ca82cc6d0fbe8725}{KICK\+\_\+\+THRESHOLD\+\_\+\+MAX\+\_\+\+VALUE}}~4096
+\item 
+\#define \mbox{\hyperlink{hid_8h_abcb67b1d1940390de8f52d278676af01}{KICK\+\_\+\+THRESHOLD\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_aa21feadd16077876b33d761de521b790}{KICK\+\_\+\+THRESHOLD\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_aa32410885b4ffa2f2da578926e6ae4de}{KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}KICK\+: gate     \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a08203322ee3f1d859b5684bacdfd8403}{KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MIN\+\_\+\+VALUE}}~1000
+\item 
+\#define \mbox{\hyperlink{hid_8h_aab3f773e5974b646640bc0fdf5556259}{KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MAX\+\_\+\+VALUE}}~500000
+\item 
+\#define \mbox{\hyperlink{hid_8h_ad26701bf9d0587cb3d5cb08e2bdf31b6}{KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a42c70dcdef227d38ebc50ce1b885c25f}{KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a2de0d189d30793aa4b8be0c46fef44f5}{KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}KICK\+: delta x  \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a30df6a9c7797557933352144b4ee1f2a}{KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MIN\+\_\+\+VALUE}}~3
+\item 
+\#define \mbox{\hyperlink{hid_8h_a4da286c022cd0f96161b8b79b48da1c0}{KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MAX\+\_\+\+VALUE}}~200
+\item 
+\#define \mbox{\hyperlink{hid_8h_a0f61f4bcd04b6bc6b7c2ad059a52c643}{KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a8f8cbbbbd4c4e95a7076e7483ebcf7ed}{KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_aa3cc2a0994841e257d9099031c6a05af}{SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SNARE\+: filter  \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a1b44c4d3cd7088e096ae179be49f7023}{SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MIN\+\_\+\+VALUE}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a00680c1e4bcdf2c54b65b5a25fa57e61}{SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MAX\+\_\+\+VALUE}}~100
+\item 
+\#define \mbox{\hyperlink{hid_8h_a1f014828906e41b7c7998230787b586f}{SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_ae653999530866770dc241bbadadd3c98}{SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_ab5e27052e3da483bd32fe98bb07865d6}{SNARE\+\_\+\+THRESHOLD\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SNARE\+: thresh  \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a1d25bc644fe4a720a87c31095dad575f}{SNARE\+\_\+\+THRESHOLD\+\_\+\+MIN\+\_\+\+VALUE}}~0
+\item 
+\#define \mbox{\hyperlink{hid_8h_a928afb98b0cf0f94fe2e1d9ac8731465}{SNARE\+\_\+\+THRESHOLD\+\_\+\+MAX\+\_\+\+VALUE}}~4096
+\item 
+\#define \mbox{\hyperlink{hid_8h_a2019d4866851d3c8effc87e755276e1d}{SNARE\+\_\+\+THRESHOLD\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_af15da53041026b0cfe72d91fb158798a}{SNARE\+\_\+\+THRESHOLD\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_ae1503fdcbd97c66c52003203cf8e86a9}{SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SNARE\+: gate    \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_aa824d8076ae6ed8aa696eda21a39cb1c}{SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MIN\+\_\+\+VALUE}}~1000
+\item 
+\#define \mbox{\hyperlink{hid_8h_a4d3e01e6d98a9de44a75c959fd9a1203}{SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MAX\+\_\+\+VALUE}}~500000
+\item 
+\#define \mbox{\hyperlink{hid_8h_a14fd4d5ca496ccfb86132b04ed6a34a3}{SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a67b663a0586c4d62be6bfd5d61360f69}{SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a2d6df8206965f678d52c31149758d822}{SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SNARE\+: delta x \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a3fa47d33682f6350c33cb1396abcca6c}{SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MIN\+\_\+\+VALUE}}~3
+\item 
+\#define \mbox{\hyperlink{hid_8h_a83b83da36d7d1cb09c3e7dfbb60f287c}{SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MAX\+\_\+\+VALUE}}~200
+\item 
+\#define \mbox{\hyperlink{hid_8h_a62a6c9b7e38848b8e045b16c9ecf1e65}{SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE}}~50
+\item 
+\#define \mbox{\hyperlink{hid_8h_a872d8f67a82431d732326f414d1edae7}{SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PERCENTAGE\+\_\+\+STEP}}~1
+\item 
+\#define \mbox{\hyperlink{hid_8h_a1aa01774d7293781389acb74e62cf7bd}{SAVE\+\_\+\+VALUES\+\_\+\+PARAMETER\+\_\+\+NAME}}~\"{}SAVE VALUES    \"{}
+\item 
+\#define \mbox{\hyperlink{hid_8h_a8bf7b8d58b57eda5c39baba10ddf0acc}{OLED\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+42
+\item 
+\#define \mbox{\hyperlink{hid_8h_a8f24987e7cef874e3ec467ce55caaa05}{OLED\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+44
+\item 
+\#define \mbox{\hyperlink{hid_8h_aa0b025c74b09d3fa0d39638b4e926dfb}{OLED\+\_\+\+RESET\+\_\+\+GPIO\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+43
+\item 
+\#define \mbox{\hyperlink{hid_8h_a53ee889a6d5ca39a383e52386542f18b}{ENCODER\+\_\+\+CLICK\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+40
+\item 
+\#define \mbox{\hyperlink{hid_8h_a7d86fe9fbb60263abb30f140a83756be}{ENCODER\+\_\+\+PIN\+\_\+0}}~GPIO\+\_\+\+NUM\+\_\+38
+\item 
+\#define \mbox{\hyperlink{hid_8h_a2d8b85e349f721831072f584506934ae}{ENCODER\+\_\+\+PIN\+\_\+1}}~GPIO\+\_\+\+NUM\+\_\+39
+\item 
+\#define \mbox{\hyperlink{hid_8h_ab8714cf0e8d2d951735d59d4b46b53de}{ENCODER\+\_\+\+CLICK\+\_\+\+DEBOUNCE\+\_\+\+TIME\+\_\+\+US}}~300000
+\item 
+\#define \mbox{\hyperlink{hid_8h_a6a59d955b900f9712f5338606578a27a}{ENCODER\+\_\+\+GPIO\+\_\+\+INPUT\+\_\+\+PIN\+\_\+\+SEL}}~(1ULL $<$$<$ \mbox{\hyperlink{hid_8h_a53ee889a6d5ca39a383e52386542f18b}{ENCODER\+\_\+\+CLICK\+\_\+\+PIN}})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0}{hid\+\_\+queue\+\_\+msg}} \{ \newline
+\mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a9b3df53da1b020dd99c4a5d368cd2343}{ENCODER\+\_\+\+INCREASE}} = 4
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a1b0a52da9f477f50de7adfde1a399446}{ENCODER\+\_\+\+DECREASE}} = -\/4
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a8a86bebad0cbf8a7cd677cf1b3ab2bb6}{ENCODER\+\_\+\+CLICK}} = 1
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a256f19438f828124028915fd97328079}{HID\+\_\+\+PLAY\+\_\+\+MODE\+\_\+\+SELECT}} = 12
+, \newline
+\mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0ac8910ab30673eae60bc5e388f422445f}{HID\+\_\+\+SETTINGS\+\_\+\+MODE\+\_\+\+SELECT}} = 13
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a35f696e348fc6a94edcf6d773e995bc0}{HID\+\_\+\+TAP\+\_\+\+MODE\+\_\+\+SELECT}} = 14
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a679dcf5923a99c1420e6b9d991307189}{HID\+\_\+\+ENTER\+\_\+\+SLEEP\+\_\+\+MODE}} = 15
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a7e688b49372ac998cc2481e3e03229ed}{HID\+\_\+\+TAP\+\_\+0}}
+, \newline
+\mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a2a29c4b901190f498166405444202a34}{HID\+\_\+\+TAP\+\_\+1}}
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0aa0a33104355626de0c859e44658fb111}{HID\+\_\+\+TAP\+\_\+2}}
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0ab6219cda2c75c1c0ae44414891b6cd9e}{HID\+\_\+\+TAP\+\_\+3}}
+, \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0a82794fa9a8487cf7d580596c4cf3e776}{HID\+\_\+\+TAP\+\_\+4}}
+ \}
+\begin{DoxyCompactList}\small\item\em Type of message sent to the queue. Every message that the queue receives has to be one of the types specified here. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0c}{bc\+\_\+variable\+\_\+type}} \{ \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cab0db0748126cb06286c29549ab366e3c}{BC\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca54d5654857c5f982a840d8496c4685a1}{BC\+\_\+\+UINT16}}
+, \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca08e40327567d607758c9cd9631e172f0}{BC\+\_\+\+UINT64}}
+, \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cadd45358485bbc2d7ba4c5e70853da8ac}{BC\+\_\+\+YESNO}}
+ \}
+\begin{DoxyCompactList}\small\item\em Specify the variable type for the menu entry. Every variable whose value can be modified by the user must have a type choosen from here. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}} \{ \newline
+\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34}{MENU\+\_\+\+INDEX\+\_\+\+SYNC\+\_\+\+NARROW}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0}{MENU\+\_\+\+INDEX\+\_\+\+SYNC\+\_\+\+EXPAND}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab}{MENU\+\_\+\+INDEX\+\_\+\+SYNC\+\_\+\+BETA}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7}{MENU\+\_\+\+INDEX\+\_\+\+TEMPO\+\_\+\+ALPHA}}
+, \newline
+\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5}{MENU\+\_\+\+INDEX\+\_\+\+TEMPO\+\_\+\+LATENCY\+\_\+\+AMOUNT}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c}{MENU\+\_\+\+INDEX\+\_\+\+TEMPO\+\_\+\+LATENCY\+\_\+\+SMOOTH}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406}{MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+THRESHOLD}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233}{MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+GATE}}
+, \newline
+\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda3c3079ca5f913b19eae7d51b6fefda8c}{MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+FILTER}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda7660211fd91b8b11bc05e2be6d43b938}{MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+DELTA\+\_\+X}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda92dfa531073c93c7eaea795a6ea03fae}{MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+THRESHOLD}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda0f27665389f2001520ab244364c97373}{MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+GATE}}
+, \newline
+\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddac7dd02032af8c9a627afae1cf54fa575}{MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+FILTER}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda4a519904cbeb3d7afbedb12034a95e02}{MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+DELTA\+\_\+X}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167ddaf2c31c616e65420ae94b7f9e6840d287}{MENU\+\_\+\+INDEX\+\_\+\+SAVE\+\_\+\+VALUES}}
+, \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dda3a6b9a18aa2e0325b6c46c20752f70e1}{MENU\+\_\+\+ITEM\+\_\+\+INDEX\+\_\+\+LENGTH}}
+ \}
+\begin{DoxyCompactList}\small\item\em Index for the menu entries. Change the order of this enum to change the order of the presentation of entries in the menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{hid_8h_ae076c353e64c04ffebad6545e116e108}{hid\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the hid. This function\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hid_8h_abb341b054d276b06eaaa80831a7abc99}{hid\+\_\+set\+\_\+up\+\_\+values}} ()
+\begin{DoxyCompactList}\small\item\em Assign the value to the variables based on the percentage value. This function has to be called only after every module has registered its variable to the menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{hid_8h_a779fb22524c0770405c75ae48a68171c}{set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb}} (\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}} index, void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu\+\_\+item\+\_\+index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{hid_8h_a2a0ee22ddffa06ec2d9ac55e5cf036bf}{hid\+\_\+task\+\_\+queue}}
+\begin{DoxyCompactList}\small\item\em Handle for the hid queue. Handle of the hid queue to receive messages. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+HID Module handles the encoder, the display and the permanent storage of the variables values. The HID Module allow the user to edit the parameters of the system modifying the value of a variable, it permanently stores the modified value and displays some information. 
+
+Its behaviour depends on the main mode (if the mode changes, the hid must be notified sending a message to its queue).
+\begin{DoxyItemize}
+\item SETTINGS mode\+: the module shows the name and the value of the currently selected parameter.
+\begin{DoxyItemize}
+\item When the encoder rotates the value is increased/decreased.
+\item When the encoder is clicked, the next parameter is selected.
+\item The last parameter allow to permanently save values
+\end{DoxyItemize}
+\item PLAY mode\+: shows the current bpm value
+\item TAP mode\+: shows the number of the hits received (0 to 4)
+\item SLEEP mode\+: the display is turned off
+\end{DoxyItemize}
+
+To be editable by the user, every parameter must have an entry on the menu. To add a menu entry\+:
+\begin{DoxyItemize}
+\item Add a value on the menu\+\_\+item\+\_\+index enum to select the order for the parameter name in the menu
+\item Add in the menu\+\_\+init function inside the \doxylink{hid_8c}{hid.\+c} file set up the name and the various info to fill all the struct fields except the pointer to variable that must be set to NULL.
+\item Place a call to the set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb function inside the module to register the pointer to the struct. 
+\end{DoxyItemize}
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{hid_8h_a3fc90c210df0a580302755ef32917141}\label{hid_8h_a3fc90c210df0a580302755ef32917141} 
+\index{hid.h@{hid.h}!ALPHA\_DEFAULT\_PERCENTAGE@{ALPHA\_DEFAULT\_PERCENTAGE}}
+\index{ALPHA\_DEFAULT\_PERCENTAGE@{ALPHA\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ALPHA\_DEFAULT\_PERCENTAGE}{ALPHA\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define ALPHA\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a9460b9127235177d434ceffb5ca2b762}\label{hid_8h_a9460b9127235177d434ceffb5ca2b762} 
+\index{hid.h@{hid.h}!ALPHA\_MAX\_VALUE@{ALPHA\_MAX\_VALUE}}
+\index{ALPHA\_MAX\_VALUE@{ALPHA\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ALPHA\_MAX\_VALUE}{ALPHA\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define ALPHA\+\_\+\+MAX\+\_\+\+VALUE~2}
+
+\Hypertarget{hid_8h_a050161ccef86cd91153e19a7aa9512be}\label{hid_8h_a050161ccef86cd91153e19a7aa9512be} 
+\index{hid.h@{hid.h}!ALPHA\_MIN\_VALUE@{ALPHA\_MIN\_VALUE}}
+\index{ALPHA\_MIN\_VALUE@{ALPHA\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ALPHA\_MIN\_VALUE}{ALPHA\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define ALPHA\+\_\+\+MIN\+\_\+\+VALUE~0.\+1}
+
+\Hypertarget{hid_8h_a6756b6c753cf87d6e2f9f30507c67589}\label{hid_8h_a6756b6c753cf87d6e2f9f30507c67589} 
+\index{hid.h@{hid.h}!ALPHA\_PARAMETER\_NAME@{ALPHA\_PARAMETER\_NAME}}
+\index{ALPHA\_PARAMETER\_NAME@{ALPHA\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ALPHA\_PARAMETER\_NAME}{ALPHA\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define ALPHA\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}TEMPO\+: alpha   \"{}}
+
+
+
+Here are the macros for all the menu entries. 
+
+\Hypertarget{hid_8h_a24102444c17f27f2257c5be510c43e99}\label{hid_8h_a24102444c17f27f2257c5be510c43e99} 
+\index{hid.h@{hid.h}!ALPHA\_PERCENTAGE\_STEP@{ALPHA\_PERCENTAGE\_STEP}}
+\index{ALPHA\_PERCENTAGE\_STEP@{ALPHA\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ALPHA\_PERCENTAGE\_STEP}{ALPHA\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define ALPHA\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_a34ed46df616e65374e12fc94b2f7700a}\label{hid_8h_a34ed46df616e65374e12fc94b2f7700a} 
+\index{hid.h@{hid.h}!BETA\_DEFAULT\_PERCENTAGE@{BETA\_DEFAULT\_PERCENTAGE}}
+\index{BETA\_DEFAULT\_PERCENTAGE@{BETA\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{BETA\_DEFAULT\_PERCENTAGE}{BETA\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define BETA\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a1a5c2550b41057193d492effea99c5e0}\label{hid_8h_a1a5c2550b41057193d492effea99c5e0} 
+\index{hid.h@{hid.h}!BETA\_MAX\_VALUE@{BETA\_MAX\_VALUE}}
+\index{BETA\_MAX\_VALUE@{BETA\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{BETA\_MAX\_VALUE}{BETA\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define BETA\+\_\+\+MAX\+\_\+\+VALUE~1}
+
+\Hypertarget{hid_8h_a79534d42f63a0658219f9d0c5ba78235}\label{hid_8h_a79534d42f63a0658219f9d0c5ba78235} 
+\index{hid.h@{hid.h}!BETA\_MIN\_VALUE@{BETA\_MIN\_VALUE}}
+\index{BETA\_MIN\_VALUE@{BETA\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{BETA\_MIN\_VALUE}{BETA\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define BETA\+\_\+\+MIN\+\_\+\+VALUE~0.\+1}
+
+\Hypertarget{hid_8h_aba448e5a8cfc95040428911aba81f7ee}\label{hid_8h_aba448e5a8cfc95040428911aba81f7ee} 
+\index{hid.h@{hid.h}!BETA\_PARAMETER\_NAME@{BETA\_PARAMETER\_NAME}}
+\index{BETA\_PARAMETER\_NAME@{BETA\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{BETA\_PARAMETER\_NAME}{BETA\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define BETA\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SYNC\+: beta     \"{}}
+
+\Hypertarget{hid_8h_a15e72bdaf7cc8278b32fc23a2410477e}\label{hid_8h_a15e72bdaf7cc8278b32fc23a2410477e} 
+\index{hid.h@{hid.h}!BETA\_PERCENTAGE\_STEP@{BETA\_PERCENTAGE\_STEP}}
+\index{BETA\_PERCENTAGE\_STEP@{BETA\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{BETA\_PERCENTAGE\_STEP}{BETA\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define BETA\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_ab8714cf0e8d2d951735d59d4b46b53de}\label{hid_8h_ab8714cf0e8d2d951735d59d4b46b53de} 
+\index{hid.h@{hid.h}!ENCODER\_CLICK\_DEBOUNCE\_TIME\_US@{ENCODER\_CLICK\_DEBOUNCE\_TIME\_US}}
+\index{ENCODER\_CLICK\_DEBOUNCE\_TIME\_US@{ENCODER\_CLICK\_DEBOUNCE\_TIME\_US}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_CLICK\_DEBOUNCE\_TIME\_US}{ENCODER\_CLICK\_DEBOUNCE\_TIME\_US}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+CLICK\+\_\+\+DEBOUNCE\+\_\+\+TIME\+\_\+\+US~300000}
+
+\Hypertarget{hid_8h_a53ee889a6d5ca39a383e52386542f18b}\label{hid_8h_a53ee889a6d5ca39a383e52386542f18b} 
+\index{hid.h@{hid.h}!ENCODER\_CLICK\_PIN@{ENCODER\_CLICK\_PIN}}
+\index{ENCODER\_CLICK\_PIN@{ENCODER\_CLICK\_PIN}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_CLICK\_PIN}{ENCODER\_CLICK\_PIN}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+CLICK\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+40}
+
+\Hypertarget{hid_8h_a6a59d955b900f9712f5338606578a27a}\label{hid_8h_a6a59d955b900f9712f5338606578a27a} 
+\index{hid.h@{hid.h}!ENCODER\_GPIO\_INPUT\_PIN\_SEL@{ENCODER\_GPIO\_INPUT\_PIN\_SEL}}
+\index{ENCODER\_GPIO\_INPUT\_PIN\_SEL@{ENCODER\_GPIO\_INPUT\_PIN\_SEL}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_GPIO\_INPUT\_PIN\_SEL}{ENCODER\_GPIO\_INPUT\_PIN\_SEL}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+GPIO\+\_\+\+INPUT\+\_\+\+PIN\+\_\+\+SEL~(1ULL $<$$<$ \mbox{\hyperlink{hid_8h_a53ee889a6d5ca39a383e52386542f18b}{ENCODER\+\_\+\+CLICK\+\_\+\+PIN}})}
+
+\Hypertarget{hid_8h_a7d86fe9fbb60263abb30f140a83756be}\label{hid_8h_a7d86fe9fbb60263abb30f140a83756be} 
+\index{hid.h@{hid.h}!ENCODER\_PIN\_0@{ENCODER\_PIN\_0}}
+\index{ENCODER\_PIN\_0@{ENCODER\_PIN\_0}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_PIN\_0}{ENCODER\_PIN\_0}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+PIN\+\_\+0~GPIO\+\_\+\+NUM\+\_\+38}
+
+\Hypertarget{hid_8h_a2d8b85e349f721831072f584506934ae}\label{hid_8h_a2d8b85e349f721831072f584506934ae} 
+\index{hid.h@{hid.h}!ENCODER\_PIN\_1@{ENCODER\_PIN\_1}}
+\index{ENCODER\_PIN\_1@{ENCODER\_PIN\_1}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{ENCODER\_PIN\_1}{ENCODER\_PIN\_1}}
+{\footnotesize\ttfamily \#define ENCODER\+\_\+\+PIN\+\_\+1~GPIO\+\_\+\+NUM\+\_\+39}
+
+\Hypertarget{hid_8h_afaecf22a57e27e5f94c16089cf2edf53}\label{hid_8h_afaecf22a57e27e5f94c16089cf2edf53} 
+\index{hid.h@{hid.h}!EXPAND\_RATIO\_DEFAULT\_PERCENTAGE@{EXPAND\_RATIO\_DEFAULT\_PERCENTAGE}}
+\index{EXPAND\_RATIO\_DEFAULT\_PERCENTAGE@{EXPAND\_RATIO\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{EXPAND\_RATIO\_DEFAULT\_PERCENTAGE}{EXPAND\_RATIO\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define EXPAND\+\_\+\+RATIO\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a239b8213783cbaa71bb3344c618aa5a0}\label{hid_8h_a239b8213783cbaa71bb3344c618aa5a0} 
+\index{hid.h@{hid.h}!EXPAND\_RATIO\_MAX\_VALUE@{EXPAND\_RATIO\_MAX\_VALUE}}
+\index{EXPAND\_RATIO\_MAX\_VALUE@{EXPAND\_RATIO\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{EXPAND\_RATIO\_MAX\_VALUE}{EXPAND\_RATIO\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define EXPAND\+\_\+\+RATIO\+\_\+\+MAX\+\_\+\+VALUE~2}
+
+\Hypertarget{hid_8h_ab7b97441308206f7ab01f026f50e4e7a}\label{hid_8h_ab7b97441308206f7ab01f026f50e4e7a} 
+\index{hid.h@{hid.h}!EXPAND\_RATIO\_MIN\_VALUE@{EXPAND\_RATIO\_MIN\_VALUE}}
+\index{EXPAND\_RATIO\_MIN\_VALUE@{EXPAND\_RATIO\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{EXPAND\_RATIO\_MIN\_VALUE}{EXPAND\_RATIO\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define EXPAND\+\_\+\+RATIO\+\_\+\+MIN\+\_\+\+VALUE~0.\+1}
+
+\Hypertarget{hid_8h_a531a87e44fb434361996749595c06668}\label{hid_8h_a531a87e44fb434361996749595c06668} 
+\index{hid.h@{hid.h}!EXPAND\_RATIO\_PARAMETER\_NAME@{EXPAND\_RATIO\_PARAMETER\_NAME}}
+\index{EXPAND\_RATIO\_PARAMETER\_NAME@{EXPAND\_RATIO\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{EXPAND\_RATIO\_PARAMETER\_NAME}{EXPAND\_RATIO\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define EXPAND\+\_\+\+RATIO\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SYNC\+: expand r \"{}}
+
+\Hypertarget{hid_8h_aef5af4ab9a70d49f72402d0dcdbd40cb}\label{hid_8h_aef5af4ab9a70d49f72402d0dcdbd40cb} 
+\index{hid.h@{hid.h}!EXPAND\_RATIO\_PERCENTAGE\_STEP@{EXPAND\_RATIO\_PERCENTAGE\_STEP}}
+\index{EXPAND\_RATIO\_PERCENTAGE\_STEP@{EXPAND\_RATIO\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{EXPAND\_RATIO\_PERCENTAGE\_STEP}{EXPAND\_RATIO\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define EXPAND\+\_\+\+RATIO\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_a0f61f4bcd04b6bc6b7c2ad059a52c643}\label{hid_8h_a0f61f4bcd04b6bc6b7c2ad059a52c643} 
+\index{hid.h@{hid.h}!KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE@{KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE}}
+\index{KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE@{KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE}{KICK\_DELTA\_X\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a4da286c022cd0f96161b8b79b48da1c0}\label{hid_8h_a4da286c022cd0f96161b8b79b48da1c0} 
+\index{hid.h@{hid.h}!KICK\_DELTA\_X\_MAX\_VALUE@{KICK\_DELTA\_X\_MAX\_VALUE}}
+\index{KICK\_DELTA\_X\_MAX\_VALUE@{KICK\_DELTA\_X\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_DELTA\_X\_MAX\_VALUE}{KICK\_DELTA\_X\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MAX\+\_\+\+VALUE~200}
+
+\Hypertarget{hid_8h_a30df6a9c7797557933352144b4ee1f2a}\label{hid_8h_a30df6a9c7797557933352144b4ee1f2a} 
+\index{hid.h@{hid.h}!KICK\_DELTA\_X\_MIN\_VALUE@{KICK\_DELTA\_X\_MIN\_VALUE}}
+\index{KICK\_DELTA\_X\_MIN\_VALUE@{KICK\_DELTA\_X\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_DELTA\_X\_MIN\_VALUE}{KICK\_DELTA\_X\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MIN\+\_\+\+VALUE~3}
+
+\Hypertarget{hid_8h_a2de0d189d30793aa4b8be0c46fef44f5}\label{hid_8h_a2de0d189d30793aa4b8be0c46fef44f5} 
+\index{hid.h@{hid.h}!KICK\_DELTA\_X\_PARAMETER\_NAME@{KICK\_DELTA\_X\_PARAMETER\_NAME}}
+\index{KICK\_DELTA\_X\_PARAMETER\_NAME@{KICK\_DELTA\_X\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_DELTA\_X\_PARAMETER\_NAME}{KICK\_DELTA\_X\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}KICK\+: delta x  \"{}}
+
+\Hypertarget{hid_8h_a8f8cbbbbd4c4e95a7076e7483ebcf7ed}\label{hid_8h_a8f8cbbbbd4c4e95a7076e7483ebcf7ed} 
+\index{hid.h@{hid.h}!KICK\_DELTA\_X\_PERCENTAGE\_STEP@{KICK\_DELTA\_X\_PERCENTAGE\_STEP}}
+\index{KICK\_DELTA\_X\_PERCENTAGE\_STEP@{KICK\_DELTA\_X\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_DELTA\_X\_PERCENTAGE\_STEP}{KICK\_DELTA\_X\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_ad26701bf9d0587cb3d5cb08e2bdf31b6}\label{hid_8h_ad26701bf9d0587cb3d5cb08e2bdf31b6} 
+\index{hid.h@{hid.h}!KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE@{KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}}
+\index{KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE@{KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}{KICK\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_aab3f773e5974b646640bc0fdf5556259}\label{hid_8h_aab3f773e5974b646640bc0fdf5556259} 
+\index{hid.h@{hid.h}!KICK\_GATE\_TIMER\_MAX\_VALUE@{KICK\_GATE\_TIMER\_MAX\_VALUE}}
+\index{KICK\_GATE\_TIMER\_MAX\_VALUE@{KICK\_GATE\_TIMER\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_GATE\_TIMER\_MAX\_VALUE}{KICK\_GATE\_TIMER\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MAX\+\_\+\+VALUE~500000}
+
+\Hypertarget{hid_8h_a08203322ee3f1d859b5684bacdfd8403}\label{hid_8h_a08203322ee3f1d859b5684bacdfd8403} 
+\index{hid.h@{hid.h}!KICK\_GATE\_TIMER\_MIN\_VALUE@{KICK\_GATE\_TIMER\_MIN\_VALUE}}
+\index{KICK\_GATE\_TIMER\_MIN\_VALUE@{KICK\_GATE\_TIMER\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_GATE\_TIMER\_MIN\_VALUE}{KICK\_GATE\_TIMER\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MIN\+\_\+\+VALUE~1000}
+
+\Hypertarget{hid_8h_aa32410885b4ffa2f2da578926e6ae4de}\label{hid_8h_aa32410885b4ffa2f2da578926e6ae4de} 
+\index{hid.h@{hid.h}!KICK\_GATE\_TIMER\_PARAMETER\_NAME@{KICK\_GATE\_TIMER\_PARAMETER\_NAME}}
+\index{KICK\_GATE\_TIMER\_PARAMETER\_NAME@{KICK\_GATE\_TIMER\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_GATE\_TIMER\_PARAMETER\_NAME}{KICK\_GATE\_TIMER\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}KICK\+: gate     \"{}}
+
+\Hypertarget{hid_8h_a42c70dcdef227d38ebc50ce1b885c25f}\label{hid_8h_a42c70dcdef227d38ebc50ce1b885c25f} 
+\index{hid.h@{hid.h}!KICK\_GATE\_TIMER\_PERCENTAGE\_STEP@{KICK\_GATE\_TIMER\_PERCENTAGE\_STEP}}
+\index{KICK\_GATE\_TIMER\_PERCENTAGE\_STEP@{KICK\_GATE\_TIMER\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_GATE\_TIMER\_PERCENTAGE\_STEP}{KICK\_GATE\_TIMER\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_ab067c0372c010777e1fd10f6b09690dc}\label{hid_8h_ab067c0372c010777e1fd10f6b09690dc} 
+\index{hid.h@{hid.h}!KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE@{KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE}}
+\index{KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE@{KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE}{KICK\_LOW\_PASS\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a7cbdafc2b714b2b93a0f60b6a5742a80}\label{hid_8h_a7cbdafc2b714b2b93a0f60b6a5742a80} 
+\index{hid.h@{hid.h}!KICK\_LOW\_PASS\_MAX\_VALUE@{KICK\_LOW\_PASS\_MAX\_VALUE}}
+\index{KICK\_LOW\_PASS\_MAX\_VALUE@{KICK\_LOW\_PASS\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LOW\_PASS\_MAX\_VALUE}{KICK\_LOW\_PASS\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MAX\+\_\+\+VALUE~100}
+
+\Hypertarget{hid_8h_a720ed3398c81b52659fdb01e49c263dd}\label{hid_8h_a720ed3398c81b52659fdb01e49c263dd} 
+\index{hid.h@{hid.h}!KICK\_LOW\_PASS\_MIN\_VALUE@{KICK\_LOW\_PASS\_MIN\_VALUE}}
+\index{KICK\_LOW\_PASS\_MIN\_VALUE@{KICK\_LOW\_PASS\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LOW\_PASS\_MIN\_VALUE}{KICK\_LOW\_PASS\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MIN\+\_\+\+VALUE~1}
+
+\Hypertarget{hid_8h_a020c0c1528f638f7f0f524a6b23c44f9}\label{hid_8h_a020c0c1528f638f7f0f524a6b23c44f9} 
+\index{hid.h@{hid.h}!KICK\_LOW\_PASS\_PARAMETER\_NAME@{KICK\_LOW\_PASS\_PARAMETER\_NAME}}
+\index{KICK\_LOW\_PASS\_PARAMETER\_NAME@{KICK\_LOW\_PASS\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LOW\_PASS\_PARAMETER\_NAME}{KICK\_LOW\_PASS\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}KICK\+: filter   \"{}}
+
+\Hypertarget{hid_8h_a0f6648453c8db4c961cb2e6f9998fda1}\label{hid_8h_a0f6648453c8db4c961cb2e6f9998fda1} 
+\index{hid.h@{hid.h}!KICK\_LOW\_PASS\_PERCENTAGE\_STEP@{KICK\_LOW\_PASS\_PERCENTAGE\_STEP}}
+\index{KICK\_LOW\_PASS\_PERCENTAGE\_STEP@{KICK\_LOW\_PASS\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LOW\_PASS\_PERCENTAGE\_STEP}{KICK\_LOW\_PASS\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_abcb67b1d1940390de8f52d278676af01}\label{hid_8h_abcb67b1d1940390de8f52d278676af01} 
+\index{hid.h@{hid.h}!KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE@{KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE}}
+\index{KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE@{KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE}{KICK\_THRESHOLD\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+THRESHOLD\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a0a25c1904726edc5ca82cc6d0fbe8725}\label{hid_8h_a0a25c1904726edc5ca82cc6d0fbe8725} 
+\index{hid.h@{hid.h}!KICK\_THRESHOLD\_MAX\_VALUE@{KICK\_THRESHOLD\_MAX\_VALUE}}
+\index{KICK\_THRESHOLD\_MAX\_VALUE@{KICK\_THRESHOLD\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_THRESHOLD\_MAX\_VALUE}{KICK\_THRESHOLD\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+THRESHOLD\+\_\+\+MAX\+\_\+\+VALUE~4096}
+
+\Hypertarget{hid_8h_a54b1ddf7a64ddf527efaa4b23c5de4be}\label{hid_8h_a54b1ddf7a64ddf527efaa4b23c5de4be} 
+\index{hid.h@{hid.h}!KICK\_THRESHOLD\_MIN\_VALUE@{KICK\_THRESHOLD\_MIN\_VALUE}}
+\index{KICK\_THRESHOLD\_MIN\_VALUE@{KICK\_THRESHOLD\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_THRESHOLD\_MIN\_VALUE}{KICK\_THRESHOLD\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+THRESHOLD\+\_\+\+MIN\+\_\+\+VALUE~0}
+
+\Hypertarget{hid_8h_a0df19812c009048249c3d12f27b202ce}\label{hid_8h_a0df19812c009048249c3d12f27b202ce} 
+\index{hid.h@{hid.h}!KICK\_THRESHOLD\_PARAMETER\_NAME@{KICK\_THRESHOLD\_PARAMETER\_NAME}}
+\index{KICK\_THRESHOLD\_PARAMETER\_NAME@{KICK\_THRESHOLD\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_THRESHOLD\_PARAMETER\_NAME}{KICK\_THRESHOLD\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+THRESHOLD\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}KICK\+: thresh   \"{}}
+
+\Hypertarget{hid_8h_aa21feadd16077876b33d761de521b790}\label{hid_8h_aa21feadd16077876b33d761de521b790} 
+\index{hid.h@{hid.h}!KICK\_THRESHOLD\_PERCENTAGE\_STEP@{KICK\_THRESHOLD\_PERCENTAGE\_STEP}}
+\index{KICK\_THRESHOLD\_PERCENTAGE\_STEP@{KICK\_THRESHOLD\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_THRESHOLD\_PERCENTAGE\_STEP}{KICK\_THRESHOLD\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+THRESHOLD\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_a8dd3cdfab6fc624765d3f44ba131d986}\label{hid_8h_a8dd3cdfab6fc624765d3f44ba131d986} 
+\index{hid.h@{hid.h}!LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE@{LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE}}
+\index{LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE@{LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE}{LATENCY\_AMOUNT\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+AMOUNT\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_adf0b3ae444c09987e010db85ccad66f9}\label{hid_8h_adf0b3ae444c09987e010db85ccad66f9} 
+\index{hid.h@{hid.h}!LATENCY\_AMOUNT\_MAX\_VALUE@{LATENCY\_AMOUNT\_MAX\_VALUE}}
+\index{LATENCY\_AMOUNT\_MAX\_VALUE@{LATENCY\_AMOUNT\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_AMOUNT\_MAX\_VALUE}{LATENCY\_AMOUNT\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+AMOUNT\+\_\+\+MAX\+\_\+\+VALUE~10}
+
+\Hypertarget{hid_8h_ad23f1f04ccc7b1331876064e67016aa2}\label{hid_8h_ad23f1f04ccc7b1331876064e67016aa2} 
+\index{hid.h@{hid.h}!LATENCY\_AMOUNT\_MIN\_VALUE@{LATENCY\_AMOUNT\_MIN\_VALUE}}
+\index{LATENCY\_AMOUNT\_MIN\_VALUE@{LATENCY\_AMOUNT\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_AMOUNT\_MIN\_VALUE}{LATENCY\_AMOUNT\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+AMOUNT\+\_\+\+MIN\+\_\+\+VALUE~0}
+
+\Hypertarget{hid_8h_a6b1233dece0d02bce4476a10fbcb4cf2}\label{hid_8h_a6b1233dece0d02bce4476a10fbcb4cf2} 
+\index{hid.h@{hid.h}!LATENCY\_AMOUNT\_PARAMETER\_NAME@{LATENCY\_AMOUNT\_PARAMETER\_NAME}}
+\index{LATENCY\_AMOUNT\_PARAMETER\_NAME@{LATENCY\_AMOUNT\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_AMOUNT\_PARAMETER\_NAME}{LATENCY\_AMOUNT\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+AMOUNT\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}TEMPO\+: amount  \"{}}
+
+\Hypertarget{hid_8h_a352b91f6d6d2c2ca76f922da2ea1582d}\label{hid_8h_a352b91f6d6d2c2ca76f922da2ea1582d} 
+\index{hid.h@{hid.h}!LATENCY\_AMOUNT\_PERCENTAGE\_STEP@{LATENCY\_AMOUNT\_PERCENTAGE\_STEP}}
+\index{LATENCY\_AMOUNT\_PERCENTAGE\_STEP@{LATENCY\_AMOUNT\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_AMOUNT\_PERCENTAGE\_STEP}{LATENCY\_AMOUNT\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+AMOUNT\+\_\+\+PERCENTAGE\+\_\+\+STEP~10}
+
+\Hypertarget{hid_8h_a5577afc4771e5dff419489896c5b1726}\label{hid_8h_a5577afc4771e5dff419489896c5b1726} 
+\index{hid.h@{hid.h}!LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE@{LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE}}
+\index{LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE@{LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE}{LATENCY\_SMOOTH\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+SMOOTH\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a640e082cf48d9358539d511c6aac3ef4}\label{hid_8h_a640e082cf48d9358539d511c6aac3ef4} 
+\index{hid.h@{hid.h}!LATENCY\_SMOOTH\_MAX\_VALUE@{LATENCY\_SMOOTH\_MAX\_VALUE}}
+\index{LATENCY\_SMOOTH\_MAX\_VALUE@{LATENCY\_SMOOTH\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_SMOOTH\_MAX\_VALUE}{LATENCY\_SMOOTH\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+SMOOTH\+\_\+\+MAX\+\_\+\+VALUE~10}
+
+\Hypertarget{hid_8h_ad7034f3fd76125a454cbf0971706ea6d}\label{hid_8h_ad7034f3fd76125a454cbf0971706ea6d} 
+\index{hid.h@{hid.h}!LATENCY\_SMOOTH\_MIN\_VALUE@{LATENCY\_SMOOTH\_MIN\_VALUE}}
+\index{LATENCY\_SMOOTH\_MIN\_VALUE@{LATENCY\_SMOOTH\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_SMOOTH\_MIN\_VALUE}{LATENCY\_SMOOTH\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+SMOOTH\+\_\+\+MIN\+\_\+\+VALUE~0}
+
+\Hypertarget{hid_8h_a7ffc2bfbe49126fd136f8e5830058ee7}\label{hid_8h_a7ffc2bfbe49126fd136f8e5830058ee7} 
+\index{hid.h@{hid.h}!LATENCY\_SMOOTH\_PARAMETER\_NAME@{LATENCY\_SMOOTH\_PARAMETER\_NAME}}
+\index{LATENCY\_SMOOTH\_PARAMETER\_NAME@{LATENCY\_SMOOTH\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_SMOOTH\_PARAMETER\_NAME}{LATENCY\_SMOOTH\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+SMOOTH\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}TEMPO\+: smooth  \"{}}
+
+\Hypertarget{hid_8h_a6e78b075cf6a49ac8db06dc3b41f7836}\label{hid_8h_a6e78b075cf6a49ac8db06dc3b41f7836} 
+\index{hid.h@{hid.h}!LATENCY\_SMOOTH\_PERCENTAGE\_STEP@{LATENCY\_SMOOTH\_PERCENTAGE\_STEP}}
+\index{LATENCY\_SMOOTH\_PERCENTAGE\_STEP@{LATENCY\_SMOOTH\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{LATENCY\_SMOOTH\_PERCENTAGE\_STEP}{LATENCY\_SMOOTH\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define LATENCY\+\_\+\+SMOOTH\+\_\+\+PERCENTAGE\+\_\+\+STEP~10}
+
+\Hypertarget{hid_8h_ab38b5a92b00944487b2c456cea2c2f40}\label{hid_8h_ab38b5a92b00944487b2c456cea2c2f40} 
+\index{hid.h@{hid.h}!NARROW\_RATIO\_DEFAULT\_PERCENTAGE@{NARROW\_RATIO\_DEFAULT\_PERCENTAGE}}
+\index{NARROW\_RATIO\_DEFAULT\_PERCENTAGE@{NARROW\_RATIO\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{NARROW\_RATIO\_DEFAULT\_PERCENTAGE}{NARROW\_RATIO\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define NARROW\+\_\+\+RATIO\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a38d33dc7a103c14d17b4e4e24cede913}\label{hid_8h_a38d33dc7a103c14d17b4e4e24cede913} 
+\index{hid.h@{hid.h}!NARROW\_RATIO\_MAX\_VALUE@{NARROW\_RATIO\_MAX\_VALUE}}
+\index{NARROW\_RATIO\_MAX\_VALUE@{NARROW\_RATIO\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{NARROW\_RATIO\_MAX\_VALUE}{NARROW\_RATIO\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define NARROW\+\_\+\+RATIO\+\_\+\+MAX\+\_\+\+VALUE~2}
+
+\Hypertarget{hid_8h_a9656a6701f6a19006d84aad8fc64045c}\label{hid_8h_a9656a6701f6a19006d84aad8fc64045c} 
+\index{hid.h@{hid.h}!NARROW\_RATIO\_MIN\_VALUE@{NARROW\_RATIO\_MIN\_VALUE}}
+\index{NARROW\_RATIO\_MIN\_VALUE@{NARROW\_RATIO\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{NARROW\_RATIO\_MIN\_VALUE}{NARROW\_RATIO\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define NARROW\+\_\+\+RATIO\+\_\+\+MIN\+\_\+\+VALUE~0.\+1}
+
+\Hypertarget{hid_8h_af99c7db3237484f2291006f78ac178b1}\label{hid_8h_af99c7db3237484f2291006f78ac178b1} 
+\index{hid.h@{hid.h}!NARROW\_RATIO\_PARAMETER\_NAME@{NARROW\_RATIO\_PARAMETER\_NAME}}
+\index{NARROW\_RATIO\_PARAMETER\_NAME@{NARROW\_RATIO\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{NARROW\_RATIO\_PARAMETER\_NAME}{NARROW\_RATIO\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define NARROW\+\_\+\+RATIO\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SYNC\+: narrow r \"{}}
+
+\Hypertarget{hid_8h_ab3fe23da093024026140c4bf5defc8f2}\label{hid_8h_ab3fe23da093024026140c4bf5defc8f2} 
+\index{hid.h@{hid.h}!NARROW\_RATIO\_PERCENTAGE\_STEP@{NARROW\_RATIO\_PERCENTAGE\_STEP}}
+\index{NARROW\_RATIO\_PERCENTAGE\_STEP@{NARROW\_RATIO\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{NARROW\_RATIO\_PERCENTAGE\_STEP}{NARROW\_RATIO\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define NARROW\+\_\+\+RATIO\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_aa0b025c74b09d3fa0d39638b4e926dfb}\label{hid_8h_aa0b025c74b09d3fa0d39638b4e926dfb} 
+\index{hid.h@{hid.h}!OLED\_RESET\_GPIO\_PIN@{OLED\_RESET\_GPIO\_PIN}}
+\index{OLED\_RESET\_GPIO\_PIN@{OLED\_RESET\_GPIO\_PIN}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{OLED\_RESET\_GPIO\_PIN}{OLED\_RESET\_GPIO\_PIN}}
+{\footnotesize\ttfamily \#define OLED\+\_\+\+RESET\+\_\+\+GPIO\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+43}
+
+\Hypertarget{hid_8h_a8f24987e7cef874e3ec467ce55caaa05}\label{hid_8h_a8f24987e7cef874e3ec467ce55caaa05} 
+\index{hid.h@{hid.h}!OLED\_SCL\_GPIO\_PIN@{OLED\_SCL\_GPIO\_PIN}}
+\index{OLED\_SCL\_GPIO\_PIN@{OLED\_SCL\_GPIO\_PIN}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{OLED\_SCL\_GPIO\_PIN}{OLED\_SCL\_GPIO\_PIN}}
+{\footnotesize\ttfamily \#define OLED\+\_\+\+SCL\+\_\+\+GPIO\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+44}
+
+\Hypertarget{hid_8h_a8bf7b8d58b57eda5c39baba10ddf0acc}\label{hid_8h_a8bf7b8d58b57eda5c39baba10ddf0acc} 
+\index{hid.h@{hid.h}!OLED\_SDA\_GPIO\_PIN@{OLED\_SDA\_GPIO\_PIN}}
+\index{OLED\_SDA\_GPIO\_PIN@{OLED\_SDA\_GPIO\_PIN}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{OLED\_SDA\_GPIO\_PIN}{OLED\_SDA\_GPIO\_PIN}}
+{\footnotesize\ttfamily \#define OLED\+\_\+\+SDA\+\_\+\+GPIO\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+42}
+
+\Hypertarget{hid_8h_a1aa01774d7293781389acb74e62cf7bd}\label{hid_8h_a1aa01774d7293781389acb74e62cf7bd} 
+\index{hid.h@{hid.h}!SAVE\_VALUES\_PARAMETER\_NAME@{SAVE\_VALUES\_PARAMETER\_NAME}}
+\index{SAVE\_VALUES\_PARAMETER\_NAME@{SAVE\_VALUES\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SAVE\_VALUES\_PARAMETER\_NAME}{SAVE\_VALUES\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define SAVE\+\_\+\+VALUES\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SAVE VALUES    \"{}}
+
+\Hypertarget{hid_8h_a62a6c9b7e38848b8e045b16c9ecf1e65}\label{hid_8h_a62a6c9b7e38848b8e045b16c9ecf1e65} 
+\index{hid.h@{hid.h}!SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE@{SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE}}
+\index{SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE@{SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE}{SNARE\_DELTA\_X\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a83b83da36d7d1cb09c3e7dfbb60f287c}\label{hid_8h_a83b83da36d7d1cb09c3e7dfbb60f287c} 
+\index{hid.h@{hid.h}!SNARE\_DELTA\_X\_MAX\_VALUE@{SNARE\_DELTA\_X\_MAX\_VALUE}}
+\index{SNARE\_DELTA\_X\_MAX\_VALUE@{SNARE\_DELTA\_X\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_DELTA\_X\_MAX\_VALUE}{SNARE\_DELTA\_X\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MAX\+\_\+\+VALUE~200}
+
+\Hypertarget{hid_8h_a3fa47d33682f6350c33cb1396abcca6c}\label{hid_8h_a3fa47d33682f6350c33cb1396abcca6c} 
+\index{hid.h@{hid.h}!SNARE\_DELTA\_X\_MIN\_VALUE@{SNARE\_DELTA\_X\_MIN\_VALUE}}
+\index{SNARE\_DELTA\_X\_MIN\_VALUE@{SNARE\_DELTA\_X\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_DELTA\_X\_MIN\_VALUE}{SNARE\_DELTA\_X\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+MIN\+\_\+\+VALUE~3}
+
+\Hypertarget{hid_8h_a2d6df8206965f678d52c31149758d822}\label{hid_8h_a2d6df8206965f678d52c31149758d822} 
+\index{hid.h@{hid.h}!SNARE\_DELTA\_X\_PARAMETER\_NAME@{SNARE\_DELTA\_X\_PARAMETER\_NAME}}
+\index{SNARE\_DELTA\_X\_PARAMETER\_NAME@{SNARE\_DELTA\_X\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_DELTA\_X\_PARAMETER\_NAME}{SNARE\_DELTA\_X\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SNARE\+: delta x \"{}}
+
+\Hypertarget{hid_8h_a872d8f67a82431d732326f414d1edae7}\label{hid_8h_a872d8f67a82431d732326f414d1edae7} 
+\index{hid.h@{hid.h}!SNARE\_DELTA\_X\_PERCENTAGE\_STEP@{SNARE\_DELTA\_X\_PERCENTAGE\_STEP}}
+\index{SNARE\_DELTA\_X\_PERCENTAGE\_STEP@{SNARE\_DELTA\_X\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_DELTA\_X\_PERCENTAGE\_STEP}{SNARE\_DELTA\_X\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+DELTA\+\_\+\+X\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_a14fd4d5ca496ccfb86132b04ed6a34a3}\label{hid_8h_a14fd4d5ca496ccfb86132b04ed6a34a3} 
+\index{hid.h@{hid.h}!SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE@{SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}}
+\index{SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE@{SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}{SNARE\_GATE\_TIMER\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a4d3e01e6d98a9de44a75c959fd9a1203}\label{hid_8h_a4d3e01e6d98a9de44a75c959fd9a1203} 
+\index{hid.h@{hid.h}!SNARE\_GATE\_TIMER\_MAX\_VALUE@{SNARE\_GATE\_TIMER\_MAX\_VALUE}}
+\index{SNARE\_GATE\_TIMER\_MAX\_VALUE@{SNARE\_GATE\_TIMER\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_GATE\_TIMER\_MAX\_VALUE}{SNARE\_GATE\_TIMER\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MAX\+\_\+\+VALUE~500000}
+
+\Hypertarget{hid_8h_aa824d8076ae6ed8aa696eda21a39cb1c}\label{hid_8h_aa824d8076ae6ed8aa696eda21a39cb1c} 
+\index{hid.h@{hid.h}!SNARE\_GATE\_TIMER\_MIN\_VALUE@{SNARE\_GATE\_TIMER\_MIN\_VALUE}}
+\index{SNARE\_GATE\_TIMER\_MIN\_VALUE@{SNARE\_GATE\_TIMER\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_GATE\_TIMER\_MIN\_VALUE}{SNARE\_GATE\_TIMER\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+MIN\+\_\+\+VALUE~1000}
+
+\Hypertarget{hid_8h_ae1503fdcbd97c66c52003203cf8e86a9}\label{hid_8h_ae1503fdcbd97c66c52003203cf8e86a9} 
+\index{hid.h@{hid.h}!SNARE\_GATE\_TIMER\_PARAMETER\_NAME@{SNARE\_GATE\_TIMER\_PARAMETER\_NAME}}
+\index{SNARE\_GATE\_TIMER\_PARAMETER\_NAME@{SNARE\_GATE\_TIMER\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_GATE\_TIMER\_PARAMETER\_NAME}{SNARE\_GATE\_TIMER\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SNARE\+: gate    \"{}}
+
+\Hypertarget{hid_8h_a67b663a0586c4d62be6bfd5d61360f69}\label{hid_8h_a67b663a0586c4d62be6bfd5d61360f69} 
+\index{hid.h@{hid.h}!SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP@{SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP}}
+\index{SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP@{SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP}{SNARE\_GATE\_TIMER\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+GATE\+\_\+\+TIMER\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_a1f014828906e41b7c7998230787b586f}\label{hid_8h_a1f014828906e41b7c7998230787b586f} 
+\index{hid.h@{hid.h}!SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE@{SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE}}
+\index{SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE@{SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE}{SNARE\_LOW\_PASS\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a00680c1e4bcdf2c54b65b5a25fa57e61}\label{hid_8h_a00680c1e4bcdf2c54b65b5a25fa57e61} 
+\index{hid.h@{hid.h}!SNARE\_LOW\_PASS\_MAX\_VALUE@{SNARE\_LOW\_PASS\_MAX\_VALUE}}
+\index{SNARE\_LOW\_PASS\_MAX\_VALUE@{SNARE\_LOW\_PASS\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LOW\_PASS\_MAX\_VALUE}{SNARE\_LOW\_PASS\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MAX\+\_\+\+VALUE~100}
+
+\Hypertarget{hid_8h_a1b44c4d3cd7088e096ae179be49f7023}\label{hid_8h_a1b44c4d3cd7088e096ae179be49f7023} 
+\index{hid.h@{hid.h}!SNARE\_LOW\_PASS\_MIN\_VALUE@{SNARE\_LOW\_PASS\_MIN\_VALUE}}
+\index{SNARE\_LOW\_PASS\_MIN\_VALUE@{SNARE\_LOW\_PASS\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LOW\_PASS\_MIN\_VALUE}{SNARE\_LOW\_PASS\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+MIN\+\_\+\+VALUE~1}
+
+\Hypertarget{hid_8h_aa3cc2a0994841e257d9099031c6a05af}\label{hid_8h_aa3cc2a0994841e257d9099031c6a05af} 
+\index{hid.h@{hid.h}!SNARE\_LOW\_PASS\_PARAMETER\_NAME@{SNARE\_LOW\_PASS\_PARAMETER\_NAME}}
+\index{SNARE\_LOW\_PASS\_PARAMETER\_NAME@{SNARE\_LOW\_PASS\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LOW\_PASS\_PARAMETER\_NAME}{SNARE\_LOW\_PASS\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SNARE\+: filter  \"{}}
+
+\Hypertarget{hid_8h_ae653999530866770dc241bbadadd3c98}\label{hid_8h_ae653999530866770dc241bbadadd3c98} 
+\index{hid.h@{hid.h}!SNARE\_LOW\_PASS\_PERCENTAGE\_STEP@{SNARE\_LOW\_PASS\_PERCENTAGE\_STEP}}
+\index{SNARE\_LOW\_PASS\_PERCENTAGE\_STEP@{SNARE\_LOW\_PASS\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LOW\_PASS\_PERCENTAGE\_STEP}{SNARE\_LOW\_PASS\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LOW\+\_\+\+PASS\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+\Hypertarget{hid_8h_a2019d4866851d3c8effc87e755276e1d}\label{hid_8h_a2019d4866851d3c8effc87e755276e1d} 
+\index{hid.h@{hid.h}!SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE@{SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE}}
+\index{SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE@{SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE}{SNARE\_THRESHOLD\_DEFAULT\_PERCENTAGE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+THRESHOLD\+\_\+\+DEFAULT\+\_\+\+PERCENTAGE~50}
+
+\Hypertarget{hid_8h_a928afb98b0cf0f94fe2e1d9ac8731465}\label{hid_8h_a928afb98b0cf0f94fe2e1d9ac8731465} 
+\index{hid.h@{hid.h}!SNARE\_THRESHOLD\_MAX\_VALUE@{SNARE\_THRESHOLD\_MAX\_VALUE}}
+\index{SNARE\_THRESHOLD\_MAX\_VALUE@{SNARE\_THRESHOLD\_MAX\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_THRESHOLD\_MAX\_VALUE}{SNARE\_THRESHOLD\_MAX\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+THRESHOLD\+\_\+\+MAX\+\_\+\+VALUE~4096}
+
+\Hypertarget{hid_8h_a1d25bc644fe4a720a87c31095dad575f}\label{hid_8h_a1d25bc644fe4a720a87c31095dad575f} 
+\index{hid.h@{hid.h}!SNARE\_THRESHOLD\_MIN\_VALUE@{SNARE\_THRESHOLD\_MIN\_VALUE}}
+\index{SNARE\_THRESHOLD\_MIN\_VALUE@{SNARE\_THRESHOLD\_MIN\_VALUE}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_THRESHOLD\_MIN\_VALUE}{SNARE\_THRESHOLD\_MIN\_VALUE}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+THRESHOLD\+\_\+\+MIN\+\_\+\+VALUE~0}
+
+\Hypertarget{hid_8h_ab5e27052e3da483bd32fe98bb07865d6}\label{hid_8h_ab5e27052e3da483bd32fe98bb07865d6} 
+\index{hid.h@{hid.h}!SNARE\_THRESHOLD\_PARAMETER\_NAME@{SNARE\_THRESHOLD\_PARAMETER\_NAME}}
+\index{SNARE\_THRESHOLD\_PARAMETER\_NAME@{SNARE\_THRESHOLD\_PARAMETER\_NAME}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_THRESHOLD\_PARAMETER\_NAME}{SNARE\_THRESHOLD\_PARAMETER\_NAME}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+THRESHOLD\+\_\+\+PARAMETER\+\_\+\+NAME~\"{}SNARE\+: thresh  \"{}}
+
+\Hypertarget{hid_8h_af15da53041026b0cfe72d91fb158798a}\label{hid_8h_af15da53041026b0cfe72d91fb158798a} 
+\index{hid.h@{hid.h}!SNARE\_THRESHOLD\_PERCENTAGE\_STEP@{SNARE\_THRESHOLD\_PERCENTAGE\_STEP}}
+\index{SNARE\_THRESHOLD\_PERCENTAGE\_STEP@{SNARE\_THRESHOLD\_PERCENTAGE\_STEP}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_THRESHOLD\_PERCENTAGE\_STEP}{SNARE\_THRESHOLD\_PERCENTAGE\_STEP}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+THRESHOLD\+\_\+\+PERCENTAGE\+\_\+\+STEP~1}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0c}\label{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0c} 
+\index{hid.h@{hid.h}!bc\_variable\_type@{bc\_variable\_type}}
+\index{bc\_variable\_type@{bc\_variable\_type}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{bc\_variable\_type}{bc\_variable\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0c}{bc\+\_\+variable\+\_\+type}}}
+
+
+
+Specify the variable type for the menu entry. Every variable whose value can be modified by the user must have a type choosen from here. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC\_FLOAT@{BC\_FLOAT}!hid.h@{hid.h}}\index{hid.h@{hid.h}!BC\_FLOAT@{BC\_FLOAT}}}\Hypertarget{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cab0db0748126cb06286c29549ab366e3c}\label{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cab0db0748126cb06286c29549ab366e3c} 
+BC\+\_\+\+FLOAT&float \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC\_UINT16@{BC\_UINT16}!hid.h@{hid.h}}\index{hid.h@{hid.h}!BC\_UINT16@{BC\_UINT16}}}\Hypertarget{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca54d5654857c5f982a840d8496c4685a1}\label{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca54d5654857c5f982a840d8496c4685a1} 
+BC\+\_\+\+UINT16&uint16\+\_\+t \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC\_UINT64@{BC\_UINT64}!hid.h@{hid.h}}\index{hid.h@{hid.h}!BC\_UINT64@{BC\_UINT64}}}\Hypertarget{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca08e40327567d607758c9cd9631e172f0}\label{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0ca08e40327567d607758c9cd9631e172f0} 
+BC\+\_\+\+UINT64&uint64\+\_\+t \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BC\_YESNO@{BC\_YESNO}!hid.h@{hid.h}}\index{hid.h@{hid.h}!BC\_YESNO@{BC\_YESNO}}}\Hypertarget{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cadd45358485bbc2d7ba4c5e70853da8ac}\label{hid_8h_a5a47db5eecf54d9940e7c42360ee9f0cadd45358485bbc2d7ba4c5e70853da8ac} 
+BC\+\_\+\+YESNO&bool \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0} 
+\index{hid.h@{hid.h}!hid\_queue\_msg@{hid\_queue\_msg}}
+\index{hid\_queue\_msg@{hid\_queue\_msg}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{hid\_queue\_msg}{hid\_queue\_msg}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{hid_8h_a139fa99be9ce245c91875730c08a48e0}{hid\+\_\+queue\+\_\+msg}}}
+
+
+
+Type of message sent to the queue. Every message that the queue receives has to be one of the types specified here. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENCODER\_INCREASE@{ENCODER\_INCREASE}!hid.h@{hid.h}}\index{hid.h@{hid.h}!ENCODER\_INCREASE@{ENCODER\_INCREASE}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a9b3df53da1b020dd99c4a5d368cd2343}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a9b3df53da1b020dd99c4a5d368cd2343} 
+ENCODER\+\_\+\+INCREASE&Actual value from the pulse counter (1 click = 4 steps) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENCODER\_DECREASE@{ENCODER\_DECREASE}!hid.h@{hid.h}}\index{hid.h@{hid.h}!ENCODER\_DECREASE@{ENCODER\_DECREASE}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a1b0a52da9f477f50de7adfde1a399446}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a1b0a52da9f477f50de7adfde1a399446} 
+ENCODER\+\_\+\+DECREASE&Actual value from the pulse counter (-\/1 click = -\/4 steps) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENCODER\_CLICK@{ENCODER\_CLICK}!hid.h@{hid.h}}\index{hid.h@{hid.h}!ENCODER\_CLICK@{ENCODER\_CLICK}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a8a86bebad0cbf8a7cd677cf1b3ab2bb6}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a8a86bebad0cbf8a7cd677cf1b3ab2bb6} 
+ENCODER\+\_\+\+CLICK&Asks the hid to change the currently selected menu item \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_PLAY\_MODE\_SELECT@{HID\_PLAY\_MODE\_SELECT}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_PLAY\_MODE\_SELECT@{HID\_PLAY\_MODE\_SELECT}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a256f19438f828124028915fd97328079}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a256f19438f828124028915fd97328079} 
+HID\+\_\+\+PLAY\+\_\+\+MODE\+\_\+\+SELECT&Asks the hid to shift to bpm mode (shows current bpm) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_SETTINGS\_MODE\_SELECT@{HID\_SETTINGS\_MODE\_SELECT}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_SETTINGS\_MODE\_SELECT@{HID\_SETTINGS\_MODE\_SELECT}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0ac8910ab30673eae60bc5e388f422445f}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0ac8910ab30673eae60bc5e388f422445f} 
+HID\+\_\+\+SETTINGS\+\_\+\+MODE\+\_\+\+SELECT&Asks the hid to shift to settings mode (allows menu diving) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_TAP\_MODE\_SELECT@{HID\_TAP\_MODE\_SELECT}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_TAP\_MODE\_SELECT@{HID\_TAP\_MODE\_SELECT}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a35f696e348fc6a94edcf6d773e995bc0}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a35f696e348fc6a94edcf6d773e995bc0} 
+HID\+\_\+\+TAP\+\_\+\+MODE\+\_\+\+SELECT&Asks the hid to shift to tap mode (shows 0-\/\texorpdfstring{$>$}{>}1-\/\texorpdfstring{$>$}{>}2-\/\texorpdfstring{$>$}{>}3-\/\texorpdfstring{$>$}{>}4 for every hit) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_ENTER\_SLEEP\_MODE@{HID\_ENTER\_SLEEP\_MODE}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_ENTER\_SLEEP\_MODE@{HID\_ENTER\_SLEEP\_MODE}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a679dcf5923a99c1420e6b9d991307189}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a679dcf5923a99c1420e6b9d991307189} 
+HID\+\_\+\+ENTER\+\_\+\+SLEEP\+\_\+\+MODE&Asks the hid to turn off screen \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_TAP\_0@{HID\_TAP\_0}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_TAP\_0@{HID\_TAP\_0}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a7e688b49372ac998cc2481e3e03229ed}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a7e688b49372ac998cc2481e3e03229ed} 
+HID\+\_\+\+TAP\+\_\+0&Asks the hid in tap mode to show 0 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_TAP\_1@{HID\_TAP\_1}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_TAP\_1@{HID\_TAP\_1}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a2a29c4b901190f498166405444202a34}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a2a29c4b901190f498166405444202a34} 
+HID\+\_\+\+TAP\+\_\+1&Asks the hid in tap mode to show 1 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_TAP\_2@{HID\_TAP\_2}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_TAP\_2@{HID\_TAP\_2}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0aa0a33104355626de0c859e44658fb111}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0aa0a33104355626de0c859e44658fb111} 
+HID\+\_\+\+TAP\+\_\+2&Asks the hid in tap mode to show 2 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_TAP\_3@{HID\_TAP\_3}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_TAP\_3@{HID\_TAP\_3}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0ab6219cda2c75c1c0ae44414891b6cd9e}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0ab6219cda2c75c1c0ae44414891b6cd9e} 
+HID\+\_\+\+TAP\+\_\+3&Asks the hid in tap mode to show 3 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HID\_TAP\_4@{HID\_TAP\_4}!hid.h@{hid.h}}\index{hid.h@{hid.h}!HID\_TAP\_4@{HID\_TAP\_4}}}\Hypertarget{hid_8h_a139fa99be9ce245c91875730c08a48e0a82794fa9a8487cf7d580596c4cf3e776}\label{hid_8h_a139fa99be9ce245c91875730c08a48e0a82794fa9a8487cf7d580596c4cf3e776} 
+HID\+\_\+\+TAP\+\_\+4&Asks the hid in tap mode to show 4 \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dd}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dd} 
+\index{hid.h@{hid.h}!menu\_item\_index@{menu\_item\_index}}
+\index{menu\_item\_index@{menu\_item\_index}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{menu\_item\_index}{menu\_item\_index}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}}}
+
+
+
+Index for the menu entries. Change the order of this enum to change the order of the presentation of entries in the menu. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SYNC\_NARROW@{MENU\_INDEX\_SYNC\_NARROW}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SYNC\_NARROW@{MENU\_INDEX\_SYNC\_NARROW}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34} 
+MENU\+\_\+\+INDEX\+\_\+\+SYNC\+\_\+\+NARROW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SYNC\_EXPAND@{MENU\_INDEX\_SYNC\_EXPAND}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SYNC\_EXPAND@{MENU\_INDEX\_SYNC\_EXPAND}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0} 
+MENU\+\_\+\+INDEX\+\_\+\+SYNC\+\_\+\+EXPAND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SYNC\_BETA@{MENU\_INDEX\_SYNC\_BETA}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SYNC\_BETA@{MENU\_INDEX\_SYNC\_BETA}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab} 
+MENU\+\_\+\+INDEX\+\_\+\+SYNC\+\_\+\+BETA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_TEMPO\_ALPHA@{MENU\_INDEX\_TEMPO\_ALPHA}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_TEMPO\_ALPHA@{MENU\_INDEX\_TEMPO\_ALPHA}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7} 
+MENU\+\_\+\+INDEX\+\_\+\+TEMPO\+\_\+\+ALPHA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_TEMPO\_LATENCY\_AMOUNT@{MENU\_INDEX\_TEMPO\_LATENCY\_AMOUNT}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_TEMPO\_LATENCY\_AMOUNT@{MENU\_INDEX\_TEMPO\_LATENCY\_AMOUNT}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5}\label{hid_8h_adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5} 
+MENU\+\_\+\+INDEX\+\_\+\+TEMPO\+\_\+\+LATENCY\+\_\+\+AMOUNT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_TEMPO\_LATENCY\_SMOOTH@{MENU\_INDEX\_TEMPO\_LATENCY\_SMOOTH}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_TEMPO\_LATENCY\_SMOOTH@{MENU\_INDEX\_TEMPO\_LATENCY\_SMOOTH}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c} 
+MENU\+\_\+\+INDEX\+\_\+\+TEMPO\+\_\+\+LATENCY\+\_\+\+SMOOTH&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_KICK\_THRESHOLD@{MENU\_INDEX\_KICK\_THRESHOLD}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_KICK\_THRESHOLD@{MENU\_INDEX\_KICK\_THRESHOLD}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406}\label{hid_8h_adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406} 
+MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+THRESHOLD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_KICK\_GATE@{MENU\_INDEX\_KICK\_GATE}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_KICK\_GATE@{MENU\_INDEX\_KICK\_GATE}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233} 
+MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+GATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_KICK\_FILTER@{MENU\_INDEX\_KICK\_FILTER}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_KICK\_FILTER@{MENU\_INDEX\_KICK\_FILTER}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda3c3079ca5f913b19eae7d51b6fefda8c}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda3c3079ca5f913b19eae7d51b6fefda8c} 
+MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+FILTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_KICK\_DELTA\_X@{MENU\_INDEX\_KICK\_DELTA\_X}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_KICK\_DELTA\_X@{MENU\_INDEX\_KICK\_DELTA\_X}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda7660211fd91b8b11bc05e2be6d43b938}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda7660211fd91b8b11bc05e2be6d43b938} 
+MENU\+\_\+\+INDEX\+\_\+\+KICK\+\_\+\+DELTA\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SNARE\_THRESHOLD@{MENU\_INDEX\_SNARE\_THRESHOLD}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SNARE\_THRESHOLD@{MENU\_INDEX\_SNARE\_THRESHOLD}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda92dfa531073c93c7eaea795a6ea03fae}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda92dfa531073c93c7eaea795a6ea03fae} 
+MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+THRESHOLD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SNARE\_GATE@{MENU\_INDEX\_SNARE\_GATE}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SNARE\_GATE@{MENU\_INDEX\_SNARE\_GATE}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda0f27665389f2001520ab244364c97373}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda0f27665389f2001520ab244364c97373} 
+MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+GATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SNARE\_FILTER@{MENU\_INDEX\_SNARE\_FILTER}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SNARE\_FILTER@{MENU\_INDEX\_SNARE\_FILTER}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167ddac7dd02032af8c9a627afae1cf54fa575}\label{hid_8h_adfcff66ff86af6e231579ee15b4167ddac7dd02032af8c9a627afae1cf54fa575} 
+MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+FILTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SNARE\_DELTA\_X@{MENU\_INDEX\_SNARE\_DELTA\_X}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SNARE\_DELTA\_X@{MENU\_INDEX\_SNARE\_DELTA\_X}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda4a519904cbeb3d7afbedb12034a95e02}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda4a519904cbeb3d7afbedb12034a95e02} 
+MENU\+\_\+\+INDEX\+\_\+\+SNARE\+\_\+\+DELTA\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_INDEX\_SAVE\_VALUES@{MENU\_INDEX\_SAVE\_VALUES}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_INDEX\_SAVE\_VALUES@{MENU\_INDEX\_SAVE\_VALUES}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167ddaf2c31c616e65420ae94b7f9e6840d287}\label{hid_8h_adfcff66ff86af6e231579ee15b4167ddaf2c31c616e65420ae94b7f9e6840d287} 
+MENU\+\_\+\+INDEX\+\_\+\+SAVE\+\_\+\+VALUES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MENU\_ITEM\_INDEX\_LENGTH@{MENU\_ITEM\_INDEX\_LENGTH}!hid.h@{hid.h}}\index{hid.h@{hid.h}!MENU\_ITEM\_INDEX\_LENGTH@{MENU\_ITEM\_INDEX\_LENGTH}}}\Hypertarget{hid_8h_adfcff66ff86af6e231579ee15b4167dda3a6b9a18aa2e0325b6c46c20752f70e1}\label{hid_8h_adfcff66ff86af6e231579ee15b4167dda3a6b9a18aa2e0325b6c46c20752f70e1} 
+MENU\+\_\+\+ITEM\+\_\+\+INDEX\+\_\+\+LENGTH&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{hid_8h_ae076c353e64c04ffebad6545e116e108}\label{hid_8h_ae076c353e64c04ffebad6545e116e108} 
+\index{hid.h@{hid.h}!hid\_init@{hid\_init}}
+\index{hid\_init@{hid\_init}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{hid\_init()}{hid\_init()}}
+{\footnotesize\ttfamily void hid\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the hid. This function\+: 
+
+
+\begin{DoxyItemize}
+\item Sets up the OLED display using i2c protocol
+\item Sets up the encoder using the Pulse Counter Module
+\item Sets up the menu and loads variable values from the NVS partition. Be careful that this function doesn\textquotesingle{}t set up the pointer to the variables! Every module has to do it by itself calling the set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb. After that, calling the hid\+\_\+set\+\_\+up\+\_\+values function actually assign the stored value to the variables. 
+\end{DoxyItemize}\Hypertarget{hid_8h_abb341b054d276b06eaaa80831a7abc99}\label{hid_8h_abb341b054d276b06eaaa80831a7abc99} 
+\index{hid.h@{hid.h}!hid\_set\_up\_values@{hid\_set\_up\_values}}
+\index{hid\_set\_up\_values@{hid\_set\_up\_values}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{hid\_set\_up\_values()}{hid\_set\_up\_values()}}
+{\footnotesize\ttfamily void hid\+\_\+set\+\_\+up\+\_\+values (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Assign the value to the variables based on the percentage value. This function has to be called only after every module has registered its variable to the menu. 
+
+\Hypertarget{hid_8h_a779fb22524c0770405c75ae48a68171c}\label{hid_8h_a779fb22524c0770405c75ae48a68171c} 
+\index{hid.h@{hid.h}!set\_menu\_item\_pointer\_to\_vrb@{set\_menu\_item\_pointer\_to\_vrb}}
+\index{set\_menu\_item\_pointer\_to\_vrb@{set\_menu\_item\_pointer\_to\_vrb}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{set\_menu\_item\_pointer\_to\_vrb()}{set\_menu\_item\_pointer\_to\_vrb()}}
+{\footnotesize\ttfamily void set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}}}]{index,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu\+\_\+item\+\_\+index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{hid_8h_a2a0ee22ddffa06ec2d9ac55e5cf036bf}\label{hid_8h_a2a0ee22ddffa06ec2d9ac55e5cf036bf} 
+\index{hid.h@{hid.h}!hid\_task\_queue@{hid\_task\_queue}}
+\index{hid\_task\_queue@{hid\_task\_queue}!hid.h@{hid.h}}
+\doxysubsubsection{\texorpdfstring{hid\_task\_queue}{hid\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t hid\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle for the hid queue. Handle of the hid queue to receive messages. 
+

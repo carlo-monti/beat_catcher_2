@@ -1,0 +1,342 @@
+\doxysection{onset\+\_\+adc.\+c File Reference}
+\hypertarget{onset__adc_8c}{}\label{onset__adc_8c}\index{onset\_adc.c@{onset\_adc.c}}
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+adc/adc\+\_\+continuous.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/gptimer.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/gpio.\+h\"{}}\newline
+{\ttfamily \#include \"{}onset\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}sync.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structonset__channel__cfg}{onset\+\_\+channel\+\_\+cfg}}
+\begin{DoxyCompactList}\small\item\em Config struct for the ADC channel. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structled__cfg}{led\+\_\+cfg}}
+\begin{DoxyCompactList}\small\item\em Config struct for the blinking led timer. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structruntime__onset__values}{runtime\+\_\+onset\+\_\+values}}
+\begin{DoxyCompactList}\small\item\em Config struct for the runtime values of the onset detection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_aa869cc8a3bf3f2a35447edc6eb11cf32}{ADC\+\_\+\+UNIT}}~ADC\+\_\+\+UNIT\+\_\+1
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_afc340706b3e81c30f9323e065a51c7fc}{ADC\+\_\+\+CONV\+\_\+\+MODE}}~ADC\+\_\+\+CONV\+\_\+\+SINGLE\+\_\+\+UNIT\+\_\+1
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a9851d7403086e8d8ce491625b0f8863d}{ADC\+\_\+\+ATTEN}}~ADC\+\_\+\+ATTEN\+\_\+\+DB\+\_\+0
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a19701cbb1f2fac48b9316cedf7aaaed9}{ADC\+\_\+\+BIT\+\_\+\+WIDTH}}~SOC\+\_\+\+ADC\+\_\+\+DIGI\+\_\+\+MAX\+\_\+\+BITWIDTH
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a534a0d01d8dc22792b7fcb5d3b410d8a}{ADC\+\_\+\+OUTPUT\+\_\+\+TYPE}}~ADC\+\_\+\+DIGI\+\_\+\+OUTPUT\+\_\+\+FORMAT\+\_\+\+TYPE2
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a4aae642ee134fe5a54a6c54fac8dbd9d}{ADC\+\_\+\+GET\+\_\+\+CHANNEL}}(p\+\_\+data)~((p\+\_\+data)-\/$>$\mbox{\hyperlink{onset__adc_8c_aee4c39fa7cbecd4a9590ac8e714066a3}{type2.\+channel}})
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a01e3be4f234a7bbfdffe72ec5c577a67}{ADC\+\_\+\+GET\+\_\+\+DATA}}(p\+\_\+data)~((p\+\_\+data)-\/$>$type2.\+data)
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_aee4564dc675033ebfe5348c20bbc2271}{KICK\+\_\+\+ADC\+\_\+\+CHANNEL}}~ADC\+\_\+\+CHANNEL\+\_\+3
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a6ad90f939ec4bd8dbb9fb29c3b9f8094}{SNARE\+\_\+\+ADC\+\_\+\+CHANNEL}}~ADC\+\_\+\+CHANNEL\+\_\+4
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~512
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_aba7d938851efb9ea95d05c45fc003e91}{OVERSAMPLING}}~8
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a9401e43a8c86acafb31c8e2709baefa1}{SAMPLE\+\_\+\+FREQ}}~48000
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a7475825824aa42d9c9c8d0e776586f83}{KICK}}~0
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_a88a5c9cfffa12cce8ccc0200d4255d2b}{SNARE}}~1
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_ad589d98db39967a5f5378b5f2a19231b}{TAP}}~2
+\item 
+\#define \mbox{\hyperlink{onset__adc_8c_ad485d497ba204b41d61760bc83465d5c}{MAX\+\_\+\+ONSET\+\_\+\+DELTA\+\_\+\+X\+\_\+\+LENGTH}}~600
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{onset__adc_8c_a779fb22524c0770405c75ae48a68171c}{set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb}} (\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}} index, void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu\+\_\+item\+\_\+index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type. \end{DoxyCompactList}\item 
+bool IRAM\+\_\+\+ATTR \mbox{\hyperlink{onset__adc_8c_a39aab2d16622c49709553d56c15c531b}{turn\+\_\+off\+\_\+led\+\_\+cb}} (gptimer\+\_\+handle\+\_\+t timer, const gptimer\+\_\+alarm\+\_\+event\+\_\+data\+\_\+t \texorpdfstring{$\ast$}{*}edata, void \texorpdfstring{$\ast$}{*}led\+\_\+pin)
+\item 
+void \mbox{\hyperlink{onset__adc_8c_aec44d521c7bcd36f1cb57f5d59935b08}{led\+\_\+blink\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the blinking led action. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{onset__adc_8c_a6a9c2907727539af520db659f104dc5d}{blink\+\_\+led}} (\mbox{\hyperlink{structled__cfg}{led\+\_\+cfg}} led\+\_\+cfg\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Function to blink led. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{onset__adc_8c_a66726988709c40ed6f25a05863208da4}{onset\+\_\+adc\+\_\+task}} (void \texorpdfstring{$\ast$}{*}arg)
+\begin{DoxyCompactList}\small\item\em Main task for the adc and onset detection module. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{onset__adc_8c_a1cec65e2bd7258f1226270d37c755f05}{onset\+\_\+adc\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function of the onset\+\_\+adc module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{onset__adc_8c_af30bbe7c6f5be7e42907d03f0a9b1a81}{onset\+\_\+adc\+\_\+task\+\_\+handle}} = NULL
+\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{onset__adc_8c_ae78187cdc5c469675b0397d378e21618}{bc\+\_\+mutex\+\_\+handle}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{onset__adc_8c_a628c36ee9d1d8448586b9df60e4f8fd0}{sync\+\_\+task\+\_\+handle}}
+\item 
+\mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} \mbox{\hyperlink{onset__adc_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}{bc}}
+\item 
+\mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} \mbox{\hyperlink{onset__adc_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1}{onsets}} \mbox{[}$\,$\mbox{]}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{onset__adc_8c_a96d4d597bf96e882dcb9103b8b1e3fe8}{onset\+\_\+adc\+\_\+task\+\_\+queue}} = NULL
+\begin{DoxyCompactList}\small\item\em Queue to send msgs to the onset\+\_\+adc module. \end{DoxyCompactList}\item 
+adc\+\_\+continuous\+\_\+handle\+\_\+t \mbox{\hyperlink{onset__adc_8c_a4f89c79ac1f12403295f96a037e6f6e9}{adc\+\_\+handle}} = NULL
+\item 
+adc\+\_\+channel\+\_\+t \mbox{\hyperlink{onset__adc_8c_aee4c39fa7cbecd4a9590ac8e714066a3}{channel}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{onset__adc_8c_aee4564dc675033ebfe5348c20bbc2271}{KICK\+\_\+\+ADC\+\_\+\+CHANNEL}}, \mbox{\hyperlink{onset__adc_8c_a6ad90f939ec4bd8dbb9fb29c3b9f8094}{SNARE\+\_\+\+ADC\+\_\+\+CHANNEL}}\}
+\item 
+\mbox{\hyperlink{structled__cfg}{led\+\_\+cfg}} \mbox{\hyperlink{onset__adc_8c_a94b29632a0fa6cdc186a4cffc1f91829}{onset\+\_\+led}} \mbox{[}2\mbox{]}
+\item 
+bool \mbox{\hyperlink{onset__adc_8c_a832fa23e387beebd8fd0bac89509fd0e}{allow\+\_\+onset}} = false
+\item 
+bool \mbox{\hyperlink{onset__adc_8c_accf079e63d9e8b4b19b88c59eee66356}{has\+\_\+onset}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{onset__adc_8c_a9851d7403086e8d8ce491625b0f8863d}\label{onset__adc_8c_a9851d7403086e8d8ce491625b0f8863d} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_ATTEN@{ADC\_ATTEN}}
+\index{ADC\_ATTEN@{ADC\_ATTEN}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_ATTEN}{ADC\_ATTEN}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+ATTEN~ADC\+\_\+\+ATTEN\+\_\+\+DB\+\_\+0}
+
+\Hypertarget{onset__adc_8c_a19701cbb1f2fac48b9316cedf7aaaed9}\label{onset__adc_8c_a19701cbb1f2fac48b9316cedf7aaaed9} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_BIT\_WIDTH@{ADC\_BIT\_WIDTH}}
+\index{ADC\_BIT\_WIDTH@{ADC\_BIT\_WIDTH}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_BIT\_WIDTH}{ADC\_BIT\_WIDTH}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+BIT\+\_\+\+WIDTH~SOC\+\_\+\+ADC\+\_\+\+DIGI\+\_\+\+MAX\+\_\+\+BITWIDTH}
+
+\Hypertarget{onset__adc_8c_afc340706b3e81c30f9323e065a51c7fc}\label{onset__adc_8c_afc340706b3e81c30f9323e065a51c7fc} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_CONV\_MODE@{ADC\_CONV\_MODE}}
+\index{ADC\_CONV\_MODE@{ADC\_CONV\_MODE}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_CONV\_MODE}{ADC\_CONV\_MODE}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+CONV\+\_\+\+MODE~ADC\+\_\+\+CONV\+\_\+\+SINGLE\+\_\+\+UNIT\+\_\+1}
+
+\Hypertarget{onset__adc_8c_a4aae642ee134fe5a54a6c54fac8dbd9d}\label{onset__adc_8c_a4aae642ee134fe5a54a6c54fac8dbd9d} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_GET\_CHANNEL@{ADC\_GET\_CHANNEL}}
+\index{ADC\_GET\_CHANNEL@{ADC\_GET\_CHANNEL}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_GET\_CHANNEL}{ADC\_GET\_CHANNEL}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+GET\+\_\+\+CHANNEL(\begin{DoxyParamCaption}\item[{}]{p\+\_\+data }\end{DoxyParamCaption})~((p\+\_\+data)-\/$>$\mbox{\hyperlink{onset__adc_8c_aee4c39fa7cbecd4a9590ac8e714066a3}{type2.\+channel}})}
+
+\Hypertarget{onset__adc_8c_a01e3be4f234a7bbfdffe72ec5c577a67}\label{onset__adc_8c_a01e3be4f234a7bbfdffe72ec5c577a67} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_GET\_DATA@{ADC\_GET\_DATA}}
+\index{ADC\_GET\_DATA@{ADC\_GET\_DATA}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_GET\_DATA}{ADC\_GET\_DATA}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+GET\+\_\+\+DATA(\begin{DoxyParamCaption}\item[{}]{p\+\_\+data }\end{DoxyParamCaption})~((p\+\_\+data)-\/$>$type2.\+data)}
+
+\Hypertarget{onset__adc_8c_a534a0d01d8dc22792b7fcb5d3b410d8a}\label{onset__adc_8c_a534a0d01d8dc22792b7fcb5d3b410d8a} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_OUTPUT\_TYPE@{ADC\_OUTPUT\_TYPE}}
+\index{ADC\_OUTPUT\_TYPE@{ADC\_OUTPUT\_TYPE}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_OUTPUT\_TYPE}{ADC\_OUTPUT\_TYPE}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+OUTPUT\+\_\+\+TYPE~ADC\+\_\+\+DIGI\+\_\+\+OUTPUT\+\_\+\+FORMAT\+\_\+\+TYPE2}
+
+\Hypertarget{onset__adc_8c_aa869cc8a3bf3f2a35447edc6eb11cf32}\label{onset__adc_8c_aa869cc8a3bf3f2a35447edc6eb11cf32} 
+\index{onset\_adc.c@{onset\_adc.c}!ADC\_UNIT@{ADC\_UNIT}}
+\index{ADC\_UNIT@{ADC\_UNIT}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{ADC\_UNIT}{ADC\_UNIT}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+UNIT~ADC\+\_\+\+UNIT\+\_\+1}
+
+Beat catcher dasfdsgadsgadsfasdgasdg Bla albads fasdfljaef asdfadsoiljfdsafasdfawefrewart \Hypertarget{onset__adc_8c_a6b20d41d6252e9871430c242cb1a56e7}\label{onset__adc_8c_a6b20d41d6252e9871430c242cb1a56e7} 
+\index{onset\_adc.c@{onset\_adc.c}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define BUFFER\+\_\+\+SIZE~512}
+
+\Hypertarget{onset__adc_8c_a7475825824aa42d9c9c8d0e776586f83}\label{onset__adc_8c_a7475825824aa42d9c9c8d0e776586f83} 
+\index{onset\_adc.c@{onset\_adc.c}!KICK@{KICK}}
+\index{KICK@{KICK}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{KICK}{KICK}}
+{\footnotesize\ttfamily \#define KICK~0}
+
+\Hypertarget{onset__adc_8c_aee4564dc675033ebfe5348c20bbc2271}\label{onset__adc_8c_aee4564dc675033ebfe5348c20bbc2271} 
+\index{onset\_adc.c@{onset\_adc.c}!KICK\_ADC\_CHANNEL@{KICK\_ADC\_CHANNEL}}
+\index{KICK\_ADC\_CHANNEL@{KICK\_ADC\_CHANNEL}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{KICK\_ADC\_CHANNEL}{KICK\_ADC\_CHANNEL}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+ADC\+\_\+\+CHANNEL~ADC\+\_\+\+CHANNEL\+\_\+3}
+
+\Hypertarget{onset__adc_8c_ad485d497ba204b41d61760bc83465d5c}\label{onset__adc_8c_ad485d497ba204b41d61760bc83465d5c} 
+\index{onset\_adc.c@{onset\_adc.c}!MAX\_ONSET\_DELTA\_X\_LENGTH@{MAX\_ONSET\_DELTA\_X\_LENGTH}}
+\index{MAX\_ONSET\_DELTA\_X\_LENGTH@{MAX\_ONSET\_DELTA\_X\_LENGTH}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_ONSET\_DELTA\_X\_LENGTH}{MAX\_ONSET\_DELTA\_X\_LENGTH}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+ONSET\+\_\+\+DELTA\+\_\+\+X\+\_\+\+LENGTH~600}
+
+\Hypertarget{onset__adc_8c_aba7d938851efb9ea95d05c45fc003e91}\label{onset__adc_8c_aba7d938851efb9ea95d05c45fc003e91} 
+\index{onset\_adc.c@{onset\_adc.c}!OVERSAMPLING@{OVERSAMPLING}}
+\index{OVERSAMPLING@{OVERSAMPLING}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{OVERSAMPLING}{OVERSAMPLING}}
+{\footnotesize\ttfamily \#define OVERSAMPLING~8}
+
+\Hypertarget{onset__adc_8c_a9401e43a8c86acafb31c8e2709baefa1}\label{onset__adc_8c_a9401e43a8c86acafb31c8e2709baefa1} 
+\index{onset\_adc.c@{onset\_adc.c}!SAMPLE\_FREQ@{SAMPLE\_FREQ}}
+\index{SAMPLE\_FREQ@{SAMPLE\_FREQ}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{SAMPLE\_FREQ}{SAMPLE\_FREQ}}
+{\footnotesize\ttfamily \#define SAMPLE\+\_\+\+FREQ~48000}
+
+\Hypertarget{onset__adc_8c_a88a5c9cfffa12cce8ccc0200d4255d2b}\label{onset__adc_8c_a88a5c9cfffa12cce8ccc0200d4255d2b} 
+\index{onset\_adc.c@{onset\_adc.c}!SNARE@{SNARE}}
+\index{SNARE@{SNARE}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{SNARE}{SNARE}}
+{\footnotesize\ttfamily \#define SNARE~1}
+
+\Hypertarget{onset__adc_8c_a6ad90f939ec4bd8dbb9fb29c3b9f8094}\label{onset__adc_8c_a6ad90f939ec4bd8dbb9fb29c3b9f8094} 
+\index{onset\_adc.c@{onset\_adc.c}!SNARE\_ADC\_CHANNEL@{SNARE\_ADC\_CHANNEL}}
+\index{SNARE\_ADC\_CHANNEL@{SNARE\_ADC\_CHANNEL}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{SNARE\_ADC\_CHANNEL}{SNARE\_ADC\_CHANNEL}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+ADC\+\_\+\+CHANNEL~ADC\+\_\+\+CHANNEL\+\_\+4}
+
+\Hypertarget{onset__adc_8c_ad589d98db39967a5f5378b5f2a19231b}\label{onset__adc_8c_ad589d98db39967a5f5378b5f2a19231b} 
+\index{onset\_adc.c@{onset\_adc.c}!TAP@{TAP}}
+\index{TAP@{TAP}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{TAP}{TAP}}
+{\footnotesize\ttfamily \#define TAP~2}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{onset__adc_8c_a6a9c2907727539af520db659f104dc5d}\label{onset__adc_8c_a6a9c2907727539af520db659f104dc5d} 
+\index{onset\_adc.c@{onset\_adc.c}!blink\_led@{blink\_led}}
+\index{blink\_led@{blink\_led}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{blink\_led()}{blink\_led()}}
+{\footnotesize\ttfamily void blink\+\_\+led (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structled__cfg}{led\+\_\+cfg}}}]{led\+\_\+cfg\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Function to blink led. 
+
+When this function is called it turns on the led and set a timer to turn off it after a period \Hypertarget{onset__adc_8c_aec44d521c7bcd36f1cb57f5d59935b08}\label{onset__adc_8c_aec44d521c7bcd36f1cb57f5d59935b08} 
+\index{onset\_adc.c@{onset\_adc.c}!led\_blink\_init@{led\_blink\_init}}
+\index{led\_blink\_init@{led\_blink\_init}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{led\_blink\_init()}{led\_blink\_init()}}
+{\footnotesize\ttfamily void led\+\_\+blink\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the blinking led action. 
+
+When an onset is triggered, the function blink\+\_\+led is called. The led is than turned on and a timer is started to trigger an interrupt that will turn it off after a duration period. This function inits the GPIO and the timer. \Hypertarget{onset__adc_8c_a1cec65e2bd7258f1226270d37c755f05}\label{onset__adc_8c_a1cec65e2bd7258f1226270d37c755f05} 
+\index{onset\_adc.c@{onset\_adc.c}!onset\_adc\_init@{onset\_adc\_init}}
+\index{onset\_adc\_init@{onset\_adc\_init}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{onset\_adc\_init()}{onset\_adc\_init()}}
+{\footnotesize\ttfamily void onset\+\_\+adc\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function of the onset\+\_\+adc module. 
+
+Init function of the onset\+\_\+adc module \Hypertarget{onset__adc_8c_a66726988709c40ed6f25a05863208da4}\label{onset__adc_8c_a66726988709c40ed6f25a05863208da4} 
+\index{onset\_adc.c@{onset\_adc.c}!onset\_adc\_task@{onset\_adc\_task}}
+\index{onset\_adc\_task@{onset\_adc\_task}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{onset\_adc\_task()}{onset\_adc\_task()}}
+{\footnotesize\ttfamily void onset\+\_\+adc\+\_\+task (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{arg }\end{DoxyParamCaption})}
+
+
+
+Main task for the adc and onset detection module. 
+
+When this function is called it turns on the led and set a timer to turn off it after a period \Hypertarget{onset__adc_8c_a779fb22524c0770405c75ae48a68171c}\label{onset__adc_8c_a779fb22524c0770405c75ae48a68171c} 
+\index{onset\_adc.c@{onset\_adc.c}!set\_menu\_item\_pointer\_to\_vrb@{set\_menu\_item\_pointer\_to\_vrb}}
+\index{set\_menu\_item\_pointer\_to\_vrb@{set\_menu\_item\_pointer\_to\_vrb}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{set\_menu\_item\_pointer\_to\_vrb()}{set\_menu\_item\_pointer\_to\_vrb()}}
+{\footnotesize\ttfamily void set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}}}]{index,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu\+\_\+item\+\_\+index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type. 
+
+\Hypertarget{onset__adc_8c_a39aab2d16622c49709553d56c15c531b}\label{onset__adc_8c_a39aab2d16622c49709553d56c15c531b} 
+\index{onset\_adc.c@{onset\_adc.c}!turn\_off\_led\_cb@{turn\_off\_led\_cb}}
+\index{turn\_off\_led\_cb@{turn\_off\_led\_cb}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{turn\_off\_led\_cb()}{turn\_off\_led\_cb()}}
+{\footnotesize\ttfamily bool IRAM\+\_\+\+ATTR turn\+\_\+off\+\_\+led\+\_\+cb (\begin{DoxyParamCaption}\item[{gptimer\+\_\+handle\+\_\+t}]{timer,  }\item[{const gptimer\+\_\+alarm\+\_\+event\+\_\+data\+\_\+t \texorpdfstring{$\ast$}{*}}]{edata,  }\item[{void \texorpdfstring{$\ast$}{*}}]{led\+\_\+pin }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{onset__adc_8c_a4f89c79ac1f12403295f96a037e6f6e9}\label{onset__adc_8c_a4f89c79ac1f12403295f96a037e6f6e9} 
+\index{onset\_adc.c@{onset\_adc.c}!adc\_handle@{adc\_handle}}
+\index{adc\_handle@{adc\_handle}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_handle}{adc\_handle}}
+{\footnotesize\ttfamily adc\+\_\+continuous\+\_\+handle\+\_\+t adc\+\_\+handle = NULL}
+
+\Hypertarget{onset__adc_8c_a832fa23e387beebd8fd0bac89509fd0e}\label{onset__adc_8c_a832fa23e387beebd8fd0bac89509fd0e} 
+\index{onset\_adc.c@{onset\_adc.c}!allow\_onset@{allow\_onset}}
+\index{allow\_onset@{allow\_onset}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{allow\_onset}{allow\_onset}}
+{\footnotesize\ttfamily bool allow\+\_\+onset = false}
+
+\Hypertarget{onset__adc_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}\label{onset__adc_8c_abaee9dfd77205965d8b1c6f9f8b20f9e} 
+\index{onset\_adc.c@{onset\_adc.c}!bc@{bc}}
+\index{bc@{bc}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{bc}{bc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} bc\hspace{0.3cm}{\ttfamily [extern]}}
+
+global struct with runtime vrbs
+
+main runtime data \Hypertarget{onset__adc_8c_ae78187cdc5c469675b0397d378e21618}\label{onset__adc_8c_ae78187cdc5c469675b0397d378e21618} 
+\index{onset\_adc.c@{onset\_adc.c}!bc\_mutex\_handle@{bc\_mutex\_handle}}
+\index{bc\_mutex\_handle@{bc\_mutex\_handle}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{bc\_mutex\_handle}{bc\_mutex\_handle}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t bc\+\_\+mutex\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+mutex for the access to bc struct \Hypertarget{onset__adc_8c_aee4c39fa7cbecd4a9590ac8e714066a3}\label{onset__adc_8c_aee4c39fa7cbecd4a9590ac8e714066a3} 
+\index{onset\_adc.c@{onset\_adc.c}!channel@{channel}}
+\index{channel@{channel}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{channel}{channel}}
+{\footnotesize\ttfamily adc\+\_\+channel\+\_\+t channel\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{onset__adc_8c_aee4564dc675033ebfe5348c20bbc2271}{KICK\+\_\+\+ADC\+\_\+\+CHANNEL}}, \mbox{\hyperlink{onset__adc_8c_a6ad90f939ec4bd8dbb9fb29c3b9f8094}{SNARE\+\_\+\+ADC\+\_\+\+CHANNEL}}\}}
+
+\Hypertarget{onset__adc_8c_accf079e63d9e8b4b19b88c59eee66356}\label{onset__adc_8c_accf079e63d9e8b4b19b88c59eee66356} 
+\index{onset\_adc.c@{onset\_adc.c}!has\_onset@{has\_onset}}
+\index{has\_onset@{has\_onset}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{has\_onset}{has\_onset}}
+{\footnotesize\ttfamily bool has\+\_\+onset = false}
+
+\Hypertarget{onset__adc_8c_af30bbe7c6f5be7e42907d03f0a9b1a81}\label{onset__adc_8c_af30bbe7c6f5be7e42907d03f0a9b1a81} 
+\index{onset\_adc.c@{onset\_adc.c}!onset\_adc\_task\_handle@{onset\_adc\_task\_handle}}
+\index{onset\_adc\_task\_handle@{onset\_adc\_task\_handle}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{onset\_adc\_task\_handle}{onset\_adc\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t onset\+\_\+adc\+\_\+task\+\_\+handle = NULL}
+
+onset\+\_\+adc task handle \Hypertarget{onset__adc_8c_a96d4d597bf96e882dcb9103b8b1e3fe8}\label{onset__adc_8c_a96d4d597bf96e882dcb9103b8b1e3fe8} 
+\index{onset\_adc.c@{onset\_adc.c}!onset\_adc\_task\_queue@{onset\_adc\_task\_queue}}
+\index{onset\_adc\_task\_queue@{onset\_adc\_task\_queue}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{onset\_adc\_task\_queue}{onset\_adc\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t onset\+\_\+adc\+\_\+task\+\_\+queue = NULL}
+
+
+
+Queue to send msgs to the onset\+\_\+adc module. 
+
+queue of onset\+\_\+adc\+\_\+task \Hypertarget{onset__adc_8c_a94b29632a0fa6cdc186a4cffc1f91829}\label{onset__adc_8c_a94b29632a0fa6cdc186a4cffc1f91829} 
+\index{onset\_adc.c@{onset\_adc.c}!onset\_led@{onset\_led}}
+\index{onset\_led@{onset\_led}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{onset\_led}{onset\_led}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structled__cfg}{led\+\_\+cfg}} onset\+\_\+led\mbox{[}2\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pin\ =\ \mbox{\hyperlink{main__defs_8h_aa76f267c80ad03a2b51de19534b02d9e}{KICK\_LED\_PIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .blink\_duration\ =\ \mbox{\hyperlink{main__defs_8h_a58654bb41b34ba989e4938dd205a6090}{KICK\_LED\_PIN\_BLINK\_DURATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .timer\_handle\ =\ NULL,}
+\DoxyCodeLine{\ \ \ \ \},}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .pin\ =\ \mbox{\hyperlink{main__defs_8h_abef8a2b6425244405139ba45cff8a394}{SNARE\_LED\_PIN}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .blink\_duration\ =\ \mbox{\hyperlink{main__defs_8h_aacf55594c2fece28a3df4fd1c7df0a62}{SNARE\_LED\_PIN\_BLINK\_DURATION}},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .timer\_handle\ =\ NULL,}
+\DoxyCodeLine{\ \ \ \ \}\}}
+
+\end{DoxyCode}
+\Hypertarget{onset__adc_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1}\label{onset__adc_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1} 
+\index{onset\_adc.c@{onset\_adc.c}!onsets@{onsets}}
+\index{onsets@{onsets}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{onsets}{onsets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} onsets\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+array of onsets \Hypertarget{onset__adc_8c_a628c36ee9d1d8448586b9df60e4f8fd0}\label{onset__adc_8c_a628c36ee9d1d8448586b9df60e4f8fd0} 
+\index{onset\_adc.c@{onset\_adc.c}!sync\_task\_handle@{sync\_task\_handle}}
+\index{sync\_task\_handle@{sync\_task\_handle}!onset\_adc.c@{onset\_adc.c}}
+\doxysubsubsection{\texorpdfstring{sync\_task\_handle}{sync\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t sync\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+sync\+\_\+task handle 

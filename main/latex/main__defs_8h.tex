@@ -1,0 +1,334 @@
+\doxysection{main\+\_\+defs.\+h File Reference}
+\hypertarget{main__defs_8h}{}\label{main__defs_8h}\index{main\_defs.h@{main\_defs.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \"{}freertos/\+Free\+RTOS.\+h\"{}}\newline
+{\ttfamily \#include \"{}freertos/task.\+h\"{}}\newline
+{\ttfamily \#include \"{}freertos/queue.\+h\"{}}\newline
+{\ttfamily \#include \"{}freertos/semphr.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+log.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+sleep.\+h\"{}}\newline
+{\ttfamily \#include \"{}sdkconfig.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+timer.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a004128b11c682918894e64c6adc37714}{TAP\+\_\+\+TASK\+\_\+\+PRIORITY}}~10
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a34cbedf2a1b1d71310c215b36c7598c0}{TAP\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a6826a485915d0f8efcb10b985162c3f2}{CLOCK\+\_\+\+TASK\+\_\+\+PRIORITY}}~11
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_adb3f6ae2bca850811294bbcb13a4028d}{CLOCK\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_adbbc101828144814f70831885ae36dcb}{TEMPO\+\_\+\+TASK\+\_\+\+PRIORITY}}~10
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a00b9084317e865d808073eeb18ae1cf9}{TEMPO\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a0d56e9246edbe087fcf958b7ecbdf885}{SYNC\+\_\+\+TASK\+\_\+\+PRIORITY}}~10
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a1f3f5de5accb8059c14d25d0106bf47e}{SYNC\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a5e0d4885bbde40f0f33deade08556a15}{ONSET\+\_\+\+ADC\+\_\+\+TASK\+\_\+\+PRIORITY}}~10
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a71404889ea6aaa54fed679e8023aa145}{ONSET\+\_\+\+ADC\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a80889630e97188001f443345538edfb4}{HID\+\_\+\+TASK\+\_\+\+PRIORITY}}~10
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_ad20bda6730aed6053e762100203ccb2d}{HID\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_aad3ca517d2279aa56e0a34f842b3212d}{MODE\+\_\+\+SWITCH\+\_\+\+TASK\+\_\+\+PRIORITY}}~10
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_abe6f45e753b3b2ba06644745b963554a}{MODE\+\_\+\+SWITCH\+\_\+\+STACK\+\_\+\+SIZE}}~4096
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_aa76f267c80ad03a2b51de19534b02d9e}{KICK\+\_\+\+LED\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+8
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_abef8a2b6425244405139ba45cff8a394}{SNARE\+\_\+\+LED\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+15
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a7946fcf67e1c8b978506b2d244def316}{FIRST\+\_\+\+LED\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+37
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a48818dc821821254a3f56278a54e3f61}{SECOND\+\_\+\+LED\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+36
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a583937471958d1341bbe5ffbc3f7b586}{THIRD\+\_\+\+LED\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+35
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a877e7a90ab43721f85b5b98f929fc55a}{FOURTH\+\_\+\+LED\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+45
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a58654bb41b34ba989e4938dd205a6090}{KICK\+\_\+\+LED\+\_\+\+PIN\+\_\+\+BLINK\+\_\+\+DURATION}}~15
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_aacf55594c2fece28a3df4fd1c7df0a62}{SNARE\+\_\+\+LED\+\_\+\+PIN\+\_\+\+BLINK\+\_\+\+DURATION}}~15
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_aec0cf26d4271ab42972e509945aace39}{TWO\+\_\+\+BAR\+\_\+\+LENGTH\+\_\+\+IN\+\_\+8\+TH}}~16
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_aac4092dc3ba2d8127c8e2ebbb096f11e}{MODE\+\_\+\+SWITCH\+\_\+\+DEBOUNCE\+\_\+\+TIME\+\_\+\+US}}~600000
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a703022b4d6f4d212306f2ae20cafcbb5}{TAP\+\_\+\+DEBOUNCE\+\_\+\+TIME\+\_\+\+US}}~200000
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a5936c0c627339707e29608e06797c25e}{UART\+\_\+\+PIN\+\_\+1}}~GPIO\+\_\+\+NUM\+\_\+17
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a69f388d4a8176009933905a8c7be5065}{UART\+\_\+\+PIN\+\_\+2}}~GPIO\+\_\+\+NUM\+\_\+18
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a739729e47dfa7d143c886a2420d9b828}{TAP\+\_\+\+TEMPO\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+16
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_adcd36e8061f1047329dfbce362923236}{MENU\+\_\+\+SWITCH\+\_\+\+PIN}}~GPIO\+\_\+\+NUM\+\_\+3
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a464959a7a8c7ea395534ab972e63775b}{ONSET\+\_\+\+GARBAGE\+\_\+\+NOTIFY}}~0
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a787df755bbc935fcf792bd7569170d8a}{ONSET\+\_\+\+BUFFER\+\_\+\+SIZE}}~300
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_aec0cf26d4271ab42972e509945aace39}{TWO\+\_\+\+BAR\+\_\+\+LENGTH\+\_\+\+IN\+\_\+8\+TH}}~16
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_af91d15f16fa008fb2ea0436199bb2ab2}{GET\+\_\+\+CURRENT\+\_\+\+TIME\+\_\+\+MS}}()~((esp\+\_\+timer\+\_\+get\+\_\+time() + 500) / 1000)
+\item 
+\#define \mbox{\hyperlink{main__defs_8h_a692c3e8c9412dbf2c6e55f246cc099b2}{US\+\_\+\+TO\+\_\+\+MS}}(time\+\_\+us)~((time\+\_\+us + 500) / 1000)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} \{ \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846a353b1ce4402eb0461ff0641a426771fc}{MODE\+\_\+\+PLAY}}
+, \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846a2c82687782c452d3d852fb6ca00c4f7f}{MODE\+\_\+\+SETTINGS}}
+, \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846abd70a9fdef0d94e31c34e685b171e0a0}{MODE\+\_\+\+TAP}}
+, \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846aa3455ec158bce6b1f376ef15b8b8fec3}{MODE\+\_\+\+SLEEP}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{main__defs_8h_a6826a485915d0f8efcb10b985162c3f2}\label{main__defs_8h_a6826a485915d0f8efcb10b985162c3f2} 
+\index{main\_defs.h@{main\_defs.h}!CLOCK\_TASK\_PRIORITY@{CLOCK\_TASK\_PRIORITY}}
+\index{CLOCK\_TASK\_PRIORITY@{CLOCK\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{CLOCK\_TASK\_PRIORITY}{CLOCK\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define CLOCK\+\_\+\+TASK\+\_\+\+PRIORITY~11}
+
+\Hypertarget{main__defs_8h_adb3f6ae2bca850811294bbcb13a4028d}\label{main__defs_8h_adb3f6ae2bca850811294bbcb13a4028d} 
+\index{main\_defs.h@{main\_defs.h}!CLOCK\_TASK\_STACK\_SIZE@{CLOCK\_TASK\_STACK\_SIZE}}
+\index{CLOCK\_TASK\_STACK\_SIZE@{CLOCK\_TASK\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{CLOCK\_TASK\_STACK\_SIZE}{CLOCK\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define CLOCK\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_a7946fcf67e1c8b978506b2d244def316}\label{main__defs_8h_a7946fcf67e1c8b978506b2d244def316} 
+\index{main\_defs.h@{main\_defs.h}!FIRST\_LED\_PIN@{FIRST\_LED\_PIN}}
+\index{FIRST\_LED\_PIN@{FIRST\_LED\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{FIRST\_LED\_PIN}{FIRST\_LED\_PIN}}
+{\footnotesize\ttfamily \#define FIRST\+\_\+\+LED\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+37}
+
+\Hypertarget{main__defs_8h_a877e7a90ab43721f85b5b98f929fc55a}\label{main__defs_8h_a877e7a90ab43721f85b5b98f929fc55a} 
+\index{main\_defs.h@{main\_defs.h}!FOURTH\_LED\_PIN@{FOURTH\_LED\_PIN}}
+\index{FOURTH\_LED\_PIN@{FOURTH\_LED\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{FOURTH\_LED\_PIN}{FOURTH\_LED\_PIN}}
+{\footnotesize\ttfamily \#define FOURTH\+\_\+\+LED\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+45}
+
+\Hypertarget{main__defs_8h_af91d15f16fa008fb2ea0436199bb2ab2}\label{main__defs_8h_af91d15f16fa008fb2ea0436199bb2ab2} 
+\index{main\_defs.h@{main\_defs.h}!GET\_CURRENT\_TIME\_MS@{GET\_CURRENT\_TIME\_MS}}
+\index{GET\_CURRENT\_TIME\_MS@{GET\_CURRENT\_TIME\_MS}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{GET\_CURRENT\_TIME\_MS}{GET\_CURRENT\_TIME\_MS}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+CURRENT\+\_\+\+TIME\+\_\+\+MS(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((esp\+\_\+timer\+\_\+get\+\_\+time() + 500) / 1000)}
+
+\Hypertarget{main__defs_8h_a80889630e97188001f443345538edfb4}\label{main__defs_8h_a80889630e97188001f443345538edfb4} 
+\index{main\_defs.h@{main\_defs.h}!HID\_TASK\_PRIORITY@{HID\_TASK\_PRIORITY}}
+\index{HID\_TASK\_PRIORITY@{HID\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{HID\_TASK\_PRIORITY}{HID\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define HID\+\_\+\+TASK\+\_\+\+PRIORITY~10}
+
+\Hypertarget{main__defs_8h_ad20bda6730aed6053e762100203ccb2d}\label{main__defs_8h_ad20bda6730aed6053e762100203ccb2d} 
+\index{main\_defs.h@{main\_defs.h}!HID\_TASK\_STACK\_SIZE@{HID\_TASK\_STACK\_SIZE}}
+\index{HID\_TASK\_STACK\_SIZE@{HID\_TASK\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{HID\_TASK\_STACK\_SIZE}{HID\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define HID\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_aa76f267c80ad03a2b51de19534b02d9e}\label{main__defs_8h_aa76f267c80ad03a2b51de19534b02d9e} 
+\index{main\_defs.h@{main\_defs.h}!KICK\_LED\_PIN@{KICK\_LED\_PIN}}
+\index{KICK\_LED\_PIN@{KICK\_LED\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LED\_PIN}{KICK\_LED\_PIN}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LED\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+8}
+
+\Hypertarget{main__defs_8h_a58654bb41b34ba989e4938dd205a6090}\label{main__defs_8h_a58654bb41b34ba989e4938dd205a6090} 
+\index{main\_defs.h@{main\_defs.h}!KICK\_LED\_PIN\_BLINK\_DURATION@{KICK\_LED\_PIN\_BLINK\_DURATION}}
+\index{KICK\_LED\_PIN\_BLINK\_DURATION@{KICK\_LED\_PIN\_BLINK\_DURATION}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{KICK\_LED\_PIN\_BLINK\_DURATION}{KICK\_LED\_PIN\_BLINK\_DURATION}}
+{\footnotesize\ttfamily \#define KICK\+\_\+\+LED\+\_\+\+PIN\+\_\+\+BLINK\+\_\+\+DURATION~15}
+
+Some documentation for the member Box\+Struct\+::a. \Hypertarget{main__defs_8h_adcd36e8061f1047329dfbce362923236}\label{main__defs_8h_adcd36e8061f1047329dfbce362923236} 
+\index{main\_defs.h@{main\_defs.h}!MENU\_SWITCH\_PIN@{MENU\_SWITCH\_PIN}}
+\index{MENU\_SWITCH\_PIN@{MENU\_SWITCH\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{MENU\_SWITCH\_PIN}{MENU\_SWITCH\_PIN}}
+{\footnotesize\ttfamily \#define MENU\+\_\+\+SWITCH\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+3}
+
+\Hypertarget{main__defs_8h_aac4092dc3ba2d8127c8e2ebbb096f11e}\label{main__defs_8h_aac4092dc3ba2d8127c8e2ebbb096f11e} 
+\index{main\_defs.h@{main\_defs.h}!MODE\_SWITCH\_DEBOUNCE\_TIME\_US@{MODE\_SWITCH\_DEBOUNCE\_TIME\_US}}
+\index{MODE\_SWITCH\_DEBOUNCE\_TIME\_US@{MODE\_SWITCH\_DEBOUNCE\_TIME\_US}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_SWITCH\_DEBOUNCE\_TIME\_US}{MODE\_SWITCH\_DEBOUNCE\_TIME\_US}}
+{\footnotesize\ttfamily \#define MODE\+\_\+\+SWITCH\+\_\+\+DEBOUNCE\+\_\+\+TIME\+\_\+\+US~600000}
+
+\Hypertarget{main__defs_8h_abe6f45e753b3b2ba06644745b963554a}\label{main__defs_8h_abe6f45e753b3b2ba06644745b963554a} 
+\index{main\_defs.h@{main\_defs.h}!MODE\_SWITCH\_STACK\_SIZE@{MODE\_SWITCH\_STACK\_SIZE}}
+\index{MODE\_SWITCH\_STACK\_SIZE@{MODE\_SWITCH\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_SWITCH\_STACK\_SIZE}{MODE\_SWITCH\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define MODE\+\_\+\+SWITCH\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_aad3ca517d2279aa56e0a34f842b3212d}\label{main__defs_8h_aad3ca517d2279aa56e0a34f842b3212d} 
+\index{main\_defs.h@{main\_defs.h}!MODE\_SWITCH\_TASK\_PRIORITY@{MODE\_SWITCH\_TASK\_PRIORITY}}
+\index{MODE\_SWITCH\_TASK\_PRIORITY@{MODE\_SWITCH\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_SWITCH\_TASK\_PRIORITY}{MODE\_SWITCH\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define MODE\+\_\+\+SWITCH\+\_\+\+TASK\+\_\+\+PRIORITY~10}
+
+\Hypertarget{main__defs_8h_a5e0d4885bbde40f0f33deade08556a15}\label{main__defs_8h_a5e0d4885bbde40f0f33deade08556a15} 
+\index{main\_defs.h@{main\_defs.h}!ONSET\_ADC\_TASK\_PRIORITY@{ONSET\_ADC\_TASK\_PRIORITY}}
+\index{ONSET\_ADC\_TASK\_PRIORITY@{ONSET\_ADC\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{ONSET\_ADC\_TASK\_PRIORITY}{ONSET\_ADC\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define ONSET\+\_\+\+ADC\+\_\+\+TASK\+\_\+\+PRIORITY~10}
+
+\Hypertarget{main__defs_8h_a71404889ea6aaa54fed679e8023aa145}\label{main__defs_8h_a71404889ea6aaa54fed679e8023aa145} 
+\index{main\_defs.h@{main\_defs.h}!ONSET\_ADC\_TASK\_STACK\_SIZE@{ONSET\_ADC\_TASK\_STACK\_SIZE}}
+\index{ONSET\_ADC\_TASK\_STACK\_SIZE@{ONSET\_ADC\_TASK\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{ONSET\_ADC\_TASK\_STACK\_SIZE}{ONSET\_ADC\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define ONSET\+\_\+\+ADC\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_a787df755bbc935fcf792bd7569170d8a}\label{main__defs_8h_a787df755bbc935fcf792bd7569170d8a} 
+\index{main\_defs.h@{main\_defs.h}!ONSET\_BUFFER\_SIZE@{ONSET\_BUFFER\_SIZE}}
+\index{ONSET\_BUFFER\_SIZE@{ONSET\_BUFFER\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{ONSET\_BUFFER\_SIZE}{ONSET\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define ONSET\+\_\+\+BUFFER\+\_\+\+SIZE~300}
+
+\Hypertarget{main__defs_8h_a464959a7a8c7ea395534ab972e63775b}\label{main__defs_8h_a464959a7a8c7ea395534ab972e63775b} 
+\index{main\_defs.h@{main\_defs.h}!ONSET\_GARBAGE\_NOTIFY@{ONSET\_GARBAGE\_NOTIFY}}
+\index{ONSET\_GARBAGE\_NOTIFY@{ONSET\_GARBAGE\_NOTIFY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{ONSET\_GARBAGE\_NOTIFY}{ONSET\_GARBAGE\_NOTIFY}}
+{\footnotesize\ttfamily \#define ONSET\+\_\+\+GARBAGE\+\_\+\+NOTIFY~0}
+
+\Hypertarget{main__defs_8h_a48818dc821821254a3f56278a54e3f61}\label{main__defs_8h_a48818dc821821254a3f56278a54e3f61} 
+\index{main\_defs.h@{main\_defs.h}!SECOND\_LED\_PIN@{SECOND\_LED\_PIN}}
+\index{SECOND\_LED\_PIN@{SECOND\_LED\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{SECOND\_LED\_PIN}{SECOND\_LED\_PIN}}
+{\footnotesize\ttfamily \#define SECOND\+\_\+\+LED\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+36}
+
+\Hypertarget{main__defs_8h_abef8a2b6425244405139ba45cff8a394}\label{main__defs_8h_abef8a2b6425244405139ba45cff8a394} 
+\index{main\_defs.h@{main\_defs.h}!SNARE\_LED\_PIN@{SNARE\_LED\_PIN}}
+\index{SNARE\_LED\_PIN@{SNARE\_LED\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LED\_PIN}{SNARE\_LED\_PIN}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LED\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+15}
+
+\Hypertarget{main__defs_8h_aacf55594c2fece28a3df4fd1c7df0a62}\label{main__defs_8h_aacf55594c2fece28a3df4fd1c7df0a62} 
+\index{main\_defs.h@{main\_defs.h}!SNARE\_LED\_PIN\_BLINK\_DURATION@{SNARE\_LED\_PIN\_BLINK\_DURATION}}
+\index{SNARE\_LED\_PIN\_BLINK\_DURATION@{SNARE\_LED\_PIN\_BLINK\_DURATION}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{SNARE\_LED\_PIN\_BLINK\_DURATION}{SNARE\_LED\_PIN\_BLINK\_DURATION}}
+{\footnotesize\ttfamily \#define SNARE\+\_\+\+LED\+\_\+\+PIN\+\_\+\+BLINK\+\_\+\+DURATION~15}
+
+Some documentation for the member Box\+Struct\+::a. \Hypertarget{main__defs_8h_a0d56e9246edbe087fcf958b7ecbdf885}\label{main__defs_8h_a0d56e9246edbe087fcf958b7ecbdf885} 
+\index{main\_defs.h@{main\_defs.h}!SYNC\_TASK\_PRIORITY@{SYNC\_TASK\_PRIORITY}}
+\index{SYNC\_TASK\_PRIORITY@{SYNC\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{SYNC\_TASK\_PRIORITY}{SYNC\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define SYNC\+\_\+\+TASK\+\_\+\+PRIORITY~10}
+
+\Hypertarget{main__defs_8h_a1f3f5de5accb8059c14d25d0106bf47e}\label{main__defs_8h_a1f3f5de5accb8059c14d25d0106bf47e} 
+\index{main\_defs.h@{main\_defs.h}!SYNC\_TASK\_STACK\_SIZE@{SYNC\_TASK\_STACK\_SIZE}}
+\index{SYNC\_TASK\_STACK\_SIZE@{SYNC\_TASK\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{SYNC\_TASK\_STACK\_SIZE}{SYNC\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define SYNC\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_a703022b4d6f4d212306f2ae20cafcbb5}\label{main__defs_8h_a703022b4d6f4d212306f2ae20cafcbb5} 
+\index{main\_defs.h@{main\_defs.h}!TAP\_DEBOUNCE\_TIME\_US@{TAP\_DEBOUNCE\_TIME\_US}}
+\index{TAP\_DEBOUNCE\_TIME\_US@{TAP\_DEBOUNCE\_TIME\_US}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TAP\_DEBOUNCE\_TIME\_US}{TAP\_DEBOUNCE\_TIME\_US}}
+{\footnotesize\ttfamily \#define TAP\+\_\+\+DEBOUNCE\+\_\+\+TIME\+\_\+\+US~200000}
+
+\Hypertarget{main__defs_8h_a004128b11c682918894e64c6adc37714}\label{main__defs_8h_a004128b11c682918894e64c6adc37714} 
+\index{main\_defs.h@{main\_defs.h}!TAP\_TASK\_PRIORITY@{TAP\_TASK\_PRIORITY}}
+\index{TAP\_TASK\_PRIORITY@{TAP\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TAP\_TASK\_PRIORITY}{TAP\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define TAP\+\_\+\+TASK\+\_\+\+PRIORITY~10}
+
+\Hypertarget{main__defs_8h_a34cbedf2a1b1d71310c215b36c7598c0}\label{main__defs_8h_a34cbedf2a1b1d71310c215b36c7598c0} 
+\index{main\_defs.h@{main\_defs.h}!TAP\_TASK\_STACK\_SIZE@{TAP\_TASK\_STACK\_SIZE}}
+\index{TAP\_TASK\_STACK\_SIZE@{TAP\_TASK\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TAP\_TASK\_STACK\_SIZE}{TAP\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define TAP\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_a739729e47dfa7d143c886a2420d9b828}\label{main__defs_8h_a739729e47dfa7d143c886a2420d9b828} 
+\index{main\_defs.h@{main\_defs.h}!TAP\_TEMPO\_PIN@{TAP\_TEMPO\_PIN}}
+\index{TAP\_TEMPO\_PIN@{TAP\_TEMPO\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TAP\_TEMPO\_PIN}{TAP\_TEMPO\_PIN}}
+{\footnotesize\ttfamily \#define TAP\+\_\+\+TEMPO\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+16}
+
+\Hypertarget{main__defs_8h_adbbc101828144814f70831885ae36dcb}\label{main__defs_8h_adbbc101828144814f70831885ae36dcb} 
+\index{main\_defs.h@{main\_defs.h}!TEMPO\_TASK\_PRIORITY@{TEMPO\_TASK\_PRIORITY}}
+\index{TEMPO\_TASK\_PRIORITY@{TEMPO\_TASK\_PRIORITY}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TEMPO\_TASK\_PRIORITY}{TEMPO\_TASK\_PRIORITY}}
+{\footnotesize\ttfamily \#define TEMPO\+\_\+\+TASK\+\_\+\+PRIORITY~10}
+
+\Hypertarget{main__defs_8h_a00b9084317e865d808073eeb18ae1cf9}\label{main__defs_8h_a00b9084317e865d808073eeb18ae1cf9} 
+\index{main\_defs.h@{main\_defs.h}!TEMPO\_TASK\_STACK\_SIZE@{TEMPO\_TASK\_STACK\_SIZE}}
+\index{TEMPO\_TASK\_STACK\_SIZE@{TEMPO\_TASK\_STACK\_SIZE}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TEMPO\_TASK\_STACK\_SIZE}{TEMPO\_TASK\_STACK\_SIZE}}
+{\footnotesize\ttfamily \#define TEMPO\+\_\+\+TASK\+\_\+\+STACK\+\_\+\+SIZE~4096}
+
+\Hypertarget{main__defs_8h_a583937471958d1341bbe5ffbc3f7b586}\label{main__defs_8h_a583937471958d1341bbe5ffbc3f7b586} 
+\index{main\_defs.h@{main\_defs.h}!THIRD\_LED\_PIN@{THIRD\_LED\_PIN}}
+\index{THIRD\_LED\_PIN@{THIRD\_LED\_PIN}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{THIRD\_LED\_PIN}{THIRD\_LED\_PIN}}
+{\footnotesize\ttfamily \#define THIRD\+\_\+\+LED\+\_\+\+PIN~GPIO\+\_\+\+NUM\+\_\+35}
+
+\Hypertarget{main__defs_8h_aec0cf26d4271ab42972e509945aace39}\label{main__defs_8h_aec0cf26d4271ab42972e509945aace39} 
+\index{main\_defs.h@{main\_defs.h}!TWO\_BAR\_LENGTH\_IN\_8TH@{TWO\_BAR\_LENGTH\_IN\_8TH}}
+\index{TWO\_BAR\_LENGTH\_IN\_8TH@{TWO\_BAR\_LENGTH\_IN\_8TH}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TWO\_BAR\_LENGTH\_IN\_8TH}{TWO\_BAR\_LENGTH\_IN\_8TH}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \#define TWO\+\_\+\+BAR\+\_\+\+LENGTH\+\_\+\+IN\+\_\+8\+TH~16}
+
+\Hypertarget{main__defs_8h_aec0cf26d4271ab42972e509945aace39}\label{main__defs_8h_aec0cf26d4271ab42972e509945aace39} 
+\index{main\_defs.h@{main\_defs.h}!TWO\_BAR\_LENGTH\_IN\_8TH@{TWO\_BAR\_LENGTH\_IN\_8TH}}
+\index{TWO\_BAR\_LENGTH\_IN\_8TH@{TWO\_BAR\_LENGTH\_IN\_8TH}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{TWO\_BAR\_LENGTH\_IN\_8TH}{TWO\_BAR\_LENGTH\_IN\_8TH}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \#define TWO\+\_\+\+BAR\+\_\+\+LENGTH\+\_\+\+IN\+\_\+8\+TH~16}
+
+\Hypertarget{main__defs_8h_a5936c0c627339707e29608e06797c25e}\label{main__defs_8h_a5936c0c627339707e29608e06797c25e} 
+\index{main\_defs.h@{main\_defs.h}!UART\_PIN\_1@{UART\_PIN\_1}}
+\index{UART\_PIN\_1@{UART\_PIN\_1}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{UART\_PIN\_1}{UART\_PIN\_1}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+PIN\+\_\+1~GPIO\+\_\+\+NUM\+\_\+17}
+
+\Hypertarget{main__defs_8h_a69f388d4a8176009933905a8c7be5065}\label{main__defs_8h_a69f388d4a8176009933905a8c7be5065} 
+\index{main\_defs.h@{main\_defs.h}!UART\_PIN\_2@{UART\_PIN\_2}}
+\index{UART\_PIN\_2@{UART\_PIN\_2}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{UART\_PIN\_2}{UART\_PIN\_2}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+PIN\+\_\+2~GPIO\+\_\+\+NUM\+\_\+18}
+
+\Hypertarget{main__defs_8h_a692c3e8c9412dbf2c6e55f246cc099b2}\label{main__defs_8h_a692c3e8c9412dbf2c6e55f246cc099b2} 
+\index{main\_defs.h@{main\_defs.h}!US\_TO\_MS@{US\_TO\_MS}}
+\index{US\_TO\_MS@{US\_TO\_MS}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{US\_TO\_MS}{US\_TO\_MS}}
+{\footnotesize\ttfamily \#define US\+\_\+\+TO\+\_\+\+MS(\begin{DoxyParamCaption}\item[{}]{time\+\_\+us }\end{DoxyParamCaption})~((time\+\_\+us + 500) / 1000)}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}\label{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846} 
+\index{main\_defs.h@{main\_defs.h}!main\_mode@{main\_mode}}
+\index{main\_mode@{main\_mode}!main\_defs.h@{main\_defs.h}}
+\doxysubsubsection{\texorpdfstring{main\_mode}{main\_mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_PLAY@{MODE\_PLAY}!main\_defs.h@{main\_defs.h}}\index{main\_defs.h@{main\_defs.h}!MODE\_PLAY@{MODE\_PLAY}}}\Hypertarget{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846a353b1ce4402eb0461ff0641a426771fc}\label{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846a353b1ce4402eb0461ff0641a426771fc} 
+MODE\+\_\+\+PLAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SETTINGS@{MODE\_SETTINGS}!main\_defs.h@{main\_defs.h}}\index{main\_defs.h@{main\_defs.h}!MODE\_SETTINGS@{MODE\_SETTINGS}}}\Hypertarget{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846a2c82687782c452d3d852fb6ca00c4f7f}\label{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846a2c82687782c452d3d852fb6ca00c4f7f} 
+MODE\+\_\+\+SETTINGS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_TAP@{MODE\_TAP}!main\_defs.h@{main\_defs.h}}\index{main\_defs.h@{main\_defs.h}!MODE\_TAP@{MODE\_TAP}}}\Hypertarget{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846abd70a9fdef0d94e31c34e685b171e0a0}\label{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846abd70a9fdef0d94e31c34e685b171e0a0} 
+MODE\+\_\+\+TAP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MODE\_SLEEP@{MODE\_SLEEP}!main\_defs.h@{main\_defs.h}}\index{main\_defs.h@{main\_defs.h}!MODE\_SLEEP@{MODE\_SLEEP}}}\Hypertarget{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846aa3455ec158bce6b1f376ef15b8b8fec3}\label{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846aa3455ec158bce6b1f376ef15b8b8fec3} 
+MODE\+\_\+\+SLEEP&\\
+\hline
+
+\end{DoxyEnumFields}

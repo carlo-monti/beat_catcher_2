@@ -1,0 +1,135 @@
+\doxysection{main.\+c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{main.c@{main.c}}
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+{\ttfamily \#include \"{}onset\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}sync.\+h\"{}}\newline
+{\ttfamily \#include \"{}clock.\+h\"{}}\newline
+{\ttfamily \#include \"{}tap.\+h\"{}}\newline
+{\ttfamily \#include \"{}mode\+\_\+switch.\+h\"{}}\newline
+{\ttfamily \#include \"{}tempo.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/gpio.\+h\"{}}\newline
+{\ttfamily \#include \"{}../components/ssd1306/ssd1306.\+h\"{}}\newline
+{\ttfamily \#include \"{}../components/ssd1306/font8x8\+\_\+basic.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a630544a7f0a2cc40d8a7fefab7e2fe70}{app\+\_\+main}} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_a6c48c8769e7c9b6052d3218b614565be}{clock\+High\+Water\+Mark}}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_a9a00ce93b84ee7c860637a04a580764f}{hid\+High\+Water\+Mark}}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_acdfe1701b6dcbb79bcb838ec186a3e27}{onset\+\_\+adc\+High\+Water\+Mark}}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_a9b7c6e0d80365ce411e571d53824ba21}{mode\+\_\+switch\+High\+Water\+Mark}}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_a21623baeb0796ded20abcc0b261ec0cd}{sync\+High\+Water\+Mark}}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_acf2624e4890d01b3f360bd62ebcba5af}{tap\+High\+Water\+Mark}}
+\item 
+UBase\+Type\+\_\+t \mbox{\hyperlink{main_8c_abd12fade6b416cfff0174992900e32b7}{tempo\+High\+Water\+Mark}}
+\item 
+\mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} \mbox{\hyperlink{main_8c_a76e104e2f982b63f9c0ab9a5d24906e0}{onsets}} \mbox{[}\mbox{\hyperlink{main__defs_8h_a787df755bbc935fcf792bd7569170d8a}{ONSET\+\_\+\+BUFFER\+\_\+\+SIZE}}\mbox{]}
+\item 
+volatile \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} \mbox{\hyperlink{main_8c_a524afb17e08f3547f2e6c1f8b0fbe1a9}{mode}} = \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846abd70a9fdef0d94e31c34e685b171e0a0}{MODE\+\_\+\+TAP}}
+\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{main_8c_ae78187cdc5c469675b0397d378e21618}{bc\+\_\+mutex\+\_\+handle}} = NULL
+\item 
+\mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} \mbox{\hyperlink{main_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}{bc}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a630544a7f0a2cc40d8a7fefab7e2fe70}\label{main_8c_a630544a7f0a2cc40d8a7fefab7e2fe70} 
+\index{main.c@{main.c}!app\_main@{app\_main}}
+\index{app\_main@{app\_main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{app\_main()}{app\_main()}}
+{\footnotesize\ttfamily void app\+\_\+main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}\label{main_8c_abaee9dfd77205965d8b1c6f9f8b20f9e} 
+\index{main.c@{main.c}!bc@{bc}}
+\index{bc@{bc}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bc}{bc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} bc}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ .tau\ =\ 250,\ }
+\DoxyCodeLine{\ \ \ \ .bar\_position\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .layer\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .expected\_beat\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .there\_is\_an\_onset\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\ \ \ \ .most\_recent\_onset\_index\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .last\_relevant\_onset\_index\_for\_sync\ =\ -\/1,}
+\DoxyCodeLine{\ \ \ \ .last\_relevant\_onset\_index\_for\_tempo\ =\ 0,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+main runtime data \Hypertarget{main_8c_ae78187cdc5c469675b0397d378e21618}\label{main_8c_ae78187cdc5c469675b0397d378e21618} 
+\index{main.c@{main.c}!bc\_mutex\_handle@{bc\_mutex\_handle}}
+\index{bc\_mutex\_handle@{bc\_mutex\_handle}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bc\_mutex\_handle}{bc\_mutex\_handle}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t bc\+\_\+mutex\+\_\+handle = NULL}
+
+mutex for the access to bc struct \Hypertarget{main_8c_a6c48c8769e7c9b6052d3218b614565be}\label{main_8c_a6c48c8769e7c9b6052d3218b614565be} 
+\index{main.c@{main.c}!clockHighWaterMark@{clockHighWaterMark}}
+\index{clockHighWaterMark@{clockHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{clockHighWaterMark}{clockHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t clock\+High\+Water\+Mark}
+
+\Hypertarget{main_8c_a9a00ce93b84ee7c860637a04a580764f}\label{main_8c_a9a00ce93b84ee7c860637a04a580764f} 
+\index{main.c@{main.c}!hidHighWaterMark@{hidHighWaterMark}}
+\index{hidHighWaterMark@{hidHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hidHighWaterMark}{hidHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t hid\+High\+Water\+Mark}
+
+\Hypertarget{main_8c_a524afb17e08f3547f2e6c1f8b0fbe1a9}\label{main_8c_a524afb17e08f3547f2e6c1f8b0fbe1a9} 
+\index{main.c@{main.c}!mode@{mode}}
+\index{mode@{mode}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} mode = \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846abd70a9fdef0d94e31c34e685b171e0a0}{MODE\+\_\+\+TAP}}}
+
+\Hypertarget{main_8c_a9b7c6e0d80365ce411e571d53824ba21}\label{main_8c_a9b7c6e0d80365ce411e571d53824ba21} 
+\index{main.c@{main.c}!mode\_switchHighWaterMark@{mode\_switchHighWaterMark}}
+\index{mode\_switchHighWaterMark@{mode\_switchHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{mode\_switchHighWaterMark}{mode\_switchHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t mode\+\_\+switch\+High\+Water\+Mark}
+
+\Hypertarget{main_8c_acdfe1701b6dcbb79bcb838ec186a3e27}\label{main_8c_acdfe1701b6dcbb79bcb838ec186a3e27} 
+\index{main.c@{main.c}!onset\_adcHighWaterMark@{onset\_adcHighWaterMark}}
+\index{onset\_adcHighWaterMark@{onset\_adcHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{onset\_adcHighWaterMark}{onset\_adcHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t onset\+\_\+adc\+High\+Water\+Mark}
+
+\Hypertarget{main_8c_a76e104e2f982b63f9c0ab9a5d24906e0}\label{main_8c_a76e104e2f982b63f9c0ab9a5d24906e0} 
+\index{main.c@{main.c}!onsets@{onsets}}
+\index{onsets@{onsets}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{onsets}{onsets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} onsets\mbox{[}\mbox{\hyperlink{main__defs_8h_a787df755bbc935fcf792bd7569170d8a}{ONSET\+\_\+\+BUFFER\+\_\+\+SIZE}}\mbox{]}}
+
+array of onsets \Hypertarget{main_8c_a21623baeb0796ded20abcc0b261ec0cd}\label{main_8c_a21623baeb0796ded20abcc0b261ec0cd} 
+\index{main.c@{main.c}!syncHighWaterMark@{syncHighWaterMark}}
+\index{syncHighWaterMark@{syncHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{syncHighWaterMark}{syncHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t sync\+High\+Water\+Mark}
+
+\Hypertarget{main_8c_acf2624e4890d01b3f360bd62ebcba5af}\label{main_8c_acf2624e4890d01b3f360bd62ebcba5af} 
+\index{main.c@{main.c}!tapHighWaterMark@{tapHighWaterMark}}
+\index{tapHighWaterMark@{tapHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{tapHighWaterMark}{tapHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t tap\+High\+Water\+Mark}
+
+\Hypertarget{main_8c_abd12fade6b416cfff0174992900e32b7}\label{main_8c_abd12fade6b416cfff0174992900e32b7} 
+\index{main.c@{main.c}!tempoHighWaterMark@{tempoHighWaterMark}}
+\index{tempoHighWaterMark@{tempoHighWaterMark}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{tempoHighWaterMark}{tempoHighWaterMark}}
+{\footnotesize\ttfamily UBase\+Type\+\_\+t tempo\+High\+Water\+Mark}
+

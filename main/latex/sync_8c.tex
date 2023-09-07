@@ -1,0 +1,110 @@
+\doxysection{sync.\+c File Reference}
+\hypertarget{sync_8c}{}\label{sync_8c}\index{sync.c@{sync.c}}
+{\ttfamily \#include \"{}sync.\+h\"{}}\newline
+{\ttfamily \#include \"{}clock.\+h\"{}}\newline
+{\ttfamily \#include \"{}onset\+\_\+adc.\+h\"{}}\newline
+{\ttfamily \#include \"{}tempo.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{sync_8c_a2dc6d933400b6e3b5797f04252b53739}{HEADROOM\+\_\+\+VALUE}}~0.\+1
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sync_8c_a779fb22524c0770405c75ae48a68171c}{set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb}} (\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}} index, void \texorpdfstring{$\ast$}{*}ptr)
+\begin{DoxyCompactList}\small\item\em Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu\+\_\+item\+\_\+index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sync_8c_a31625d038d25bdcb74d44ad2d02202fb}{sync\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the sync module The function sets parameters and starts sync\+\_\+task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{sync_8c_aaddec2e93001176bc08a063e6e82410d}{clock\+\_\+task\+\_\+queue}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{sync_8c_a4b95f9c9646e48a84af88f118ad9f2fa}{tempo\+\_\+task\+\_\+handle}}
+\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{sync_8c_ae78187cdc5c469675b0397d378e21618}{bc\+\_\+mutex\+\_\+handle}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{sync_8c_a628c36ee9d1d8448586b9df60e4f8fd0}{sync\+\_\+task\+\_\+handle}}
+\begin{DoxyCompactList}\small\item\em Handle of the sync\+\_\+task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} \mbox{\hyperlink{sync_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}{bc}}
+\item 
+\mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} \mbox{\hyperlink{sync_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1}{onsets}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{sync_8c_a2dc6d933400b6e3b5797f04252b53739}\label{sync_8c_a2dc6d933400b6e3b5797f04252b53739} 
+\index{sync.c@{sync.c}!HEADROOM\_VALUE@{HEADROOM\_VALUE}}
+\index{HEADROOM\_VALUE@{HEADROOM\_VALUE}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{HEADROOM\_VALUE}{HEADROOM\_VALUE}}
+{\footnotesize\ttfamily \#define HEADROOM\+\_\+\+VALUE~0.\+1}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sync_8c_a779fb22524c0770405c75ae48a68171c}\label{sync_8c_a779fb22524c0770405c75ae48a68171c} 
+\index{sync.c@{sync.c}!set\_menu\_item\_pointer\_to\_vrb@{set\_menu\_item\_pointer\_to\_vrb}}
+\index{set\_menu\_item\_pointer\_to\_vrb@{set\_menu\_item\_pointer\_to\_vrb}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{set\_menu\_item\_pointer\_to\_vrb()}{set\_menu\_item\_pointer\_to\_vrb()}}
+{\footnotesize\ttfamily void set\+\_\+menu\+\_\+item\+\_\+pointer\+\_\+to\+\_\+vrb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{hid_8h_adfcff66ff86af6e231579ee15b4167dd}{menu\+\_\+item\+\_\+index}}}]{index,  }\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu\+\_\+item\+\_\+index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type. 
+
+\Hypertarget{sync_8c_a31625d038d25bdcb74d44ad2d02202fb}\label{sync_8c_a31625d038d25bdcb74d44ad2d02202fb} 
+\index{sync.c@{sync.c}!sync\_init@{sync\_init}}
+\index{sync\_init@{sync\_init}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{sync\_init()}{sync\_init()}}
+{\footnotesize\ttfamily void sync\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the sync module The function sets parameters and starts sync\+\_\+task. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{sync_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}\label{sync_8c_abaee9dfd77205965d8b1c6f9f8b20f9e} 
+\index{sync.c@{sync.c}!bc@{bc}}
+\index{bc@{bc}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{bc}{bc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} bc\hspace{0.3cm}{\ttfamily [extern]}}
+
+main runtime data \Hypertarget{sync_8c_ae78187cdc5c469675b0397d378e21618}\label{sync_8c_ae78187cdc5c469675b0397d378e21618} 
+\index{sync.c@{sync.c}!bc\_mutex\_handle@{bc\_mutex\_handle}}
+\index{bc\_mutex\_handle@{bc\_mutex\_handle}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{bc\_mutex\_handle}{bc\_mutex\_handle}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t bc\+\_\+mutex\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+mutex for the access to bc struct \Hypertarget{sync_8c_aaddec2e93001176bc08a063e6e82410d}\label{sync_8c_aaddec2e93001176bc08a063e6e82410d} 
+\index{sync.c@{sync.c}!clock\_task\_queue@{clock\_task\_queue}}
+\index{clock\_task\_queue@{clock\_task\_queue}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_queue}{clock\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t clock\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+Beat catcher 2.\+0 -\/ Mode Switch Module This module handles the switching between the main modes of the system\+: -\/MODE\+\_\+\+PLAY -\/MODE\+\_\+\+TAP -\/MODE\+\_\+\+SETTINGS \Hypertarget{sync_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1}\label{sync_8c_a9a73fbe99e3db32ed2fc5c3bde3521f1} 
+\index{sync.c@{sync.c}!onsets@{onsets}}
+\index{onsets@{onsets}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{onsets}{onsets}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structonset__entry}{onset\+\_\+entry}} onsets\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+array of onsets \Hypertarget{sync_8c_a628c36ee9d1d8448586b9df60e4f8fd0}\label{sync_8c_a628c36ee9d1d8448586b9df60e4f8fd0} 
+\index{sync.c@{sync.c}!sync\_task\_handle@{sync\_task\_handle}}
+\index{sync\_task\_handle@{sync\_task\_handle}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{sync\_task\_handle}{sync\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t sync\+\_\+task\+\_\+handle}
+
+
+
+Handle of the sync\+\_\+task. 
+
+sync\+\_\+task handle \Hypertarget{sync_8c_a4b95f9c9646e48a84af88f118ad9f2fa}\label{sync_8c_a4b95f9c9646e48a84af88f118ad9f2fa} 
+\index{sync.c@{sync.c}!tempo\_task\_handle@{tempo\_task\_handle}}
+\index{tempo\_task\_handle@{tempo\_task\_handle}!sync.c@{sync.c}}
+\doxysubsubsection{\texorpdfstring{tempo\_task\_handle}{tempo\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tempo\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+Handle for the tempo task 

@@ -1,0 +1,142 @@
+\doxysection{tap.\+c File Reference}
+\hypertarget{tap_8c}{}\label{tap_8c}\index{tap.c@{tap.c}}
+{\ttfamily \#include \"{}main\+\_\+defs.\+h\"{}}\newline
+{\ttfamily \#include \"{}tap.\+h\"{}}\newline
+{\ttfamily \#include \"{}clock.\+h\"{}}\newline
+{\ttfamily \#include \"{}sync.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/gpio.\+h\"{}}\newline
+{\ttfamily \#include \"{}esp\+\_\+sleep.\+h\"{}}\newline
+{\ttfamily \#include \"{}tempo.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+{\ttfamily \#include \"{}mode\+\_\+switch.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{tap_8c_ae11896867ab269a526870c3f730ff67d}{TAP\+\_\+\+HIT\+\_\+\+WAIT\+\_\+\+TIME\+\_\+\+US}}~4000000
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{tap_8c_ac90100d31ec60a91ae52a23f7e4cb57d}{tap\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function to be called from the main. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_aaddec2e93001176bc08a063e6e82410d}{clock\+\_\+task\+\_\+queue}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_a1d3224e02cec6b02a9c3521cbad7d171}{clock\+\_\+task\+\_\+handle}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_a628c36ee9d1d8448586b9df60e4f8fd0}{sync\+\_\+task\+\_\+handle}}
+\begin{DoxyCompactList}\small\item\em Handle of the sync\+\_\+task. \end{DoxyCompactList}\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_a4b95f9c9646e48a84af88f118ad9f2fa}{tempo\+\_\+task\+\_\+handle}}
+\item 
+\mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} \mbox{\hyperlink{tap_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}{bc}}
+\item 
+volatile \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} \mbox{\hyperlink{tap_8c_a524afb17e08f3547f2e6c1f8b0fbe1a9}{mode}}
+\item 
+Semaphore\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_ae78187cdc5c469675b0397d378e21618}{bc\+\_\+mutex\+\_\+handle}}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_a43cf8accd30762854b5635cb9fefabae}{tap\+\_\+task\+\_\+queue}} = NULL
+\begin{DoxyCompactList}\small\item\em Queue to send msgs to the tap module. \end{DoxyCompactList}\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{tap_8c_a9bceedf934a6c465d6657b4c7f0b257c}{tap\+\_\+task\+\_\+handle}} = NULL
+\begin{DoxyCompactList}\small\item\em Handle of tap\+\_\+task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structclock__task__queue__entry}{clock\+\_\+task\+\_\+queue\+\_\+entry}} \mbox{\hyperlink{tap_8c_a33938964e5f7bc3a5bdeddc3e0c85f4b}{clock\+\_\+tx\+\_\+buffer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{tap_8c_ae11896867ab269a526870c3f730ff67d}\label{tap_8c_ae11896867ab269a526870c3f730ff67d} 
+\index{tap.c@{tap.c}!TAP\_HIT\_WAIT\_TIME\_US@{TAP\_HIT\_WAIT\_TIME\_US}}
+\index{TAP\_HIT\_WAIT\_TIME\_US@{TAP\_HIT\_WAIT\_TIME\_US}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{TAP\_HIT\_WAIT\_TIME\_US}{TAP\_HIT\_WAIT\_TIME\_US}}
+{\footnotesize\ttfamily \#define TAP\+\_\+\+HIT\+\_\+\+WAIT\+\_\+\+TIME\+\_\+\+US~4000000}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tap_8c_ac90100d31ec60a91ae52a23f7e4cb57d}\label{tap_8c_ac90100d31ec60a91ae52a23f7e4cb57d} 
+\index{tap.c@{tap.c}!tap\_init@{tap\_init}}
+\index{tap\_init@{tap\_init}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{tap\_init()}{tap\_init()}}
+{\footnotesize\ttfamily void tap\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function to be called from the main. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{tap_8c_abaee9dfd77205965d8b1c6f9f8b20f9e}\label{tap_8c_abaee9dfd77205965d8b1c6f9f8b20f9e} 
+\index{tap.c@{tap.c}!bc@{bc}}
+\index{bc@{bc}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{bc}{bc}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structmain__runtime__vrbs}{main\+\_\+runtime\+\_\+vrbs}} bc\hspace{0.3cm}{\ttfamily [extern]}}
+
+main runtime data \Hypertarget{tap_8c_ae78187cdc5c469675b0397d378e21618}\label{tap_8c_ae78187cdc5c469675b0397d378e21618} 
+\index{tap.c@{tap.c}!bc\_mutex\_handle@{bc\_mutex\_handle}}
+\index{bc\_mutex\_handle@{bc\_mutex\_handle}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{bc\_mutex\_handle}{bc\_mutex\_handle}}
+{\footnotesize\ttfamily Semaphore\+Handle\+\_\+t bc\+\_\+mutex\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+mutex for the access to bc struct \Hypertarget{tap_8c_a1d3224e02cec6b02a9c3521cbad7d171}\label{tap_8c_a1d3224e02cec6b02a9c3521cbad7d171} 
+\index{tap.c@{tap.c}!clock\_task\_handle@{clock\_task\_handle}}
+\index{clock\_task\_handle@{clock\_task\_handle}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_handle}{clock\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t clock\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{tap_8c_aaddec2e93001176bc08a063e6e82410d}\label{tap_8c_aaddec2e93001176bc08a063e6e82410d} 
+\index{tap.c@{tap.c}!clock\_task\_queue@{clock\_task\_queue}}
+\index{clock\_task\_queue@{clock\_task\_queue}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_queue}{clock\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t clock\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+Beat catcher 2.\+0 -\/ Mode Switch Module This module handles the switching between the main modes of the system\+: -\/MODE\+\_\+\+PLAY -\/MODE\+\_\+\+TAP -\/MODE\+\_\+\+SETTINGS \Hypertarget{tap_8c_a33938964e5f7bc3a5bdeddc3e0c85f4b}\label{tap_8c_a33938964e5f7bc3a5bdeddc3e0c85f4b} 
+\index{tap.c@{tap.c}!clock\_tx\_buffer@{clock\_tx\_buffer}}
+\index{clock\_tx\_buffer@{clock\_tx\_buffer}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{clock\_tx\_buffer}{clock\_tx\_buffer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structclock__task__queue__entry}{clock\+\_\+task\+\_\+queue\+\_\+entry}} clock\+\_\+tx\+\_\+buffer}
+
+\Hypertarget{tap_8c_a524afb17e08f3547f2e6c1f8b0fbe1a9}\label{tap_8c_a524afb17e08f3547f2e6c1f8b0fbe1a9} 
+\index{tap.c@{tap.c}!mode@{mode}}
+\index{mode@{mode}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} mode\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{tap_8c_a628c36ee9d1d8448586b9df60e4f8fd0}\label{tap_8c_a628c36ee9d1d8448586b9df60e4f8fd0} 
+\index{tap.c@{tap.c}!sync\_task\_handle@{sync\_task\_handle}}
+\index{sync\_task\_handle@{sync\_task\_handle}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{sync\_task\_handle}{sync\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t sync\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Handle of the sync\+\_\+task. 
+
+sync\+\_\+task handle \Hypertarget{tap_8c_a9bceedf934a6c465d6657b4c7f0b257c}\label{tap_8c_a9bceedf934a6c465d6657b4c7f0b257c} 
+\index{tap.c@{tap.c}!tap\_task\_handle@{tap\_task\_handle}}
+\index{tap\_task\_handle@{tap\_task\_handle}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{tap\_task\_handle}{tap\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tap\+\_\+task\+\_\+handle = NULL}
+
+
+
+Handle of tap\+\_\+task. 
+
+Handle of tap\+\_\+task used to resume the task when needed \Hypertarget{tap_8c_a43cf8accd30762854b5635cb9fefabae}\label{tap_8c_a43cf8accd30762854b5635cb9fefabae} 
+\index{tap.c@{tap.c}!tap\_task\_queue@{tap\_task\_queue}}
+\index{tap\_task\_queue@{tap\_task\_queue}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{tap\_task\_queue}{tap\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t tap\+\_\+task\+\_\+queue = NULL}
+
+
+
+Queue to send msgs to the tap module. 
+
+Queue to send msgs to the tap module. If the message is TAP\+\_\+\+TASK\+\_\+\+QUEUE\+\_\+\+RESET\+\_\+\+COUNTER, the task resets its internal counter. Otherwise it will interpret it as an absolute value of time for an hit. \Hypertarget{tap_8c_a4b95f9c9646e48a84af88f118ad9f2fa}\label{tap_8c_a4b95f9c9646e48a84af88f118ad9f2fa} 
+\index{tap.c@{tap.c}!tempo\_task\_handle@{tempo\_task\_handle}}
+\index{tempo\_task\_handle@{tempo\_task\_handle}!tap.c@{tap.c}}
+\doxysubsubsection{\texorpdfstring{tempo\_task\_handle}{tempo\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tempo\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+Handle for the tempo task 

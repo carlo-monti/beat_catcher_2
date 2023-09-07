@@ -1,0 +1,75 @@
+\doxysection{mode\+\_\+switch.\+c File Reference}
+\hypertarget{mode__switch_8c}{}\label{mode__switch_8c}\index{mode\_switch.c@{mode\_switch.c}}
+{\ttfamily \#include \"{}mode\+\_\+switch.\+h\"{}}\newline
+{\ttfamily \#include \"{}hid.\+h\"{}}\newline
+{\ttfamily \#include \"{}clock.\+h\"{}}\newline
+{\ttfamily \#include \"{}driver/gpio.\+h\"{}}\newline
+{\ttfamily \#include \"{}tap.\+h\"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mode__switch_8c_ab2f6656b7d85659c1d6531b359a3e1a0}{mode\+\_\+switch\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Init function for the mode switch module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{mode__switch_8c_aaddec2e93001176bc08a063e6e82410d}{clock\+\_\+task\+\_\+queue}}
+\item 
+Queue\+Handle\+\_\+t \mbox{\hyperlink{mode__switch_8c_a43cf8accd30762854b5635cb9fefabae}{tap\+\_\+task\+\_\+queue}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{mode__switch_8c_a9bceedf934a6c465d6657b4c7f0b257c}{tap\+\_\+task\+\_\+handle}}
+\item 
+\mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} \mbox{\hyperlink{mode__switch_8c_ad51e90d3ede3800ed2aec7bc82e34dd9}{mode}}
+\item 
+Task\+Handle\+\_\+t \mbox{\hyperlink{mode__switch_8c_a034c82e30f0010d82166a479a170facc}{mode\+\_\+switch\+\_\+task\+\_\+handle}} = NULL
+\begin{DoxyCompactList}\small\item\em Handle of mode\+\_\+switch\+\_\+task to receive notifications. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mode__switch_8c_ab2f6656b7d85659c1d6531b359a3e1a0}\label{mode__switch_8c_ab2f6656b7d85659c1d6531b359a3e1a0} 
+\index{mode\_switch.c@{mode\_switch.c}!mode\_switch\_init@{mode\_switch\_init}}
+\index{mode\_switch\_init@{mode\_switch\_init}!mode\_switch.c@{mode\_switch.c}}
+\doxysubsubsection{\texorpdfstring{mode\_switch\_init()}{mode\_switch\_init()}}
+{\footnotesize\ttfamily void mode\+\_\+switch\+\_\+init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init function for the mode switch module. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{mode__switch_8c_aaddec2e93001176bc08a063e6e82410d}\label{mode__switch_8c_aaddec2e93001176bc08a063e6e82410d} 
+\index{mode\_switch.c@{mode\_switch.c}!clock\_task\_queue@{clock\_task\_queue}}
+\index{clock\_task\_queue@{clock\_task\_queue}!mode\_switch.c@{mode\_switch.c}}
+\doxysubsubsection{\texorpdfstring{clock\_task\_queue}{clock\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t clock\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
+Beat catcher 2.\+0 -\/ Mode Switch Module This module handles the switching between the main modes of the system\+: -\/MODE\+\_\+\+PLAY -\/MODE\+\_\+\+TAP -\/MODE\+\_\+\+SETTINGS \Hypertarget{mode__switch_8c_ad51e90d3ede3800ed2aec7bc82e34dd9}\label{mode__switch_8c_ad51e90d3ede3800ed2aec7bc82e34dd9} 
+\index{mode\_switch.c@{mode\_switch.c}!mode@{mode}}
+\index{mode@{mode}!mode\_switch.c@{mode\_switch.c}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{main__defs_8h_ad7a6a5387cf5f4e77ec3fa2d2604c846}{main\+\_\+mode}} mode\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{mode__switch_8c_a034c82e30f0010d82166a479a170facc}\label{mode__switch_8c_a034c82e30f0010d82166a479a170facc} 
+\index{mode\_switch.c@{mode\_switch.c}!mode\_switch\_task\_handle@{mode\_switch\_task\_handle}}
+\index{mode\_switch\_task\_handle@{mode\_switch\_task\_handle}!mode\_switch.c@{mode\_switch.c}}
+\doxysubsubsection{\texorpdfstring{mode\_switch\_task\_handle}{mode\_switch\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t mode\+\_\+switch\+\_\+task\+\_\+handle = NULL}
+
+
+
+Handle of mode\+\_\+switch\+\_\+task to receive notifications. 
+
+Handle of mode\+\_\+switch\+\_\+task to receive notifications \Hypertarget{mode__switch_8c_a9bceedf934a6c465d6657b4c7f0b257c}\label{mode__switch_8c_a9bceedf934a6c465d6657b4c7f0b257c} 
+\index{mode\_switch.c@{mode\_switch.c}!tap\_task\_handle@{tap\_task\_handle}}
+\index{tap\_task\_handle@{tap\_task\_handle}!mode\_switch.c@{mode\_switch.c}}
+\doxysubsubsection{\texorpdfstring{tap\_task\_handle}{tap\_task\_handle}}
+{\footnotesize\ttfamily Task\+Handle\+\_\+t tap\+\_\+task\+\_\+handle\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{mode__switch_8c_a43cf8accd30762854b5635cb9fefabae}\label{mode__switch_8c_a43cf8accd30762854b5635cb9fefabae} 
+\index{mode\_switch.c@{mode\_switch.c}!tap\_task\_queue@{tap\_task\_queue}}
+\index{tap\_task\_queue@{tap\_task\_queue}!mode\_switch.c@{mode\_switch.c}}
+\doxysubsubsection{\texorpdfstring{tap\_task\_queue}{tap\_task\_queue}}
+{\footnotesize\ttfamily Queue\+Handle\+\_\+t tap\+\_\+task\+\_\+queue\hspace{0.3cm}{\ttfamily [extern]}}
+
