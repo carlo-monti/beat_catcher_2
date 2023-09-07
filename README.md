@@ -13,7 +13,7 @@ The whole project is based on an ESP32 MCU and uses other peripherals such as an
 
 ## How to use
 The user interface of the system looks like this
-
+![Alt text](img/circuito.png?raw=true "Title")
 Once the system is powered on, the user can start the sequence by tapping on the Tap button four times at the correct tempo. The MIDI Clock sequence will start and the system will keep up with the drummer playing. To stop the sequence simply press the Tap button once. Pressing the Menu button will enter the SETTINGS mode in which the user can set various parameters.
 
 ## Code
