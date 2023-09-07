@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['channel_0',['channel',['../onset__adc_8c.html#aee4c39fa7cbecd4a9590ac8e714066a3',1,'onset_adc.c']]],
+  ['clock_2ec_1',['clock.c',['../clock_8c.html',1,'']]],
+  ['clock_2eh_2',['clock.h',['../clock_8h.html',1,'']]],
+  ['clock_5finit_3',['clock_init',['../clock_8c.html#ae9cc0a879e88eea28e4e8b57318ef8e5',1,'clock_init():&#160;clock.c'],['../clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5',1,'clock_init():&#160;clock.c']]],
+  ['clock_5fqueue_5fset_5fdelta_5ftau_5fsync_4',['CLOCK_QUEUE_SET_DELTA_TAU_SYNC',['../clock_8h.html#a5b6cc32812dc64b9f2b2de40e208951dad5eb864f8b547731f2c24914f410a5dc',1,'clock.h']]],
+  ['clock_5fqueue_5fset_5fdelta_5ftau_5ftempo_5',['CLOCK_QUEUE_SET_DELTA_TAU_TEMPO',['../clock_8h.html#a5b6cc32812dc64b9f2b2de40e208951dace0cb20e232e56e256454095baaf4de2',1,'clock.h']]],
+  ['clock_5fqueue_5fstart_6',['CLOCK_QUEUE_START',['../clock_8h.html#a5b6cc32812dc64b9f2b2de40e208951da60acc728b5740b9d839de268aa789b9b',1,'clock.h']]],
+  ['clock_5fqueue_5fstop_7',['CLOCK_QUEUE_STOP',['../clock_8h.html#a5b6cc32812dc64b9f2b2de40e208951da7b1de8a4e52b7f3e8228c1252be2e74c',1,'clock.h']]],
+  ['clock_5ftask_5fhandle_8',['clock_task_handle',['../clock_8c.html#a1d3224e02cec6b02a9c3521cbad7d171',1,'clock_task_handle:&#160;clock.c'],['../clock_8h.html#a1d3224e02cec6b02a9c3521cbad7d171',1,'clock_task_handle:&#160;clock.c'],['../tap_8c.html#a1d3224e02cec6b02a9c3521cbad7d171',1,'clock_task_handle:&#160;clock.c']]],
+  ['clock_5ftask_5fpriority_9',['CLOCK_TASK_PRIORITY',['../main__defs_8h.html#a6826a485915d0f8efcb10b985162c3f2',1,'main_defs.h']]],
+  ['clock_5ftask_5fqueue_10',['clock_task_queue',['../clock_8c.html#aaddec2e93001176bc08a063e6e82410d',1,'clock_task_queue:&#160;clock.c'],['../clock_8h.html#aaddec2e93001176bc08a063e6e82410d',1,'clock_task_queue:&#160;clock.c'],['../mode__switch_8c.html#aaddec2e93001176bc08a063e6e82410d',1,'clock_task_queue:&#160;clock.c'],['../sync_8c.html#aaddec2e93001176bc08a063e6e82410d',1,'clock_task_queue:&#160;clock.c'],['../tap_8c.html#aaddec2e93001176bc08a063e6e82410d',1,'clock_task_queue:&#160;clock.c']]],
+  ['clock_5ftask_5fqueue_5fentry_11',['clock_task_queue_entry',['../structclock__task__queue__entry.html',1,'']]],
+  ['clock_5ftask_5fqueue_5fentry_5ftype_12',['clock_task_queue_entry_type',['../clock_8h.html#a5b6cc32812dc64b9f2b2de40e208951d',1,'clock.h']]],
+  ['clock_5ftask_5fstack_5fsize_13',['CLOCK_TASK_STACK_SIZE',['../main__defs_8h.html#adb3f6ae2bca850811294bbcb13a4028d',1,'main_defs.h']]],
+  ['clock_5ftx_5fbuffer_14',['clock_tx_buffer',['../tap_8c.html#a33938964e5f7bc3a5bdeddc3e0c85f4b',1,'tap.c']]],
+  ['clockhighwatermark_15',['clockHighWaterMark',['../main_8c.html#a6c48c8769e7c9b6052d3218b614565be',1,'main.c']]],
+  ['current_5fsample_16',['current_sample',['../structruntime__onset__values.html#a18364df33c17e2a0ea688d319d839c48',1,'runtime_onset_values']]]
+];
