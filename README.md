@@ -10,4 +10,4 @@ An embedded beat-tracking system.
 The code has been developed with the ESP-IDF framework.
 
 ## Documentation
-Doxygen docs can be found at: [https://github.com/carlo-monti/beat_catcher_2]https://carlo-monti.github.io/beat_catcher_2/
+Doxygen docs can be found at: https://carlo-monti.github.io/beat_catcher_2/
