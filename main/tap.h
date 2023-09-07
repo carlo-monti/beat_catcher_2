@@ -10,7 +10,24 @@
 #ifndef BC_TAP_H
 #define BC_TAP_H
 
+/**
+ * @brief GPIO pin of the Tap button
+ */
+#if CONFIG_IDF_TARGET_ESP32
+#define TAP_TEMPO_PIN GPIO_NUM_25
+#else
+#define TAP_TEMPO_PIN GPIO_NUM_16
+#endif
+
+/**
+ * @brief Value of the message to the queue to ask for counter reset
+ */
 #define TAP_TASK_QUEUE_RESET_COUNTER 0
+
+/**
+ * @brief Debounce value for tap button in us
+ */
+#define TAP_DEBOUNCE_TIME_US 200000 // almost 300 bpm
 
 /**
  * @brief Queue to send msgs to the tap module.

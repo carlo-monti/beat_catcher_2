@@ -11,6 +11,11 @@
 #define BC_TEMPO_H
 
 /**
+ * @brief Headroom value suggested for the B-Keeper algorithm
+ */
+#define HEADROOM_VALUE_TEMPO 0.1
+
+/**
  * @brief Handle of the tempo_task.
  */
 extern TaskHandle_t tempo_task_handle;

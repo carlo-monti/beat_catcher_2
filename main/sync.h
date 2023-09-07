@@ -13,6 +13,11 @@
 #include "main_defs.h"
 
 /**
+ * @brief Headroom value suggested for the B-Keeper algorithm
+ */
+#define HEADROOM_VALUE_SYNC 0.1
+
+/**
  * @brief Notify codes for sync_task.
  */
 typedef enum

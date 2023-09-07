@@ -17,124 +17,61 @@
  * To add a menu entry:
  * - Add a value on the menu_item_index enum to select the order for the parameter name in the menu
  * - Add in the menu_init function inside the hid.c file set up the name and the various info to fill all the
- * struct fields except the pointer to variable that must be set to NULL.
+ * struct fields except the pointer to variable that must be set to NULL. The parameter values are defined in menu_parameters.h
  * - Place a call to the set_menu_item_pointer_to_vrb function inside the module to register the pointer to the struct.
- * 
  */
 
 #ifndef BC_HID_H
 #define BC_HID_H
 
 #include "main_defs.h"
+#include "menu_parameters.h"
 
 /**
- * @brief Here are the macros for all the menu entries
+ * @brief Name displayed when the system asks to save values
  */
-#define ALPHA_PARAMETER_NAME "TEMPO: alpha   "
-#define ALPHA_MIN_VALUE 0.1
-#define ALPHA_MAX_VALUE 2
-#define ALPHA_DEFAULT_PERCENTAGE 50
-#define ALPHA_PERCENTAGE_STEP 1
-
-#define LATENCY_AMOUNT_PARAMETER_NAME "TEMPO: amount  "
-#define LATENCY_AMOUNT_MIN_VALUE 0
-#define LATENCY_AMOUNT_MAX_VALUE 10
-#define LATENCY_AMOUNT_DEFAULT_PERCENTAGE 50
-#define LATENCY_AMOUNT_PERCENTAGE_STEP 10
-
-#define LATENCY_SMOOTH_PARAMETER_NAME "TEMPO: smooth  "
-#define LATENCY_SMOOTH_MIN_VALUE 0
-#define LATENCY_SMOOTH_MAX_VALUE 10
-#define LATENCY_SMOOTH_DEFAULT_PERCENTAGE 50
-#define LATENCY_SMOOTH_PERCENTAGE_STEP 10
-
-#define NARROW_RATIO_PARAMETER_NAME "SYNC: narrow r "
-#define NARROW_RATIO_MIN_VALUE 0.1
-#define NARROW_RATIO_MAX_VALUE 2
-#define NARROW_RATIO_DEFAULT_PERCENTAGE 50
-#define NARROW_RATIO_PERCENTAGE_STEP 1
-
-#define EXPAND_RATIO_PARAMETER_NAME "SYNC: expand r "
-#define EXPAND_RATIO_MIN_VALUE 0.1
-#define EXPAND_RATIO_MAX_VALUE 2
-#define EXPAND_RATIO_DEFAULT_PERCENTAGE 50
-#define EXPAND_RATIO_PERCENTAGE_STEP 1
-
-#define BETA_PARAMETER_NAME "SYNC: beta     "
-#define BETA_MIN_VALUE 0.1
-#define BETA_MAX_VALUE 1
-#define BETA_DEFAULT_PERCENTAGE 50
-#define BETA_PERCENTAGE_STEP 1
-
-#define KICK_LOW_PASS_PARAMETER_NAME "KICK: filter   "
-#define KICK_LOW_PASS_MIN_VALUE 1
-#define KICK_LOW_PASS_MAX_VALUE 100
-#define KICK_LOW_PASS_DEFAULT_PERCENTAGE 50
-#define KICK_LOW_PASS_PERCENTAGE_STEP 1
-
-#define KICK_THRESHOLD_PARAMETER_NAME "KICK: thresh   "
-#define KICK_THRESHOLD_MIN_VALUE 0
-#define KICK_THRESHOLD_MAX_VALUE 4096
-#define KICK_THRESHOLD_DEFAULT_PERCENTAGE 50
-#define KICK_THRESHOLD_PERCENTAGE_STEP 1
-
-#define KICK_GATE_TIMER_PARAMETER_NAME "KICK: gate     "
-#define KICK_GATE_TIMER_MIN_VALUE 1000
-#define KICK_GATE_TIMER_MAX_VALUE 500000
-#define KICK_GATE_TIMER_DEFAULT_PERCENTAGE 50
-#define KICK_GATE_TIMER_PERCENTAGE_STEP 1
-
-#define KICK_DELTA_X_PARAMETER_NAME "KICK: delta x  "
-#define KICK_DELTA_X_MIN_VALUE 3
-#define KICK_DELTA_X_MAX_VALUE 200
-#define KICK_DELTA_X_DEFAULT_PERCENTAGE 50
-#define KICK_DELTA_X_PERCENTAGE_STEP 1
-
-#define SNARE_LOW_PASS_PARAMETER_NAME "SNARE: filter  "
-#define SNARE_LOW_PASS_MIN_VALUE 1
-#define SNARE_LOW_PASS_MAX_VALUE 100
-#define SNARE_LOW_PASS_DEFAULT_PERCENTAGE 50
-#define SNARE_LOW_PASS_PERCENTAGE_STEP 1
-
-#define SNARE_THRESHOLD_PARAMETER_NAME "SNARE: thresh  "
-#define SNARE_THRESHOLD_MIN_VALUE 0
-#define SNARE_THRESHOLD_MAX_VALUE 4096
-#define SNARE_THRESHOLD_DEFAULT_PERCENTAGE 50
-#define SNARE_THRESHOLD_PERCENTAGE_STEP 1
-
-#define SNARE_GATE_TIMER_PARAMETER_NAME "SNARE: gate    "
-#define SNARE_GATE_TIMER_MIN_VALUE 1000
-#define SNARE_GATE_TIMER_MAX_VALUE 500000
-#define SNARE_GATE_TIMER_DEFAULT_PERCENTAGE 50
-#define SNARE_GATE_TIMER_PERCENTAGE_STEP 1
-
-#define SNARE_DELTA_X_PARAMETER_NAME "SNARE: delta x "
-#define SNARE_DELTA_X_MIN_VALUE 3
-#define SNARE_DELTA_X_MAX_VALUE 200
-#define SNARE_DELTA_X_DEFAULT_PERCENTAGE 50
-#define SNARE_DELTA_X_PERCENTAGE_STEP 1
-
 #define SAVE_VALUES_PARAMETER_NAME "SAVE VALUES    "
 
-/* HID */
+/**
+ * @{ \name GPIO pins for encoder
+ */
 #if CONFIG_IDF_TARGET_ESP32
-#define OLED_SDA_GPIO_PIN GPIO_NUM_21
-#define OLED_SCL_GPIO_PIN GPIO_NUM_22
-#define OLED_RESET_GPIO_PIN GPIO_NUM_23
 #define ENCODER_CLICK_PIN GPIO_NUM_19
 #define ENCODER_PIN_0 GPIO_NUM_5
 #define ENCODER_PIN_1 GPIO_NUM_18
 #else
-#define OLED_SDA_GPIO_PIN GPIO_NUM_42
-#define OLED_SCL_GPIO_PIN GPIO_NUM_44
-#define OLED_RESET_GPIO_PIN GPIO_NUM_43
 #define ENCODER_CLICK_PIN GPIO_NUM_40
 #define ENCODER_PIN_0 GPIO_NUM_38
 #define ENCODER_PIN_1 GPIO_NUM_39
 #endif
+/**
+ * @}
+ */
 
+/**
+ * @{ \name GPIO pins for OLED
+ */
+#if CONFIG_IDF_TARGET_ESP32
+#define OLED_SDA_GPIO_PIN GPIO_NUM_21
+#define OLED_SCL_GPIO_PIN GPIO_NUM_22
+#define OLED_RESET_GPIO_PIN GPIO_NUM_23
+#else
+#define OLED_SDA_GPIO_PIN GPIO_NUM_42
+#define OLED_SCL_GPIO_PIN GPIO_NUM_44
+#define OLED_RESET_GPIO_PIN GPIO_NUM_43
+#endif
+/**
+ * @}
+ */
+
+/**
+ * @{ \name Encoder handling parameters
+ */
 #define ENCODER_CLICK_DEBOUNCE_TIME_US 300000
 #define ENCODER_GPIO_INPUT_PIN_SEL (1ULL << ENCODER_CLICK_PIN)
+/**
+ * @}
+ */
 
 /**
  * @brief Type of message sent to the queue.

@@ -1,10 +1,6 @@
 /**
- * @file mode_swi.h
- * @brief File containing example of doxygen usage for quick reference.
- *
- * Here typically goes a more extensive explanation of what the header
- * defines. Doxygens tags are words preceeded by either a backslash @\
- * or by an at symbol @@.
+ * @file main_defs.h
+ * @brief This file contains definitions valid for the whole code (task stack size, task priority, macros and typedefs,...)
  */
 
 #ifndef BC_MAIN_DEFS_H
@@ -19,77 +15,62 @@
 #include "freertos/task.h"
 #include "freertos/queue.h"
 #include "freertos/semphr.h"
-
 #include "esp_log.h"
 #include "esp_sleep.h"
 #include "sdkconfig.h"
 #include "esp_timer.h"
 
-/* TASKS PRIORITIES */
+/**
+ * @{ \name Task priorities
+ */
 #define TAP_TASK_PRIORITY 10
-#define TAP_TASK_STACK_SIZE 4096
 #define CLOCK_TASK_PRIORITY 11
-#define CLOCK_TASK_STACK_SIZE 4096
 #define TEMPO_TASK_PRIORITY 10
-#define TEMPO_TASK_STACK_SIZE 4096
 #define SYNC_TASK_PRIORITY 10
-#define SYNC_TASK_STACK_SIZE 4096
 #define ONSET_ADC_TASK_PRIORITY 10
-#define ONSET_ADC_TASK_STACK_SIZE 4096
 #define HID_TASK_PRIORITY 10
-#define HID_TASK_STACK_SIZE 4096
 #define MODE_SWITCH_TASK_PRIORITY 10
+/**
+ * @}
+ */
+
+/**
+ * @{ \name Stack size for all the tasks
+ */
+#define TAP_TASK_STACK_SIZE 4096
+#define CLOCK_TASK_STACK_SIZE 4096
+#define TEMPO_TASK_STACK_SIZE 4096
+#define SYNC_TASK_STACK_SIZE 4096
+#define ONSET_ADC_TASK_STACK_SIZE 4096
+#define HID_TASK_STACK_SIZE 4096
 #define MODE_SWITCH_STACK_SIZE 4096
+/**
+ * @}
+ */
 
-/* LEDS */
-#if CONFIG_IDF_TARGET_ESP32
-#define KICK_LED_PIN GPIO_NUM_14
-#define SNARE_LED_PIN GPIO_NUM_33
-#define FIRST_LED_PIN GPIO_NUM_17
-#define SECOND_LED_PIN GPIO_NUM_16
-#define THIRD_LED_PIN GPIO_NUM_4
-#define FOURTH_LED_PIN GPIO_NUM_2
-#else
-#define KICK_LED_PIN GPIO_NUM_8
-#define SNARE_LED_PIN GPIO_NUM_15
-#define FIRST_LED_PIN GPIO_NUM_37
-#define SECOND_LED_PIN GPIO_NUM_36
-#define THIRD_LED_PIN GPIO_NUM_35
-#define FOURTH_LED_PIN GPIO_NUM_45
-#endif
-#define KICK_LED_PIN_BLINK_DURATION 15 /**< Some documentation for the member BoxStruct#a. */
-#define SNARE_LED_PIN_BLINK_DURATION 15 /**< Some documentation for the member BoxStruct#a. */
-
+/**
+ * @brief Number of 8th notes contained in two bars
+ */
 #define TWO_BAR_LENGTH_IN_8TH 16
 
-#define MODE_SWITCH_DEBOUNCE_TIME_US 600000
-#define TAP_DEBOUNCE_TIME_US 200000 // almost 300 bpm
-
-/* UART */
-#if CONFIG_IDF_TARGET_ESP32
-#define UART_PIN_1 GPIO_NUM_26
-#define UART_PIN_2 GPIO_NUM_27
-#else
-#define UART_PIN_1 GPIO_NUM_17
-#define UART_PIN_2 GPIO_NUM_18
-#endif
-
-#if CONFIG_IDF_TARGET_ESP32
-#define TAP_TEMPO_PIN GPIO_NUM_25
-#define MENU_SWITCH_PIN GPIO_NUM_12
-#else
-#define TAP_TEMPO_PIN GPIO_NUM_16
-#define MENU_SWITCH_PIN GPIO_NUM_3
-#endif
-
-#define ONSET_GARBAGE_NOTIFY 0
-
+/**
+ * @brief Max number of onsets that can be stored at the same time
+ */
 #define ONSET_BUFFER_SIZE 300
-#define TWO_BAR_LENGTH_IN_8TH 16
 
+/**
+ * @brief Macros that gives the current time in ms
+ */
 #define GET_CURRENT_TIME_MS() ((esp_timer_get_time() + 500) / 1000)
+
+/**
+ * @brief Macros that converts us to ms
+ */
 #define US_TO_MS(time_us) ((time_us + 500) / 1000)      
 
+/**
+ * @brief Enum of the four main modes of the system
+ */
 typedef enum
 {
     MODE_PLAY,
@@ -98,6 +79,10 @@ typedef enum
     MODE_SLEEP,
 } main_mode;
 
+/**
+ * @brief Struct of the main runtime global variable.
+ * It contains all the parameters that can change over time
+ */
 typedef struct
 {
     uint64_t tau; // 8th time in ms (bpm120)

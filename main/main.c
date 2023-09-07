@@ -2,14 +2,12 @@
  *
  * \section intro_sec Introduction
  *
- * Beat Catcher 2.0 is the new implementation of Beat Catcher 1.0, a tempo tracking system. It is based
- * on the algor
+ * Beat Catcher 2.0 is an implementation of B-Keeper beat-tracking algorithm. It allows to track the tempo of a drummer and keep a MIDI Clock sequence in sync with him.
+ * The whole project is based on an ESP32 MCU and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components (piezo sensors, leds...).
  *
- * \section install_sec Installation
+ * \section Code
+ * The code has been developed with the ESP-IDF framework and can be found at: <a href="https://github.com/carlo-monti/beat_catcher_2">https://github.com/carlo-monti/beat_catcher_2</a> 
  *
- * \subsection step1 Step 1: Opening the box
- *
- * etc...
  */
 
 #include "main_defs.h"
@@ -24,32 +22,51 @@
 #include "../components/ssd1306/ssd1306.h"
 #include "../components/ssd1306/font8x8_basic.h"
 
-UBaseType_t clockHighWaterMark;
-UBaseType_t hidHighWaterMark;
-UBaseType_t onset_adcHighWaterMark;
-UBaseType_t mode_switchHighWaterMark;
-UBaseType_t syncHighWaterMark;
-UBaseType_t tapHighWaterMark;
-UBaseType_t tempoHighWaterMark;
-
+/**
+ * @brief Circular buffer for storing onset informations
+ */
 onset_entry onsets[ONSET_BUFFER_SIZE];
+
+/**
+ * @brief Mode the system is currently in
+ */
 volatile main_mode mode = MODE_TAP;
+
+/**
+ * @brief Mutex for protecting the bc variable
+ */
 SemaphoreHandle_t bc_mutex_handle = NULL;
+
+/**
+ * @brief Main runtime variable of the system
+ */
 main_runtime_vrbs bc = {
     .tau = 250, // 8th time in ms (bpm120)
-    .bar_position = 0,
-    .layer = 0,
-    .expected_beat = 0,
-    .there_is_an_onset = false,
-    .most_recent_onset_index = 0,
-    .last_relevant_onset_index_for_sync = -1,
-    .last_relevant_onset_index_for_tempo = 0,
+    .bar_position = 0, // current bar position onto two bars (0-15)
+    .layer = 0, // current layer value of the bar position
+    .expected_beat = 0, // position of the next expected beat
+    .there_is_an_onset = false, // indicates if there has been an onset
+    .most_recent_onset_index = 0, // index of the most recent onset inside the array
+    .last_relevant_onset_index_for_sync = -1, // index of the last relevant onset for sync calculation
+    .last_relevant_onset_index_for_tempo = 0, // index of the last relevant onset for tempo calculation
 };
 
+/**
+ * @brief This function runs only at the start of the system and it starts the modules and sets up some global parameters.
+ */
 void app_main(void)
 {
-    gpio_install_isr_service(0);  
+    /*
+    Install an isr service
+    */
+    gpio_install_isr_service(0);
+    /*
+    Create the mutex of bc variable
+    */
     bc_mutex_handle = xSemaphoreCreateMutex();
+    /*
+    Start all the modules
+    */
     hid_init();
     mode_switch_init();
     onset_adc_init();
@@ -57,6 +74,12 @@ void app_main(void)
     tempo_init();
     tap_init();
     clock_init();
+    /*
+    Refresh the menu values after all the modules setted their pointer
+    */
     hid_set_up_values();
+    /*
+    Delete this task
+    */
     vTaskDelete(NULL);
 }

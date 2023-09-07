@@ -34,7 +34,6 @@ void set_menu_item_pointer_to_vrb(menu_item_index index, void *ptr)
 
 static uint8_t get_variable_perc_value(hid_parameter_entry *variable)
 {
-    ESP_LOGI("OLED", "get_variable_perc_value inside returns %d", variable->percentage);
     return variable->percentage;
 }
 
@@ -59,13 +58,8 @@ static void set_variable_value(hid_parameter_entry *variable, uint8_t percentage
         break;
     case BC_UINT16:
         float return_16 = ((float)(variable->max.u16 - variable->min.u16) / 100);
-        ESP_LOGI("OLED", "rmax %d", variable->max.u16);
-        ESP_LOGI("OLED", "rminx %d", variable->min.u16);
-        ESP_LOGI("OLED", "return16 %f", return_16);
         return_16 = return_16 * (float)percentage_value;
-        ESP_LOGI("OLED", "return16 %f", return_16);
         return_16 = return_16 + variable->min.u16;
-        ESP_LOGI("OLED", "return16 %f", return_16);
         *(uint16_t *)variable->pointer_to_vrb = (uint16_t)return_16;
         ESP_LOGI("OLED", "variable_value set to %d", (uint16_t)return_16);
         break;
@@ -89,7 +83,7 @@ static void set_variable_value(hid_parameter_entry *variable, uint8_t percentage
         }
         break;
     default:
-        ESP_LOGI("OLED", "ERRORE qui 567b");
+        ESP_LOGE("OLED", "ERRORE qui 567b");
         break;
     }
 }

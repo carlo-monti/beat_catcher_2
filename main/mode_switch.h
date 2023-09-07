@@ -13,7 +13,22 @@
 #ifndef BC_MODE_SWITCH_H
 #define BC_MODE_SWITCH_H
 
+
 #include "main_defs.h"
+
+/**
+ * @brief GPIO pin for the mode button
+ */
+#if CONFIG_IDF_TARGET_ESP32
+#define MODE_SWITCH_PIN GPIO_NUM_12
+#else
+#define MODE_SWITCH_PIN GPIO_NUM_3
+#endif
+
+/**
+ * @brief Debounce value for the mode button (in us)
+ */
+#define MODE_SWITCH_DEBOUNCE_TIME_US 600000
 
 /**
  * @brief Notify values to ask mode change.

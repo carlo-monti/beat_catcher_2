@@ -15,6 +15,22 @@
 #include "main_defs.h"
 
 /**
+ * @{ \name GPIO pins for Kick and Snare leds
+ */
+#if CONFIG_IDF_TARGET_ESP32
+#define KICK_LED_PIN GPIO_NUM_14
+#define SNARE_LED_PIN GPIO_NUM_33
+#else
+#define KICK_LED_PIN GPIO_NUM_8
+#define SNARE_LED_PIN GPIO_NUM_15
+#endif
+#define KICK_LED_PIN_BLINK_DURATION 15
+#define SNARE_LED_PIN_BLINK_DURATION 15
+/**
+ * @}
+ */
+
+/**
  * @brief Queue to send msgs to the onset_adc module.
  *
  * Queue to send msgs to the onset_adc module. The allowed msg value are defined in onset_adc_queue_msg enum.
