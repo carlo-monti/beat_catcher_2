@@ -20,6 +20,36 @@ Once the system is powered on, the user can start the sequence by tapping on the
 ## Code
 
 The code has been developed with the ESP-IDF framework. After the framework is installed (in VSC or Eclipse), just clone the whole code into a new project and set the build target.
+.
+├── CMakeLists.txt
+├── README.md
+├── build
+├── components
+│   └── ssd1306
+├── main
+│   ├── CMakeLists.txt
+│   ├── bc_doxygen
+│   ├── clock.c
+│   ├── clock.h
+│   ├── hid.c
+│   ├── hid.h
+│   ├── html
+│   ├── main.c
+│   ├── main_defs.h
+│   ├── menu_parameters.h
+│   ├── mode_switch.c
+│   ├── mode_switch.h
+│   ├── onset_adc.c
+│   ├── onset_adc.h
+│   ├── sync.c
+│   ├── sync.h
+│   ├── tap.c
+│   ├── tap.h
+│   ├── tempo.c
+│   └── tempo.h
+├── sdkconfig
+└── sdkconfig.old
+
 
 ## Documentation
 Doxygen docs can be found at: https://carlo-monti.github.io/beat_catcher_2/
