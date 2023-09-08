@@ -12,6 +12,8 @@ Music Journal, vol. 37, no. 2, 2013*). An updated version of B-Keeper algorithm 
 The whole project is based on an ESP32 MCU and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components (piezo sensors, leds...). This is the schematic of the circuit:
 ![Circuit image](img/circuito.png?raw=true "Circuit")
 
+| Supported Targets | ESP32 | ESP32-S3 |
+| ----------------- | ----- | -------- |
 ## How to use
 The user interface of the system looks like this:
 ![User interface](img/user_interface.png?raw=true "User interface")
