@@ -12,10 +12,11 @@ Music Journal, vol. 37, no. 2, 2013*). An updated version of B-Keeper algorithm 
 The whole project is based on an ESP32 MCU and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components (piezo sensors, leds...). This is the schematic of the circuit:
 ![Circuit image](img/circuito.png?raw=true "Circuit")
 
+## Code
+
 | Supported Targets | ESP32 | ESP32-S3 |
 | ----------------- | ----- | -------- |
 
-## Code
 To compile the code do what is suggested by the ESP-IDF docs:
 
 1. Install the ESP-IDF framework with plugin for VSC or Eclipse (v5.1.1)
