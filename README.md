@@ -53,11 +53,12 @@ This is the directory tree:
     └── tempo.h
 ```
 
+## Documentation
+Doxygen docs can be found at: https://carlo-monti.github.io/beat_catcher_2/
+
 ## How to use it in practice
 
 The user interface of the system looks like this:
 ![User interface](img/user_interface.png?raw=true "User interface")
 Once the system is powered on, the user can start the sequence by tapping on the Tap button four times at the correct tempo. The MIDI Clock sequence will start and the system will keep up with the drummer playing. To stop the sequence simply press the Tap button once. Pressing the Menu button will enter the SETTINGS mode in which the user can set various parameters.
 
-## Documentation
-Doxygen docs can be found at: https://carlo-monti.github.io/beat_catcher_2/
