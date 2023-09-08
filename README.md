@@ -14,13 +14,22 @@ The whole project is based on an ESP32 MCU and uses other peripherals such as an
 
 | Supported Targets | ESP32 | ESP32-S3 |
 | ----------------- | ----- | -------- |
+
 ## How to use
+
 The user interface of the system looks like this:
 ![User interface](img/user_interface.png?raw=true "User interface")
 Once the system is powered on, the user can start the sequence by tapping on the Tap button four times at the correct tempo. The MIDI Clock sequence will start and the system will keep up with the drummer playing. To stop the sequence simply press the Tap button once. Pressing the Menu button will enter the SETTINGS mode in which the user can set various parameters.
 
 ## Code
+Compiling the esp32-at is the same as compiling any other project based on the ESP-IDF:
 
+1. You can clone the project into an empty directory using command:
+```
+git clone --recursive https://github.com/carlo-monti/beat_catcher_2.git
+```
+2. `rm sdkconfig` to remove the old configuration.
+3. 
 The code has been developed with the ESP-IDF framework. After the framework is installed (in VSC or Eclipse), just clone the whole code into a new project and set the build target. This is the directory tree:
 ```
 ├── CMakeLists.txt
