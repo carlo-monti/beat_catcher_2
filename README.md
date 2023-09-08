@@ -20,7 +20,7 @@ Once the system is powered on, the user can start the sequence by tapping on the
 ## Code
 
 The code has been developed with the ESP-IDF framework. After the framework is installed (in VSC or Eclipse), just clone the whole code into a new project and set the build target.
-.
+```
 ├── CMakeLists.txt
 ├── README.md
 ├── build
@@ -49,7 +49,7 @@ The code has been developed with the ESP-IDF framework. After the framework is i
 │   └── tempo.h
 ├── sdkconfig
 └── sdkconfig.old
-
+```
 
 ## Documentation
 Doxygen docs can be found at: https://carlo-monti.github.io/beat_catcher_2/
