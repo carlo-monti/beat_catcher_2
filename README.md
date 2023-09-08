@@ -19,7 +19,7 @@ Once the system is powered on, the user can start the sequence by tapping on the
 
 ## Code
 
-The code has been developed with the ESP-IDF framework. After the framework is installed (in VSC or Eclipse), just clone the whole code into a new project and set the build target.
+The code has been developed with the ESP-IDF framework. After the framework is installed (in VSC or Eclipse), just clone the whole code into a new project and set the build target. This is the directory tree:
 ```
 ├── CMakeLists.txt
 ├── README.md
@@ -29,23 +29,23 @@ The code has been developed with the ESP-IDF framework. After the framework is i
 ├── main
 │   ├── CMakeLists.txt
 │   ├── bc_doxygen
-│   ├── clock.c (c file for Clock module)
+│   ├── clock.c
 │   ├── clock.h
-│   ├── hid.c (c file for Hid module)
+│   ├── hid.c
 │   ├── hid.h
 │   ├── html
 │   ├── main.c
 │   ├── main_defs.h
 │   ├── menu_parameters.h
-│   ├── mode_switch.c (c file for Mode Switch module)
+│   ├── mode_switch.c
 │   ├── mode_switch.h
-│   ├── onset_adc.c (c file for Onset Adc module)
+│   ├── onset_adc.c
 │   ├── onset_adc.h
-│   ├── sync.c (c file for Sync module)
+│   ├── sync.c
 │   ├── sync.h
-│   ├── tap.c (c file for Tap module)
+│   ├── tap.c
 │   ├── tap.h
-│   ├── tempo.c (c file for Tempo module)
+│   ├── tempo.c
 │   └── tempo.h
 ├── sdkconfig
 └── sdkconfig.old
