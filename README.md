@@ -29,23 +29,23 @@ The code has been developed with the ESP-IDF framework. After the framework is i
 ├── main
 │   ├── CMakeLists.txt
 │   ├── bc_doxygen
-│   ├── clock.c // dsaf
+│   ├── clock.c (c file for Clock module)
 │   ├── clock.h
-│   ├── hid.c
+│   ├── hid.c (c file for Hid module)
 │   ├── hid.h
 │   ├── html
 │   ├── main.c
 │   ├── main_defs.h
 │   ├── menu_parameters.h
-│   ├── mode_switch.c
+│   ├── mode_switch.c (c file for Mode Switch module)
 │   ├── mode_switch.h
-│   ├── onset_adc.c
+│   ├── onset_adc.c (c file for Onset Adc module)
 │   ├── onset_adc.h
-│   ├── sync.c
+│   ├── sync.c (c file for Sync module)
 │   ├── sync.h
-│   ├── tap.c
+│   ├── tap.c (c file for Tap module)
 │   ├── tap.h
-│   ├── tempo.c
+│   ├── tempo.c (c file for Tempo module)
 │   └── tempo.h
 ├── sdkconfig
 └── sdkconfig.old
