@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tempo.h Source File</title>
+<title>Beat Catcher 2.0: tempo.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -76,22 +76,24 @@ $(function() {
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef BC_TEMPO_H</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define BC_TEMPO_H</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="tempo_8h.html#a4b95f9c9646e48a84af88f118ad9f2fa">tempo_task_handle</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="tempo_8h.html#a1fc0d73b3d558fb80ac87a18d3b2f6d4">   16</a></span><span class="preprocessor">#define HEADROOM_VALUE_TEMPO 0.1</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">   21</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">   23</a></span>    <a class="code hl_enumvalue" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">TEMPO_START_EVALUATION_NOTIFY</a>,</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412">   24</a></span>    <a class="code hl_enumvalue" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412">TEMPO_RESET_PARAMETERS</a>,</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>} <a class="code hl_enumeration" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">tempo_task_notify_code</a>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keywordtype">void</span> <a class="code hl_function" href="tempo_8h.html#adafb1cbe0338573004581a9f811aa72c">tempo_init</a>();</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="tempo_8h.html#a4b95f9c9646e48a84af88f118ad9f2fa">tempo_task_handle</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">   26</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">   28</a></span>    <a class="code hl_enumvalue" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">TEMPO_START_EVALUATION_NOTIFY</a>,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412">   29</a></span>    <a class="code hl_enumvalue" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412">TEMPO_RESET_PARAMETERS</a>,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <a class="code hl_enumeration" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">tempo_task_notify_code</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keywordtype">void</span> <a class="code hl_function" href="tempo_8h.html#adafb1cbe0338573004581a9f811aa72c">tempo_init</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="atempo_8h_html_a4b95f9c9646e48a84af88f118ad9f2fa"><div class="ttname"><a href="tempo_8h.html#a4b95f9c9646e48a84af88f118ad9f2fa">tempo_task_handle</a></div><div class="ttdeci">TaskHandle_t tempo_task_handle</div><div class="ttdoc">Handle of the tempo_task.</div><div class="ttdef"><b>Definition</b> tempo.c:11</div></div>
-<div class="ttc" id="atempo_8h_html_abc364bc71af450fbe95199def797ba59"><div class="ttname"><a href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">tempo_task_notify_code</a></div><div class="ttdeci">tempo_task_notify_code</div><div class="ttdoc">Notify codes for tempo_task.</div><div class="ttdef"><b>Definition</b> tempo.h:22</div></div>
-<div class="ttc" id="atempo_8h_html_abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290"><div class="ttname"><a href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">TEMPO_START_EVALUATION_NOTIFY</a></div><div class="ttdeci">@ TEMPO_START_EVALUATION_NOTIFY</div><div class="ttdef"><b>Definition</b> tempo.h:23</div></div>
-<div class="ttc" id="atempo_8h_html_abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412"><div class="ttname"><a href="tempo_8h.html#abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412">TEMPO_RESET_PARAMETERS</a></div><div class="ttdeci">@ TEMPO_RESET_PARAMETERS</div><div class="ttdef"><b>Definition</b> tempo.h:24</div></div>
-<div class="ttc" id="atempo_8h_html_adafb1cbe0338573004581a9f811aa72c"><div class="ttname"><a href="tempo_8h.html#adafb1cbe0338573004581a9f811aa72c">tempo_init</a></div><div class="ttdeci">void tempo_init()</div><div class="ttdoc">Init function for the tempo module The function will set parameters and starts tempo_task.</div><div class="ttdef"><b>Definition</b> tempo.c:132</div></div>
+<div class="ttc" id="atempo_8h_html_abc364bc71af450fbe95199def797ba59"><div class="ttname"><a href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">tempo_task_notify_code</a></div><div class="ttdeci">tempo_task_notify_code</div><div class="ttdoc">Notify codes for tempo_task.</div><div class="ttdef"><b>Definition</b> tempo.h:27</div></div>
+<div class="ttc" id="atempo_8h_html_abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290"><div class="ttname"><a href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">TEMPO_START_EVALUATION_NOTIFY</a></div><div class="ttdeci">@ TEMPO_START_EVALUATION_NOTIFY</div><div class="ttdef"><b>Definition</b> tempo.h:28</div></div>
+<div class="ttc" id="atempo_8h_html_abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412"><div class="ttname"><a href="tempo_8h.html#abc364bc71af450fbe95199def797ba59ae2141299ba75c94938ab98b765b9a412">TEMPO_RESET_PARAMETERS</a></div><div class="ttdeci">@ TEMPO_RESET_PARAMETERS</div><div class="ttdef"><b>Definition</b> tempo.h:29</div></div>
+<div class="ttc" id="atempo_8h_html_adafb1cbe0338573004581a9f811aa72c"><div class="ttname"><a href="tempo_8h.html#adafb1cbe0338573004581a9f811aa72c">tempo_init</a></div><div class="ttdeci">void tempo_init()</div><div class="ttdoc">Init function for the tempo module The function will set parameters and starts tempo_task.</div><div class="ttdef"><b>Definition</b> tempo.c:172</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

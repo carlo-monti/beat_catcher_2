@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tempo.c File Reference</title>
+<title>Beat Catcher 2.0: tempo.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -84,23 +84,28 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:adafb1cbe0338573004581a9f811aa72c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#adafb1cbe0338573004581a9f811aa72c">tempo_init</a> ()</td></tr>
-<tr class="memdesc:adafb1cbe0338573004581a9f811aa72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function for the tempo module The function will set parameters and starts tempo_task.  <br /></td></tr>
+<tr class="memdesc:adafb1cbe0338573004581a9f811aa72c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function for the tempo module It just creates the tempo_task.  <br /></td></tr>
 <tr class="separator:adafb1cbe0338573004581a9f811aa72c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ae78187cdc5c469675b0397d378e21618"><td class="memItemLeft" align="right" valign="top">SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#ae78187cdc5c469675b0397d378e21618">bc_mutex_handle</a></td></tr>
+<tr class="memdesc:ae78187cdc5c469675b0397d378e21618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for protecting the bc variable.  <br /></td></tr>
 <tr class="separator:ae78187cdc5c469675b0397d378e21618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmain__runtime__vrbs.html">main_runtime_vrbs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#abaee9dfd77205965d8b1c6f9f8b20f9e">bc</a></td></tr>
+<tr class="memdesc:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main runtime variable of the system.  <br /></td></tr>
 <tr class="separator:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structonset__entry.html">onset_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1">onsets</a> []</td></tr>
+<tr class="memdesc:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circular buffer for storing onset informations.  <br /></td></tr>
 <tr class="separator:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#a4b95f9c9646e48a84af88f118ad9f2fa">tempo_task_handle</a> = NULL</td></tr>
 <tr class="memdesc:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle of the tempo_task.  <br /></td></tr>
 <tr class="separator:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae659ca0223bf09cdea30c8ab328c014"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#aae659ca0223bf09cdea30c8ab328c014">TEMPO_WEIGHT</a> [17] = {0, 0, 1, 0, 1, 0, 0, 0, 0.92, 0, 0, 0, 0.8, 0, 0, 0, 0.8}</td></tr>
+<tr class="memdesc:aae659ca0223bf09cdea30c8ab328c014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weights for the tempo process for each Inter Onset Interval.  <br /></td></tr>
 <tr class="separator:aae659ca0223bf09cdea30c8ab328c014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac417e12194ff1c71e9ab4b3186056d08"><td class="memItemLeft" align="right" valign="top">const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8c.html#ac417e12194ff1c71e9ab4b3186056d08">SIGMA_TEMPO_WIDTH_FACTOR</a> = 20</td></tr>
+<tr class="memdesc:ac417e12194ff1c71e9ab4b3186056d08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factor for calculating the max width of the window.  <br /></td></tr>
 <tr class="separator:ac417e12194ff1c71e9ab4b3186056d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -119,6 +124,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Init function for the tempo module It just creates the tempo_task. </p>
 <p>Init function for the tempo module The function will set parameters and starts tempo_task. </p>
 
 </div>
@@ -143,7 +149,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>main runtime data </p>
+
+<p>Main runtime variable of the system. </p>
 
 </div>
 </div>
@@ -166,7 +173,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>mutex for the access to bc struct </p>
+
+<p>Mutex for protecting the bc variable. </p>
 
 </div>
 </div>
@@ -189,7 +197,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>array of onsets </p>
+
+<p>Circular buffer for storing onset informations. </p>
 
 </div>
 </div>
@@ -204,7 +213,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Factor for calculating the max width of the window </p>
+
+<p>Factor for calculating the max width of the window. </p>
 
 </div>
 </div>
@@ -221,7 +231,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handle of the tempo_task. </p>
-<p>Handle for the tempo task </p>
 
 </div>
 </div>
@@ -236,7 +245,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Weight values for each IOI </p>
+
+<p>Weights for the tempo process for each Inter Onset Interval. </p>
 
 </div>
 </div>

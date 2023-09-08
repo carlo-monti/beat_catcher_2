@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: clock.h File Reference</title>
+<title>Beat Catcher 2.0: clock.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -78,7 +78,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Clock module keeps up the time and sends MIDI_CLOCK messages. The clock module keeps up with the time of the song and sends MIDI_CLOCK messages via UART. It can be controlled by messaging its queue using the data structures below.  
+<p>Clock module keeps up the time and sends MIDI_CLOCK messages. The clock module keeps up with the time of the song and sends MIDI_CLOCK messages via UART. It can be controlled by messaging its queue using the data structures below. The clock_task has a while loop that keeps repeating with this scheme:  
 <a href="#details">More...</a></p>
 
 <p><a href="clock_8h_source.html">Go to the source code of this file.</a></p>
@@ -88,6 +88,23 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclock__task__queue__entry.html">clock_task_queue_entry</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message for the queue. This is the main structure of the message that has to be sent to the queue.  <a href="structclock__task__queue__entry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">GPIO pins for Led 1-4</div></td></tr>
+<tr class="memitem:a7946fcf67e1c8b978506b2d244def316"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a7946fcf67e1c8b978506b2d244def316">FIRST_LED_PIN</a>&#160;&#160;&#160;GPIO_NUM_37</td></tr>
+<tr class="separator:a7946fcf67e1c8b978506b2d244def316"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48818dc821821254a3f56278a54e3f61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a48818dc821821254a3f56278a54e3f61">SECOND_LED_PIN</a>&#160;&#160;&#160;GPIO_NUM_36</td></tr>
+<tr class="separator:a48818dc821821254a3f56278a54e3f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a583937471958d1341bbe5ffbc3f7b586"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a583937471958d1341bbe5ffbc3f7b586">THIRD_LED_PIN</a>&#160;&#160;&#160;GPIO_NUM_35</td></tr>
+<tr class="separator:a583937471958d1341bbe5ffbc3f7b586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877e7a90ab43721f85b5b98f929fc55a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a877e7a90ab43721f85b5b98f929fc55a">FOURTH_LED_PIN</a>&#160;&#160;&#160;GPIO_NUM_45</td></tr>
+<tr class="separator:a877e7a90ab43721f85b5b98f929fc55a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">GPIO pins for UART</div></td></tr>
+<tr class="memitem:a5936c0c627339707e29608e06797c25e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a5936c0c627339707e29608e06797c25e">UART_PIN_1</a>&#160;&#160;&#160;GPIO_NUM_17</td></tr>
+<tr class="separator:a5936c0c627339707e29608e06797c25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69f388d4a8176009933905a8c7be5065"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a69f388d4a8176009933905a8c7be5065">UART_PIN_2</a>&#160;&#160;&#160;GPIO_NUM_18</td></tr>
+<tr class="separator:a69f388d4a8176009933905a8c7be5065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -102,19 +119,112 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#ae9cc0a879e88eea28e4e8b57318ef8e5">clock_init</a> ()</td></tr>
-<tr class="memdesc:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function to be called from the main.  <br /></td></tr>
+<tr class="memdesc:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function to be called from the main. This function will initialize the GPIO pins, the UART and creates the clock_task.  <br /></td></tr>
 <tr class="separator:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aaddec2e93001176bc08a063e6e82410d"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#aaddec2e93001176bc08a063e6e82410d">clock_task_queue</a></td></tr>
+<tr class="memdesc:aaddec2e93001176bc08a063e6e82410d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:aaddec2e93001176bc08a063e6e82410d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d3224e02cec6b02a9c3521cbad7d171"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8h.html#a1d3224e02cec6b02a9c3521cbad7d171">clock_task_handle</a></td></tr>
+<tr class="memdesc:a1d3224e02cec6b02a9c3521cbad7d171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:a1d3224e02cec6b02a9c3521cbad7d171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Clock module keeps up the time and sends MIDI_CLOCK messages. The clock module keeps up with the time of the song and sends MIDI_CLOCK messages via UART. It can be controlled by messaging its queue using the data structures below. </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<div class="textblock"><p>Clock module keeps up the time and sends MIDI_CLOCK messages. The clock module keeps up with the time of the song and sends MIDI_CLOCK messages via UART. It can be controlled by messaging its queue using the data structures below. The clock_task has a while loop that keeps repeating with this scheme: </p>
+<ul>
+<li>Check message in queue</li>
+<li>If there are messages, do what the messages asks to</li>
+<li>If the sequence is on than send MIDI CLOCK message and do other actions depending on index</li>
+<li>Delay itself until it's time to send the next MIDI CLOCK </li>
+</ul>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a7946fcf67e1c8b978506b2d244def316" name="a7946fcf67e1c8b978506b2d244def316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7946fcf67e1c8b978506b2d244def316">&#9670;&#160;</a></span>FIRST_LED_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FIRST_LED_PIN&#160;&#160;&#160;GPIO_NUM_37</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a877e7a90ab43721f85b5b98f929fc55a" name="a877e7a90ab43721f85b5b98f929fc55a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877e7a90ab43721f85b5b98f929fc55a">&#9670;&#160;</a></span>FOURTH_LED_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define FOURTH_LED_PIN&#160;&#160;&#160;GPIO_NUM_45</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a48818dc821821254a3f56278a54e3f61" name="a48818dc821821254a3f56278a54e3f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48818dc821821254a3f56278a54e3f61">&#9670;&#160;</a></span>SECOND_LED_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SECOND_LED_PIN&#160;&#160;&#160;GPIO_NUM_36</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a583937471958d1341bbe5ffbc3f7b586" name="a583937471958d1341bbe5ffbc3f7b586"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a583937471958d1341bbe5ffbc3f7b586">&#9670;&#160;</a></span>THIRD_LED_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define THIRD_LED_PIN&#160;&#160;&#160;GPIO_NUM_35</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5936c0c627339707e29608e06797c25e" name="a5936c0c627339707e29608e06797c25e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5936c0c627339707e29608e06797c25e">&#9670;&#160;</a></span>UART_PIN_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UART_PIN_1&#160;&#160;&#160;GPIO_NUM_17</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a69f388d4a8176009933905a8c7be5065" name="a69f388d4a8176009933905a8c7be5065"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69f388d4a8176009933905a8c7be5065">&#9670;&#160;</a></span>UART_PIN_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UART_PIN_2&#160;&#160;&#160;GPIO_NUM_18</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a5b6cc32812dc64b9f2b2de40e208951d" name="a5b6cc32812dc64b9f2b2de40e208951d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b6cc32812dc64b9f2b2de40e208951d">&#9670;&#160;</a></span>clock_task_queue_entry_type</h2>
 
@@ -157,7 +267,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Init function to be called from the main. </p>
+<p>Init function to be called from the main. This function will initialize the GPIO pins, the UART and creates the clock_task. </p>
+<p>Init function to be called from the main. This function will initialize the GPIO pins, the UART and creates the clock_task. </p>
 
 </div>
 </div>
@@ -182,6 +293,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Handle for the clock_task. Defined inside <a class="el" href="clock_8c.html">clock.c</a>. </p>
+
 </div>
 </div>
 <a id="aaddec2e93001176bc08a063e6e82410d" name="aaddec2e93001176bc08a063e6e82410d"></a>
@@ -203,6 +316,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>. </p>
 
 </div>
 </div>

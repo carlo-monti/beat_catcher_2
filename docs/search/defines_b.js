@@ -6,6 +6,5 @@ var searchData=
   ['onset_5fadc_5ftask_5fpriority_3',['ONSET_ADC_TASK_PRIORITY',['../main__defs_8h.html#a5e0d4885bbde40f0f33deade08556a15',1,'main_defs.h']]],
   ['onset_5fadc_5ftask_5fstack_5fsize_4',['ONSET_ADC_TASK_STACK_SIZE',['../main__defs_8h.html#a71404889ea6aaa54fed679e8023aa145',1,'main_defs.h']]],
   ['onset_5fbuffer_5fsize_5',['ONSET_BUFFER_SIZE',['../main__defs_8h.html#a787df755bbc935fcf792bd7569170d8a',1,'main_defs.h']]],
-  ['onset_5fgarbage_5fnotify_6',['ONSET_GARBAGE_NOTIFY',['../main__defs_8h.html#a464959a7a8c7ea395534ab972e63775b',1,'main_defs.h']]],
-  ['oversampling_7',['OVERSAMPLING',['../onset__adc_8c.html#aba7d938851efb9ea95d05c45fc003e91',1,'onset_adc.c']]]
+  ['oversampling_6',['OVERSAMPLING',['../onset__adc_8c.html#aba7d938851efb9ea95d05c45fc003e91',1,'onset_adc.c']]]
 ];

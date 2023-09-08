@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tap.c File Reference</title>
+<title>Beat Catcher 2.0: tap.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -89,19 +89,22 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:ae11896867ab269a526870c3f730ff67d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#ae11896867ab269a526870c3f730ff67d">TAP_HIT_WAIT_TIME_US</a>&#160;&#160;&#160;4000000</td></tr>
+<tr class="memdesc:ae11896867ab269a526870c3f730ff67d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timeout for going to sleep when waiting for hit.  <br /></td></tr>
 <tr class="separator:ae11896867ab269a526870c3f730ff67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac90100d31ec60a91ae52a23f7e4cb57d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#ac90100d31ec60a91ae52a23f7e4cb57d">tap_init</a> ()</td></tr>
-<tr class="memdesc:ac90100d31ec60a91ae52a23f7e4cb57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function to be called from the main.  <br /></td></tr>
+<tr class="memdesc:ac90100d31ec60a91ae52a23f7e4cb57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of the Tap module Sets GPIO pins, attach interrupt to tap button and creates tap_task.  <br /></td></tr>
 <tr class="separator:ac90100d31ec60a91ae52a23f7e4cb57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aaddec2e93001176bc08a063e6e82410d"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#aaddec2e93001176bc08a063e6e82410d">clock_task_queue</a></td></tr>
+<tr class="memdesc:aaddec2e93001176bc08a063e6e82410d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:aaddec2e93001176bc08a063e6e82410d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d3224e02cec6b02a9c3521cbad7d171"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#a1d3224e02cec6b02a9c3521cbad7d171">clock_task_handle</a></td></tr>
+<tr class="memdesc:a1d3224e02cec6b02a9c3521cbad7d171"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:a1d3224e02cec6b02a9c3521cbad7d171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a></td></tr>
 <tr class="memdesc:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle of the sync_task.  <br /></td></tr>
@@ -109,10 +112,13 @@ Variables</h2></td></tr>
 <tr class="memitem:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#a4b95f9c9646e48a84af88f118ad9f2fa">tempo_task_handle</a></td></tr>
 <tr class="separator:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmain__runtime__vrbs.html">main_runtime_vrbs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#abaee9dfd77205965d8b1c6f9f8b20f9e">bc</a></td></tr>
+<tr class="memdesc:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main runtime variable of the system.  <br /></td></tr>
 <tr class="separator:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a524afb17e08f3547f2e6c1f8b0fbe1a9"><td class="memItemLeft" align="right" valign="top">volatile <a class="el" href="main__defs_8h.html#ad7a6a5387cf5f4e77ec3fa2d2604c846">main_mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#a524afb17e08f3547f2e6c1f8b0fbe1a9">mode</a></td></tr>
+<tr class="memdesc:a524afb17e08f3547f2e6c1f8b0fbe1a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode the system is currently in.  <br /></td></tr>
 <tr class="separator:a524afb17e08f3547f2e6c1f8b0fbe1a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae78187cdc5c469675b0397d378e21618"><td class="memItemLeft" align="right" valign="top">SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#ae78187cdc5c469675b0397d378e21618">bc_mutex_handle</a></td></tr>
+<tr class="memdesc:ae78187cdc5c469675b0397d378e21618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for protecting the bc variable.  <br /></td></tr>
 <tr class="separator:ae78187cdc5c469675b0397d378e21618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43cf8accd30762854b5635cb9fefabae"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8c.html#a43cf8accd30762854b5635cb9fefabae">tap_task_queue</a> = NULL</td></tr>
 <tr class="memdesc:a43cf8accd30762854b5635cb9fefabae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue to send msgs to the tap module.  <br /></td></tr>
@@ -136,6 +142,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Timeout for going to sleep when waiting for hit. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
@@ -154,6 +162,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Initialization of the Tap module Sets GPIO pins, attach interrupt to tap button and creates tap_task. </p>
 <p>Init function to be called from the main. </p>
 
 </div>
@@ -178,7 +187,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>main runtime data </p>
+
+<p>Main runtime variable of the system. </p>
 
 </div>
 </div>
@@ -201,7 +211,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>mutex for the access to bc struct </p>
+
+<p>Mutex for protecting the bc variable. </p>
 
 </div>
 </div>
@@ -225,6 +236,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Handle for the clock_task. Defined inside <a class="el" href="clock_8c.html">clock.c</a>. </p>
+
 </div>
 </div>
 <a id="aaddec2e93001176bc08a063e6e82410d" name="aaddec2e93001176bc08a063e6e82410d"></a>
@@ -246,7 +259,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Beat catcher 2.0 - Mode Switch Module This module handles the switching between the main modes of the system: -MODE_PLAY -MODE_TAP -MODE_SETTINGS </p>
+
+<p>Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>. </p>
 
 </div>
 </div>
@@ -284,6 +298,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Mode the system is currently in. </p>
+
 </div>
 </div>
 <a id="a628c36ee9d1d8448586b9df60e4f8fd0" name="a628c36ee9d1d8448586b9df60e4f8fd0"></a>
@@ -307,7 +323,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handle of the sync_task. </p>
-<p>sync_task handle </p>
 
 </div>
 </div>
@@ -364,7 +379,6 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle for the tempo task </p>
 
 </div>
 </div>

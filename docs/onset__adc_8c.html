@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: onset_adc.c File Reference</title>
+<title>Beat Catcher 2.0: onset_adc.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -71,7 +71,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">onset_adc.c File Reference</div></div>
@@ -88,10 +87,10 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structonset__channel__cfg.html">onset_channel_cfg</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Config struct for the ADC channel.  <a href="structonset__channel__cfg.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Config struct for the ADC channel It includes values for the onset detection.  <a href="structonset__channel__cfg.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structled__cfg.html">led_cfg</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Config struct for the blinking led timer.  <a href="structled__cfg.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Config struct for the blinking led timer It includes the led pin, the blink duration and the handle of the timer.  <a href="structled__cfg.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structruntime__onset__values.html">runtime_onset_values</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Config struct for the runtime values of the onset detection.  <a href="structruntime__onset__values.html#details">More...</a><br /></td></tr>
@@ -99,6 +98,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">ADC set up values (channels, attenuation, ...)</div></td></tr>
 <tr class="memitem:aa869cc8a3bf3f2a35447edc6eb11cf32"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#aa869cc8a3bf3f2a35447edc6eb11cf32">ADC_UNIT</a>&#160;&#160;&#160;ADC_UNIT_1</td></tr>
 <tr class="separator:aa869cc8a3bf3f2a35447edc6eb11cf32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc340706b3e81c30f9323e065a51c7fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#afc340706b3e81c30f9323e065a51c7fc">ADC_CONV_MODE</a>&#160;&#160;&#160;ADC_CONV_SINGLE_UNIT_1</td></tr>
@@ -117,18 +117,18 @@ Macros</h2></td></tr>
 <tr class="separator:aee4564dc675033ebfe5348c20bbc2271"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ad90f939ec4bd8dbb9fb29c3b9f8094"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a6ad90f939ec4bd8dbb9fb29c3b9f8094">SNARE_ADC_CHANNEL</a>&#160;&#160;&#160;ADC_CHANNEL_4</td></tr>
 <tr class="separator:a6ad90f939ec4bd8dbb9fb29c3b9f8094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Buffer and oversampling parameters</div></td></tr>
 <tr class="memitem:a6b20d41d6252e9871430c242cb1a56e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&#160;&#160;&#160;512</td></tr>
 <tr class="separator:a6b20d41d6252e9871430c242cb1a56e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba7d938851efb9ea95d05c45fc003e91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#aba7d938851efb9ea95d05c45fc003e91">OVERSAMPLING</a>&#160;&#160;&#160;8</td></tr>
 <tr class="separator:aba7d938851efb9ea95d05c45fc003e91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9401e43a8c86acafb31c8e2709baefa1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a9401e43a8c86acafb31c8e2709baefa1">SAMPLE_FREQ</a>&#160;&#160;&#160;48000</td></tr>
 <tr class="separator:a9401e43a8c86acafb31c8e2709baefa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Shortcuts</div></td></tr>
 <tr class="memitem:a7475825824aa42d9c9c8d0e776586f83"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a7475825824aa42d9c9c8d0e776586f83">KICK</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a7475825824aa42d9c9c8d0e776586f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88a5c9cfffa12cce8ccc0200d4255d2b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a88a5c9cfffa12cce8ccc0200d4255d2b">SNARE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a88a5c9cfffa12cce8ccc0200d4255d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad589d98db39967a5f5378b5f2a19231b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#ad589d98db39967a5f5378b5f2a19231b">TAP</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:ad589d98db39967a5f5378b5f2a19231b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad485d497ba204b41d61760bc83465d5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#ad485d497ba204b41d61760bc83465d5c">MAX_ONSET_DELTA_X_LENGTH</a>&#160;&#160;&#160;600</td></tr>
 <tr class="separator:ad485d497ba204b41d61760bc83465d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -138,12 +138,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:a779fb22524c0770405c75ae48a68171c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu_item_index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type.  <br /></td></tr>
 <tr class="separator:a779fb22524c0770405c75ae48a68171c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39aab2d16622c49709553d56c15c531b"><td class="memItemLeft" align="right" valign="top">bool IRAM_ATTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a39aab2d16622c49709553d56c15c531b">turn_off_led_cb</a> (gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *led_pin)</td></tr>
+<tr class="memdesc:a39aab2d16622c49709553d56c15c531b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function used to turn off led to make it blink only one time.  <br /></td></tr>
 <tr class="separator:a39aab2d16622c49709553d56c15c531b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec44d521c7bcd36f1cb57f5d59935b08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#aec44d521c7bcd36f1cb57f5d59935b08">led_blink_init</a> ()</td></tr>
-<tr class="memdesc:aec44d521c7bcd36f1cb57f5d59935b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function for the blinking led action.  <br /></td></tr>
+<tr class="memdesc:aec44d521c7bcd36f1cb57f5d59935b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function for the blinking led action When an onset is triggered, the function blink_led is called. The led is than turned on and a timer is started to trigger an interrupt that will turn it off after a duration period. This function inits the GPIO and the timer.  <br /></td></tr>
 <tr class="separator:aec44d521c7bcd36f1cb57f5d59935b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a9c2907727539af520db659f104dc5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a6a9c2907727539af520db659f104dc5d">blink_led</a> (<a class="el" href="structled__cfg.html">led_cfg</a> led_cfg_struct)</td></tr>
-<tr class="memdesc:a6a9c2907727539af520db659f104dc5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to blink led.  <br /></td></tr>
+<tr class="memdesc:a6a9c2907727539af520db659f104dc5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to blink led When this function is called it turns on the led and set a timer to turn off it after a defined period.  <br /></td></tr>
 <tr class="separator:a6a9c2907727539af520db659f104dc5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66726988709c40ed6f25a05863208da4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a66726988709c40ed6f25a05863208da4">onset_adc_task</a> (void *arg)</td></tr>
 <tr class="memdesc:a66726988709c40ed6f25a05863208da4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main task for the adc and onset detection module.  <br /></td></tr>
@@ -157,12 +158,15 @@ Variables</h2></td></tr>
 <tr class="memitem:af30bbe7c6f5be7e42907d03f0a9b1a81"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#af30bbe7c6f5be7e42907d03f0a9b1a81">onset_adc_task_handle</a> = NULL</td></tr>
 <tr class="separator:af30bbe7c6f5be7e42907d03f0a9b1a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae78187cdc5c469675b0397d378e21618"><td class="memItemLeft" align="right" valign="top">SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#ae78187cdc5c469675b0397d378e21618">bc_mutex_handle</a></td></tr>
+<tr class="memdesc:ae78187cdc5c469675b0397d378e21618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for protecting the bc variable.  <br /></td></tr>
 <tr class="separator:ae78187cdc5c469675b0397d378e21618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a></td></tr>
 <tr class="separator:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmain__runtime__vrbs.html">main_runtime_vrbs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#abaee9dfd77205965d8b1c6f9f8b20f9e">bc</a></td></tr>
+<tr class="memdesc:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main runtime variable of the system.  <br /></td></tr>
 <tr class="separator:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structonset__entry.html">onset_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1">onsets</a> []</td></tr>
+<tr class="memdesc:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circular buffer for storing onset informations.  <br /></td></tr>
 <tr class="separator:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d4d597bf96e882dcb9103b8b1e3fe8"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a96d4d597bf96e882dcb9103b8b1e3fe8">onset_adc_task_queue</a> = NULL</td></tr>
 <tr class="memdesc:a96d4d597bf96e882dcb9103b8b1e3fe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Queue to send msgs to the onset_adc module.  <br /></td></tr>
@@ -282,7 +286,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Beat catcher dasfdsgadsgadsfasdgasdg Bla albads fasdfljaef asdfadsoiljfdsafasdfawefrewart </p>
 
 </div>
 </div>
@@ -398,20 +401,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad589d98db39967a5f5378b5f2a19231b" name="ad589d98db39967a5f5378b5f2a19231b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad589d98db39967a5f5378b5f2a19231b">&#9670;&#160;</a></span>TAP</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TAP&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a6a9c2907727539af520db659f104dc5d" name="a6a9c2907727539af520db659f104dc5d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a9c2907727539af520db659f104dc5d">&#9670;&#160;</a></span>blink_led()</h2>
@@ -429,8 +418,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function to blink led. </p>
-<p>When this function is called it turns on the led and set a timer to turn off it after a period </p>
+<p>Function to blink led When this function is called it turns on the led and set a timer to turn off it after a defined period. </p>
 
 </div>
 </div>
@@ -449,8 +437,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Init function for the blinking led action. </p>
-<p>When an onset is triggered, the function blink_led is called. The led is than turned on and a timer is started to trigger an interrupt that will turn it off after a duration period. This function inits the GPIO and the timer. </p>
+<p>Init function for the blinking led action When an onset is triggered, the function blink_led is called. The led is than turned on and a timer is started to trigger an interrupt that will turn it off after a duration period. This function inits the GPIO and the timer. </p>
 
 </div>
 </div>
@@ -491,7 +478,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Main task for the adc and onset detection module. </p>
-<p>When this function is called it turns on the led and set a timer to turn off it after a period </p>
 
 </div>
 </div>
@@ -557,6 +543,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Callback function used to turn off led to make it blink only one time. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -607,8 +595,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>global struct with runtime vrbs</p>
-<p>main runtime data </p>
+
+<p>Main runtime variable of the system. </p>
 
 </div>
 </div>
@@ -631,7 +619,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>mutex for the access to bc struct </p>
+
+<p>Mutex for protecting the bc variable. </p>
 
 </div>
 </div>
@@ -674,7 +663,6 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>onset_adc task handle </p>
 
 </div>
 </div>
@@ -691,7 +679,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Queue to send msgs to the onset_adc module. </p>
-<p>queue of onset_adc_task </p>
+<p>Queue to send msgs to the onset_adc module. The allowed msg value are defined in onset_adc_queue_msg enum. </p>
 
 </div>
 </div>
@@ -708,19 +696,19 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    {</div>
-<div class="line">        .pin = <a class="code hl_define" href="main__defs_8h.html#aa76f267c80ad03a2b51de19534b02d9e">KICK_LED_PIN</a>,</div>
-<div class="line">        .blink_duration = <a class="code hl_define" href="main__defs_8h.html#a58654bb41b34ba989e4938dd205a6090">KICK_LED_PIN_BLINK_DURATION</a>,</div>
+<div class="line">        .pin = <a class="code hl_define" href="onset__adc_8h.html#aa76f267c80ad03a2b51de19534b02d9e">KICK_LED_PIN</a>,</div>
+<div class="line">        .blink_duration = <a class="code hl_define" href="onset__adc_8h.html#a58654bb41b34ba989e4938dd205a6090">KICK_LED_PIN_BLINK_DURATION</a>,</div>
 <div class="line">        .timer_handle = NULL,</div>
 <div class="line">    },</div>
 <div class="line">    {</div>
-<div class="line">        .pin = <a class="code hl_define" href="main__defs_8h.html#abef8a2b6425244405139ba45cff8a394">SNARE_LED_PIN</a>,</div>
-<div class="line">        .blink_duration = <a class="code hl_define" href="main__defs_8h.html#aacf55594c2fece28a3df4fd1c7df0a62">SNARE_LED_PIN_BLINK_DURATION</a>,</div>
+<div class="line">        .pin = <a class="code hl_define" href="onset__adc_8h.html#abef8a2b6425244405139ba45cff8a394">SNARE_LED_PIN</a>,</div>
+<div class="line">        .blink_duration = <a class="code hl_define" href="onset__adc_8h.html#aacf55594c2fece28a3df4fd1c7df0a62">SNARE_LED_PIN_BLINK_DURATION</a>,</div>
 <div class="line">        .timer_handle = NULL,</div>
 <div class="line">    }}</div>
-<div class="ttc" id="amain__defs_8h_html_a58654bb41b34ba989e4938dd205a6090"><div class="ttname"><a href="main__defs_8h.html#a58654bb41b34ba989e4938dd205a6090">KICK_LED_PIN_BLINK_DURATION</a></div><div class="ttdeci">#define KICK_LED_PIN_BLINK_DURATION</div><div class="ttdef"><b>Definition</b> main_defs.h:60</div></div>
-<div class="ttc" id="amain__defs_8h_html_aa76f267c80ad03a2b51de19534b02d9e"><div class="ttname"><a href="main__defs_8h.html#aa76f267c80ad03a2b51de19534b02d9e">KICK_LED_PIN</a></div><div class="ttdeci">#define KICK_LED_PIN</div><div class="ttdef"><b>Definition</b> main_defs.h:53</div></div>
-<div class="ttc" id="amain__defs_8h_html_aacf55594c2fece28a3df4fd1c7df0a62"><div class="ttname"><a href="main__defs_8h.html#aacf55594c2fece28a3df4fd1c7df0a62">SNARE_LED_PIN_BLINK_DURATION</a></div><div class="ttdeci">#define SNARE_LED_PIN_BLINK_DURATION</div><div class="ttdef"><b>Definition</b> main_defs.h:61</div></div>
-<div class="ttc" id="amain__defs_8h_html_abef8a2b6425244405139ba45cff8a394"><div class="ttname"><a href="main__defs_8h.html#abef8a2b6425244405139ba45cff8a394">SNARE_LED_PIN</a></div><div class="ttdeci">#define SNARE_LED_PIN</div><div class="ttdef"><b>Definition</b> main_defs.h:54</div></div>
+<div class="ttc" id="aonset__adc_8h_html_a58654bb41b34ba989e4938dd205a6090"><div class="ttname"><a href="onset__adc_8h.html#a58654bb41b34ba989e4938dd205a6090">KICK_LED_PIN_BLINK_DURATION</a></div><div class="ttdeci">#define KICK_LED_PIN_BLINK_DURATION</div><div class="ttdef"><b>Definition</b> onset_adc.h:27</div></div>
+<div class="ttc" id="aonset__adc_8h_html_aa76f267c80ad03a2b51de19534b02d9e"><div class="ttname"><a href="onset__adc_8h.html#aa76f267c80ad03a2b51de19534b02d9e">KICK_LED_PIN</a></div><div class="ttdeci">#define KICK_LED_PIN</div><div class="ttdef"><b>Definition</b> onset_adc.h:24</div></div>
+<div class="ttc" id="aonset__adc_8h_html_aacf55594c2fece28a3df4fd1c7df0a62"><div class="ttname"><a href="onset__adc_8h.html#aacf55594c2fece28a3df4fd1c7df0a62">SNARE_LED_PIN_BLINK_DURATION</a></div><div class="ttdeci">#define SNARE_LED_PIN_BLINK_DURATION</div><div class="ttdef"><b>Definition</b> onset_adc.h:28</div></div>
+<div class="ttc" id="aonset__adc_8h_html_abef8a2b6425244405139ba45cff8a394"><div class="ttname"><a href="onset__adc_8h.html#abef8a2b6425244405139ba45cff8a394">SNARE_LED_PIN</a></div><div class="ttdeci">#define SNARE_LED_PIN</div><div class="ttdef"><b>Definition</b> onset_adc.h:25</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -743,7 +731,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>array of onsets </p>
+
+<p>Circular buffer for storing onset informations. </p>
 
 </div>
 </div>
@@ -766,7 +755,6 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>sync_task handle </p>
 
 </div>
 </div>

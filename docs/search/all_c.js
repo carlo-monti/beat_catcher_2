@@ -16,12 +16,10 @@ var searchData=
   ['onset_5fadc_5ftask_5fpriority_13',['ONSET_ADC_TASK_PRIORITY',['../main__defs_8h.html#a5e0d4885bbde40f0f33deade08556a15',1,'main_defs.h']]],
   ['onset_5fadc_5ftask_5fqueue_14',['onset_adc_task_queue',['../clock_8c.html#a96d4d597bf96e882dcb9103b8b1e3fe8',1,'onset_adc_task_queue:&#160;onset_adc.c'],['../onset__adc_8c.html#a96d4d597bf96e882dcb9103b8b1e3fe8',1,'onset_adc_task_queue:&#160;onset_adc.c'],['../onset__adc_8h.html#a96d4d597bf96e882dcb9103b8b1e3fe8',1,'onset_adc_task_queue:&#160;onset_adc.c']]],
   ['onset_5fadc_5ftask_5fstack_5fsize_15',['ONSET_ADC_TASK_STACK_SIZE',['../main__defs_8h.html#a71404889ea6aaa54fed679e8023aa145',1,'main_defs.h']]],
-  ['onset_5fadchighwatermark_16',['onset_adcHighWaterMark',['../main_8c.html#acdfe1701b6dcbb79bcb838ec186a3e27',1,'main.c']]],
-  ['onset_5fbuffer_5fsize_17',['ONSET_BUFFER_SIZE',['../main__defs_8h.html#a787df755bbc935fcf792bd7569170d8a',1,'main_defs.h']]],
-  ['onset_5fchannel_5fcfg_18',['onset_channel_cfg',['../structonset__channel__cfg.html',1,'']]],
-  ['onset_5fentry_19',['onset_entry',['../structonset__entry.html',1,'']]],
-  ['onset_5fgarbage_5fnotify_20',['ONSET_GARBAGE_NOTIFY',['../main__defs_8h.html#a464959a7a8c7ea395534ab972e63775b',1,'main_defs.h']]],
-  ['onset_5fled_21',['onset_led',['../onset__adc_8c.html#a94b29632a0fa6cdc186a4cffc1f91829',1,'onset_adc.c']]],
-  ['onsets_22',['onsets',['../main_8c.html#a76e104e2f982b63f9c0ab9a5d24906e0',1,'onsets:&#160;main.c'],['../onset__adc_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1',1,'onsets:&#160;main.c'],['../sync_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1',1,'onsets:&#160;main.c'],['../tempo_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1',1,'onsets:&#160;main.c']]],
-  ['oversampling_23',['OVERSAMPLING',['../onset__adc_8c.html#aba7d938851efb9ea95d05c45fc003e91',1,'onset_adc.c']]]
+  ['onset_5fbuffer_5fsize_16',['ONSET_BUFFER_SIZE',['../main__defs_8h.html#a787df755bbc935fcf792bd7569170d8a',1,'main_defs.h']]],
+  ['onset_5fchannel_5fcfg_17',['onset_channel_cfg',['../structonset__channel__cfg.html',1,'']]],
+  ['onset_5fentry_18',['onset_entry',['../structonset__entry.html',1,'']]],
+  ['onset_5fled_19',['onset_led',['../onset__adc_8c.html#a94b29632a0fa6cdc186a4cffc1f91829',1,'onset_adc.c']]],
+  ['onsets_20',['onsets',['../main_8c.html#a76e104e2f982b63f9c0ab9a5d24906e0',1,'onsets:&#160;main.c'],['../onset__adc_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1',1,'onsets:&#160;main.c'],['../sync_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1',1,'onsets:&#160;main.c'],['../tempo_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1',1,'onsets:&#160;main.c']]],
+  ['oversampling_21',['OVERSAMPLING',['../onset__adc_8c.html#aba7d938851efb9ea95d05c45fc003e91',1,'onset_adc.c']]]
 ];

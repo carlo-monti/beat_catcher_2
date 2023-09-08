@@ -15,6 +15,5 @@ var searchData=
   ['clock_5ftask_5fqueue_5fentry_5ftype_12',['clock_task_queue_entry_type',['../clock_8h.html#a5b6cc32812dc64b9f2b2de40e208951d',1,'clock.h']]],
   ['clock_5ftask_5fstack_5fsize_13',['CLOCK_TASK_STACK_SIZE',['../main__defs_8h.html#adb3f6ae2bca850811294bbcb13a4028d',1,'main_defs.h']]],
   ['clock_5ftx_5fbuffer_14',['clock_tx_buffer',['../tap_8c.html#a33938964e5f7bc3a5bdeddc3e0c85f4b',1,'tap.c']]],
-  ['clockhighwatermark_15',['clockHighWaterMark',['../main_8c.html#a6c48c8769e7c9b6052d3218b614565be',1,'main.c']]],
-  ['current_5fsample_16',['current_sample',['../structruntime__onset__values.html#a18364df33c17e2a0ea688d319d839c48',1,'runtime_onset_values']]]
+  ['current_5fsample_15',['current_sample',['../structruntime__onset__values.html#a18364df33c17e2a0ea688d319d839c48',1,'runtime_onset_values']]]
 ];

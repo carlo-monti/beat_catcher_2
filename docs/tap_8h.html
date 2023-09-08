@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tap.h File Reference</title>
+<title>Beat Catcher 2.0: tap.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -84,8 +84,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a739729e47dfa7d143c886a2420d9b828"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8h.html#a739729e47dfa7d143c886a2420d9b828">TAP_TEMPO_PIN</a>&#160;&#160;&#160;GPIO_NUM_16</td></tr>
+<tr class="memdesc:a739729e47dfa7d143c886a2420d9b828"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO pin of the Tap button.  <br /></td></tr>
+<tr class="separator:a739729e47dfa7d143c886a2420d9b828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a19d1848bbf62d34b26c052f4f8e152"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8h.html#a2a19d1848bbf62d34b26c052f4f8e152">TAP_TASK_QUEUE_RESET_COUNTER</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a2a19d1848bbf62d34b26c052f4f8e152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Value of the message to the queue to ask for counter reset.  <br /></td></tr>
 <tr class="separator:a2a19d1848bbf62d34b26c052f4f8e152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a703022b4d6f4d212306f2ae20cafcbb5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tap_8h.html#a703022b4d6f4d212306f2ae20cafcbb5">TAP_DEBOUNCE_TIME_US</a>&#160;&#160;&#160;200000</td></tr>
+<tr class="memdesc:a703022b4d6f4d212306f2ae20cafcbb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debounce value for tap button in us.  <br /></td></tr>
+<tr class="separator:a703022b4d6f4d212306f2ae20cafcbb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -105,6 +112,22 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Tap module let the user insert the initial bpm by pressing on the tap button on time. Every time the user presses the button, an interrupt routine send a message to the queue of the main task with information about the timing and the task keeps track of how many hits has been received. If there are 4 hits, the task calculates the bpm average and starts the clock module. If there are no hits before the timeout, the tap ask to switch to sleep mode. </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a703022b4d6f4d212306f2ae20cafcbb5" name="a703022b4d6f4d212306f2ae20cafcbb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a703022b4d6f4d212306f2ae20cafcbb5">&#9670;&#160;</a></span>TAP_DEBOUNCE_TIME_US</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAP_DEBOUNCE_TIME_US&#160;&#160;&#160;200000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Debounce value for tap button in us. </p>
+
+</div>
+</div>
 <a id="a2a19d1848bbf62d34b26c052f4f8e152" name="a2a19d1848bbf62d34b26c052f4f8e152"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2a19d1848bbf62d34b26c052f4f8e152">&#9670;&#160;</a></span>TAP_TASK_QUEUE_RESET_COUNTER</h2>
 
@@ -116,6 +139,24 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Value of the message to the queue to ask for counter reset. </p>
+
+</div>
+</div>
+<a id="a739729e47dfa7d143c886a2420d9b828" name="a739729e47dfa7d143c886a2420d9b828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a739729e47dfa7d143c886a2420d9b828">&#9670;&#160;</a></span>TAP_TEMPO_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define TAP_TEMPO_PIN&#160;&#160;&#160;GPIO_NUM_16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>GPIO pin of the Tap button. </p>
 
 </div>
 </div>
@@ -135,6 +176,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Init function to be called from the main. </p>
 <p>Init function to be called from the main. </p>
 
 </div>

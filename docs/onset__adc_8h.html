@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: onset_adc.h File Reference</title>
+<title>Beat Catcher 2.0: onset_adc.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -90,6 +90,18 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Struct of the onset log entry.  <a href="structonset__entry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr><td colspan="2"><div class="groupHeader">GPIO pins for Kick and Snare leds</div></td></tr>
+<tr class="memitem:aa76f267c80ad03a2b51de19534b02d9e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8h.html#aa76f267c80ad03a2b51de19534b02d9e">KICK_LED_PIN</a>&#160;&#160;&#160;GPIO_NUM_8</td></tr>
+<tr class="separator:aa76f267c80ad03a2b51de19534b02d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef8a2b6425244405139ba45cff8a394"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8h.html#abef8a2b6425244405139ba45cff8a394">SNARE_LED_PIN</a>&#160;&#160;&#160;GPIO_NUM_15</td></tr>
+<tr class="separator:abef8a2b6425244405139ba45cff8a394"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58654bb41b34ba989e4938dd205a6090"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8h.html#a58654bb41b34ba989e4938dd205a6090">KICK_LED_PIN_BLINK_DURATION</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:a58654bb41b34ba989e4938dd205a6090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacf55594c2fece28a3df4fd1c7df0a62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8h.html#aacf55594c2fece28a3df4fd1c7df0a62">SNARE_LED_PIN_BLINK_DURATION</a>&#160;&#160;&#160;15</td></tr>
+<tr class="separator:aacf55594c2fece28a3df4fd1c7df0a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ac8810a7a7425a6faee68a116b9587985"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8h.html#ac8810a7a7425a6faee68a116b9587985">onset_adc_queue_msg</a> { <a class="el" href="onset__adc_8h.html#ac8810a7a7425a6faee68a116b9587985a79b6eb96d45bda239b5e0e746ca976c6">ONSET_ADC_ALLOW_ONSET</a>
@@ -114,7 +126,64 @@ Variables</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ONSET_ADC module handles the sampling of the piezo sensors and the onset detection. Basically, the module samples the analog input of Kick and Snare using the continuous adc mode. Given that the ADC on the ESP32 is known to be less than ideal, it performs an oversampling and an averaging. After that a very simple filter is applied to detect the amplitude envelope. The module, than, calculates the slope of the envelope and detects the onset. Whenever an onset is detected, its absolute position in time is stored in the onsets array. </p>
 <p>The onset_adc module has a queue that is used to ask the main task to start/stop logging onsets. </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aa76f267c80ad03a2b51de19534b02d9e" name="aa76f267c80ad03a2b51de19534b02d9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa76f267c80ad03a2b51de19534b02d9e">&#9670;&#160;</a></span>KICK_LED_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define KICK_LED_PIN&#160;&#160;&#160;GPIO_NUM_8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58654bb41b34ba989e4938dd205a6090" name="a58654bb41b34ba989e4938dd205a6090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58654bb41b34ba989e4938dd205a6090">&#9670;&#160;</a></span>KICK_LED_PIN_BLINK_DURATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define KICK_LED_PIN_BLINK_DURATION&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abef8a2b6425244405139ba45cff8a394" name="abef8a2b6425244405139ba45cff8a394"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef8a2b6425244405139ba45cff8a394">&#9670;&#160;</a></span>SNARE_LED_PIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SNARE_LED_PIN&#160;&#160;&#160;GPIO_NUM_15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aacf55594c2fece28a3df4fd1c7df0a62" name="aacf55594c2fece28a3df4fd1c7df0a62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacf55594c2fece28a3df4fd1c7df0a62">&#9670;&#160;</a></span>SNARE_LED_PIN_BLINK_DURATION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SNARE_LED_PIN_BLINK_DURATION&#160;&#160;&#160;15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="ac8810a7a7425a6faee68a116b9587985" name="ac8810a7a7425a6faee68a116b9587985"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac8810a7a7425a6faee68a116b9587985">&#9670;&#160;</a></span>onset_adc_queue_msg</h2>
 
@@ -183,8 +252,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Queue to send msgs to the onset_adc module. </p>
-<p>Queue to send msgs to the onset_adc module. The allowed msg value are defined in onset_adc_queue_msg enum.</p>
-<p>queue of onset_adc_task </p>
+<p>Queue to send msgs to the onset_adc module. The allowed msg value are defined in onset_adc_queue_msg enum. </p>
 
 </div>
 </div>

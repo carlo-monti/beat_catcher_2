@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tap.h Source File</title>
+<title>Beat Catcher 2.0: tap.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -76,18 +76,26 @@ $(function() {
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef BC_TAP_H</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define BC_TAP_H</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="tap_8h.html#a2a19d1848bbf62d34b26c052f4f8e152">   13</a></span><span class="preprocessor">#define TAP_TASK_QUEUE_RESET_COUNTER 0</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> QueueHandle_t <a class="code hl_variable" href="tap_8h.html#a43cf8accd30762854b5635cb9fefabae">tap_task_queue</a>;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="tap_8h.html#a9bceedf934a6c465d6657b4c7f0b257c">tap_task_handle</a>;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="tap_8h.html#ac90100d31ec60a91ae52a23f7e4cb57d">tap_init</a>();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="atap_8h_html_a43cf8accd30762854b5635cb9fefabae"><div class="ttname"><a href="tap_8h.html#a43cf8accd30762854b5635cb9fefabae">tap_task_queue</a></div><div class="ttdeci">QueueHandle_t tap_task_queue</div><div class="ttdoc">Queue to send msgs to the tap module.</div><div class="ttdef"><b>Definition</b> tap.c:21</div></div>
-<div class="ttc" id="atap_8h_html_a9bceedf934a6c465d6657b4c7f0b257c"><div class="ttname"><a href="tap_8h.html#a9bceedf934a6c465d6657b4c7f0b257c">tap_task_handle</a></div><div class="ttdeci">TaskHandle_t tap_task_handle</div><div class="ttdoc">Handle of tap_task.</div><div class="ttdef"><b>Definition</b> tap.c:22</div></div>
-<div class="ttc" id="atap_8h_html_ac90100d31ec60a91ae52a23f7e4cb57d"><div class="ttname"><a href="tap_8h.html#ac90100d31ec60a91ae52a23f7e4cb57d">tap_init</a></div><div class="ttdeci">void tap_init()</div><div class="ttdoc">Init function to be called from the main.</div><div class="ttdef"><b>Definition</b> tap.c:123</div></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#if CONFIG_IDF_TARGET_ESP32</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define TAP_TEMPO_PIN GPIO_NUM_25</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="tap_8h.html#a739729e47dfa7d143c886a2420d9b828">   19</a></span><span class="preprocessor">#define TAP_TEMPO_PIN GPIO_NUM_16</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="tap_8h.html#a2a19d1848bbf62d34b26c052f4f8e152">   25</a></span><span class="preprocessor">#define TAP_TASK_QUEUE_RESET_COUNTER 0</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="tap_8h.html#a703022b4d6f4d212306f2ae20cafcbb5">   30</a></span><span class="preprocessor">#define TAP_DEBOUNCE_TIME_US 200000 </span><span class="comment">// almost 300 bpm</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">extern</span> QueueHandle_t <a class="code hl_variable" href="tap_8h.html#a43cf8accd30762854b5635cb9fefabae">tap_task_queue</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="tap_8h.html#a9bceedf934a6c465d6657b4c7f0b257c">tap_task_handle</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keywordtype">void</span> <a class="code hl_function" href="tap_8h.html#ac90100d31ec60a91ae52a23f7e4cb57d">tap_init</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="atap_8h_html_a43cf8accd30762854b5635cb9fefabae"><div class="ttname"><a href="tap_8h.html#a43cf8accd30762854b5635cb9fefabae">tap_task_queue</a></div><div class="ttdeci">QueueHandle_t tap_task_queue</div><div class="ttdoc">Queue to send msgs to the tap module.</div><div class="ttdef"><b>Definition</b> tap.c:24</div></div>
+<div class="ttc" id="atap_8h_html_a9bceedf934a6c465d6657b4c7f0b257c"><div class="ttname"><a href="tap_8h.html#a9bceedf934a6c465d6657b4c7f0b257c">tap_task_handle</a></div><div class="ttdeci">TaskHandle_t tap_task_handle</div><div class="ttdoc">Handle of tap_task.</div><div class="ttdef"><b>Definition</b> tap.c:25</div></div>
+<div class="ttc" id="atap_8h_html_ac90100d31ec60a91ae52a23f7e4cb57d"><div class="ttname"><a href="tap_8h.html#ac90100d31ec60a91ae52a23f7e4cb57d">tap_init</a></div><div class="ttdeci">void tap_init()</div><div class="ttdoc">Init function to be called from the main.</div><div class="ttdef"><b>Definition</b> tap.c:189</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

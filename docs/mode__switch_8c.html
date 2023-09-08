@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: mode_switch.c File Reference</title>
+<title>Beat Catcher 2.0: mode_switch.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -90,12 +90,14 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aaddec2e93001176bc08a063e6e82410d"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mode__switch_8c.html#aaddec2e93001176bc08a063e6e82410d">clock_task_queue</a></td></tr>
+<tr class="memdesc:aaddec2e93001176bc08a063e6e82410d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:aaddec2e93001176bc08a063e6e82410d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43cf8accd30762854b5635cb9fefabae"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mode__switch_8c.html#a43cf8accd30762854b5635cb9fefabae">tap_task_queue</a></td></tr>
 <tr class="separator:a43cf8accd30762854b5635cb9fefabae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bceedf934a6c465d6657b4c7f0b257c"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mode__switch_8c.html#a9bceedf934a6c465d6657b4c7f0b257c">tap_task_handle</a></td></tr>
 <tr class="separator:a9bceedf934a6c465d6657b4c7f0b257c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad51e90d3ede3800ed2aec7bc82e34dd9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="main__defs_8h.html#ad7a6a5387cf5f4e77ec3fa2d2604c846">main_mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mode__switch_8c.html#ad51e90d3ede3800ed2aec7bc82e34dd9">mode</a></td></tr>
+<tr class="memdesc:ad51e90d3ede3800ed2aec7bc82e34dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode the system is currently in.  <br /></td></tr>
 <tr class="separator:ad51e90d3ede3800ed2aec7bc82e34dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a034c82e30f0010d82166a479a170facc"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mode__switch_8c.html#a034c82e30f0010d82166a479a170facc">mode_switch_task_handle</a> = NULL</td></tr>
 <tr class="memdesc:a034c82e30f0010d82166a479a170facc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle of mode_switch_task to receive notifications.  <br /></td></tr>
@@ -141,7 +143,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Beat catcher 2.0 - Mode Switch Module This module handles the switching between the main modes of the system: -MODE_PLAY -MODE_TAP -MODE_SETTINGS </p>
+
+<p>Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>. </p>
 
 </div>
 </div>
@@ -164,6 +167,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Mode the system is currently in. </p>
 
 </div>
 </div>

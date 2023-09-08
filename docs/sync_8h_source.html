@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: sync.h Source File</title>
+<title>Beat Catcher 2.0: sync.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -78,23 +78,25 @@ $(function() {
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="main__defs_8h.html">main_defs.h</a>&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25">   18</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799">   20</a></span>    <a class="code hl_enumvalue" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799">SYNC_START_EVALUATION_NOTIFY</a>,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698">   21</a></span>    <a class="code hl_enumvalue" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698">SYNC_RESET_PARAMETERS</a>,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>} <a class="code hl_enumeration" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25">sync_task_notify_code</a>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="sync_8h.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sync_8h.html#a92827fd784d0a12b9ceb1a8191f517b6">   18</a></span><span class="preprocessor">#define HEADROOM_VALUE_SYNC 0.1</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25">   23</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799">   25</a></span>    <a class="code hl_enumvalue" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799">SYNC_START_EVALUATION_NOTIFY</a>,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698">   26</a></span>    <a class="code hl_enumvalue" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698">SYNC_RESET_PARAMETERS</a>,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <a class="code hl_enumeration" href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25">sync_task_notify_code</a>;</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="sync_8h.html#a31625d038d25bdcb74d44ad2d02202fb">sync_init</a>();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="amain__defs_8h_html"><div class="ttname"><a href="main__defs_8h.html">main_defs.h</a></div></div>
-<div class="ttc" id="async_8h_html_a31625d038d25bdcb74d44ad2d02202fb"><div class="ttname"><a href="sync_8h.html#a31625d038d25bdcb74d44ad2d02202fb">sync_init</a></div><div class="ttdeci">void sync_init()</div><div class="ttdoc">Init function for the sync module The function sets parameters and starts sync_task.</div><div class="ttdef"><b>Definition</b> sync.c:169</div></div>
-<div class="ttc" id="async_8h_html_a628c36ee9d1d8448586b9df60e4f8fd0"><div class="ttname"><a href="sync_8h.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a></div><div class="ttdeci">TaskHandle_t sync_task_handle</div><div class="ttdoc">Handle of the sync_task.</div><div class="ttdef"><b>Definition</b> sync.c:12</div></div>
-<div class="ttc" id="async_8h_html_aa42c49e198f6815ecf98f69f4687bd25"><div class="ttname"><a href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25">sync_task_notify_code</a></div><div class="ttdeci">sync_task_notify_code</div><div class="ttdoc">Notify codes for sync_task.</div><div class="ttdef"><b>Definition</b> sync.h:19</div></div>
-<div class="ttc" id="async_8h_html_aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698"><div class="ttname"><a href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698">SYNC_RESET_PARAMETERS</a></div><div class="ttdeci">@ SYNC_RESET_PARAMETERS</div><div class="ttdef"><b>Definition</b> sync.h:21</div></div>
-<div class="ttc" id="async_8h_html_aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799"><div class="ttname"><a href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799">SYNC_START_EVALUATION_NOTIFY</a></div><div class="ttdeci">@ SYNC_START_EVALUATION_NOTIFY</div><div class="ttdef"><b>Definition</b> sync.h:20</div></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">extern</span> TaskHandle_t <a class="code hl_variable" href="sync_8h.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">void</span> <a class="code hl_function" href="sync_8h.html#a31625d038d25bdcb74d44ad2d02202fb">sync_init</a>();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amain__defs_8h_html"><div class="ttname"><a href="main__defs_8h.html">main_defs.h</a></div><div class="ttdoc">This file contains definitions valid for the whole code (task stack size, task priority,...</div></div>
+<div class="ttc" id="async_8h_html_a31625d038d25bdcb74d44ad2d02202fb"><div class="ttname"><a href="sync_8h.html#a31625d038d25bdcb74d44ad2d02202fb">sync_init</a></div><div class="ttdeci">void sync_init()</div><div class="ttdoc">Init function for the sync module The function sets parameters and starts sync_task.</div><div class="ttdef"><b>Definition</b> sync.c:214</div></div>
+<div class="ttc" id="async_8h_html_a628c36ee9d1d8448586b9df60e4f8fd0"><div class="ttname"><a href="sync_8h.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a></div><div class="ttdeci">TaskHandle_t sync_task_handle</div><div class="ttdoc">Handle of the sync_task.</div><div class="ttdef"><b>Definition</b> sync.c:10</div></div>
+<div class="ttc" id="async_8h_html_aa42c49e198f6815ecf98f69f4687bd25"><div class="ttname"><a href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25">sync_task_notify_code</a></div><div class="ttdeci">sync_task_notify_code</div><div class="ttdoc">Notify codes for sync_task.</div><div class="ttdef"><b>Definition</b> sync.h:24</div></div>
+<div class="ttc" id="async_8h_html_aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698"><div class="ttname"><a href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a34b27b3fafc64cbddec318f6428fa698">SYNC_RESET_PARAMETERS</a></div><div class="ttdeci">@ SYNC_RESET_PARAMETERS</div><div class="ttdef"><b>Definition</b> sync.h:26</div></div>
+<div class="ttc" id="async_8h_html_aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799"><div class="ttname"><a href="sync_8h.html#aa42c49e198f6815ecf98f69f4687bd25a48d5c1d7d8240232be194f4224ebb799">SYNC_START_EVALUATION_NOTIFY</a></div><div class="ttdeci">@ SYNC_START_EVALUATION_NOTIFY</div><div class="ttdef"><b>Definition</b> sync.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

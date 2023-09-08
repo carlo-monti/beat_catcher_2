@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: sync.c File Reference</title>
+<title>Beat Catcher 2.0: sync.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -70,7 +70,6 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">sync.c File Reference</div></div>
@@ -82,11 +81,6 @@ $(function() {
 <code>#include &quot;<a class="el" href="tempo_8h_source.html">tempo.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hid_8h_source.html">hid.h</a>&quot;</code><br />
 </div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a2dc6d933400b6e3b5797f04252b53739"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a2dc6d933400b6e3b5797f04252b53739">HEADROOM_VALUE</a>&#160;&#160;&#160;0.1</td></tr>
-<tr class="separator:a2dc6d933400b6e3b5797f04252b53739"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a779fb22524c0770405c75ae48a68171c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a779fb22524c0770405c75ae48a68171c">set_menu_item_pointer_to_vrb</a> (<a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dd">menu_item_index</a> index, void *ptr)</td></tr>
@@ -99,34 +93,26 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aaddec2e93001176bc08a063e6e82410d"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#aaddec2e93001176bc08a063e6e82410d">clock_task_queue</a></td></tr>
+<tr class="memdesc:aaddec2e93001176bc08a063e6e82410d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:aaddec2e93001176bc08a063e6e82410d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a4b95f9c9646e48a84af88f118ad9f2fa">tempo_task_handle</a></td></tr>
 <tr class="separator:a4b95f9c9646e48a84af88f118ad9f2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae78187cdc5c469675b0397d378e21618"><td class="memItemLeft" align="right" valign="top">SemaphoreHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#ae78187cdc5c469675b0397d378e21618">bc_mutex_handle</a></td></tr>
+<tr class="memdesc:ae78187cdc5c469675b0397d378e21618"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for protecting the bc variable.  <br /></td></tr>
 <tr class="separator:ae78187cdc5c469675b0397d378e21618"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="memItemLeft" align="right" valign="top">TaskHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a628c36ee9d1d8448586b9df60e4f8fd0">sync_task_handle</a></td></tr>
 <tr class="memdesc:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle of the sync_task.  <br /></td></tr>
 <tr class="separator:a628c36ee9d1d8448586b9df60e4f8fd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmain__runtime__vrbs.html">main_runtime_vrbs</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#abaee9dfd77205965d8b1c6f9f8b20f9e">bc</a></td></tr>
+<tr class="memdesc:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main runtime variable of the system.  <br /></td></tr>
 <tr class="separator:abaee9dfd77205965d8b1c6f9f8b20f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structonset__entry.html">onset_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1">onsets</a> []</td></tr>
+<tr class="memdesc:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circular buffer for storing onset informations.  <br /></td></tr>
 <tr class="separator:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac552cdb775277db4cb2b7ccb26e74b05"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#ac552cdb775277db4cb2b7ccb26e74b05">SYNC_WEIGHT</a> [2][<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>]</td></tr>
+<tr class="memdesc:ac552cdb775277db4cb2b7ccb26e74b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weights for the sync process for each bar position (for kick and snare)  <br /></td></tr>
+<tr class="separator:ac552cdb775277db4cb2b7ccb26e74b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a2dc6d933400b6e3b5797f04252b53739" name="a2dc6d933400b6e3b5797f04252b53739"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2dc6d933400b6e3b5797f04252b53739">&#9670;&#160;</a></span>HEADROOM_VALUE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define HEADROOM_VALUE&#160;&#160;&#160;0.1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a779fb22524c0770405c75ae48a68171c" name="a779fb22524c0770405c75ae48a68171c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a779fb22524c0770405c75ae48a68171c">&#9670;&#160;</a></span>set_menu_item_pointer_to_vrb()</h2>
@@ -197,7 +183,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>main runtime data </p>
+
+<p>Main runtime variable of the system. </p>
 
 </div>
 </div>
@@ -220,7 +207,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>mutex for the access to bc struct </p>
+
+<p>Mutex for protecting the bc variable. </p>
 
 </div>
 </div>
@@ -243,7 +231,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Beat catcher 2.0 - Mode Switch Module This module handles the switching between the main modes of the system: -MODE_PLAY -MODE_TAP -MODE_SETTINGS </p>
+
+<p>Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>. </p>
 
 </div>
 </div>
@@ -266,7 +255,8 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>array of onsets </p>
+
+<p>Circular buffer for storing onset informations. </p>
 
 </div>
 </div>
@@ -283,7 +273,26 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handle of the sync_task. </p>
-<p>sync_task handle </p>
+
+</div>
+</div>
+<a id="ac552cdb775277db4cb2b7ccb26e74b05" name="ac552cdb775277db4cb2b7ccb26e74b05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac552cdb775277db4cb2b7ccb26e74b05">&#9670;&#160;</a></span>SYNC_WEIGHT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float SYNC_WEIGHT[2][<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {{1, 0.1, 1, 0.1,</div>
+<div class="line">                                                          1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1},</div>
+<div class="line">                                                         {1, 0.1, 1, 0.1,</div>
+<div class="line">                                                          1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1}}</div>
+</div><!-- fragment -->
+<p>Weights for the sync process for each bar position (for kick and snare) </p>
 
 </div>
 </div>
@@ -306,7 +315,6 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Handle for the tempo task </p>
 
 </div>
 </div>

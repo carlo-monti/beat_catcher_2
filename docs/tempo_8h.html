@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: tempo.h File Reference</title>
+<title>Beat Catcher 2.0: tempo.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">Beat Catcher 2.0
    </div>
   </td>
  </tr>
@@ -70,6 +70,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -82,6 +83,12 @@ $(function() {
 
 <p><a href="tempo_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a1fc0d73b3d558fb80ac87a18d3b2f6d4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8h.html#a1fc0d73b3d558fb80ac87a18d3b2f6d4">HEADROOM_VALUE_TEMPO</a>&#160;&#160;&#160;0.1</td></tr>
+<tr class="memdesc:a1fc0d73b3d558fb80ac87a18d3b2f6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Headroom value suggested for the B-Keeper algorithm.  <br /></td></tr>
+<tr class="separator:a1fc0d73b3d558fb80ac87a18d3b2f6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:abc364bc71af450fbe95199def797ba59"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59">tempo_task_notify_code</a> { <a class="el" href="tempo_8h.html#abc364bc71af450fbe95199def797ba59a886ecdc956a9713d6fb66ad3098ce290">TEMPO_START_EVALUATION_NOTIFY</a>
@@ -104,7 +111,24 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Tempo module evaluates the need of a change in the bpm of the midi clock. For every onset, the sync module calculates the IOI with the preceding onsets of the two bars and calculates the accuracy. If the highest accuracy found is higher than the threshold the module sends a message to the clock module asking to set delta_tau_tempo value. The module starts its job when notified by the Sync module. </p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a1fc0d73b3d558fb80ac87a18d3b2f6d4" name="a1fc0d73b3d558fb80ac87a18d3b2f6d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fc0d73b3d558fb80ac87a18d3b2f6d4">&#9670;&#160;</a></span>HEADROOM_VALUE_TEMPO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HEADROOM_VALUE_TEMPO&#160;&#160;&#160;0.1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Headroom value suggested for the B-Keeper algorithm. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="abc364bc71af450fbe95199def797ba59" name="abc364bc71af450fbe95199def797ba59"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abc364bc71af450fbe95199def797ba59">&#9670;&#160;</a></span>tempo_task_notify_code</h2>
 
@@ -142,6 +166,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Init function for the tempo module The function will set parameters and starts tempo_task. </p>
+<p>Init function for the tempo module The function will set parameters and starts tempo_task. </p>
 
 </div>
 </div>
@@ -167,7 +192,6 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handle of the tempo_task. </p>
-<p>Handle for the tempo task </p>
 
 </div>
 </div>
