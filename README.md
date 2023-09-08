@@ -22,44 +22,41 @@ The user interface of the system looks like this:
 Once the system is powered on, the user can start the sequence by tapping on the Tap button four times at the correct tempo. The MIDI Clock sequence will start and the system will keep up with the drummer playing. To stop the sequence simply press the Tap button once. Pressing the Menu button will enter the SETTINGS mode in which the user can set various parameters.
 
 ## Code
-Compiling the esp32-at is the same as compiling any other project based on the ESP-IDF:
+To compile the code do what is suggested by the ESP-IDF docs:
 
-1. You can clone the project into an empty directory using command:
+1. Install the ESP-IDF framework with plugin for VSC or Eclipse (v5.1.1)
+2. Create a new bare project with template sample_project
+3. Copy the main folder content to the main folder
+4. Add the components folder to your project
+5. Run SDK Configuration Editor for your needs (be sure to check for FreeRTOS tick frequency of 1000Hz)
+6. Build
+
+This is the directory tree:
 ```
-git clone --recursive https://github.com/carlo-monti/beat_catcher_2.git
-```
-2. `rm sdkconfig` to remove the old configuration.
-3. 
-The code has been developed with the ESP-IDF framework. After the framework is installed (in VSC or Eclipse), just clone the whole code into a new project and set the build target. This is the directory tree:
-```
-├── CMakeLists.txt
-├── README.md
-├── build
+
 ├── components
 │   └── ssd1306
-├── main
-│   ├── CMakeLists.txt
-│   ├── bc_doxygen
-│   ├── clock.c
-│   ├── clock.h
-│   ├── hid.c
-│   ├── hid.h
-│   ├── html
-│   ├── main.c
-│   ├── main_defs.h
-│   ├── menu_parameters.h
-│   ├── mode_switch.c
-│   ├── mode_switch.h
-│   ├── onset_adc.c
-│   ├── onset_adc.h
-│   ├── sync.c
-│   ├── sync.h
-│   ├── tap.c
-│   ├── tap.h
-│   ├── tempo.c
-│   └── tempo.h
-├── sdkconfig
-└── sdkconfig.old
+└── main
+    ├── CMakeLists.txt
+    ├── bc_doxygen
+    ├── clock.c
+    ├── clock.h
+    ├── hid.c
+    ├── hid.h
+    ├── html
+    ├── main.c
+    ├── main_defs.h
+    ├── menu_parameters.h
+    ├── mode_switch.c
+    ├── mode_switch.h
+    ├── onset_adc.c
+    ├── onset_adc.h
+    ├── sync.c
+    ├── sync.h
+    ├── tap.c
+    ├── tap.h
+    ├── tempo.c
+    └── tempo.h
 ```
 
 ## Documentation
