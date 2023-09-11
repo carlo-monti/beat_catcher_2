@@ -17,12 +17,12 @@ The whole project is based on an ESP32 MCU and uses other peripherals such as an
 | Supported Targets | ESP32 | ESP32-S3 |
 | ----------------- | ----- | -------- |
 
-To compile the code do what is suggested by the ESP-IDF docs:
+To compile the code just do what suggested in the ESP-IDF docs:
 
-1. Install the ESP-IDF framework with plugin for VSC or Eclipse (v5.1.1)
+1. Install the ESP-IDF framework with plugin in VSC or Eclipse (v5.1.1)
 2. Create a new bare project with template sample_project
-3. Copy the main folder content to the main folder
-4. Add the components folder to your project
+3. Copy the `main` folder content to the `main` folder
+4. Add the `components` folder to your project
 5. Run SDK Configuration Editor for your needs (be sure to check for FreeRTOS tick frequency of 1000Hz)
 6. Build
 
