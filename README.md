@@ -21,7 +21,7 @@ To compile the code just do what suggested in the ESP-IDF docs:
 
 1. Install the ESP-IDF framework with plugin in VSC or Eclipse (v5.1.1)
 2. Create a new bare project with template sample_project
-3. Copy the `main` folder content to the `main` folder
+3. Copy the `main` folder content to the `main` folder of the project
 4. Add the `components` folder to your project
 5. Run SDK Configuration Editor for your needs (be sure to check for FreeRTOS tick frequency of 1000Hz)
 6. Build
