@@ -2,7 +2,7 @@
 A portable beat-tracking system.
 
 ## About
-**Beat Catcher 2.0** is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with an acoustic drum played by a human performer. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that is in sync with it. 
+**Beat Catcher 2.0** is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with an acoustic drum played by a human performer. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that keeps the electronic instrument in sync with it. 
 
 ## The algorithm
 Beat Catcher 2.0 is an implementation of the B-Keeper beat-tracking algorithm (*Robertson, Andrew, and Mark D. Plumbley. “Synchronizing Sequencing Software to a Live Drummer.” Computer
@@ -17,12 +17,12 @@ The whole project is based on an ESP32 MCU and uses other peripherals such as an
 | Supported Targets | ESP32 | ESP32-S3 |
 | ----------------- | ----- | -------- |
 
-To compile the code do what is suggested by the ESP-IDF docs:
+To compile the code just do what suggested in the ESP-IDF docs:
 
-1. Install the ESP-IDF framework with plugin for VSC or Eclipse (v5.1.1)
+1. Install the ESP-IDF framework with plugin in VSC or Eclipse (v5.1.1)
 2. Create a new bare project with template sample_project
-3. Copy the main folder content to the main folder
-4. Add the components folder to your project
+3. Copy the `main` folder content to the `main` folder of the project
+4. Add the `components` folder to your project
 5. Run SDK Configuration Editor for your needs (be sure to check for FreeRTOS tick frequency of 1000Hz)
 6. Build
 
