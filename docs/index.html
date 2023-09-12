@@ -74,7 +74,13 @@ $(function() {
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
 About</h1>
-<p>Beat Catcher 2.0 is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with an acoustic drum played by a human performer. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that is in sync with it. Beat Catcher 2.0 is an implementation of the B-Keeper beat-tracking algorithm (Robertson, Andrew, and Mark D. Plumbley. “Synchronizing Sequencing Software to a Live Drummer.” Computer Music Journal, vol. 37, no. 2, 2013). An updated version of B-Keeper algorithm is now included in Ableton Live 11, a de facto standard for electro/acoustic performances. Beat Catcher 2.0 represents an alternative method that is cheap and portable: a DAWless way of doing syncronization. The whole project is based on an ESP32 MCU and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components (piezo sensors, leds...).</p>
+<p>Beat Catcher 2.0 is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with an acoustic drum played by a human performer. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that is in sync with it.</p>
+<h1><a class="anchor" id="The"></a>
+Algorithm</h1>
+<p>Beat Catcher 2.0 is an implementation of the B-Keeper beat-tracking algorithm (Robertson, Andrew, and Mark D. Plumbley. “Synchronizing Sequencing Software to a Live Drummer.” Computer Music Journal, vol. 37, no. 2, 2013). An updated version of B-Keeper algorithm is now included in Ableton Live 11: the de facto standard for electro/acoustic performances. Beat Catcher 2.0 represents an alternative method that is cheap and portable: a DAWless way of doing syncronization.</p>
+<h1><a class="anchor" id="Components"></a>
+Components</h1>
+<p>The whole project is based on an ESP32 and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components including some modules to handle the battery and the conditioning circuit. On github (<a href="https://github.com/carlo-monti/beat_catcher_2">here</a>) you can find the schematic for the circuit and the pinout references.</p>
 <h1><a class="anchor" id="Code"></a>
 Code</h1>
 <p>The code has been developed with the ESP-IDF framework and can be found at: <a href="https://github.com/carlo-monti/beat_catcher_2">https://github.com/carlo-monti/beat_catcher_2</a> </p>
