@@ -138,7 +138,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a779fb22524c0770405c75ae48a68171c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a variable to the corresponding menu entry. This function has to be called when a module needs to register a variable to the menu entry. It takes the menu entry index (from the enum menu_item_index) and a void pointer to the variable. The type of the pointer is then correctly casted by the module knowing the variable type.  <br /></td></tr>
 <tr class="separator:a779fb22524c0770405c75ae48a68171c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39aab2d16622c49709553d56c15c531b"><td class="memItemLeft" align="right" valign="top">bool IRAM_ATTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#a39aab2d16622c49709553d56c15c531b">turn_off_led_cb</a> (gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *led_pin)</td></tr>
-<tr class="memdesc:a39aab2d16622c49709553d56c15c531b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function used to turn off led to make it blink only one time.  <br /></td></tr>
+<tr class="memdesc:a39aab2d16622c49709553d56c15c531b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function used to turn off led to make it blink only once.  <br /></td></tr>
 <tr class="separator:a39aab2d16622c49709553d56c15c531b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec44d521c7bcd36f1cb57f5d59935b08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="onset__adc_8c.html#aec44d521c7bcd36f1cb57f5d59935b08">led_blink_init</a> ()</td></tr>
 <tr class="memdesc:aec44d521c7bcd36f1cb57f5d59935b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init function for the blinking led action When an onset is triggered, the function blink_led is called. The led is than turned on and a timer is started to trigger an interrupt that will turn it off after a duration period. This function inits the GPIO and the timer.  <br /></td></tr>
@@ -543,7 +543,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Callback function used to turn off led to make it blink only one time. </p>
+<p>Callback function used to turn off led to make it blink only once. </p>
 
 </div>
 </div>
