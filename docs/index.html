@@ -72,21 +72,21 @@ $(function() {
   <div class="headertitle"><div class="title">Beat Catcher 2.0 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
+<div class="textblock"><h1><a class="anchor" id="about"></a>
 About</h1>
 <p>Beat Catcher 2.0 is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with an acoustic drum played by a human performer. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that is in sync with it.</p>
-<h1><a class="anchor" id="The"></a>
-Algorithm</h1>
+<h1><a class="anchor" id="algorithm"></a>
+The Algorithm</h1>
 <p>Beat Catcher 2.0 is an implementation of the B-Keeper beat-tracking algorithm (Robertson, Andrew, and Mark D. Plumbley. “Synchronizing Sequencing Software to a Live Drummer.” Computer Music Journal, vol. 37, no. 2, 2013). An updated version of B-Keeper algorithm is now included in Ableton Live 11: the de facto standard for electro/acoustic performances. Beat Catcher 2.0 represents an alternative method that is cheap and portable: a DAWless way of doing syncronization.</p>
-<h1><a class="anchor" id="Components"></a>
+<h1><a class="anchor" id="components"></a>
 Components</h1>
 <p>The whole project is based on an ESP32 and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components including some modules to handle the battery and the conditioning circuit. On github (<a href="https://github.com/carlo-monti/beat_catcher_2">here</a>) you can find the schematic for the circuit and the pinout references.</p>
-<h1><a class="anchor" id="Code"></a>
+<h1><a class="anchor" id="code"></a>
 Code</h1>
 <p>The code has been developed with the ESP-IDF framework and can be found at: <a href="https://github.com/carlo-monti/beat_catcher_2">https://github.com/carlo-monti/beat_catcher_2</a></p>
 <p>The code uses the FreeRTOS operating system and is structured in modules, each of which contains a single task together with any ISR procedures. The modules, their operation and the interactions between them are illustrated below.</p>
-<h2><a class="anchor" id="Global"></a>
-variables and main apps</h2>
+<h2><a class="anchor" id="glob"></a>
+Global variables and main apps</h2>
 <p>The system uses three global variables, declared in <a class="el" href="main_8c.html">main.c</a>:</p><ul>
 <li>onsets: A circular array of size ONSET_BUFFER_SIZE where the onsets (detected by the Onset Adc. module) are recorded</li>
 <li>mode: A (volatile) variable of type enum main_mode that defines the current system mode: MODE_TAP, MODE_PLAY, MODE_SETTINGS or MODE_SLEEP.</li>
@@ -102,14 +102,14 @@ variables and main apps</h2>
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="Clock"></a>
+<h2><a class="anchor" id="clock"></a>
 Clock</h2>
 <p>The Clock module (<a class="el" href="clock_8h.html" title="Clock module keeps up the time and sends MIDI_CLOCK messages. The clock module keeps up with the time...">clock.h</a>/clock.c) is responsible for managing the progress time sequence, sending MIDI CLOCK messages via UART and turning on the LEDs. The module has a queue through which it can receive requests from other modules relating to:</p><ul>
 <li>Starting or stopping the sending of MIDI CLOCK messages</li>
 <li>Updating the synchronization parameters (delta_tau_sync and delta_tau_tempo)</li>
 <li>Updating the tempo value (bpm) When the time sequence is activated (by the TAP module), the task (clock task) is notified, resets the internal parameters and sends a MIDI START message. Subsequently, the task maintains a position index with values from 0 to 11 and for each position index it sends a MIDI CLOCK message and performs any further actions (based on the position with respect to the temporal progression). At the end of each step, the execution of the task is delayed to the distance tau/12 (period of the MIDI CLOCK messages) using the vTaskDelayUntil() function, increasing the position index modulo 12. When the timeline is stopped (press TAP or MENU button), the Clock module receives a message on its queue, sends MIDI STOP message and pauses waiting for the sequence to be restarted.</li>
 </ul>
-<h2><a class="anchor" id="Tap"></a>
+<h2><a class="anchor" id="tap"></a>
 Tap</h2>
 <p>The Tap module (<a class="el" href="tap_8h.html" title="Tap module let the user insert the initial bpm by pressing on the tap button on time....">tap.h</a>/tap.c) takes care of starting the timeline and setting the initial bpm. The task (tap task) is notified by an interrupt routine (tap tempo isr handler) activated by the user pressing the TAP button (or hitting the relevant pad): hit. If it is the first hit, the task starts an internal counter and notes the absolute time value in the relevant array. Subsequent hits are noted in the array by incrementing the internal counter. If the fourth hit is received, the task:</p><ul>
 <li>Calculate the bpm based on the average distance between the four received.</li>
@@ -118,7 +118,7 @@ Tap</h2>
 <li>Requests the Mode Switch module to switch to PLAY mode.</li>
 <li>Wakes up the Clock module, asks to start the sequence and communicates the position of the first MIDI CLOCK. Alternatively, if no more hits are received within the timeout time, the Tap module requests the Mode Switch module to activate SLEEP mode and then suspends itself.</li>
 </ul>
-<h2><a class="anchor" id="Hid"></a>
+<h2><a class="anchor" id="hid"></a>
 Hid</h2>
 <p>The Hid module (<a class="el" href="hid_8h.html" title="HID Module handles the encoder, the display and the permanent storage of the variables values....">hid.h</a>/hid.c) manages interaction with the user: it allows the parameters to be set and indicates the current bpm value. It also takes care of permanently storing the set values (if required) and recalling the saved values from memory (at startup). The module uses a KY-040 rotary encoder, an SSD1306 OLED display and the capabilities of the ESP-IDF NVS module. Its behavior depends on the global mode of the system.</p>
 <ul>
@@ -126,15 +126,15 @@ Hid</h2>
 <li>PLAY -&gt; The module shows the current bpm value on the display.</li>
 <li>TAP -&gt; The module shows the number of hits recorded (1-2-3-4) on the display. SLEEP The module turns off the display. The task (hid task) has a refresh rate of 100ms. At each cycle it examines the requests received in the queue. These requests can be sent by ISRs that manage the pressure of the encoder and its rotation (via the ESP-IDF PULSE COUNTER module) or by other modules that request the display of specific information. When the system is in SETTINGS mode, in case of rotation of the encoder, the module reads the value of the variable relating to the currently selected parameter and increases or decreases it. The new value is then assigned to variable again. If the encoder is clicked, the next parameter is selected based on the order of the menu array. If the selected parameter is the last one (SAVE VALUES) and the selected value is YES, the module writes all the current values into permanent memory.</li>
 </ul>
-<h3><a class="anchor" id="Parameters"></a>
+<h3><a class="anchor" id="par"></a>
 Parameters</h3>
 <p>To be able to be modified by the user, each parameter (each variable) must have a corresponding reference in the menu. This reference is created through a struct that contains the pointer to the variable, the name of the parameter, the type and the maximum and minimum values. All structs are aggregated into an array in a defined order. To add a variable to the menu you need:</p><ul>
 <li>Add a value to the enum menu item index that indicates the position of the parameter in the menu</li>
 <li>Add the information relating to the variable inside the menu init function (in the <a class="el" href="hid_8c.html">hid.c</a> file) indicating all the required fields except the pointer to the variable (NULL)</li>
 <li>Add a call to the function set_menu_item_pointer_to_vrb inside the module containing the variable to register the pointer.</li>
 </ul>
-<h2><a class="anchor" id="Mode"></a>
-Switch</h2>
+<h2><a class="anchor" id="mode"></a>
+Mode Switch</h2>
 <p>The Mode Switch module (<a class="el" href="mode__switch_8h.html" title="MODE_SWITCH module handles the changing of the main mode of Beat Catcher. There are four main modes o...">mode_switch.h</a>/mode_switch.c) is responsible for managing the global operating mode of the system and entering or exiting the energy saving mode. The change from one mode to another can occur for different reasons:</p><ul>
 <li>The MODE button is pressed (management via ISR) and you are asked to switch to SETTINGS mode or to enter TAP mode.</li>
 <li>The Tap module has received 4 hits and is asking to switch to PLAY mode.</li>
@@ -144,13 +144,13 @@ Switch</h2>
 <li>SETTINGS -&gt; Edit the global variable in SETTINGS. Requests the clock module to stop. Requests the Hid module to switch to SETTINGS mode</li>
 <li>SLEEP -&gt; Change the global variable to SLEEP. Requests the clock module to stop. Requests the Hid module to turn off the display. Enter power saving mode by activating output via interrupt on GPIO.</li>
 </ul>
-<h2><a class="anchor" id="Onset"></a>
-ADC</h2>
+<h2><a class="anchor" id="onset"></a>
+Onset ADC</h2>
 <p>The Onset ADC module (<a class="el" href="onset__adc_8h.html" title="ONSET_ADC module handles the sampling of the piezo sensors and the onset detection....">onset_adc.h</a>/onset_adc.c) takes care of sampling the signal of the two analog inputs relating to the kick drum and snare drum, detecting any onsets and recording the relevant information in the dedicated array. Sampling is performed in DMA via the continuous mode of ESP-IDF which notifies the task as soon as the conversion is finished. Since the SAR of ESP32 is quite noisy, an oversampling is performed, followed by an averaging of the detected samples. The signal is subsequently processed to trace its envelope using a very basic system, but sufficient for our purposes, which simulates the charging and discharging effect of a capacitor in an analog circuit. Onset detection is achieved by calculating the slope of the increase in signal amplitude and evaluated on the basis of a time gate that allows re-triggering only after a certain debounce period. When an onset is detected, it is noted in the relevant array via a struct that specifies its temporal location and type (Kick or Snare). The onset annotation can be suspended and reactivated (to create the 16th notch) by means of messages to the task queue.</p>
-<h2><a class="anchor" id="Sync"></a>
+<h2><a class="anchor" id="sync"></a>
 Sync</h2>
 <p>The Sync module (<a class="el" href="sync_8h.html" title="SYNC module evaluates the need of a sincronization of the midi clock. For every onset,...">sync.h</a>/sync.c) takes care of the synchronization of the clock signal with the detected onsets by executing the B-Keeper phase-correction algorithm. Once notified by the Onset Adc module, the Sync module checks whether an onset has been detected. In this case it evaluates whether it is necessary to synchronize the temporal sequence with it and/or whether it is necessary to modify the scaling parameters of the window. If so, the form sends a message to the task clock queue to communicate the synchronization value (delta tau sync). Once complete, the module sends a notification to the Time module task to request the evaluation to begin.</p>
-<h2><a class="anchor" id="Tempo"></a>
+<h2><a class="anchor" id="tempo"></a>
 Tempo</h2>
 <p>The Tempo module (<a class="el" href="tempo_8h.html" title="Tempo module evaluates the need of a change in the bpm of the midi clock. For every onset,...">tempo.h</a>/tempo.c) takes care of detecting the current tempo by executing the B-Keeper tempo-tracking algorithm. Once notified by the sync module, the tempo task calculates the value of Inter Onset Interval and the related accuracy value for each onset in the previous two beats. If the highest accuracy value detected is higher than the threshold value, a message is sent to the Clock module queue to communicate the delta tau time value. This value will then be used by the Clock module also to evaluate any latency control action </p>
 </div></div><!-- PageDoc -->
