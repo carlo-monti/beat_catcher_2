@@ -2,7 +2,7 @@
 A portable beat-tracking system.
 
 ## About
-**Beat Catcher 2.0** is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with a human performer playing an acoustic drum. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that keeps the electronic instrument in sync with it. 
+**Beat Catcher** is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with a human performer playing an acoustic drum. Using one piezoelectric sensor on the kick and another on the snare, Beat Catcher detects the tempo currently held by the musician and sends out a Midi Clock signal that keeps the electronic instrument in sync with it. 
 
 ## The algorithm
 Beat Catcher 2.0 is an implementation of the B-Keeper beat-tracking algorithm (*Robertson, Andrew, and Mark D. Plumbley. “Synchronizing Sequencing Software to a Live Drummer.” Computer
@@ -24,6 +24,7 @@ To compile the code just do what suggested in the ESP-IDF docs:
 3. Copy the `main` folder content to the `main` folder of the project
 4. Add the `components` folder to your project
 5. If you are using VSC, set include path as specified [here](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/C_CPP_CONFIGURATION.md). Depending on your needs you likely have to set `.vscode/c_cpp_properties.json` to:
+   
    ```json
    {
     "configurations": [
@@ -40,35 +41,8 @@ To compile the code just do what suggested in the ESP-IDF docs:
 7. Run SDK Configuration Editor for your needs (be sure to check for FreeRTOS tick frequency of 1000Hz)
 8. Build
 
-This is the directory tree:
-```
-
-├── components
-│   └── ssd1306
-└── main
-    ├── CMakeLists.txt
-    ├── bc_doxygen
-    ├── clock.c
-    ├── clock.h
-    ├── hid.c
-    ├── hid.h
-    ├── html
-    ├── main.c
-    ├── main_defs.h
-    ├── menu_parameters.h
-    ├── mode_switch.c
-    ├── mode_switch.h
-    ├── onset_adc.c
-    ├── onset_adc.h
-    ├── sync.c
-    ├── sync.h
-    ├── tap.c
-    ├── tap.h
-    ├── tempo.c
-    └── tempo.h
-```
-
 ## Documentation
+
 Doxygen docs can be found at: https://carlo-monti.github.io/beat_catcher_2/
 
 ## How to use it in practice
