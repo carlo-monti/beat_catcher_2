@@ -23,7 +23,7 @@ To compile the code just do what suggested in the ESP-IDF docs:
 2. Create a new bare project with template sample_project
 3. Copy the `main` folder content to the `main` folder of the project
 4. Add the `components` folder to your project
-5. If you are using VSC, set include path as specified [here](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/C_CPP_CONFIGURATION.md). Depending on your needs you likely have to set `.vscode/c_cpp_properties.json` to:
+5. If you are using VSC, set include path as specified [here](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/C_CPP_CONFIGURATION.md). You likely have to set `.vscode/c_cpp_properties.json` to:
    
    ```json
    {
