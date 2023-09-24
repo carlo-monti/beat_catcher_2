@@ -13,7 +13,9 @@ TaskHandle_t tempo_task_handle = NULL;
 /**
  * @brief Weights for the tempo process for each Inter Onset Interval
  */
-const float TEMPO_WEIGHT[17] = {0, 0, 1, 0, 1, 0, 0, 0, 0.92, 0, 0, 0, 0.8, 0, 0, 0, 0.8};
+// 
+
+const double TEMPO_WEIGHT[17] = {0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0.92, 0, 0.8, 0, 0, 0, 0};
 
 /**
  * @brief Factor for calculating the max width of the window
@@ -25,10 +27,10 @@ const uint16_t SIGMA_TEMPO_WIDTH_FACTOR = 20;
  */
 static void tempo_task(void *arg)
 {
-    static float alpha = 1; // Alpha value of the tempo algorithm
+    static double alpha = 1; // Alpha value of the tempo algorithm
     set_menu_item_pointer_to_vrb(MENU_INDEX_TEMPO_ALPHA, &alpha); // Add this variable to the menu
-    static long sigma_tempo = 60; // Sigma of the tempo algorithm (width of the window)
-    static float theta_tempo = 0.80; // Threshold of the tempo algorithm
+    static long long sigma_tempo = 60; // Sigma of the tempo algorithm (width of the window)
+    static double theta_tempo = 0.80; // Threshold of the tempo algorithm
 
     while (1)
     {
@@ -50,21 +52,21 @@ static void tempo_task(void *arg)
                     /*
                     Reset all parameters
                     */
-                    float accuracyWin = 0;
-                    long errorWin = 0;
+                    double accuracyWin = 0;
+                    long long errorWin = 0;
                     int vWin = 0;
                     long long deltaTauTempo = 0;
-                    float gaussian = 0;
-                    float interOnsetInterval;
+                    double gaussian = 0;
+                    double interOnsetInterval;
                     int v;
-                    long error;
-                    float currentAccuracy;
+                    long long error;
+                    double currentAccuracy;
                     /*
                     Update the index of the last onset of the last two bars
                     (remove the onsets that are older than two bars)
                     */
                     xSemaphoreTake(bc_mutex_handle, portMAX_DELAY);
-                    while (onsets[bc.last_relevant_onset_index_for_tempo].time < (GET_CURRENT_TIME_MS() - (bc.tau * TWO_BAR_LENGTH_IN_8TH)))
+                    while (onsets[bc.last_relevant_onset_index_for_tempo].time < (esp_timer_get_time() - (bc.tau * TWO_BAR_LENGTH_IN_8TH)))
                     {
                         if (bc.last_relevant_onset_index_for_tempo == bc.most_recent_onset_index)
                         {
@@ -96,7 +98,7 @@ static void tempo_task(void *arg)
                         /*
                         Calculate gaussian
                         */
-                        gaussian = exp(pow(error, 2) / (float)(-2 * pow(sigma_tempo, 2)));
+                        gaussian = exp(pow(error, 2) / (double)(-2 * pow(sigma_tempo, 2)));
                         currentAccuracy = gaussian * TEMPO_WEIGHT[v]; // g(en,k)*Ltempo(v(k))
                         if (currentAccuracy > accuracyWin)
                         { 
@@ -116,7 +118,7 @@ static void tempo_task(void *arg)
                         Update tempo + change parameters (raise threshold)
                         */
                         deltaTauTempo = alpha * accuracyWin * (errorWin / vWin);
-                        if (deltaTauTempo != 0)
+                        if (deltaTauTempo >= 900 || deltaTauTempo <= -900)
                         {
                             /*
                             Send to clock module the value for tempo change

@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['latency_5famount_5fdefault_5fpercentage_0',['LATENCY_AMOUNT_DEFAULT_PERCENTAGE',['../menu__parameters_8h.html#a8dd3cdfab6fc624765d3f44ba131d986',1,'menu_parameters.h']]],
-  ['latency_5famount_5fmax_5fvalue_1',['LATENCY_AMOUNT_MAX_VALUE',['../menu__parameters_8h.html#adf0b3ae444c09987e010db85ccad66f9',1,'menu_parameters.h']]],
-  ['latency_5famount_5fmin_5fvalue_2',['LATENCY_AMOUNT_MIN_VALUE',['../menu__parameters_8h.html#ad23f1f04ccc7b1331876064e67016aa2',1,'menu_parameters.h']]],
-  ['latency_5famount_5fparameter_5fname_3',['LATENCY_AMOUNT_PARAMETER_NAME',['../menu__parameters_8h.html#a6b1233dece0d02bce4476a10fbcb4cf2',1,'menu_parameters.h']]],
-  ['latency_5famount_5fpercentage_5fstep_4',['LATENCY_AMOUNT_PERCENTAGE_STEP',['../menu__parameters_8h.html#a352b91f6d6d2c2ca76f922da2ea1582d',1,'menu_parameters.h']]],
-  ['latency_5fsmooth_5fdefault_5fpercentage_5',['LATENCY_SMOOTH_DEFAULT_PERCENTAGE',['../menu__parameters_8h.html#a5577afc4771e5dff419489896c5b1726',1,'menu_parameters.h']]],
-  ['latency_5fsmooth_5fmax_5fvalue_6',['LATENCY_SMOOTH_MAX_VALUE',['../menu__parameters_8h.html#a640e082cf48d9358539d511c6aac3ef4',1,'menu_parameters.h']]],
-  ['latency_5fsmooth_5fmin_5fvalue_7',['LATENCY_SMOOTH_MIN_VALUE',['../menu__parameters_8h.html#ad7034f3fd76125a454cbf0971706ea6d',1,'menu_parameters.h']]],
-  ['latency_5fsmooth_5fparameter_5fname_8',['LATENCY_SMOOTH_PARAMETER_NAME',['../menu__parameters_8h.html#a7ffc2bfbe49126fd136f8e5830058ee7',1,'menu_parameters.h']]],
-  ['latency_5fsmooth_5fpercentage_5fstep_9',['LATENCY_SMOOTH_PERCENTAGE_STEP',['../menu__parameters_8h.html#a6e78b075cf6a49ac8db06dc3b41f7836',1,'menu_parameters.h']]]
+  ['max_5fonset_5fdelta_5fx_5flength_0',['MAX_ONSET_DELTA_X_LENGTH',['../onset__adc_8c.html#ad485d497ba204b41d61760bc83465d5c',1,'onset_adc.c']]],
+  ['midi_5fclock_5fhalfway_1',['MIDI_CLOCK_HALFWAY',['../clock_8c.html#a30a2011f7aae633b7e3a0d10ce3a14ef',1,'clock.c']]],
+  ['midi_5fclock_5fled_5foff_2',['MIDI_CLOCK_LED_OFF',['../clock_8c.html#a694afaf0db6031c9d1dc061675a483d1',1,'clock.c']]],
+  ['midi_5fclock_5fon_5fbeat_3',['MIDI_CLOCK_ON_BEAT',['../clock_8c.html#a5451bb4ae6d40a03182ba992ccc42719',1,'clock.c']]],
+  ['midi_5fclock_5fsecond_5fthird_4',['MIDI_CLOCK_SECOND_THIRD',['../clock_8c.html#ad3427c1628491466fe62addb39fa01d7',1,'clock.c']]],
+  ['midi_5fclock_5fthird_5fthird_5',['MIDI_CLOCK_THIRD_THIRD',['../clock_8c.html#a52625851bd54adc677f5e9a0efdc96fe',1,'clock.c']]],
+  ['mode_5fswitch_5fdebounce_5ftime_5fus_6',['MODE_SWITCH_DEBOUNCE_TIME_US',['../mode__switch_8h.html#aac4092dc3ba2d8127c8e2ebbb096f11e',1,'mode_switch.h']]],
+  ['mode_5fswitch_5fpin_7',['MODE_SWITCH_PIN',['../mode__switch_8h.html#a6090bfe35d3f6af08bf866ac273e40f6',1,'mode_switch.h']]],
+  ['mode_5fswitch_5fstack_5fsize_8',['MODE_SWITCH_STACK_SIZE',['../main__defs_8h.html#abe6f45e753b3b2ba06644745b963554a',1,'main_defs.h']]],
+  ['mode_5fswitch_5ftask_5fpriority_9',['MODE_SWITCH_TASK_PRIORITY',['../main__defs_8h.html#aad3ca517d2279aa56e0a34f842b3212d',1,'main_defs.h']]]
 ];

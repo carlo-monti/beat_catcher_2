@@ -11,5 +11,15 @@ var searchData=
   ['alpha_5fmax_5fvalue_8',['ALPHA_MAX_VALUE',['../menu__parameters_8h.html#a9460b9127235177d434ceffb5ca2b762',1,'menu_parameters.h']]],
   ['alpha_5fmin_5fvalue_9',['ALPHA_MIN_VALUE',['../menu__parameters_8h.html#a050161ccef86cd91153e19a7aa9512be',1,'menu_parameters.h']]],
   ['alpha_5fparameter_5fname_10',['ALPHA_PARAMETER_NAME',['../menu__parameters_8h.html#a6756b6c753cf87d6e2f9f30507c67589',1,'menu_parameters.h']]],
-  ['alpha_5fpercentage_5fstep_11',['ALPHA_PERCENTAGE_STEP',['../menu__parameters_8h.html#a24102444c17f27f2257c5be510c43e99',1,'menu_parameters.h']]]
+  ['alpha_5fparameter_5fname_5ftop_11',['ALPHA_PARAMETER_NAME_TOP',['../menu__parameters_8h.html#aaa82649d03c1cdd671ab194a040b8977',1,'menu_parameters.h']]],
+  ['alpha_5fpercentage_5fstep_12',['ALPHA_PERCENTAGE_STEP',['../menu__parameters_8h.html#a24102444c17f27f2257c5be510c43e99',1,'menu_parameters.h']]],
+  ['alpha_5fstorage_5fkey_13',['ALPHA_STORAGE_KEY',['../menu__parameters_8h.html#a0751ceb57fe7e01792bd4e757991e259',1,'menu_parameters.h']]],
+  ['audio_5fclick_5fchannel_14',['AUDIO_CLICK_CHANNEL',['../clock_8c.html#ae2941b0ec6849fa6623ca969f0635334',1,'clock.c']]],
+  ['audio_5fclick_5fduty_15',['AUDIO_CLICK_DUTY',['../clock_8c.html#a4d1ec952e1f681d958e1e920ebbcf40d',1,'clock.c']]],
+  ['audio_5fclick_5fduty_5fres_16',['AUDIO_CLICK_DUTY_RES',['../clock_8c.html#ab71a7cb07f3a9097b7eb1e0dd2c943ca',1,'clock.c']]],
+  ['audio_5fclick_5ffrequency_17',['AUDIO_CLICK_FREQUENCY',['../clock_8c.html#a08d0943c3a78a481e2e9e74c6630c4ea',1,'clock.c']]],
+  ['audio_5fclick_5ffrequency_5ffirst_18',['AUDIO_CLICK_FREQUENCY_FIRST',['../clock_8c.html#a9d280d79d74b94b19cae73347ab9b7d9',1,'clock.c']]],
+  ['audio_5fclick_5fmode_19',['AUDIO_CLICK_MODE',['../clock_8c.html#a404718e0f00d2da6d8d561e069ef67e8',1,'clock.c']]],
+  ['audio_5fclick_5foutput_5fio_20',['AUDIO_CLICK_OUTPUT_IO',['../clock_8c.html#a195dcddc90016c8117ab4ccd8c5d1d4b',1,'clock.c']]],
+  ['audio_5fclick_5ftimer_21',['AUDIO_CLICK_TIMER',['../clock_8c.html#aa359eb98d201de57c44b789f879e44f4',1,'clock.c']]]
 ];

@@ -32,13 +32,18 @@
 
 /**
  * @{ \name GPIO pins for UART
+ * Uart rx pin is set to a dummy value (rx is not needed)
  */
 #if CONFIG_IDF_TARGET_ESP32
-#define UART_PIN_1 GPIO_NUM_26
-#define UART_PIN_2 GPIO_NUM_27
+#define UART_MIDI_1_TX GPIO_NUM_26
+#define UART_MIDI_1_RX GPIO_NUM_13
+#define UART_MIDI_2_TX GPIO_NUM_27  
+#define UART_MIDI_2_RX GPIO_NUM_13
 #else
-#define UART_PIN_1 GPIO_NUM_17
-#define UART_PIN_2 GPIO_NUM_18
+#define UART_MIDI_1_TX GPIO_NUM_17
+#define UART_MIDI_1_RX GPIO_NUM_13
+#define UART_MIDI_2_TX GPIO_NUM_18
+#define UART_MIDI_2_RX GPIO_NUM_46
 #endif
 /**
  * @}

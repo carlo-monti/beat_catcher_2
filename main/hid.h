@@ -15,10 +15,12 @@
  * 
  * To be editable by the user, every parameter must have an entry on the menu.
  * To add a menu entry:
- * - Add a value on the menu_item_index enum to select the order for the parameter name in the menu
- * - Add in the menu_init function inside the hid.c file set up the name and the various info to fill all the
- * struct fields except the pointer to variable that must be set to NULL. The parameter values are defined in menu_parameters.h
- * - Place a call to the set_menu_item_pointer_to_vrb function inside the module to register the pointer to the struct.
+ * - Add a value on the menu_item_index enum (file: hid.h) to select the order for the parameter name in the menu
+ * - Add the parameter values definitions (file: menu_parameters.h).
+ * - Add in the menu_init function (file: hid.c) the instructions to fill all the
+ * struct fields. Remember to set the pointer to the variable to NULL. 
+ * - After that, place a call to the set_menu_item_pointer_to_vrb function inside the module which contains the variable
+ * to register the pointer to the struct.
  */
 
 #ifndef BC_HID_H
@@ -26,11 +28,6 @@
 
 #include "main_defs.h"
 #include "menu_parameters.h"
-
-/**
- * @brief Name displayed when the system asks to save values
- */
-#define SAVE_VALUES_PARAMETER_NAME "SAVE VALUES    "
 
 /**
  * @{ \name GPIO pins for encoder
@@ -126,13 +123,16 @@ typedef union
  */
 typedef struct
 {
+    char top_name_displayed[16]; /**< Name of the parameter to be displayed on top*/
     char name_displayed[16]; /**< Name of the parameter to be displayed */
+    char storage_key[16]; /**< Name of the parameter to be displayed */
     void *pointer_to_vrb; /**< Pointer to the variable */
     bc_variable_type vrb_type; /**< Type of variable choosen from the bc_variable_type enum */
     range_values min; /**< Minimum value the variable can assume */
     range_values max; /**< Maximum value the variable can assume */
     uint8_t percentage; /**< Current value of the variable in percentage (min to max) */
     uint8_t percentage_step; /**< Increase/decrease percentage value with every step for the encoder */
+    bool has_corresponding_value; /**< If set to false, the parameter is just a dummy value for something else ("Save values","Gain") */
 } hid_parameter_entry;
 
 /**
@@ -141,12 +141,9 @@ typedef struct
  */
 typedef enum
 {
-    MENU_INDEX_SYNC_NARROW,
-    MENU_INDEX_SYNC_EXPAND,
+    MENU_INDEX_CHECK_GAIN,
     MENU_INDEX_SYNC_BETA,
     MENU_INDEX_TEMPO_ALPHA,
-    MENU_INDEX_TEMPO_LATENCY_AMOUNT,
-    MENU_INDEX_TEMPO_LATENCY_SMOOTH,
     MENU_INDEX_KICK_THRESHOLD,
     MENU_INDEX_KICK_GATE,
     MENU_INDEX_KICK_FILTER,

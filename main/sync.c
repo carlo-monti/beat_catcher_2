@@ -15,7 +15,7 @@ extern void set_menu_item_pointer_to_vrb(menu_item_index index, void *ptr);
 /**
  * @brief Weights for the sync process for each bar position (for kick and snare)
  */
-const float SYNC_WEIGHT[2][TWO_BAR_LENGTH_IN_8TH] = {{1, 0.1, 1, 0.1,
+const double SYNC_WEIGHT[2][TWO_BAR_LENGTH_IN_8TH] = {{1, 0.1, 1, 0.1,
                                                           1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1},
                                                          {1, 0.1, 1, 0.1,
                                                           1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1, 1, 0.1}};
@@ -25,18 +25,14 @@ static void sync_task(void *arg)
     /*
     Set up initial values
     */
-    static float beta = 0.6;
+    static double beta = 0.6;
     set_menu_item_pointer_to_vrb(MENU_INDEX_SYNC_BETA, &beta); // add variable to menu
-    static float narrow_ratio = 1;
-    set_menu_item_pointer_to_vrb(MENU_INDEX_SYNC_NARROW, &narrow_ratio); // add variable to menu
-    static float expand_ratio = 1;
-    set_menu_item_pointer_to_vrb(MENU_INDEX_SYNC_EXPAND, &expand_ratio); // add variable to menu
-    static long sigma_sync_width = 10;
-    static long sigma_sync = 60;
-    static float theta_sync = 0.80;
+    static long long sigma_sync_width = 10;
+    static long long sigma_sync = 60;
+    static double theta_sync = 0.80;
     static uint8_t last_layer_of_bar_pos = 0;
     static uint8_t last_synced_layer = 0;
-    static float accuracy_of_last_synced_layer = 0;
+    static double accuracy_of_last_synced_layer = 0;
     while (1)
     {
         /*
@@ -63,22 +59,23 @@ static void sync_task(void *arg)
                 /*
                 If there is an onset...
                 */
-                float final_accuracy_to_sync = -1;
-                long final_delta_tau_sync = 0;
+                double final_accuracy_to_sync = -1;
+                long long final_delta_tau_sync = 0;
                 long long two_sigma_squared = -2 * pow(sigma_sync, 2);
                 while(1){
                     /* 
                     Repeat this calculation for all the onsets
                     */
-                    float accuracy = 0;
-                    float gaussian;
-                    float current_sync_weight;
-                    long error;
+                    double accuracy = 0;
+                    double gaussian;
+                    double current_sync_weight;
+                    long long error;
                     /*
                     Set the weight depending on onset type (kick or snare)
                     */
                     current_sync_weight = SYNC_WEIGHT[onsets[i].type][bar_position]; 
                     error = onsets[i].time - expected_beat;
+                    //ESP_LOGI("SYNC","ERROR\t\t\t\t %lld",error);
                     /*
                     calculate accuracy for the current onset
                     */
@@ -109,7 +106,7 @@ static void sync_task(void *arg)
                                 change parameters (raise threshold, narrow window)
                                 */
                                 theta_sync = theta_sync + (0.3 * (accuracy - theta_sync - 0.1));
-                                sigma_sync = sigma_sync * (narrow_ratio + ((0.7 * current_sync_weight) - accuracy));
+                                sigma_sync = sigma_sync * (1 + ((0.7 * current_sync_weight) - accuracy));
                                 if (sigma_sync < round(tau / sigma_sync_width))
                                 {
                                     sigma_sync = round(tau / sigma_sync_width);
@@ -143,7 +140,7 @@ static void sync_task(void *arg)
                         if (layer >= last_synced_layer)
                         {
                             theta_sync = 0.6 * theta_sync;
-                            sigma_sync = sigma_sync * (expand_ratio + ((0.7 * current_sync_weight) - accuracy));
+                            sigma_sync = sigma_sync * (1 + ((0.7 * current_sync_weight) - accuracy));
                             if (sigma_sync < round(tau / sigma_sync_width))
                             {
                                 sigma_sync = round(tau / sigma_sync_width);
@@ -199,7 +196,6 @@ static void sync_task(void *arg)
             A new sequence is starting: reset parameters with the new tau
             */        
             sigma_sync = round(tau / sigma_sync_width);
-            sigma_sync = 60;
             theta_sync = 0.80;
             last_layer_of_bar_pos = 0;
             last_synced_layer = 0;

@@ -8,6 +8,10 @@
  * Whenever an onset is detected, its absolute position in time is stored in the onsets array.
  * 
  * The onset_adc module has a queue that is used to ask the main task to start/stop logging onsets.
+ * 
+ * The module can be asked (by Hid) to display gain. In this case the variable display_gain is set to true
+ * and the two leds will display the gain clipping (sample value > GAIN_CLIP_VALUE) and not the onset detected.
+ * The two variable (display_gain and allow_onset) should be not true together.
  */
 
 #ifndef BC_ONSET_ADC_H
@@ -47,6 +51,8 @@ typedef enum
     ONSET_ADC_ALLOW_ONSET, /**< The module starts logging onsets */
     ONSET_ADC_DISALLOW_ONSET, /**< The module stops logging onsets */
     ONSET_ADC_DISALLOW_ONSET_AND_START_SYNC, /**< The module starts logging onsets and notifies sync to start evaluation */
+    ONSET_ADC_START_DISPLAY_GAIN, /**< The leds start indicating the gain clipping (adc sample > 4096) */
+    ONSET_ADC_STOP_DISPLAY_GAIN, /**< The leds stop indicating the gain clipping (adc sample > 4096) */
 } onset_adc_queue_msg;
 
 /**

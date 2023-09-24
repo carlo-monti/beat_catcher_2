@@ -6,6 +6,8 @@
 #include "sync.h"
 #include "hid.h"
 
+#define GAIN_CLIP_VALUE 4094
+
 /**
  * @{ \name ADC set up values (channels, attenuation, ...)
  */
@@ -18,7 +20,7 @@
 #define ADC_OUTPUT_TYPE ADC_DIGI_OUTPUT_FORMAT_TYPE1 // 1 for esp32 |2 for esp32-s3
 #define ADC_GET_CHANNEL(p_data) ((p_data)->type1.channel) // type1 for esp32 | type2 for esp32-s3
 #define ADC_GET_DATA(p_data) ((p_data)->type1.data) // type1 for esp32 | type2 for esp32-s3
-#define KICK_ADC_CHANNEL ADC_CHANNEL_3 // ADC CHANNELS MUST BE CONSECUTIVE NUMBERS!
+#define KICK_ADC_CHANNEL ADC_CHANNEL_3
 #define SNARE_ADC_CHANNEL ADC_CHANNEL_6
 #else
 #define ADC_OUTPUT_TYPE ADC_DIGI_OUTPUT_FORMAT_TYPE2      // 1 for esp32 2 for esp32-s3
@@ -95,7 +97,6 @@ extern void set_menu_item_pointer_to_vrb(menu_item_index index, void *ptr);
 TaskHandle_t onset_adc_task_handle = NULL;
 QueueHandle_t onset_adc_task_queue = NULL;
 adc_continuous_handle_t adc_handle = NULL;
-
 /*
 Initialize adc channel array
 */
@@ -120,6 +121,7 @@ led_cfg onset_led[2] = {
 Initialize onset detection variables
 */
 bool allow_onset = false;
+bool display_gain = false;
 bool has_onset = false;
 
 /**
@@ -133,7 +135,7 @@ static bool IRAM_ATTR conv_done_cb(adc_continuous_handle_t adc_handle, const adc
 }
 
 /**
- * @brief Callback function used to turn off led to make it blink only one time
+ * @brief Callback function used to turn off led to make it blink only once
 */
 bool IRAM_ATTR turn_off_led_cb(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *led_pin)
 {
@@ -206,7 +208,7 @@ void led_blink_init()
             .clk_src = GPTIMER_CLK_SRC_DEFAULT,
             .direction = GPTIMER_COUNT_UP,
             .resolution_hz = 1000000, // 1MHz, 1 tick=1us
-            .flags.intr_shared = false,
+            .flags.intr_shared = true,
         };
         ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &onset_led[i].timer_handle));
         /*
@@ -321,18 +323,21 @@ void onset_adc_task(void *arg)
                         xSemaphoreGive(bc_mutex_handle);
                         has_onset = false;
                         allow_onset = true;
+                        display_gain = false;
                         break;
                     case ONSET_ADC_DISALLOW_ONSET:
                         /*
                         Stop logging onsets
                         */
                         allow_onset = false;
+                        display_gain = false;
                         break;
                     case ONSET_ADC_DISALLOW_ONSET_AND_START_SYNC:
                         /*
                         Stop logging onsets
                         */
                         allow_onset = false;
+                        display_gain = false;
                         xSemaphoreTake(bc_mutex_handle, portMAX_DELAY);
                         bc.there_is_an_onset = has_onset;
                         xSemaphoreGive(bc_mutex_handle);
@@ -340,6 +345,18 @@ void onset_adc_task(void *arg)
                         Notify sync to start evaluation
                         */
                         xTaskNotify(sync_task_handle, SYNC_START_EVALUATION_NOTIFY, eSetValueWithOverwrite);
+                        break;
+                    case ONSET_ADC_START_DISPLAY_GAIN:
+                        /*
+                        Stop logging onsets
+                        */
+                        display_gain = true;
+                        break;
+                    case ONSET_ADC_STOP_DISPLAY_GAIN:
+                        /*
+                        Stop logging onsets
+                        */
+                        display_gain = false;
                         break;
                     default:
                         ESP_LOGE("adc_task", "invalid queue value!");
@@ -385,6 +402,21 @@ void onset_adc_task(void *arg)
                     sample_avg[KICK] /= OVERSAMPLING;
                     sample_avg[SNARE] /= OVERSAMPLING;
                     /*
+                    If asked: display gain
+                    */
+                    if(display_gain){
+                        if(sample_avg[KICK] > GAIN_CLIP_VALUE){
+                            gpio_set_level(KICK_LED_PIN, 1);
+                        }else{
+                            gpio_set_level(KICK_LED_PIN, 0);
+                        }
+                        if(sample_avg[SNARE] > GAIN_CLIP_VALUE){
+                            gpio_set_level(SNARE_LED_PIN, 1);
+                        }else{
+                            gpio_set_level(SNARE_LED_PIN, 0);
+                        }
+                    }
+                    /*
                     Filter the kick sample
                     */
                     if (sample_avg[KICK] > kick.current_sample)
@@ -422,6 +454,7 @@ void onset_adc_task(void *arg)
                     uint32_t previous_snare_for_delta = snare.past_samples[(snare.past_samples_current_onset_index + MAX_ONSET_DELTA_X_LENGTH - snare_onset_cfg.delta_x) % MAX_ONSET_DELTA_X_LENGTH];
                     int delta_y_kick = kick.current_sample - previous_kick_for_delta;
                     int delta_y_snare = snare.current_sample - previous_snare_for_delta;
+                    uint64_t current_time_us = esp_timer_get_time();
                     /*
                     Check for onset for kick
                     */
@@ -430,7 +463,6 @@ void onset_adc_task(void *arg)
                         /*
                         Debounce onset
                         */
-                        uint64_t current_time_us = esp_timer_get_time();
                         if (current_time_us > kick.last_onset_time + kick_onset_cfg.gate_time_us)
                         {
                             if(allow_onset){
@@ -441,7 +473,7 @@ void onset_adc_task(void *arg)
                                 bc.most_recent_onset_index = (bc.most_recent_onset_index + 1) % ONSET_BUFFER_SIZE;
                                 uint32_t current_onset_index = bc.most_recent_onset_index;
                                 xSemaphoreGive(bc_mutex_handle);
-                                onsets[current_onset_index].time = US_TO_MS(current_time_us);
+                                onsets[current_onset_index].time = current_time_us;
                                 onsets[current_onset_index].type = KICK;
                             }
                             kick.last_onset_time = current_time_us;
@@ -460,7 +492,6 @@ void onset_adc_task(void *arg)
                         /*
                         Debounce onset
                         */
-                        uint64_t current_time_us = esp_timer_get_time();
                         if (current_time_us > snare.last_onset_time + snare_onset_cfg.gate_time_us)
                         {
                             if(allow_onset){
@@ -471,7 +502,7 @@ void onset_adc_task(void *arg)
                                 bc.most_recent_onset_index = (bc.most_recent_onset_index + 1) % ONSET_BUFFER_SIZE;
                                 uint32_t current_onset_index = bc.most_recent_onset_index;
                                 xSemaphoreGive(bc_mutex_handle);
-                                onsets[current_onset_index].time = US_TO_MS(current_time_us);
+                                onsets[current_onset_index].time = current_time_us;
                                 onsets[current_onset_index].type = SNARE;
                             }
                             snare.last_onset_time = current_time_us;

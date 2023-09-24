@@ -97,8 +97,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:abca80ab7ca925a00f2db3f89d251b1ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hid_8h.html#abca80ab7ca925a00f2db3f89d251b1ef">SAVE_VALUES_PARAMETER_NAME_TOP</a>&#160;&#160;&#160;&quot;SAVE VALUES    &quot;</td></tr>
+<tr class="memdesc:abca80ab7ca925a00f2db3f89d251b1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name displayed when the system asks to save values.  <br /></td></tr>
+<tr class="separator:abca80ab7ca925a00f2db3f89d251b1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1aa01774d7293781389acb74e62cf7bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hid_8h.html#a1aa01774d7293781389acb74e62cf7bd">SAVE_VALUES_PARAMETER_NAME</a>&#160;&#160;&#160;&quot;SAVE VALUES    &quot;</td></tr>
-<tr class="memdesc:a1aa01774d7293781389acb74e62cf7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name displayed when the system asks to save values.  <br /></td></tr>
 <tr class="separator:a1aa01774d7293781389acb74e62cf7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">GPIO pins for encoder</div></td></tr>
 <tr class="memitem:a53ee889a6d5ca39a383e52386542f18b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hid_8h.html#a53ee889a6d5ca39a383e52386542f18b">ENCODER_CLICK_PIN</a>&#160;&#160;&#160;GPIO_NUM_40</td></tr>
@@ -149,13 +151,8 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:a5a47db5eecf54d9940e7c42360ee9f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify the variable type for the menu entry. Every variable whose value can be modified by the user must have a type choosen from here.  <a href="hid_8h.html#a5a47db5eecf54d9940e7c42360ee9f0c">More...</a><br /></td></tr>
 <tr class="separator:a5a47db5eecf54d9940e7c42360ee9f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfcff66ff86af6e231579ee15b4167dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dd">menu_item_index</a> { <br />
-&#160;&#160;<a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34">MENU_INDEX_SYNC_NARROW</a>
-, <a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0">MENU_INDEX_SYNC_EXPAND</a>
-, <a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab">MENU_INDEX_SYNC_BETA</a>
+&#160;&#160;<a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab">MENU_INDEX_SYNC_BETA</a>
 , <a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7">MENU_INDEX_TEMPO_ALPHA</a>
-, <br />
-&#160;&#160;<a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5">MENU_INDEX_TEMPO_LATENCY_AMOUNT</a>
-, <a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c">MENU_INDEX_TEMPO_LATENCY_SMOOTH</a>
 , <a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406">MENU_INDEX_KICK_THRESHOLD</a>
 , <a class="el" href="hid_8h.html#adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233">MENU_INDEX_KICK_GATE</a>
 , <br />
@@ -205,9 +202,10 @@ Variables</h2></td></tr>
 <li>SLEEP mode: the display is turned off</li>
 </ul>
 <p>To be editable by the user, every parameter must have an entry on the menu. To add a menu entry:</p><ul>
-<li>Add a value on the menu_item_index enum to select the order for the parameter name in the menu</li>
-<li>Add in the menu_init function inside the <a class="el" href="hid_8c.html">hid.c</a> file set up the name and the various info to fill all the struct fields except the pointer to variable that must be set to NULL. The parameter values are defined in <a class="el" href="menu__parameters_8h.html" title="This file contains the parameters for each menu entry.">menu_parameters.h</a></li>
-<li>Place a call to the set_menu_item_pointer_to_vrb function inside the module to register the pointer to the struct. </li>
+<li>Add a value on the menu_item_index enum (file: <a class="el" href="hid_8h.html" title="HID Module handles the encoder, the display and the permanent storage of the variables values....">hid.h</a>) to select the order for the parameter name in the menu</li>
+<li>Add the parameter values definitions (file: <a class="el" href="menu__parameters_8h.html" title="This file contains the parameters for each menu entry.">menu_parameters.h</a>).</li>
+<li>Add in the menu_init function (file: <a class="el" href="hid_8c.html">hid.c</a>) the instructions to fill all the struct fields. Remember to set the pointer to the variable to NULL.</li>
+<li>After that, place a call to the set_menu_item_pointer_to_vrb function inside the module which contains the variable to register the pointer to the struct. </li>
 </ul>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ab8714cf0e8d2d951735d59d4b46b53de" name="ab8714cf0e8d2d951735d59d4b46b53de"></a>
@@ -334,6 +332,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="abca80ab7ca925a00f2db3f89d251b1ef" name="abca80ab7ca925a00f2db3f89d251b1ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca80ab7ca925a00f2db3f89d251b1ef">&#9670;&#160;</a></span>SAVE_VALUES_PARAMETER_NAME_TOP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SAVE_VALUES_PARAMETER_NAME_TOP&#160;&#160;&#160;&quot;SAVE VALUES    &quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 <p>Name displayed when the system asks to save values. </p>
 
 </div>
@@ -421,12 +433,8 @@ Variables</h2></td></tr>
 
 <p>Index for the menu entries. Change the order of this enum to change the order of the presentation of entries in the menu. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34" name="adfcff66ff86af6e231579ee15b4167dda628c9153c00b1452f668bd697363cc34"></a>MENU_INDEX_SYNC_NARROW&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0" name="adfcff66ff86af6e231579ee15b4167dda2dd4b5efdb67e87c62cc8f03f1eb60d0"></a>MENU_INDEX_SYNC_EXPAND&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab" name="adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab"></a>MENU_INDEX_SYNC_BETA&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab" name="adfcff66ff86af6e231579ee15b4167dda5853d42297aa2337fc6782772a8f4eab"></a>MENU_INDEX_SYNC_BETA&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7" name="adfcff66ff86af6e231579ee15b4167dda50446d87ae7c07cd5396d0f5afc379f7"></a>MENU_INDEX_TEMPO_ALPHA&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5" name="adfcff66ff86af6e231579ee15b4167ddab8ef2daf9bd5fcc6eba7c3effd2e7ef5"></a>MENU_INDEX_TEMPO_LATENCY_AMOUNT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c" name="adfcff66ff86af6e231579ee15b4167dda86b87399ff7227fc15222530a4ba1a6c"></a>MENU_INDEX_TEMPO_LATENCY_SMOOTH&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406" name="adfcff66ff86af6e231579ee15b4167ddac89aff29b6d1e4817195815344811406"></a>MENU_INDEX_KICK_THRESHOLD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233" name="adfcff66ff86af6e231579ee15b4167dda98e2b708f4e8d9bf98ebef96d8a81233"></a>MENU_INDEX_KICK_GATE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="adfcff66ff86af6e231579ee15b4167dda3c3079ca5f913b19eae7d51b6fefda8c" name="adfcff66ff86af6e231579ee15b4167dda3c3079ca5f913b19eae7d51b6fefda8c"></a>MENU_INDEX_KICK_FILTER&#160;</td><td class="fielddoc"></td></tr>

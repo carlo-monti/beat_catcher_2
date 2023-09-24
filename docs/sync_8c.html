@@ -109,9 +109,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structonset__entry.html">onset_entry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a9a73fbe99e3db32ed2fc5c3bde3521f1">onsets</a> []</td></tr>
 <tr class="memdesc:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Circular buffer for storing onset informations.  <br /></td></tr>
 <tr class="separator:a9a73fbe99e3db32ed2fc5c3bde3521f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac552cdb775277db4cb2b7ccb26e74b05"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#ac552cdb775277db4cb2b7ccb26e74b05">SYNC_WEIGHT</a> [2][<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>]</td></tr>
-<tr class="memdesc:ac552cdb775277db4cb2b7ccb26e74b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weights for the sync process for each bar position (for kick and snare)  <br /></td></tr>
-<tr class="separator:ac552cdb775277db4cb2b7ccb26e74b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e918d1e65d0943bead534a54a39e5ff"><td class="memItemLeft" align="right" valign="top">const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sync_8c.html#a4e918d1e65d0943bead534a54a39e5ff">SYNC_WEIGHT</a> [2][<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>]</td></tr>
+<tr class="memdesc:a4e918d1e65d0943bead534a54a39e5ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Weights for the sync process for each bar position (for kick and snare)  <br /></td></tr>
+<tr class="separator:a4e918d1e65d0943bead534a54a39e5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a779fb22524c0770405c75ae48a68171c" name="a779fb22524c0770405c75ae48a68171c"></a>
@@ -257,6 +257,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Circular buffer for storing onset informations. </p>
+<p>This is the main file. It contains the app_main function which runs first. It calls all the init functions of the modules and then delets itself. </p>
 
 </div>
 </div>
@@ -276,14 +277,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ac552cdb775277db4cb2b7ccb26e74b05" name="ac552cdb775277db4cb2b7ccb26e74b05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac552cdb775277db4cb2b7ccb26e74b05">&#9670;&#160;</a></span>SYNC_WEIGHT</h2>
+<a id="a4e918d1e65d0943bead534a54a39e5ff" name="a4e918d1e65d0943bead534a54a39e5ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e918d1e65d0943bead534a54a39e5ff">&#9670;&#160;</a></span>SYNC_WEIGHT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const float SYNC_WEIGHT[2][<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>]</td>
+          <td class="memname">const double SYNC_WEIGHT[2][<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">

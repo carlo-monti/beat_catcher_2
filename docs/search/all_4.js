@@ -8,10 +8,5 @@ var searchData=
   ['encoder_5fincrease_5',['ENCODER_INCREASE',['../hid_8h.html#a139fa99be9ce245c91875730c08a48e0a9b3df53da1b020dd99c4a5d368cd2343',1,'hid.h']]],
   ['encoder_5fpin_5f0_6',['ENCODER_PIN_0',['../hid_8h.html#a7d86fe9fbb60263abb30f140a83756be',1,'hid.h']]],
   ['encoder_5fpin_5f1_7',['ENCODER_PIN_1',['../hid_8h.html#a2d8b85e349f721831072f584506934ae',1,'hid.h']]],
-  ['expand_5fratio_5fdefault_5fpercentage_8',['EXPAND_RATIO_DEFAULT_PERCENTAGE',['../menu__parameters_8h.html#afaecf22a57e27e5f94c16089cf2edf53',1,'menu_parameters.h']]],
-  ['expand_5fratio_5fmax_5fvalue_9',['EXPAND_RATIO_MAX_VALUE',['../menu__parameters_8h.html#a239b8213783cbaa71bb3344c618aa5a0',1,'menu_parameters.h']]],
-  ['expand_5fratio_5fmin_5fvalue_10',['EXPAND_RATIO_MIN_VALUE',['../menu__parameters_8h.html#ab7b97441308206f7ab01f026f50e4e7a',1,'menu_parameters.h']]],
-  ['expand_5fratio_5fparameter_5fname_11',['EXPAND_RATIO_PARAMETER_NAME',['../menu__parameters_8h.html#a531a87e44fb434361996749595c06668',1,'menu_parameters.h']]],
-  ['expand_5fratio_5fpercentage_5fstep_12',['EXPAND_RATIO_PERCENTAGE_STEP',['../menu__parameters_8h.html#aef5af4ab9a70d49f72402d0dcdbd40cb',1,'menu_parameters.h']]],
-  ['expected_5fbeat_13',['expected_beat',['../structmain__runtime__vrbs.html#af5fd887e5553fc7ff748df34370fff3d',1,'main_runtime_vrbs']]]
+  ['expected_5fbeat_8',['expected_beat',['../structmain__runtime__vrbs.html#af5fd887e5553fc7ff748df34370fff3d',1,'main_runtime_vrbs']]]
 ];

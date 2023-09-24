@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['max_5fonset_5fdelta_5fx_5flength_0',['MAX_ONSET_DELTA_X_LENGTH',['../onset__adc_8c.html#ad485d497ba204b41d61760bc83465d5c',1,'onset_adc.c']]],
-  ['midi_5fclock_5fhalfway_1',['MIDI_CLOCK_HALFWAY',['../clock_8c.html#a30a2011f7aae633b7e3a0d10ce3a14ef',1,'clock.c']]],
-  ['midi_5fclock_5fled_5foff_2',['MIDI_CLOCK_LED_OFF',['../clock_8c.html#a694afaf0db6031c9d1dc061675a483d1',1,'clock.c']]],
-  ['midi_5fclock_5fon_5fbeat_3',['MIDI_CLOCK_ON_BEAT',['../clock_8c.html#a5451bb4ae6d40a03182ba992ccc42719',1,'clock.c']]],
-  ['midi_5fclock_5fsecond_5fthird_4',['MIDI_CLOCK_SECOND_THIRD',['../clock_8c.html#ad3427c1628491466fe62addb39fa01d7',1,'clock.c']]],
-  ['midi_5fclock_5fthird_5fthird_5',['MIDI_CLOCK_THIRD_THIRD',['../clock_8c.html#a52625851bd54adc677f5e9a0efdc96fe',1,'clock.c']]],
-  ['mode_5fswitch_5fdebounce_5ftime_5fus_6',['MODE_SWITCH_DEBOUNCE_TIME_US',['../mode__switch_8h.html#aac4092dc3ba2d8127c8e2ebbb096f11e',1,'mode_switch.h']]],
-  ['mode_5fswitch_5fpin_7',['MODE_SWITCH_PIN',['../mode__switch_8h.html#a6090bfe35d3f6af08bf866ac273e40f6',1,'mode_switch.h']]],
-  ['mode_5fswitch_5fstack_5fsize_8',['MODE_SWITCH_STACK_SIZE',['../main__defs_8h.html#abe6f45e753b3b2ba06644745b963554a',1,'main_defs.h']]],
-  ['mode_5fswitch_5ftask_5fpriority_9',['MODE_SWITCH_TASK_PRIORITY',['../main__defs_8h.html#aad3ca517d2279aa56e0a34f842b3212d',1,'main_defs.h']]]
+  ['oled_5freset_5fgpio_5fpin_0',['OLED_RESET_GPIO_PIN',['../hid_8h.html#aa0b025c74b09d3fa0d39638b4e926dfb',1,'hid.h']]],
+  ['oled_5fscl_5fgpio_5fpin_1',['OLED_SCL_GPIO_PIN',['../hid_8h.html#a8f24987e7cef874e3ec467ce55caaa05',1,'hid.h']]],
+  ['oled_5fsda_5fgpio_5fpin_2',['OLED_SDA_GPIO_PIN',['../hid_8h.html#a8bf7b8d58b57eda5c39baba10ddf0acc',1,'hid.h']]],
+  ['onset_5fadc_5ftask_5fpriority_3',['ONSET_ADC_TASK_PRIORITY',['../main__defs_8h.html#a5e0d4885bbde40f0f33deade08556a15',1,'main_defs.h']]],
+  ['onset_5fadc_5ftask_5fstack_5fsize_4',['ONSET_ADC_TASK_STACK_SIZE',['../main__defs_8h.html#a71404889ea6aaa54fed679e8023aa145',1,'main_defs.h']]],
+  ['onset_5fbuffer_5fsize_5',['ONSET_BUFFER_SIZE',['../main__defs_8h.html#a787df755bbc935fcf792bd7569170d8a',1,'main_defs.h']]],
+  ['oversampling_6',['OVERSAMPLING',['../onset__adc_8c.html#aba7d938851efb9ea95d05c45fc003e91',1,'onset_adc.c']]]
 ];

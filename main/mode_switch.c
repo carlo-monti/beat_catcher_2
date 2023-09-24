@@ -3,6 +3,7 @@
 #include "clock.h"
 #include "driver/gpio.h"
 #include "tap.h"
+#include "onset_adc.h"
 
 extern QueueHandle_t clock_task_queue;
 extern QueueHandle_t tap_task_queue;
@@ -97,6 +98,11 @@ static void mode_switch_task(void *arg)
             */  
             case MODE_SWITCH_TO_TAP:
                 /*
+                Ask onset to stop display gain (it can be currently set to on by hid)
+                */
+                int onset_adc_queue_value = ONSET_ADC_STOP_DISPLAY_GAIN;
+                xQueueSend(onset_adc_task_queue, &onset_adc_queue_value, NULL);
+                /*
                 Change main mode
                 */
                 mode = MODE_TAP;
@@ -104,6 +110,12 @@ static void mode_switch_task(void *arg)
                 Reset clock queue
                 */
                 xQueueReset(clock_task_queue);
+                /*
+                Ask clock to stop
+                */
+                clock_tx_buffer.type = CLOCK_QUEUE_STOP;
+                clock_tx_buffer.value = 0;
+                xQueueSend(clock_task_queue, &clock_tx_buffer, (TickType_t)0);
                 /*
                 Ask hid to switch to tap mode
                 */
@@ -144,10 +156,6 @@ static void mode_switch_task(void *arg)
                 break;
             case MODE_SWITCH_TO_SLEEP:
                 /*
-                Change main mode
-                */
-                mode = MODE_SLEEP;
-                /*
                 Ask hid to turn off display
                 */
                 msg_to_hid = HID_ENTER_SLEEP_MODE;
@@ -156,6 +164,10 @@ static void mode_switch_task(void *arg)
                 Wait for the tasks to do their action
                 */
                 vTaskDelay(pdMS_TO_TICKS(200));
+                /*
+                Change main mode
+                */
+                mode = MODE_SLEEP;
                 /*
                 Go to sleep
                 */

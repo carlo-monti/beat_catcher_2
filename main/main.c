@@ -1,13 +1,6 @@
-/*! \mainpage
- *
- * \section intro_sec About
- *
- * Beat Catcher 2.0 is a beat-tracking device for synchronizing electronic systems (drum machines, sequencer, arpeggiator, ...) with an acoustic drum played by a human performer. Using one piezoelectric sensor on the Kick and another on the Snare, Beat Catcher 2.0 detects the tempo currently held by the musician and sends out a Midi Clock signal that is in sync with it.
- * Beat Catcher 2.0 is an implementation of the B-Keeper beat-tracking algorithm (Robertson, Andrew, and Mark D. Plumbley. “Synchronizing Sequencing Software to a Live Drummer.” Computer Music Journal, vol. 37, no. 2, 2013). An updated version of B-Keeper algorithm is now included in Ableton Live 11, a de facto standard for electro/acoustic performances. Beat Catcher 2.0 represents an alternative method that is cheap and portable: a DAWless way of doing syncronization.
- * The whole project is based on an ESP32 MCU and uses other peripherals such as an OLED Display SSD1306, an Encoder KY-040 and various electronic components (piezo sensors, leds...).
- *
- * \section Code
- * The code has been developed with the ESP-IDF framework and can be found at: <a href="https://github.com/carlo-monti/beat_catcher_2">https://github.com/carlo-monti/beat_catcher_2</a> 
+/**
+ * This is the main file. It contains the app_main function which runs first.
+ * It calls all the init functions of the modules and then delets itself.
  */
 
 #include "main_defs.h"
@@ -67,12 +60,17 @@ void app_main(void)
     /*
     Start all the modules
     */
+    ESP_LOGI("main.c","hid_init");
     hid_init();
+    ESP_LOGI("main.c","mode_switch_init");
     mode_switch_init();
+    ESP_LOGI("main.c","onset_init");
     onset_adc_init();
     sync_init();
     tempo_init();
+    ESP_LOGI("main.c","tap_init");
     tap_init();
+    ESP_LOGI("main.c","clock_init");
     clock_init();
     /*
     Refresh the menu values after all the modules setted their pointer
@@ -81,5 +79,7 @@ void app_main(void)
     /*
     Delete this task
     */
+    int msg_to_hid = HID_TAP_MODE_SELECT;
+    xQueueSend(hid_task_queue, &msg_to_hid, (TickType_t)0);
     vTaskDelete(NULL);
 }

@@ -21,12 +21,14 @@ var searchData=
   ['tempo_5ftask_5fnotify_5fcode_18',['tempo_task_notify_code',['../tempo_8h.html#abc364bc71af450fbe95199def797ba59',1,'tempo.h']]],
   ['tempo_5ftask_5fpriority_19',['TEMPO_TASK_PRIORITY',['../main__defs_8h.html#adbbc101828144814f70831885ae36dcb',1,'main_defs.h']]],
   ['tempo_5ftask_5fstack_5fsize_20',['TEMPO_TASK_STACK_SIZE',['../main__defs_8h.html#a00b9084317e865d808073eeb18ae1cf9',1,'main_defs.h']]],
-  ['tempo_5fweight_21',['TEMPO_WEIGHT',['../tempo_8c.html#aae659ca0223bf09cdea30c8ab328c014',1,'tempo.c']]],
+  ['tempo_5fweight_21',['TEMPO_WEIGHT',['../tempo_8c.html#a233eb0602df54fb48816e8073d7fd005',1,'tempo.c']]],
   ['there_5fis_5fan_5fonset_22',['there_is_an_onset',['../structmain__runtime__vrbs.html#a5502e72eac43e478604a3d1896ae9c64',1,'main_runtime_vrbs']]],
   ['third_5fled_5fpin_23',['THIRD_LED_PIN',['../clock_8h.html#a583937471958d1341bbe5ffbc3f7b586',1,'clock.h']]],
   ['time_24',['time',['../structonset__entry.html#aff57064c3f2e751daf1bb38131393e83',1,'onset_entry']]],
-  ['timer_5fhandle_25',['timer_handle',['../structled__cfg.html#acd8f25b45232558df43d9eeb5050246e',1,'led_cfg']]],
-  ['turn_5foff_5fled_5fcb_26',['turn_off_led_cb',['../onset__adc_8c.html#a39aab2d16622c49709553d56c15c531b',1,'onset_adc.c']]],
-  ['two_5fbar_5flength_5fin_5f8th_27',['TWO_BAR_LENGTH_IN_8TH',['../main__defs_8h.html#aec0cf26d4271ab42972e509945aace39',1,'main_defs.h']]],
-  ['type_28',['type',['../structclock__task__queue__entry.html#a1ccc14d264819b51f452495c4ca443bf',1,'clock_task_queue_entry::type'],['../structonset__entry.html#a121a7f96ea41c9ca479519c6d9db3bd9',1,'onset_entry::type']]]
+  ['time_5funtil_5fnext_5f8th_25',['time_until_next_8th',['../clock_8c.html#a1346c71cde2dff87837abcad945c0bf4',1,'clock.c']]],
+  ['timer_5fhandle_26',['timer_handle',['../structled__cfg.html#acd8f25b45232558df43d9eeb5050246e',1,'led_cfg']]],
+  ['top_5fname_5fdisplayed_27',['top_name_displayed',['../structhid__parameter__entry.html#ac49f0cb49b3192334bf82a556c43629a',1,'hid_parameter_entry']]],
+  ['turn_5foff_5fled_5fcb_28',['turn_off_led_cb',['../onset__adc_8c.html#a39aab2d16622c49709553d56c15c531b',1,'onset_adc.c']]],
+  ['two_5fbar_5flength_5fin_5f8th_29',['TWO_BAR_LENGTH_IN_8TH',['../main__defs_8h.html#aec0cf26d4271ab42972e509945aace39',1,'main_defs.h']]],
+  ['type_30',['type',['../structclock__task__queue__entry.html#a1ccc14d264819b51f452495c4ca443bf',1,'clock_task_queue_entry::type'],['../structonset__entry.html#a121a7f96ea41c9ca479519c6d9db3bd9',1,'onset_entry::type']]]
 ];

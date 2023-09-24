@@ -46,7 +46,7 @@ static void IRAM_ATTR tap_tempo_isr_handler(void *args)
                 /*
                 If this is not the first hit, notify the tap_task with the hit position (in abs time)
                 */
-                current_onset = US_TO_MS(current_time_us);
+                current_onset = current_time_us;
                 xQueueSendFromISR(tap_task_queue, &current_onset, (TickType_t)0);
                 break;
             case MODE_SLEEP:
@@ -59,7 +59,7 @@ static void IRAM_ATTR tap_tempo_isr_handler(void *args)
                 xQueueReset(tap_task_queue);
                 tap_task_msg = TAP_TASK_QUEUE_RESET_COUNTER;
                 xQueueSendFromISR(tap_task_queue, &tap_task_msg,(TickType_t)0);
-                current_onset = US_TO_MS(current_time_us);
+                current_onset = current_time_us;
                 xQueueSendFromISR(tap_task_queue, &current_onset, (TickType_t)0);
                 break;
             default:

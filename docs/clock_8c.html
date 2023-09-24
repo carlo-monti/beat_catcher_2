@@ -80,7 +80,9 @@ $(function() {
 <code>#include &quot;<a class="el" href="sync_8h_source.html">sync.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="onset__adc_8h_source.html">onset_adc.h</a>&quot;</code><br />
 <code>#include &quot;driver/gpio.h&quot;</code><br />
+<code>#include &quot;driver/gptimer.h&quot;</code><br />
 <code>#include &quot;driver/uart.h&quot;</code><br />
+<code>#include &quot;driver/ledc.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="hid_8h_source.html">hid.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
@@ -96,9 +98,36 @@ Macros</h2></td></tr>
 <tr class="separator:a30a2011f7aae633b7e3a0d10ce3a14ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52625851bd54adc677f5e9a0efdc96fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a52625851bd54adc677f5e9a0efdc96fe">MIDI_CLOCK_THIRD_THIRD</a>&#160;&#160;&#160;8</td></tr>
 <tr class="separator:a52625851bd54adc677f5e9a0efdc96fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">UART definitions</div></td></tr>
+<tr class="memitem:a3b40474f167dff8dcd2f714c0a86921f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a3b40474f167dff8dcd2f714c0a86921f">UART_MIDI_1</a>&#160;&#160;&#160;UART_NUM_1</td></tr>
+<tr class="separator:a3b40474f167dff8dcd2f714c0a86921f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f7326ed61fdc14846680f605d1cff9d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a5f7326ed61fdc14846680f605d1cff9d">UART_MIDI_2</a>&#160;&#160;&#160;UART_NUM_2</td></tr>
+<tr class="separator:a5f7326ed61fdc14846680f605d1cff9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Audio click definitions</div></td></tr>
+<tr class="memitem:aa359eb98d201de57c44b789f879e44f4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#aa359eb98d201de57c44b789f879e44f4">AUDIO_CLICK_TIMER</a>&#160;&#160;&#160;LEDC_TIMER_0</td></tr>
+<tr class="separator:aa359eb98d201de57c44b789f879e44f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a404718e0f00d2da6d8d561e069ef67e8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a404718e0f00d2da6d8d561e069ef67e8">AUDIO_CLICK_MODE</a>&#160;&#160;&#160;LEDC_LOW_SPEED_MODE</td></tr>
+<tr class="separator:a404718e0f00d2da6d8d561e069ef67e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195dcddc90016c8117ab4ccd8c5d1d4b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a195dcddc90016c8117ab4ccd8c5d1d4b">AUDIO_CLICK_OUTPUT_IO</a>&#160;&#160;&#160;(GPIO_NUM_15)</td></tr>
+<tr class="separator:a195dcddc90016c8117ab4ccd8c5d1d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2941b0ec6849fa6623ca969f0635334"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ae2941b0ec6849fa6623ca969f0635334">AUDIO_CLICK_CHANNEL</a>&#160;&#160;&#160;LEDC_CHANNEL_0</td></tr>
+<tr class="separator:ae2941b0ec6849fa6623ca969f0635334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab71a7cb07f3a9097b7eb1e0dd2c943ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab71a7cb07f3a9097b7eb1e0dd2c943ca">AUDIO_CLICK_DUTY_RES</a>&#160;&#160;&#160;LEDC_TIMER_13_BIT</td></tr>
+<tr class="separator:ab71a7cb07f3a9097b7eb1e0dd2c943ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d1ec952e1f681d958e1e920ebbcf40d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a4d1ec952e1f681d958e1e920ebbcf40d">AUDIO_CLICK_DUTY</a>&#160;&#160;&#160;(4095)</td></tr>
+<tr class="separator:a4d1ec952e1f681d958e1e920ebbcf40d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d280d79d74b94b19cae73347ab9b7d9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a9d280d79d74b94b19cae73347ab9b7d9">AUDIO_CLICK_FREQUENCY_FIRST</a>&#160;&#160;&#160;(640)</td></tr>
+<tr class="separator:a9d280d79d74b94b19cae73347ab9b7d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08d0943c3a78a481e2e9e74c6630c4ea"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a08d0943c3a78a481e2e9e74c6630c4ea">AUDIO_CLICK_FREQUENCY</a>&#160;&#160;&#160;(440)</td></tr>
+<tr class="separator:a08d0943c3a78a481e2e9e74c6630c4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:acb0679d5c453fd45a9d9fc94198338a0"><td class="memItemLeft" align="right" valign="top">void IRAM_ATTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#acb0679d5c453fd45a9d9fc94198338a0">send_midi_clock</a> (gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *param)</td></tr>
+<tr class="memdesc:acb0679d5c453fd45a9d9fc94198338a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function that sends midi clock and reset timer.  <br /></td></tr>
+<tr class="separator:acb0679d5c453fd45a9d9fc94198338a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83900ae9d3acd0600075a437574ef879"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a83900ae9d3acd0600075a437574ef879">clock_timer_init</a> ()</td></tr>
+<tr class="separator:a83900ae9d3acd0600075a437574ef879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ae9cc0a879e88eea28e4e8b57318ef8e5">clock_init</a> ()</td></tr>
 <tr class="memdesc:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization of clock Sets GPIO and creates clock_task.  <br /></td></tr>
 <tr class="separator:ae9cc0a879e88eea28e4e8b57318ef8e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -119,6 +148,8 @@ Variables</h2></td></tr>
 <tr class="memitem:aaddec2e93001176bc08a063e6e82410d"><td class="memItemLeft" align="right" valign="top">QueueHandle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#aaddec2e93001176bc08a063e6e82410d">clock_task_queue</a></td></tr>
 <tr class="memdesc:aaddec2e93001176bc08a063e6e82410d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle for the clock_task queue. Defined inside <a class="el" href="clock_8c.html">clock.c</a>.  <br /></td></tr>
 <tr class="separator:aaddec2e93001176bc08a063e6e82410d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a812c82aad959aa3c3acd76fa8b0aa1"><td class="memItemLeft" align="right" valign="top">gptimer_handle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a1a812c82aad959aa3c3acd76fa8b0aa1">clock_timer_handle</a></td></tr>
+<tr class="separator:a1a812c82aad959aa3c3acd76fa8b0aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a863113b7e8db127f9761f62f7affab68"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a863113b7e8db127f9761f62f7affab68">MIDI_MSG_TIMING_CLOCK</a> = 248</td></tr>
 <tr class="separator:a863113b7e8db127f9761f62f7affab68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7492d1ff5210fd5bc789f4285ba98c6"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab7492d1ff5210fd5bc789f4285ba98c6">MIDI_MSG_START</a> = 250</td></tr>
@@ -127,10 +158,134 @@ Variables</h2></td></tr>
 <tr class="separator:a23986c22363fc82ecc1d10b00b1505f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d875a5f34a043f3d0d86420fe82f1b1"><td class="memItemLeft" align="right" valign="top">const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a9d875a5f34a043f3d0d86420fe82f1b1">layer_of</a> [<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>] = {3, 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0}</td></tr>
 <tr class="separator:a9d875a5f34a043f3d0d86420fe82f1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae871136e9b721e057141a44db7d8057b"><td class="memItemLeft" align="right" valign="top">const uart_port_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ae871136e9b721e057141a44db7d8057b">uart_num</a> = UART_NUM_2</td></tr>
-<tr class="separator:ae871136e9b721e057141a44db7d8057b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5ab6ed914dccd9c880369ea4157c9f8"><td class="memItemLeft" align="right" valign="top">volatile uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ae5ab6ed914dccd9c880369ea4157c9f8">midi_tick_counter</a> = 0</td></tr>
+<tr class="separator:ae5ab6ed914dccd9c880369ea4157c9f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1346c71cde2dff87837abcad945c0bf4"><td class="memItemLeft" align="right" valign="top">volatile uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a1346c71cde2dff87837abcad945c0bf4">time_until_next_8th</a> = 0</td></tr>
+<tr class="separator:a1346c71cde2dff87837abcad945c0bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5cc78687038ca5c65aaa1ba7894e460"><td class="memItemLeft" align="right" valign="top">volatile gptimer_alarm_config_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#af5cc78687038ca5c65aaa1ba7894e460">alarm_config</a></td></tr>
+<tr class="separator:af5cc78687038ca5c65aaa1ba7894e460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22edf03959a274d468cd2a673b886a49"><td class="memItemLeft" align="right" valign="top">volatile long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a22edf03959a274d468cd2a673b886a49">delta_tau_latency</a> [<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>] = {0}</td></tr>
+<tr class="separator:a22edf03959a274d468cd2a673b886a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61960effe3c5f63895958703fadfbe0"><td class="memItemLeft" align="right" valign="top">volatile int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ab61960effe3c5f63895958703fadfbe0">delta_tau_sync</a> = 0</td></tr>
+<tr class="separator:ab61960effe3c5f63895958703fadfbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a511bb53b1966e48e9e7f23cffa6598df"><td class="memItemLeft" align="right" valign="top">ledc_timer_config_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#a511bb53b1966e48e9e7f23cffa6598df">audio_click_ledc_timer</a></td></tr>
+<tr class="separator:a511bb53b1966e48e9e7f23cffa6598df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7d4463f941f23ec2ad21a4a5aadd2be"><td class="memItemLeft" align="right" valign="top">ledc_channel_config_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clock_8c.html#ae7d4463f941f23ec2ad21a4a5aadd2be">audio_click_ledc_channel</a></td></tr>
+<tr class="separator:ae7d4463f941f23ec2ad21a4a5aadd2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae2941b0ec6849fa6623ca969f0635334" name="ae2941b0ec6849fa6623ca969f0635334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2941b0ec6849fa6623ca969f0635334">&#9670;&#160;</a></span>AUDIO_CLICK_CHANNEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_CHANNEL&#160;&#160;&#160;LEDC_CHANNEL_0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d1ec952e1f681d958e1e920ebbcf40d" name="a4d1ec952e1f681d958e1e920ebbcf40d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d1ec952e1f681d958e1e920ebbcf40d">&#9670;&#160;</a></span>AUDIO_CLICK_DUTY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_DUTY&#160;&#160;&#160;(4095)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab71a7cb07f3a9097b7eb1e0dd2c943ca" name="ab71a7cb07f3a9097b7eb1e0dd2c943ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab71a7cb07f3a9097b7eb1e0dd2c943ca">&#9670;&#160;</a></span>AUDIO_CLICK_DUTY_RES</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_DUTY_RES&#160;&#160;&#160;LEDC_TIMER_13_BIT</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a08d0943c3a78a481e2e9e74c6630c4ea" name="a08d0943c3a78a481e2e9e74c6630c4ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08d0943c3a78a481e2e9e74c6630c4ea">&#9670;&#160;</a></span>AUDIO_CLICK_FREQUENCY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_FREQUENCY&#160;&#160;&#160;(440)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d280d79d74b94b19cae73347ab9b7d9" name="a9d280d79d74b94b19cae73347ab9b7d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d280d79d74b94b19cae73347ab9b7d9">&#9670;&#160;</a></span>AUDIO_CLICK_FREQUENCY_FIRST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_FREQUENCY_FIRST&#160;&#160;&#160;(640)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a404718e0f00d2da6d8d561e069ef67e8" name="a404718e0f00d2da6d8d561e069ef67e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a404718e0f00d2da6d8d561e069ef67e8">&#9670;&#160;</a></span>AUDIO_CLICK_MODE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_MODE&#160;&#160;&#160;LEDC_LOW_SPEED_MODE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a195dcddc90016c8117ab4ccd8c5d1d4b" name="a195dcddc90016c8117ab4ccd8c5d1d4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a195dcddc90016c8117ab4ccd8c5d1d4b">&#9670;&#160;</a></span>AUDIO_CLICK_OUTPUT_IO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_OUTPUT_IO&#160;&#160;&#160;(GPIO_NUM_15)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa359eb98d201de57c44b789f879e44f4" name="aa359eb98d201de57c44b789f879e44f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa359eb98d201de57c44b789f879e44f4">&#9670;&#160;</a></span>AUDIO_CLICK_TIMER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_CLICK_TIMER&#160;&#160;&#160;LEDC_TIMER_0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a30a2011f7aae633b7e3a0d10ce3a14ef" name="a30a2011f7aae633b7e3a0d10ce3a14ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30a2011f7aae633b7e3a0d10ce3a14ef">&#9670;&#160;</a></span>MIDI_CLOCK_HALFWAY</h2>
 
@@ -201,6 +356,34 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a3b40474f167dff8dcd2f714c0a86921f" name="a3b40474f167dff8dcd2f714c0a86921f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b40474f167dff8dcd2f714c0a86921f">&#9670;&#160;</a></span>UART_MIDI_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UART_MIDI_1&#160;&#160;&#160;UART_NUM_1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f7326ed61fdc14846680f605d1cff9d" name="a5f7326ed61fdc14846680f605d1cff9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f7326ed61fdc14846680f605d1cff9d">&#9670;&#160;</a></span>UART_MIDI_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UART_MIDI_2&#160;&#160;&#160;UART_NUM_2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="ae9cc0a879e88eea28e4e8b57318ef8e5" name="ae9cc0a879e88eea28e4e8b57318ef8e5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9cc0a879e88eea28e4e8b57318ef8e5">&#9670;&#160;</a></span>clock_init()</h2>
@@ -222,7 +405,129 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a83900ae9d3acd0600075a437574ef879" name="a83900ae9d3acd0600075a437574ef879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83900ae9d3acd0600075a437574ef879">&#9670;&#160;</a></span>clock_timer_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void clock_timer_init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acb0679d5c453fd45a9d9fc94198338a0" name="acb0679d5c453fd45a9d9fc94198338a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0679d5c453fd45a9d9fc94198338a0">&#9670;&#160;</a></span>send_midi_clock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IRAM_ATTR send_midi_clock </td>
+          <td>(</td>
+          <td class="paramtype">gptimer_handle_t&#160;</td>
+          <td class="paramname"><em>timer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const gptimer_alarm_event_data_t *&#160;</td>
+          <td class="paramname"><em>edata</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>param</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Callback function that sends midi clock and reset timer. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="af5cc78687038ca5c65aaa1ba7894e460" name="af5cc78687038ca5c65aaa1ba7894e460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5cc78687038ca5c65aaa1ba7894e460">&#9670;&#160;</a></span>alarm_config</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile gptimer_alarm_config_t alarm_config</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .reload_count = 0,</div>
+<div class="line">    .alarm_count = 1000 * 1000,</div>
+<div class="line">    .flags.auto_reload_on_alarm = <span class="keyword">true</span>,</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae7d4463f941f23ec2ad21a4a5aadd2be" name="ae7d4463f941f23ec2ad21a4a5aadd2be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7d4463f941f23ec2ad21a4a5aadd2be">&#9670;&#160;</a></span>audio_click_ledc_channel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ledc_channel_config_t audio_click_ledc_channel</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .speed_mode     = <a class="code hl_define" href="clock_8c.html#a404718e0f00d2da6d8d561e069ef67e8">AUDIO_CLICK_MODE</a>,</div>
+<div class="line">    .channel        = <a class="code hl_define" href="clock_8c.html#ae2941b0ec6849fa6623ca969f0635334">AUDIO_CLICK_CHANNEL</a>,</div>
+<div class="line">    .timer_sel      = <a class="code hl_define" href="clock_8c.html#aa359eb98d201de57c44b789f879e44f4">AUDIO_CLICK_TIMER</a>,</div>
+<div class="line">    .intr_type      = LEDC_INTR_DISABLE,</div>
+<div class="line">    .gpio_num       = <a class="code hl_define" href="clock_8c.html#a195dcddc90016c8117ab4ccd8c5d1d4b">AUDIO_CLICK_OUTPUT_IO</a>,</div>
+<div class="line">    .duty           = 0, </div>
+<div class="line">    .hpoint         = 0</div>
+<div class="line">}</div>
+<div class="ttc" id="aclock_8c_html_a195dcddc90016c8117ab4ccd8c5d1d4b"><div class="ttname"><a href="clock_8c.html#a195dcddc90016c8117ab4ccd8c5d1d4b">AUDIO_CLICK_OUTPUT_IO</a></div><div class="ttdeci">#define AUDIO_CLICK_OUTPUT_IO</div><div class="ttdef"><b>Definition</b> clock.c:37</div></div>
+<div class="ttc" id="aclock_8c_html_a404718e0f00d2da6d8d561e069ef67e8"><div class="ttname"><a href="clock_8c.html#a404718e0f00d2da6d8d561e069ef67e8">AUDIO_CLICK_MODE</a></div><div class="ttdeci">#define AUDIO_CLICK_MODE</div><div class="ttdef"><b>Definition</b> clock.c:36</div></div>
+<div class="ttc" id="aclock_8c_html_aa359eb98d201de57c44b789f879e44f4"><div class="ttname"><a href="clock_8c.html#aa359eb98d201de57c44b789f879e44f4">AUDIO_CLICK_TIMER</a></div><div class="ttdeci">#define AUDIO_CLICK_TIMER</div><div class="ttdef"><b>Definition</b> clock.c:35</div></div>
+<div class="ttc" id="aclock_8c_html_ae2941b0ec6849fa6623ca969f0635334"><div class="ttname"><a href="clock_8c.html#ae2941b0ec6849fa6623ca969f0635334">AUDIO_CLICK_CHANNEL</a></div><div class="ttdeci">#define AUDIO_CLICK_CHANNEL</div><div class="ttdef"><b>Definition</b> clock.c:38</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a511bb53b1966e48e9e7f23cffa6598df" name="a511bb53b1966e48e9e7f23cffa6598df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a511bb53b1966e48e9e7f23cffa6598df">&#9670;&#160;</a></span>audio_click_ledc_timer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ledc_timer_config_t audio_click_ledc_timer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    .speed_mode       = <a class="code hl_define" href="clock_8c.html#a404718e0f00d2da6d8d561e069ef67e8">AUDIO_CLICK_MODE</a>,</div>
+<div class="line">    .timer_num        = <a class="code hl_define" href="clock_8c.html#aa359eb98d201de57c44b789f879e44f4">AUDIO_CLICK_TIMER</a>,</div>
+<div class="line">    .duty_resolution  = <a class="code hl_define" href="clock_8c.html#ab71a7cb07f3a9097b7eb1e0dd2c943ca">AUDIO_CLICK_DUTY_RES</a>,</div>
+<div class="line">    .freq_hz          = <a class="code hl_define" href="clock_8c.html#a08d0943c3a78a481e2e9e74c6630c4ea">AUDIO_CLICK_FREQUENCY</a>,  </div>
+<div class="line">    .clk_cfg          = LEDC_AUTO_CLK</div>
+<div class="line">}</div>
+<div class="ttc" id="aclock_8c_html_a08d0943c3a78a481e2e9e74c6630c4ea"><div class="ttname"><a href="clock_8c.html#a08d0943c3a78a481e2e9e74c6630c4ea">AUDIO_CLICK_FREQUENCY</a></div><div class="ttdeci">#define AUDIO_CLICK_FREQUENCY</div><div class="ttdef"><b>Definition</b> clock.c:42</div></div>
+<div class="ttc" id="aclock_8c_html_ab71a7cb07f3a9097b7eb1e0dd2c943ca"><div class="ttname"><a href="clock_8c.html#ab71a7cb07f3a9097b7eb1e0dd2c943ca">AUDIO_CLICK_DUTY_RES</a></div><div class="ttdeci">#define AUDIO_CLICK_DUTY_RES</div><div class="ttdef"><b>Definition</b> clock.c:39</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="abaee9dfd77205965d8b1c6f9f8b20f9e" name="abaee9dfd77205965d8b1c6f9f8b20f9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abaee9dfd77205965d8b1c6f9f8b20f9e">&#9670;&#160;</a></span>bc</h2>
 
@@ -303,6 +608,48 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a1a812c82aad959aa3c3acd76fa8b0aa1" name="a1a812c82aad959aa3c3acd76fa8b0aa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a812c82aad959aa3c3acd76fa8b0aa1">&#9670;&#160;</a></span>clock_timer_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">gptimer_handle_t clock_timer_handle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22edf03959a274d468cd2a673b886a49" name="a22edf03959a274d468cd2a673b886a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22edf03959a274d468cd2a673b886a49">&#9670;&#160;</a></span>delta_tau_latency</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile long long delta_tau_latency[<a class="el" href="main__defs_8h.html#aec0cf26d4271ab42972e509945aace39">TWO_BAR_LENGTH_IN_8TH</a>] = {0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab61960effe3c5f63895958703fadfbe0" name="ab61960effe3c5f63895958703fadfbe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61960effe3c5f63895958703fadfbe0">&#9670;&#160;</a></span>delta_tau_sync</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile int64_t delta_tau_sync = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a9d875a5f34a043f3d0d86420fe82f1b1" name="a9d875a5f34a043f3d0d86420fe82f1b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9d875a5f34a043f3d0d86420fe82f1b1">&#9670;&#160;</a></span>layer_of</h2>
 
@@ -359,6 +706,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ae5ab6ed914dccd9c880369ea4157c9f8" name="ae5ab6ed914dccd9c880369ea4157c9f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5ab6ed914dccd9c880369ea4157c9f8">&#9670;&#160;</a></span>midi_tick_counter</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile uint8_t midi_tick_counter = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a96d4d597bf96e882dcb9103b8b1e3fe8" name="a96d4d597bf96e882dcb9103b8b1e3fe8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a96d4d597bf96e882dcb9103b8b1e3fe8">&#9670;&#160;</a></span>onset_adc_task_queue</h2>
 
@@ -381,14 +742,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae871136e9b721e057141a44db7d8057b" name="ae871136e9b721e057141a44db7d8057b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae871136e9b721e057141a44db7d8057b">&#9670;&#160;</a></span>uart_num</h2>
+<a id="a1346c71cde2dff87837abcad945c0bf4" name="a1346c71cde2dff87837abcad945c0bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1346c71cde2dff87837abcad945c0bf4">&#9670;&#160;</a></span>time_until_next_8th</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const uart_port_t uart_num = UART_NUM_2</td>
+          <td class="memname">volatile uint64_t time_until_next_8th = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
