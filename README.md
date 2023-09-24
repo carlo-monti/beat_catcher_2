@@ -56,10 +56,16 @@ Here is an usage example:
 - Power up the system (once started it will show TAP on screen)
 - Press MENU button: now the two green leds indicates that the piezo clipping so:
 - Hit the kick as hard as you can and set the gain just below the clipping (repeat the same for snare)
-- Now press the encoder repeatedly and set the parameters for kick and snare (you can monitor the settings result by looking at the corresponding led: if it blinks, it means that an onset has been detected):
-- - Threshold indicates how hard you have to hit the kick (or snare) to detect an onset
+- Now press the encoder repeatedly and select the parameter you want to set.
+- At the beginning of the menu you will find global parameters:
+  - SYNC responsiveness
+  - TEMPO responsiveness
+- Then you can find parameters for tweaking hit detection for kick and snare (you can monitor the settings result by looking at the corresponding led: if it blinks, it means that a hit has been detected):
+  - Threshold indicates how hard you have to hit the kick (or snare) to detect an onset
   - Gate indicates the time that the system will wait to retrig a new onset
   - Filter indicates the smoothin of the incoming signal (you better leave it as it is)
   - Length indicates the duration of the attach of the note (again, you better leave it as it is)
 - Click the encoder until you see "SAVE VALUES". If you choose Yes, the system will store your settings for the next time. Otherwise, the settings will be resetted to default every time you boot up the system.
-- 
+- Press MENU button again. You are now in TAP mode.
+- Hit the Tap pad four times at the correct tempo: the system will start transmitting the MIDI_CLOCK. The red leds will blink depending on the position in the 4/4 bar and you can hear an audio click through the headphones.
+- Now you can start playing and the system will hopefully follow you (you have to start in sync with the system).
