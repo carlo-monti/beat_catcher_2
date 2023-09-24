@@ -51,3 +51,15 @@ The user interface of the system looks like this:
 ![User interface](img/user_interface.png?raw=true "User interface")
 Once the system is powered on, the user can start the sequence by tapping on the Tap button four times at the correct tempo. The MIDI Clock sequence will start and the system will keep up with the drummer playing. To stop the sequence simply press the Tap button once. Pressing the Menu button will enter the SETTINGS mode in which the user can set various parameters.
 
+Here is an usage example:
+- Connect the two piezos to kick and drum
+- Power up the system (once started it will show TAP on screen)
+- Press MENU button: now the two green leds indicates that the piezo clipping so:
+- Hit the kick as hard as you can and set the gain just below the clipping (repeat the same for snare)
+- Now press the encoder repeatedly and set the parameters for kick and snare (you can monitor the settings result by looking at the corresponding led: if it blinks, it means that an onset has been detected):
+- - Threshold indicates how hard you have to hit the kick (or snare) to detect an onset
+  - Gate indicates the time that the system will wait to retrig a new onset
+  - Filter indicates the smoothin of the incoming signal (you better leave it as it is)
+  - Length indicates the duration of the attach of the note (again, you better leave it as it is)
+- Click the encoder until you see "SAVE VALUES". If you choose Yes, the system will store your settings for the next time. Otherwise, the settings will be resetted to default every time you boot up the system.
+- 
