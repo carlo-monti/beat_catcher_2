@@ -56,11 +56,10 @@ Here is an usage example:
 - Power up the system (once started it will show TAP on screen)
 - Press MENU button: now the two green leds indicates that the piezo clipping so:
 - Hit the kick as hard as you can and set the gain just below the clipping (repeat the same for snare)
-- Now press the encoder repeatedly and select the parameter you want to set.
-- At the beginning of the menu you will find global parameters:
+- Now press the encoder repeatedly and select the parameter you want to set. At the beginning of the menu you will find global parameters:
   - SYNC responsiveness
   - TEMPO responsiveness
-- Then you can find parameters for tweaking hit detection for kick and snare (you can monitor the settings result by looking at the corresponding led: if it blinks, it means that a hit has been detected):
+- If you go ahead clicking the encoder, you will find parameters for tweaking hit detection for kick and snare (you can monitor the settings result by looking at the corresponding led: if it blinks, it means that a hit has been detected):
   - Threshold indicates how hard you have to hit the kick (or snare) to detect an onset
   - Gate indicates the time that the system will wait to retrig a new onset
   - Filter indicates the smoothin of the incoming signal (you better leave it as it is)
