@@ -72,4 +72,3 @@ Here is an usage example:
 - Hit the Tap pad four times at the correct tempo: the system will start transmitting the MIDI_CLOCK. The red leds will blink depending on the position in the 4/4 bar and you can hear an audio click through the headphones.
 - Now you can start playing and the system will hopefully follow you (you have to start in sync with the system). If you press the MENU button, the system will stop. If you press the TAP button four times again, the system will start a new sequence with the new tempo.
 - Be careful: if you stop tapping until the fourth tap, the system will reset (after a timeout period). So, if you want to tap again a new tempo, you have to wait until TAP is displayed on the screen.
-- 
