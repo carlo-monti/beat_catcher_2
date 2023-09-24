@@ -63,10 +63,10 @@ Here is an usage example:
   - SYNC responsiveness.
   - TEMPO responsiveness.
 - If you go ahead clicking the encoder, you will find parameters for tweaking hit detection for kick and snare (you can monitor the settings result by looking at the corresponding led: if it blinks, it means that a hit has been detected):
-  - Threshold indicates how hard you have to hit the kick (or snare) to detect an onset.
-  - Gate indicates the time that the system will wait to retrig a new onset.
-  - Filter indicates the smoothin of the incoming signal (you better leave it as it is).
-  - Length indicates the duration of the attach of the note (again, you better leave it as it is).
+  - THRESHOLD indicates how hard you have to hit the kick (or snare) to detect an onset.
+  - RETRIGGER GATE indicates the time that the system will wait to retrig a new onset.
+  - FILTER indicates the smoothin of the incoming signal (you better leave it as it is).
+  - LENGTH indicates the duration of the attach of the note (again, you better leave it as it is).
 - Click the encoder until you see "SAVE VALUES". If you choose Yes, the system will store your settings for the next time. Otherwise, the settings will be resetted to default every time you boot up the system.
 - Press MENU button again. You are now in TAP mode.
 - Hit the Tap pad four times at the correct tempo: the system will start transmitting the MIDI_CLOCK. The red leds will blink depending on the position in the 4/4 bar and you can hear an audio click through the headphones.
