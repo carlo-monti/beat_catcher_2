@@ -101,7 +101,7 @@ static void mode_switch_task(void *arg)
                 Ask onset to stop display gain (it can be currently set to on by hid)
                 */
                 int onset_adc_queue_value = ONSET_ADC_STOP_DISPLAY_GAIN;
-                xQueueSend(onset_adc_task_queue, &onset_adc_queue_value, NULL);
+                xQueueSend(onset_adc_task_queue, &onset_adc_queue_value, pdMS_TO_TICKS(100));
                 /*
                 Change main mode
                 */

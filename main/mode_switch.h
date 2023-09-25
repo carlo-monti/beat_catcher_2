@@ -20,7 +20,7 @@
  * @brief GPIO pin for the mode button
  */
 #if CONFIG_IDF_TARGET_ESP32
-#define MODE_SWITCH_PIN GPIO_NUM_12
+#define MODE_SWITCH_PIN GPIO_NUM_33
 #else
 #define MODE_SWITCH_PIN GPIO_NUM_3
 #endif
