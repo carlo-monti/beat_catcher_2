@@ -243,7 +243,7 @@ static void menu_init()
     index = MENU_INDEX_TEMPO_ALPHA;
     strcpy(menu_item[index].top_name_displayed, ALPHA_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, ALPHA_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, ALPHA_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, ALPHA_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_FLOAT;
     menu_item[index].min.f = ALPHA_MIN_VALUE;
@@ -256,7 +256,20 @@ static void menu_init()
     index = MENU_INDEX_SYNC_BETA;
     strcpy(menu_item[index].top_name_displayed, BETA_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, BETA_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, BETA_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, BETA_STORAGE_KEY);
+    menu_item[index].pointer_to_vrb = NULL;
+    menu_item[index].vrb_type = BC_UINT16;
+    menu_item[index].min.f = BETA_MIN_VALUE;
+    menu_item[index].max.f = BETA_MAX_VALUE;
+    menu_item[index].percentage = BETA_DEFAULT_PERCENTAGE;
+    menu_item[index].percentage_step = BETA_PERCENTAGE_STEP;
+    menu_item[index].has_corresponding_value = true;
+
+    /* MENU_INDEX_TEMPO_SPREAD */
+    index = MENU_INDEX_TEMPO_SPREAD;
+    strcpy(menu_item[index].top_name_displayed, SPREAD_PARAMETER_NAME_TOP);
+    strcpy(menu_item[index].name_displayed, SPREAD_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, SPREAD_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_FLOAT;
     menu_item[index].min.f = BETA_MIN_VALUE;
@@ -269,7 +282,7 @@ static void menu_init()
     index = MENU_INDEX_KICK_THRESHOLD;
     strcpy(menu_item[index].top_name_displayed, KICK_THRESHOLD_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, KICK_THRESHOLD_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, KICK_THRESHOLD_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, KICK_THRESHOLD_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT16;
     menu_item[index].min.u16 = KICK_THRESHOLD_MIN_VALUE;
@@ -282,7 +295,7 @@ static void menu_init()
     index = MENU_INDEX_KICK_GATE;
     strcpy(menu_item[index].top_name_displayed, KICK_GATE_TIMER_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, KICK_GATE_TIMER_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, KICK_GATE_TIMER_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, KICK_GATE_TIMER_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT64;
     menu_item[index].min.u64 = KICK_GATE_TIMER_MIN_VALUE;
@@ -295,7 +308,7 @@ static void menu_init()
     index = MENU_INDEX_KICK_FILTER;
     strcpy(menu_item[index].top_name_displayed, KICK_LOW_PASS_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, KICK_LOW_PASS_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, KICK_LOW_PASS_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, KICK_LOW_PASS_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT16;
     menu_item[index].min.u16 = KICK_LOW_PASS_MIN_VALUE;
@@ -308,7 +321,7 @@ static void menu_init()
     index = MENU_INDEX_KICK_DELTA_X;
     strcpy(menu_item[index].top_name_displayed, KICK_DELTA_X_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, KICK_DELTA_X_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, KICK_DELTA_X_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, KICK_DELTA_X_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT16;
     menu_item[index].min.u16 = KICK_DELTA_X_MIN_VALUE;
@@ -321,7 +334,7 @@ static void menu_init()
     index = MENU_INDEX_SNARE_THRESHOLD;
     strcpy(menu_item[index].top_name_displayed, SNARE_THRESHOLD_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, SNARE_THRESHOLD_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, SNARE_THRESHOLD_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, SNARE_THRESHOLD_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT16;
     menu_item[index].min.u16 = SNARE_THRESHOLD_MIN_VALUE;
@@ -334,7 +347,7 @@ static void menu_init()
     index = MENU_INDEX_SNARE_GATE;
     strcpy(menu_item[index].top_name_displayed, SNARE_GATE_TIMER_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, SNARE_GATE_TIMER_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, SNARE_GATE_TIMER_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, SNARE_GATE_TIMER_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT64;
     menu_item[index].min.u64 = SNARE_GATE_TIMER_MIN_VALUE;
@@ -347,7 +360,7 @@ static void menu_init()
     index = MENU_INDEX_SNARE_FILTER;
     strcpy(menu_item[index].top_name_displayed, SNARE_LOW_PASS_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, SNARE_LOW_PASS_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, SNARE_LOW_PASS_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, SNARE_LOW_PASS_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT16;
     menu_item[index].min.u16 = SNARE_LOW_PASS_MIN_VALUE;
@@ -360,7 +373,7 @@ static void menu_init()
     index = MENU_INDEX_SNARE_DELTA_X;
     strcpy(menu_item[index].top_name_displayed, SNARE_DELTA_X_PARAMETER_NAME_TOP);
     strcpy(menu_item[index].name_displayed, SNARE_DELTA_X_PARAMETER_NAME);
-    strcpy(menu_item[index].storage_key, SNARE_DELTA_X_PARAMETER_NAME);
+    strcpy(menu_item[index].storage_key, SNARE_DELTA_X_STORAGE_KEY);
     menu_item[index].pointer_to_vrb = NULL;
     menu_item[index].vrb_type = BC_UINT16;
     menu_item[index].min.u16 = SNARE_DELTA_X_MIN_VALUE;

@@ -193,12 +193,12 @@ void tap_init()
     */
     gpio_reset_pin(TAP_TEMPO_PIN);
     gpio_set_direction(TAP_TEMPO_PIN, GPIO_MODE_INPUT);
-    gpio_set_pull_mode(TAP_TEMPO_PIN, GPIO_PULLDOWN_ONLY);
+    gpio_set_pull_mode(TAP_TEMPO_PIN, GPIO_PULLUP_ONLY);
     vTaskDelay(1);
     /*
     Attach interrupt
     */ 
-    gpio_set_intr_type(TAP_TEMPO_PIN, GPIO_INTR_POSEDGE);
+    gpio_set_intr_type(TAP_TEMPO_PIN, GPIO_INTR_NEGEDGE);
     gpio_isr_handler_add(TAP_TEMPO_PIN, tap_tempo_isr_handler, NULL);
     /*
     Create tap_task 

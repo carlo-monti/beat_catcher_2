@@ -6,6 +6,7 @@
 #include "onset_adc.h"
 
 extern QueueHandle_t clock_task_queue;
+extern QueueHandle_t onset_adc_task_queue;
 extern QueueHandle_t tap_task_queue;
 extern TaskHandle_t tap_task_handle;
 extern main_mode mode;
@@ -64,7 +65,7 @@ static void go_to_sleep(){
     Set up the wakeup methods
     */
     gpio_wakeup_enable(MODE_SWITCH_PIN,GPIO_INTR_LOW_LEVEL);
-    gpio_wakeup_enable(TAP_TEMPO_PIN,GPIO_INTR_HIGH_LEVEL);
+    gpio_wakeup_enable(TAP_TEMPO_PIN,GPIO_INTR_LOW_LEVEL);
     esp_sleep_enable_gpio_wakeup();
     /*
     Go to sleep
@@ -160,9 +161,11 @@ static void mode_switch_task(void *arg)
                 */
                 msg_to_hid = HID_ENTER_SLEEP_MODE;
                 xQueueSend(hid_task_queue, &msg_to_hid, (TickType_t)0);
+                
                 /*
                 Wait for the tasks to do their action
                 */
+                turn_off_adc();
                 vTaskDelay(pdMS_TO_TICKS(200));
                 /*
                 Change main mode
@@ -172,6 +175,8 @@ static void mode_switch_task(void *arg)
                 Go to sleep
                 */
                 go_to_sleep();
+                
+                turn_on_adc();
                 break;
             default:
                 ESP_LOGE("MODE_SWITCH","Invalid notification code");

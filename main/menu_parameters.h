@@ -46,6 +46,20 @@
  */
 
 /**
+ * @{ \name Tempo spread menu entry parameters
+ */
+#define SPREAD_PARAMETER_NAME_TOP "SYNC           "
+#define SPREAD_PARAMETER_NAME "Increase value:"
+#define SPREAD_STORAGE_KEY "sync_beta      "
+#define SPREAD_MIN_VALUE 0
+#define SPREAD_MAX_VALUE 8
+#define SPREAD_DEFAULT_PERCENTAGE 50
+#define SPREAD_PERCENTAGE_STEP 13
+/**
+ * @}
+ */
+
+/**
  * @{ \name kick low pass menu entry parameters
  */
 #define KICK_LOW_PASS_PARAMETER_NAME_TOP "KICK           "
@@ -79,8 +93,8 @@
 #define KICK_GATE_TIMER_PARAMETER_NAME_TOP "KICK           "
 #define KICK_GATE_TIMER_PARAMETER_NAME "Retrigger gate:"
 #define KICK_GATE_TIMER_STORAGE_KEY "kick_gate      "
-#define KICK_GATE_TIMER_MIN_VALUE 1000
-#define KICK_GATE_TIMER_MAX_VALUE 500000
+#define KICK_GATE_TIMER_MIN_VALUE 70000 // 70ms (72ms is the distance between two 16th notes at ~208bpm)
+#define KICK_GATE_TIMER_MAX_VALUE 500000 // 500ms (1500ms is the distance between two 4th notes at ~40bpm)
 #define KICK_GATE_TIMER_DEFAULT_PERCENTAGE 50
 #define KICK_GATE_TIMER_PERCENTAGE_STEP 1
 /**

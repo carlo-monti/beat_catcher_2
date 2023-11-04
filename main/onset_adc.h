@@ -73,4 +73,8 @@ typedef struct
  */
 void onset_adc_init();
 
+void turn_off_adc();
+
+void turn_on_adc();
+
 #endif

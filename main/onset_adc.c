@@ -6,6 +6,35 @@
 #include "sync.h"
 #include "hid.h"
 
+/**
+ * Uncomment this to enable ADC testing mode:
+ * To use it, turn on the system and go to SETTINGS mode. Now, when you press 
+ * the tap button, the system will print on console the last
+ * samples recorded from the kick ADC. 
+ * Set ADC_TEST to:
+ * 1 - Samples are taken before oversampling average
+ * 2 - Samples are taken after oversampling average
+ * 3 - Samples are taken after filtering stage
+ * Wheneve you want to plot the adc:
+ * 1 - Clear console
+ * 2 - Hit the sensor
+ * 3 - Press the tap button
+ * 4 - Copy paste the console in Matlab
+ */
+
+//#define ADC_TEST 2
+
+#ifdef ADC_TEST
+#define N_OF_SAMPLES_FOR_ADC_TEST 4000
+#define GPIO_FOR_ADC_TEST GPIO_NUM_25
+#define VALUE_TO_AVOID_WATCHDOG 500
+#define ADC_TEST_PRINT_DELAY 400000
+uint64_t last_printing = 0;
+uint64_t last_printing_debounce_us = 5000000; // 5s
+uint32_t samples_for_adc_test[N_OF_SAMPLES_FOR_ADC_TEST];
+uint32_t index_for_adc_test = 0;
+#endif
+
 #define GAIN_CLIP_VALUE 4094
 
 /**
@@ -37,8 +66,8 @@
  * @{ \name Buffer and oversampling parameters
  */
 #define BUFFER_SIZE 512
-#define OVERSAMPLING 8
-#define SAMPLE_FREQ 48000
+#define OVERSAMPLING 4
+#define SAMPLE_FREQ 92000
 /**
  * @}
  */
@@ -131,7 +160,8 @@ static bool IRAM_ATTR conv_done_cb(adc_continuous_handle_t adc_handle, const adc
 {
     BaseType_t mustYield = pdFALSE;
     vTaskNotifyGiveFromISR(onset_adc_task_handle, &mustYield);
-    return (mustYield == pdTRUE);
+    //return (mustYield == pdTRUE);
+    return(true);
 }
 
 /**
@@ -240,11 +270,21 @@ void blink_led(led_cfg led_cfg_struct)
     ESP_ERROR_CHECK(gptimer_start(led_cfg_struct.timer_handle));
 }
 
+void turn_off_adc(){
+    ESP_LOGI("ADC","TURN OFF ADC");
+    adc_continuous_stop(adc_handle);
+}
+
+void turn_on_adc(){
+    ESP_LOGI("ADC","TURN ON ADC");
+    adc_continuous_start(adc_handle);
+}
+
 /** 
  * @brief Main task for the adc and onset detection module
 */
 void onset_adc_task(void *arg)
-{    
+{
     /*
     Set up initial values
     */
@@ -294,11 +334,21 @@ void onset_adc_task(void *arg)
         .past_samples = {0},
     };
 
+    #ifdef ADC_TEST
+    /*
+    Setup tap button for ADC test
+    */
+    gpio_reset_pin(GPIO_FOR_ADC_TEST);
+    gpio_set_direction(GPIO_FOR_ADC_TEST,GPIO_MODE_INPUT);
+    gpio_set_pull_mode(GPIO_FOR_ADC_TEST, GPIO_PULLDOWN_ONLY);
+    gpio_intr_disable(GPIO_FOR_ADC_TEST);
+    #endif
+
     /*
     Create queue for the onset_adc_task
     */
     onset_adc_task_queue = xQueueCreate(10, sizeof(int));
-
+    
     while (1)
     {   
         /*
@@ -306,7 +356,7 @@ void onset_adc_task(void *arg)
         */
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
         while (1)
-        {
+        {   
             int event_code = -1;
             /*
             Check for messages in the queue
@@ -348,13 +398,13 @@ void onset_adc_task(void *arg)
                         break;
                     case ONSET_ADC_START_DISPLAY_GAIN:
                         /*
-                        Stop logging onsets
+                        Start display gain (blink only when sample value is > than 4090)
                         */
                         display_gain = true;
                         break;
                     case ONSET_ADC_STOP_DISPLAY_GAIN:
                         /*
-                        Stop logging onsets
+                        Stop display gain
                         */
                         display_gain = false;
                         break;
@@ -386,6 +436,13 @@ void onset_adc_task(void *arg)
                         switch (chan_num)
                         {
                         case KICK_ADC_CHANNEL:
+                            #ifdef ADC_TEST
+                            #if ADC_TEST == 1
+                            // samples before averaging
+                            samples_for_adc_test[index_for_adc_test] = data;
+                            index_for_adc_test = (index_for_adc_test + 1) % N_OF_SAMPLES_FOR_ADC_TEST;
+                            #endif
+                            #endif
                             sample_avg[KICK] += data;
                             break;
                         case SNARE_ADC_CHANNEL:
@@ -416,6 +473,15 @@ void onset_adc_task(void *arg)
                             gpio_set_level(SNARE_LED_PIN, 0);
                         }
                     }
+
+                    #ifdef ADC_TEST
+                    #if ADC_TEST == 2
+                    // sampling after averaging
+                    samples_for_adc_test[index_for_adc_test] = sample_avg[KICK];
+                    index_for_adc_test = (index_for_adc_test + 1) % N_OF_SAMPLES_FOR_ADC_TEST;
+                    #endif
+                    #endif
+
                     /*
                     Filter the kick sample
                     */
@@ -520,10 +586,31 @@ void onset_adc_task(void *arg)
                     kick.past_samples[kick.past_samples_current_onset_index] = kick.current_sample;
                     snare.past_samples_current_onset_index = (snare.past_samples_current_onset_index + 1) % MAX_ONSET_DELTA_X_LENGTH;
                     snare.past_samples[snare.past_samples_current_onset_index] = snare.current_sample;
+                    #ifdef ADC_TEST
+                    #if ADC_TEST == 3
+                    samples_for_adc_test[index_for_adc_test] = kick.current_sample;
+                    index_for_adc_test = (index_for_adc_test + 1) % N_OF_SAMPLES_FOR_ADC_TEST;
+                    #endif
+                    if(gpio_get_level(GPIO_FOR_ADC_TEST) == 1){
+                        if(esp_timer_get_time() > last_printing + last_printing_debounce_us){
+                            uint32_t current_idx = index_for_adc_test;
+                            printf("a = [");
+                            for(int ik=0; ik<N_OF_SAMPLES_FOR_ADC_TEST; ik++){
+                                printf("%ld \n",samples_for_adc_test[(ik + (current_idx)) % N_OF_SAMPLES_FOR_ADC_TEST]);
+                                if(ik%VALUE_TO_AVOID_WATCHDOG == 0){
+                                    vTaskDelay(1);
+                                }
+                            }
+                            printf("];\n");
+                            printf("plot(a)\n");
+                            last_printing = esp_timer_get_time();
+                        }
+                    }
+                    #endif
                 }
                 vTaskDelay(1);
             }else if (ret == ESP_ERR_INVALID_STATE){
-                ESP_LOGE("Sync_task", "ERR INVALID STATE: adc rate is faster than processing rate");
+                ESP_LOGE("ADC", "EIS");
                 break;
             }
             else if (ret == ESP_ERR_TIMEOUT)
@@ -551,4 +638,11 @@ void onset_adc_init()
     Create the onset_adc_task
     */
     xTaskCreate(onset_adc_task, "Onset_Adc_Task", ONSET_ADC_TASK_STACK_SIZE, NULL, ONSET_ADC_TASK_PRIORITY, &onset_adc_task_handle);
+    /*
+    Turn off adc. 
+    This is necessary to avoid problems in calling the same function later (when going to sleep).
+    I honestly don't know why!
+    */
+    turn_off_adc(); 
+    
 }

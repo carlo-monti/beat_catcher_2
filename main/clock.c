@@ -62,7 +62,7 @@ volatile gptimer_alarm_config_t alarm_config = {
     .alarm_count = 1000 * 1000,
     .flags.auto_reload_on_alarm = true,
 };
-volatile long long delta_tau_latency[TWO_BAR_LENGTH_IN_8TH] = {0}; // delta for compensating tempo change latency
+volatile long long delta_tau_spread[TWO_BAR_LENGTH_IN_8TH] = {0}; // delta for compensating tempo change latency
 volatile int64_t delta_tau_sync = 0; // delta for the sync process
 ledc_timer_config_t audio_click_ledc_timer = {
     .speed_mode       = AUDIO_CLICK_MODE,
@@ -148,8 +148,8 @@ void IRAM_ATTR send_midi_clock(gptimer_handle_t timer, const gptimer_alarm_event
             /*
             Midi counter = 0/12 (first of the 8th note)
             */
-            time_until_next_8th = bc.tau + delta_tau_latency[bc.bar_position]; // calculate time distance from now to the next step
-            delta_tau_latency[bc.bar_position] = 0; // reset delta_tau_latency for current position
+            time_until_next_8th = bc.tau + delta_tau_spread[bc.bar_position]; // calculate time distance from now to the next step
+            delta_tau_spread[bc.bar_position] = 0; // reset delta_tau_spread for current position
             alarm_config.alarm_count = ((time_until_next_8th + 6) / 12); // calculate and set period for MIDI Clock
             /*
             Turn on led and play audio click based on bar position
@@ -276,7 +276,11 @@ static void clock_task(void *arg)
     /*
     Create variables for the task
     */
-    uint16_t tempo_latency_amount = 0; // amount of the latency compensation
+    uint16_t tempo_spread_amount = 0; // amount of the latency compensation
+    /*
+    Add reference to the struct fields above to menu
+    */
+    set_menu_item_pointer_to_vrb(MENU_INDEX_KICK_DELTA_X, &tempo_spread_amount);
     uint16_t tempo_latency_smooth = 0; // amount of the latency compensation
 
     while (1)
@@ -316,17 +320,17 @@ static void clock_task(void *arg)
                     ESP_LOGE("CLOCK", "delta_tau_tempo too low!");
                 }
                 /*
-                Distribute delta_tau_tempo value for compensating latency
-                for (int j = 1; j <= 8; j++)
+                Distribute delta_tau_tempo additional factor over next beats
+                */
+                for (int j = 1; j <= tempo_spread_amount; j++)
                 {
-                    delta_tau_latency[(bc.bar_position + j) % TWO_BAR_LENGTH_IN_8TH] += delta_tau_tempo * (float)(1/tempo_latency_amount);
-                    if (delta_tau_latency[(bc.bar_position + j) % TWO_BAR_LENGTH_IN_8TH] < (long)(bc.tau * -0.8)) // this avoids having a too much lower value and going back in time!
+                    delta_tau_spread[(bc.bar_position + j) % TWO_BAR_LENGTH_IN_8TH] += delta_tau_tempo;
+                    if (delta_tau_spread[(bc.bar_position + j) % TWO_BAR_LENGTH_IN_8TH] < (long)(bc.tau * -0.8)) // this avoids having a too much lower value and going back in time!
                     {
                         ESP_LOGE("CLOCK", "delta_tau_tempo latency too low!");
-                        delta_tau_latency[(bc.bar_position + j) % TWO_BAR_LENGTH_IN_8TH] = (long)(bc.tau * -0.8);
+                        delta_tau_spread[(bc.bar_position + j) % TWO_BAR_LENGTH_IN_8TH] = (long)(bc.tau * -0.8);
                     }
                 }
-                */
                 xSemaphoreGive(bc_mutex_handle);
                 break;
             case CLOCK_QUEUE_STOP:
@@ -368,7 +372,7 @@ static void clock_task(void *arg)
                 */
                 midi_tick_counter = 0;
                 delta_tau_sync = 0;
-                memset(delta_tau_latency, 0, sizeof(delta_tau_latency));
+                memset(delta_tau_spread, 0, sizeof(delta_tau_spread));
                 time_until_next_8th = 0;
                 xSemaphoreTake(bc_mutex_handle, portMAX_DELAY);
                 bc.bar_position = 0;
