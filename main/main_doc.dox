@@ -61,6 +61,7 @@
  * - Requests the Mode Switch module to switch to PLAY mode.
  * - Wakes up the Clock module, asks to start the sequence and communicates the position of the first MIDI CLOCK.
  * Alternatively, if no more hits are received within the timeout time, the Tap module requests the Mode Switch module to activate SLEEP mode and then suspends itself.
+ * If the user decided to force the bpm, the Tap module is called by the Hid module and it do the same thing as it was the fourth hit (without calculating the bpm).
  * 
  * \subsection hid Hid
  * The Hid module (hid.h/hid.c) manages interaction with the user: it allows the parameters to be set and indicates the current bpm value. It also takes care of permanently storing the set values (if required) and recalling the saved values from memory (at startup). The module uses a KY-040 rotary encoder, an SSD1306 OLED display and the capabilities of the ESP-IDF NVS module.
@@ -68,9 +69,15 @@
  * 
  * - SETTINGS -> The module shows the name and value of the current parameter on the display. When the encoder is rotated, the value is updated. When the encoder is pressed, the next parameter is selected.
  * - PLAY -> The module shows the current bpm value on the display.
- * - TAP -> The module shows the number of hits recorded (1-2-3-4) on the display. SLEEP The module turns off the display.
+ * - TAP -> The module shows the number of hits recorded (1-2-3-4) on the display. 
+ * - SLEEP -> The module turns off the display.
  * The task (hid task) has a refresh rate of 100ms. At each cycle it examines the requests received in the queue. These requests can be sent by ISRs that manage the pressure of the encoder and its rotation (via the ESP-IDF PULSE COUNTER module) or by other modules that request the display of specific information.
  * When the system is in SETTINGS mode, in case of rotation of the encoder, the module reads the value of the variable relating to the currently selected parameter and increases or decreases it. The new value is then assigned to variable again. If the encoder is clicked, the next parameter is selected based on the order of the menu array. If the selected parameter is the last one (SAVE VALUES) and the selected value is YES, the module writes all the current values into permanent memory.
+ * Thre Hid module handles the bpm forcing mode, in which the user decides the bpm and start the sequence without tapping. In this case:
+ * - The system remains in TAP mode
+ * - The Hid module asks the Tap module not to go in SLEEP mode
+ * - The user can select the bpm by rotating the encoder (and the variable bc.tau accordingly).
+ * - When the encoder is pressed the Hid module asks the Tap module to start with the current tau.
  * 
  * \subsubsection par Parameters
  * To be able to be modified by the user, each parameter (each variable) must have a corresponding reference in the menu. This reference is created through a struct that contains the pointer to the variable, the name of the parameter, the type and the maximum and minimum values. All structs are aggregated into an array in a defined order.
